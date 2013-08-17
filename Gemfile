@@ -51,7 +51,7 @@ gem "prawn", "~> 0.12.0"
 gem "breadcrumbs_on_rails", "~> 2.3.0"
 gem "wicked", "~> 1.0.0"
 gem "recaptcha", "~> 0.3.5"
-gem "mailboxer", "~> 0.10.3"
+#gem "mailboxer", "~> 0.10.3" #rails 4 not supported yet
 gem "state_machine", "~> 1.2.0"
 #gem 'friendly_id', '5.0.0.beta1'
 gem "icalendar", "~> 1.4.1"
