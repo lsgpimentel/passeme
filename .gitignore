@@ -36,3 +36,10 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+database.yml
+*.swp
+*~
+.DS_Store
+.idea
+.secret
