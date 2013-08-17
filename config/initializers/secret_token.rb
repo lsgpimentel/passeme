@@ -25,4 +25,4 @@ def secure_token
   end
 end
 
-Tutorial::Application.config.secret_key_base = secure_token
+Passeme::Application.config.secret_key_base = secure_token
