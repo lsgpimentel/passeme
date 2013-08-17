@@ -1,0 +1,17 @@
+common: &common
+  adapter: postgresql
+  username: passeme
+  password: passeme # from psql setup, see Postgresql
+  host: localhost
+
+development:
+  <<: *common
+  database: passeme_development
+
+test:
+  <<: *common
+  database: passeme_test
+
+production:
+  <<: *common
+  database: passeme_production
