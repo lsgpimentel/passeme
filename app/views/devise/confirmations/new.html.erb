@@ -1,0 +1,19 @@
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name),
+                    html: { method: :post, class: "form-vertical confirmation-form" },
+                    defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" }, label_html: { class: "visible-ie8 visible-ie9" } }) do |f| %>
+<h3>Resend confirmation instructions</h3>
+<%= render 'shared/flash_messages' %>
+
+<%= f.input :email, wrapper: :with_icon, autofocus: true, label: "E-Mail", placeholder: "E-Mail", icon: "icon-envelope" %>
+
+<div class="form-actions">
+  <button type="button" id="back-btn" class="btn">
+    <i class="m-icon-swapleft"></i> Back
+  </button>
+  <button type="submit" class="btn green pull-right">
+    Submit <i class="m-icon-swapright m-icon-white"></i>
+  </button>
+</div>
+<% end %>
+<%= render "devise/shared/links" %>
+

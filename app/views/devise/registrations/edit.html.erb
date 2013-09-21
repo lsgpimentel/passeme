@@ -1,0 +1,32 @@
+<% provide(:title, 'Edit user') %>
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
+                    defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" }, label_html: { class: "visible-ie8 visible-ie9" } },
+                    html: { method: :put, class: "form-vertical register-form", novalidate: "novalidate" }) do |f| %>
+
+  <%= render 'shared/form_error_messages', object: f.object %>
+  <%= render 'shared/flash_messages' %>
+
+  <%= f.input :email, wrapper: :with_icon, label: "E-Mail", placeholder: "E-Mail", icon: "icon-user", hint: "You can't change your e-mail", disabled: true %>
+  <%= f.input :password, wrapper: :with_icon, placeholder: "Password", icon: "icon-lock", hint: "Leave blank if you don't want to change it" %>
+  <%= f.input :password_confirmation, wrapper: :with_icon, label: "Re-type Your Password", placeholder: "Re-type Your Password", icon: "icon-ok" %>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <%= f.input :current_password, wrapper: :with_icon, placeholder: "Current Password", icon: "icon-lock", hint: "We need your current password to confirm your changes" %>
+
+  <div class="form-actions">
+    <button class="btn" type="button" id="register-back-btn">
+      <i class="m-icon-swapleft"></i>  Back
+    </button>
+    <button class="btn green pull-right" id="register-submit-btn" type="submit">
+      Update <i class="m-icon-swapright m-icon-white"></i>
+    </button>            
+  </div>
+
+<% end %>
+

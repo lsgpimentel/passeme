@@ -1,7 +1,30 @@
 Passeme::Application.routes.draw do
 
-  resources :blank
-  root 'blank#index'
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
+    controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
+  resources :users
+  resources :tasks do
+    member do
+      put 'toggle_done'
+    end
+    collection do
+      get 'list_all'
+      get 'list_pending'
+      get 'list_done'
+      get 'list_overdue'
+    end
+  end
+
+  authenticated :user do
+    root to: 'dashboard#index', as: :authenticated_root
+  end
+
+  unauthenticated do
+    root to: 'static_pages#home'
+  end
+
+  match '/about', to: 'static_pages#about', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -42,7 +65,7 @@ Passeme::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

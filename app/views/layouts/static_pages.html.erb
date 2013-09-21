@@ -1,0 +1,31 @@
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "static_pages", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
+<% content_for :content do %>
+
+<body>
+
+<!-- BEGIN HEADER -->   
+<%= render 'static_pages/header' %>
+<!-- END HEADER -->
+
+<%= content_for?(:page_content) ? yield(:page_content) : yield %>
+
+<!-- BEGIN FOOTER -->
+<%= render 'static_pages/footer' %>
+<!-- END FOOTER -->
+
+
+<!-- BEGIN CORE PLUGINS -->
+<%= javascript_include_tag "static_pages", "data-turbolinks-track" => true %>
+
+<!--[if lt IE 9]>
+  <%= javascript_include_tag "static_pages-ie", "data-turbolinks-track" => true %>
+  <![endif]-->   
+
+<!-- END JAVASCRIPTS -->
+</body>
+
+<% end %>
+<%= render template: "layouts/application" %>

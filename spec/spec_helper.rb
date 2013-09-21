@@ -8,6 +8,7 @@ Spork.prefork do
 	require File.expand_path("../../config/environment", __FILE__)
 	require 'rspec/rails'
 	require 'rspec/autorun'
+  require "email_spec"
 
 	# Requires supporting ruby files with custom matchers and macros, etc,
 	# in spec/support/ and its subdirectories.
@@ -45,8 +46,32 @@ Spork.prefork do
 	  #     --seed 1234
 	  config.order = "random"
 
-	  config.include Capybara::DSL
-	end
+    config.include Capybara::DSL
+    # Disable the old-style object.should syntax.
+    config.expect_with :rspec do |c|
+      c.syntax = :expect
+    end
+
+    #Test Helpers from Devise
+    config.include Devise::TestHelpers, :type => :controller
+
+    # Database Cleaner
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:truncation)
+    end
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
+
+    #Email Spec
+    config.include(EmailSpec::Helpers)
+    config.include(EmailSpec::Matchers)
+
+  end
 end
 
 Spork.each_run do

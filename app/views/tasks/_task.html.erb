@@ -1,0 +1,30 @@
+<li id="<%= "task-#{task.id}" %>" class="<%= 'task-done' if task.done? %>"> 
+<div class="task-checkbox">
+  <%= check_box_tag :done, 1, task.done?, { class: "liChild", data: { url: toggle_done_task_path(task) } } %>
+</div>
+<div class="task-title">
+  <span ></span>
+  <a href="#" class="task-title-sp" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" >
+    <%= task.name %>
+  </a>
+
+  <span class="task-bell tooltips" data-original-title="<%= task.due_in %>" data-placement="right">
+    <a href="#" class="due-date" data-container="body" data-type="date" data-pk="1" data-viewformat="dd/mm/yyyy" data-placement="right" data-original-title="Due in Date" >
+      <i class="icon-bell"></i>
+    </a>
+  </span>
+</div>
+<div class="task-config">
+  <div class="task-config-btn btn-group">
+    <a class="btn mini blue" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">More <i class="icon-angle-down"></i></a>
+    <ul class="dropdown-menu pull-right">
+      <li>
+      <%= link_to task, class: "delete-task" do %>
+        <i class="icon-trash"></i> Delete
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+</li>
+

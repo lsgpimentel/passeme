@@ -1,0 +1,3 @@
+$('li#task-<%= @task.id %>').toggleClass("task-done");
+$('#pending-tasks-count').text('<%= @pending_tasks_count %>');
+$('#done-tasks-count').text('<%= @done_tasks_count %>');

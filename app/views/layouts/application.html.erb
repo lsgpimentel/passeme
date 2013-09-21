@@ -8,49 +8,13 @@
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+  <%= yield :stylesheets %>
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
-<body class="page-header-fixed">
 
+<%= content_for?(:content) ? yield(:content) : yield %>
 
-	<!-- BEGIN HEADER -->   
-  <%= render 'shared/header' %>
-  <!-- END HEADER -->
-
-
-	<!-- BEGIN CONTAINER -->   
-  <div class="page-container row-fluid">
-
-		<!-- BEGIN SIDEBAR -->
-    <%= render 'shared/sidebar' %>
-    <!-- END SIDEBAR -->
-
-		<!-- BEGIN PAGE -->
-		<div class="page-content">
-      <%= yield %>
-		</div>
-    <!-- END PAGE -->    
-
-	</div>
-	<!-- END CONTAINER -->
-
-
-	<!-- BEGIN FOOTER -->
-  <%= render 'shared/footer' %>
-  <!-- END FOOTER -->
-
-
-  <!-- BEGIN CORE PLUGINS -->
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-
-	<!--[if lt IE 9]>
-  <%= javascript_include_tag "application-ie", "data-turbolinks-track" => true %>
-  <![endif]-->   
-
-	<!-- END JAVASCRIPTS -->
-</body>
 </html>

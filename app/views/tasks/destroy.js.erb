@@ -1,0 +1,4 @@
+$('li#task-<%= @task.id %>').remove();
+$('#all-tasks-count').text('<%= @all_tasks_count %>');
+$('#pending-tasks-count').text('<%= @pending_tasks_count %>');
+$('#done-tasks-count').text('<%= @done_tasks_count %>');
