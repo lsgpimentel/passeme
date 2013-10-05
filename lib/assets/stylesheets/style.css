@@ -478,14 +478,17 @@ Header and header elements.
 
 .header .nav > li.dropdown.language > a > img {
   margin-bottom: 2px;
+  margin-right: 4px;
 }
 
 .header .nav > li.dropdown.language > a > i {
   font-size: 16px;
+  margin-left: 4px;
 }
 
 .header .nav > li.dropdown.language > .dropdown-menu > li > a > img {
   margin-bottom: 2px;
+  margin-right: 4px;
 }
 
 

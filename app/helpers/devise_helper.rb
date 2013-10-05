@@ -8,4 +8,18 @@ module DeviseHelper
     end
   end
 
+  def back_button
+    content_tag :button, id: "back-btn", type: "button", class: "btn" do
+      concat content_tag :i, '', class: "m-icon-swapleft"
+      concat " " + t("buttons.back")
+    end
+  end
+
+  def submit_button text
+    content_tag :button, type: "submit", class: "btn green pull-right" do
+      concat text + " "
+      concat content_tag :i, '', class: "m-icon-swapright m-icon-white"
+    end
+  end
+
 end

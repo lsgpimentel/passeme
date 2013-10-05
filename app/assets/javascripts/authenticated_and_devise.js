@@ -29,6 +29,7 @@
 //= require bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min
 //= require bootstrap-editable/inputs-ext/address/address
 //= require bootstrap-editable/inputs-ext/wysihtml5/wysihtml5
+//= require gritter
 //
 //= require turbolinks
 //= require app

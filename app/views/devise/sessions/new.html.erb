@@ -15,9 +15,7 @@
       <%= f.check_box :remember_me %> <%= f.label :remember_me, class: "checkbox" %>
   <% end %>
 
-    <button type="submit" class="btn green pull-right">
-      Login <i class="m-icon-swapright m-icon-white"></i>
-    </button>
+  <%= submit_button t("buttons.login") %>
   </div>
 
   <%= render "devise/shared/links" %>

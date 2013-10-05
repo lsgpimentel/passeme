@@ -3,19 +3,16 @@ class TasksController < AuthenticatedController
 
   add_breadcrumb "Tasks", :index_path
 
+  respond_to :js
+
   def new
     @task = Task.new
-    respond_to do |format|
-      format.js 
-    end
   end
 
   def update
     @task = current_user.tasks.find(params[:id])
     @task.update_attributes(task_params)
-    respond_to do |format|
-      format.js { render nothing: true }
-    end
+    load_tasks_count
   end
 
   def create
@@ -26,54 +23,38 @@ class TasksController < AuthenticatedController
       #render :index
     end
     @tasks = current_user.tasks
-    respond_to do |format|
-      format.js #{ render action: 'list' }
-    end
   end
 
   def destroy
     @task = current_user.tasks.find(params[:id])
     @task.destroy!
-    respond_to do |format|
-      format.js #{ render action: 'list' }
-    end
+    load_tasks_count
   end
 
   def list_all
     @tasks = current_user.tasks
-    respond_to do |format|
-      format.js { render action: 'list' }
-    end
+    render action: 'list'
   end
 
   def list_pending
     @tasks = current_user.pending_tasks
-    respond_to do |format|
-      format.js { render action: 'list' }
-    end
+    render action: 'list'
   end
 
   def list_done
     @tasks = current_user.done_tasks
-    respond_to do |format|
-      format.js { render action: 'list' }
-    end
+    render action: 'list'
   end
 
   def list_overdue
     @tasks = current_user.overdue_tasks
-    respond_to do |format|
-      format.js { render action: 'list' }
-    end
+    render action: 'list'
   end
 
   def toggle_done
     @task = Task.find(params[:id])
     @task.toggle_done!
     load_tasks_count
-    respond_to do |format|
-      format.js
-    end
   end
 
 

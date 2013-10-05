@@ -215,8 +215,8 @@ describe "User pages" do
 
     describe "delete" do
       let(:tasks_count) { user.tasks.count }
+      let(:first_task) { user.tasks.first }
       before do
-        first_task = user.tasks.first
         click_link("delete-task-#{first_task.id}")
       end
 

@@ -1,0 +1,18 @@
+en:
+  routes:
+pt-BR:
+  routes:
+    new: novo
+    edit: editar
+    destroy: destruir
+    ###Static Pages###
+    about: sobre
+    ###Tasks###
+    tasks: tarefas
+    list_all: listar_todas
+    list_pending: listar_pendentes
+    list_done: listar_concluidas
+    list_overdue: listar_vencidas
+    ###Users###
+    users: usuarios
+    register: registrar

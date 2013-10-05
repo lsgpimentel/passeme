@@ -6,5 +6,6 @@ class DashboardController < AuthenticatedController
     @tasks = current_user.tasks
 
     load_tasks_count
+
   end
 end

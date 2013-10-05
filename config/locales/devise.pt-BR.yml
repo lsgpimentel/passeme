@@ -4,6 +4,8 @@ pt-BR:
       confirmed: "Sua conta foi confirmada com sucesso. Você está logado."
       send_instructions: "Dentro de minutos você receberá um e-mail com instruções para confirmar a sua conta."
       send_paranoid_instructions: "Caso seu e-mail exista em nossa base, você receberá um e-mail em poucos minutos com instruções sobre como confirmar sua conta."
+      new:
+        title: "Reenviar instruções de confirmação"
     failure:
       already_authenticated: "Você já está logado."
       inactive: "A sua conta não foi ativada ainda."
