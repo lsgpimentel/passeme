@@ -1,0 +1,25 @@
+<h3 class="form-section">Subjects and Study Sources</h3>
+
+<div class="row-fluid">
+  <div class="span3 responsive" data-tablet="span12 fix-margin" data-desktop="span8">
+    subjects
+  </div>
+
+  <div class="span9">
+    study sources
+  </div>
+
+</div>
+
+
+<%= f.fields_for :study_times do |s| %>
+
+  <%= s.input :day %>
+  <%= s.input :from, as: :string, label: false, wrapper_html: { class: "input-append bootstrap-timepicker-component" }, placeholder: "From" %>
+  <%= s.input :to, as: :string, label: false, wrapper_html: { class: "input-append bootstrap-timepicker-component" }, placeholder: "To" %>
+  <%= s.input :productivity, as: :radio_buttons %>
+  <%= s.link_to_remove "Remove this time" %>
+
+<% end %>
+
+<p><%= f.link_to_add "Add a time", :study_times %></p>

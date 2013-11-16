@@ -1,0 +1,30 @@
+<div class="notification">
+  <div class="notification-header">
+    <h1 class="pull-left">Notifications</h1>
+  </div>
+  <div class="notification-content">
+
+    <table class="table table-striped table-advance table-hover">
+      <thead>
+        <tr>
+          <th class="text-right" colspan="2">
+            <ul class="unstyled inline notification-nav">
+              <li><span><%= page_entries_info @notifications %></span></li>
+              <li>
+              <%= will_paginate @notifications, page_links: false,
+                previous_label: '<i class="icon-angle-left  pagination-left"></i>',
+                next_label: '<i class="icon-angle-right pagination-right"></i>',
+                container: false
+              %>
+              </li>
+            </ul>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @notifications %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

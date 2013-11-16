@@ -1,0 +1,18 @@
+<%= f.simple_fields_for(:notification_settings) do |n| %>
+<tr>
+  <td>
+    <%= n.object.type_text %>
+  </td>
+  <td>
+    <%= n.check_box :send_to_site, label: false %>
+  </td>
+  <td>
+    <%= n.check_box :send_to_email, label: false %>
+  </td>
+  <td>
+    <%= n.check_box :send_to_phone, label: false %>
+  </td>
+</tr>
+
+<% end %>
+

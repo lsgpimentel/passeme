@@ -1,0 +1,11 @@
+.ms-container {
+  background-position: 370px 130px;
+}
+.ms-container ul.ms-list {
+  height: 300px;
+  width: 360px;
+}
+#study-sources-modal {
+  width: 800px;
+  margin-left: -400px;
+}

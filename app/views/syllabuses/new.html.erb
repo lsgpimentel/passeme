@@ -1,0 +1,13 @@
+<%= simple_form_for(@syllabus, html: { method: :post },
+                    defaults: { input_html: { class: "m-wrap" } } ) do |f| %>
+<h3 class="form-section">New Syllabus</h3>
+
+<%= f.input :name, input_html: { class: 'm-wrap span6' } %>
+<%= f.input :goal, input_html: { class: 'm-wrap span6' } %>
+<%= f.input :specific, label: false, inline_label: "This syllabus is specific for a contest?" %>
+
+<div class="form-actions">
+  <button type="submit" class="btn blue"><i class="icon-ok"></i> Save</button>
+  <button type="button" class="btn">Cancel</button>
+</div>
+<% end %>

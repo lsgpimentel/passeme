@@ -1,0 +1,466 @@
+/***
+notification Page
+***/
+.notification {
+  margin-bottom: 20px;
+}
+
+.notification .notification {
+  margin-bottom: 0px;
+}
+
+.notification .tab-content {
+  overflow: inherit;
+}
+
+.notification .notification-loading {
+  display: none;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+/*Imbox Menu*/
+.notification .notification-nav {
+  list-style: none;
+  margin-left: 0 !important;
+}
+
+.notification .notification-nav li {
+  position: relative;
+}
+
+
+/*notification Content*/
+.notification .notification-header {
+  overflow: hidden;
+}
+
+.notification .notification-header h1 {
+  margin: 0;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.notification tr {
+  color: #777;
+  font-size: 13px;
+}
+
+.notification tr label {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.notification tr.unread td{
+  font-weight: 600;
+}
+
+.notification td i.icon-paper-clip {
+  top: 2px;
+  color: #d8e0e5;
+  font-size: 17px;
+  position: relative;
+}
+
+.notification tr i.icon-star,
+.notification tr i.icon-trash {
+  cursor: pointer;  
+}
+
+.notification tr i.icon-star {
+  color: #eceef0;
+}
+
+.notification tr i.icon-star:hover {
+  color: #fd7b12;
+}
+
+.notification tr i.notification-started {
+  color: #fd7b12;  
+}
+
+.notification .table th, 
+.notification .table td {
+  border: none;
+}
+
+.notification .table th {  
+  background: #eef4f7;
+  border-bottom: solid 5px #fff;
+}
+
+.notification th.text-right {
+  text-align: right;
+}
+
+.notification th label.notification-select-all {
+  color: #828f97;
+  font-size: 13px;
+  padding: 1px 4px 0;
+}
+
+.notification ul.notification-nav {
+  margin-bottom: 0;
+}
+
+.notification ul.notification-nav li {
+  padding: 0;
+}
+
+.notification ul.notification-nav li span {
+  color: #828f97;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.notification ul.notification-nav i {
+  color: #fff;
+  padding: 1px 0;
+  font-size: 15px;
+  cursor: pointer; 
+  background: #d0dde4 !important;
+}
+
+.notification ul.notification-nav i:hover {
+  background: #169ef4 !important;
+}
+
+.notification td.text-right {
+  width: 100px;
+  text-align: right;
+}
+
+.notification td.notification-small-cells {
+  width: 10px;
+}
+
+.notification .table-hover tbody tr:hover>td, 
+.notification .table-hover tbody tr:hover>th, 
+.notification .table-striped tbody>tr:nth-child(odd)>td, 
+.notification .table-striped tbody>tr:nth-child(odd)>th {
+  background: #f8fbfd;  
+  cursor: pointer;
+}
+
+.notification .table-hover tbody tr:hover>td, 
+.notification .table-hover tbody tr:hover>th {
+  background: #eef4f7;
+}
+
+/*notification Drafts*/
+.notification .notification-drafts {
+  padding: 8px 0;
+  text-align: center;
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+}
+
+/*notification View*/
+.notification-view-header {
+  margin-bottom: 20px;
+}
+
+.notification-view-header h1 {
+  color: #666;
+  font-size: 22px;
+  line-height: 24px;
+  margin-bottom: 0 !important;
+}
+
+.notification-view-header h1 a {
+  top: -2px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 7px;
+  line-height: 16px;
+  position: relative;
+  background: #b0bcc4;
+  display: inline-block;
+}
+
+.notification-view-header h1 a:hover {
+  background: #aab5bc;
+  text-decoration: none;
+}
+
+.notification-view-header i.icon-print {
+  color: #94a4ab;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-block;
+  padding: 6px 8px !important;
+  background: #edf1f4 !important;
+}
+
+.notification-view-header i.icon-print:hover {
+  background: #e7ebef !important;
+}
+
+.notification-view-info {
+  color: #666;  
+  padding: 5px 0;
+  margin-bottom: 10px;
+  border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+}
+
+.notification-view-info strong {
+  color: #666;
+  margin: 0 10px 0 5px;
+}
+
+.notification-view-info .notification-info-btn {
+  text-align: right;
+}
+
+.notification-view-info .notification-info-btn ul {
+  text-align: left;
+}
+
+.notification-view-info button {
+  top: 2px;
+  color: #94a4ab;
+  font-size: 13px;
+  margin-left: 4px; 
+  padding: 3px 10px;
+  position: relative;
+  background: #edf1f4;
+}
+
+.notification-view-info button:hover {
+  color: #94a4ab;
+  background: #e7ebef;
+}
+
+.notification-view {
+  color: #666;
+  padding: 15px 0 0;
+}
+
+.notification-view a {
+  color: #169ce9;
+}
+
+.notification-attached {
+  line-height: 16px;
+}
+
+.notification-attached a {
+  margin: 0 2px;
+}
+
+.notification-attached img {
+  height: auto;
+  max-width: 250px;
+  margin-bottom: 5px;
+}
+
+.notification-attached span {
+  margin-right: 3px;
+}
+
+.notification-attached strong {
+  color: #555;
+  display: block;
+  font-size: 13px;
+}
+
+.notification-attached .margin-bottom-25 {
+  margin-bottom: 25px;
+}
+
+.notification-attached .margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+
+/*notification Compose*/
+.notification-compose {
+  margin-top: 1px;
+  border: solid 1px #eee;
+}
+
+.notification-compose-btn {
+  padding: 8px 4px;
+  background: #f0f6fa;
+}
+
+.notification-compose-attachment {
+  padding: 8px 8px;
+}
+
+.notification-compose-attachment .btn {
+  padding: 4px 10px;
+}
+
+.notification-compose-btn button {
+  color: #fff;
+  font-size: 14px;
+  margin-left: 4px;
+  padding: 4px 10px;
+  background: #c0cfdd;
+}
+
+.notification-compose-btn button:hover {
+  color: #fff;
+  background: #4d90fe;
+}
+
+.notification-compose-btn button i {
+  margin-right: 3px;
+}
+
+.notification-compose .notification-control-group {
+  margin-bottom: 0;
+  position: relative;
+  border-bottom: solid 1px #eee;
+}
+
+.notification-compose .controls {
+  margin-left: 85px;
+}
+
+.notification-compose .notification-control-group > label {
+  width: 80px;
+  float: left;
+  color: #979797;
+  text-align: right;
+}
+
+.notification-compose .controls > input {
+  border: none !important;
+}
+.notification-compose .controls-to {
+  padding-right: 55px;
+}
+
+.notification-compose .controls-cc {
+  padding-right: 15px;
+}
+
+.notification-compose .controls-bcc {
+  padding-right: 15px;
+}
+
+.notification-compose .tag {
+  font-size: 12px;
+  font-weight: 300 !important;
+  margin-top: 6px;
+  margin-left: 5px;
+  color: #333;
+  text-shadow: none !important;
+  background-color: #eee;
+  display: inline-block !important;
+  padding: 3px !important;
+}
+
+.notification-compose .tag .close {
+  margin-top: -2px;
+  display: inline-block !important;
+  float: none !important;
+
+}
+
+.notification-compose .tags {
+  border: none !important;
+  font-size: 13px;
+  padding: 0px;
+  margin-bottom: 0px;
+  margin-right: 50px;
+  box-shadow: none !important;
+}
+
+.notification-compose .tags-hover {
+  border: 1px solid #ddd;
+  border: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.notification-compose .tags input[type="text"],
+.notification-compose .tags input[type="text"]:focus {
+  display: inline-block !important;
+  border: none !important;
+  font-size: 14px !important;
+  vertical-align: top;  
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.notification-compose .notification-control-group a.close {
+  top: 13px;
+  right: 10px;
+  position: absolute;
+}
+
+.notification-compose .mail-to .notification-cc-bcc {
+  display: inline-block;
+  top: 7px;
+  right: 10px;
+  color: #979797;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.notification-compose .mail-to .notification-bcc {
+  margin-left: 5px;
+}
+
+.notification-compose .mail-to notification-cc:hover,
+.notification-compose .mail-to notification-bcc:hover {
+  color: #777;
+}
+
+.notification-compose .wysihtml5 {
+  padding: 0px !important;
+  margin: 0px !important;
+  border: 0 !important;
+}
+
+.notification-compose .wysihtml5-sandbox {
+  padding: 0px !important;
+  margin: 0px !important;
+  display: block !important;
+  border: 0 !important;
+  margin-top: 5px;
+  width: 100% !important;
+  border-left: none;
+  border-right: none;
+  border-color: #eee;
+}
+
+.notification-compose .wysihtml5-toolbar {  
+  border: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-compose .wysihtml5-toolbar > li {
+  height: 34px;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+.notification-compose .wysihtml5-toolbar > li > a,
+.notification-compose .wysihtml5-toolbar > li > div > a {
+  background: #fff;
+}
+
+.notification-compose .wysihtml5-toolbar .dropdown.open .dropdown-toggle,
+ul.wysihtml5-toolbar a.btn.wysihtml5-command-active {
+  background: #eee !important;
+}
+
+@media (max-width: 480px) {
+
+  .notification-compose .notification-control-group > label {
+    margin-top: 7px;
+  }
+
+}

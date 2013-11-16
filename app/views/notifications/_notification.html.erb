@@ -1,0 +1,4 @@
+<tr class="<%= 'unread' unless notification.is_read? %>">
+  <td class="notification-small-cells"><%= notification_icon(notification.activity) %></td>
+  <td class="view-message"><%= notification_message(notification.activity) %></td>
+</tr>

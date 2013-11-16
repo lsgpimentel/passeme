@@ -1,0 +1,7 @@
+$('#study-sources-modal').html("<%= j render 'study_sources' %>");
+
+$('#study-sources-select').multiSelect({
+  selectableOptgroup: true
+});
+
+$('#study-sources-modal').modal('show');

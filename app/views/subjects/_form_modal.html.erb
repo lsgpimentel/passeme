@@ -1,0 +1,17 @@
+<%= simple_form_for @subject, remote: true,
+  defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
+  html: { class: "form-vertical subject-form", novalidate: "novalidate" } do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h3>New Subject</h3>
+  </div>
+  <div class="modal-body">
+    <%= f.input :name %>
+    <%= f.input :difficulty %>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn">Close</button>
+    <button type="submit" class="btn green">Ok</button>
+  </div>
+<% end %>

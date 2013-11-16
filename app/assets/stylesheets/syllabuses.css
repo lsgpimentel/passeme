@@ -1,0 +1,22 @@
+.portlet.calendar .fc-header {
+  margin-bottom: 0px;
+}
+.portlet.calendar .fc-header-title h2 {
+  font-size: 20px !important;
+}
+
+/*  Green */
+.active-syllabus {
+  color: white;
+  text-shadow: none;	 
+  background-color: #35aa47;
+}
+.active-syllabus:hover, 
+.active-syllabus:focus, 
+.active-syllabus:active, 
+.active-syllabus.active,
+.active-syllabus.disabled, 
+.active-syllabus[disabled]{ 
+  background-color: #1d943b !important;
+  color: #fff !important;
+}

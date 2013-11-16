@@ -1,0 +1,13 @@
+<%= simple_form_for @subject, url: subject_study_sources_path(@subject) do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h3><%= "Study Sources for #{@subject.name}" %></h3>
+  </div>
+  <div class="modal-body">
+    <%= f.association :study_sources, collection: current_user.study_sources, input_html: { id: "study-sources-select" } %>
+  </div>
+  <div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn">Close</button>
+    <button type="submit" class="btn green">Ok</button>
+  </div>
+<% end %>
