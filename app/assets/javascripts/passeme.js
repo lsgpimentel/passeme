@@ -3,5 +3,10 @@ jQuery(document).ready(function() {
   FormEditable.init();
   Tasks.initDashboardWidget();
   Modals.init();
+  Calendar.init();
+  FormWizard.init();
+  Timetables.init();
+  Subjects.init();
+  StudySources.init();
 
 });

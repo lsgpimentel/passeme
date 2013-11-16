@@ -30,10 +30,28 @@
 //= require bootstrap-editable/inputs-ext/address/address
 //= require bootstrap-editable/inputs-ext/wysihtml5/wysihtml5
 //= require gritter
+//= require fullcalendar/fullcalendar/fullcalendar.min
+//= require jquery-validation/dist/jquery.validate.min
+//= require jquery-validation/dist/additional-methods.min
+//= require bootstrap-wizard/jquery.bootstrap.wizard.min
+//= require chosen-bootstrap/chosen/chosen.jquery.min
+//= require bootstrap-timepicker/js/bootstrap-timepicker.min
+//= require jquery_nested_form
+//= require star-rating/jquery.rating.pack
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap
+//= require jquery-multi-select/js/jquery.multi-select
+//
 //
 //= require turbolinks
 //= require app
 //= require tasks
+//= require notifications
 //= require modals
 //= require form-editable
+//= require calendar
+//= require form-wizard
+//= require timetables
+//= require subjects
+//= require study_sources
 //= require passeme

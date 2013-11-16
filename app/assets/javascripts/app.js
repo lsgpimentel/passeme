@@ -892,6 +892,7 @@ var App = function () {
     });
   }
 
+
   //* END:CORE HANDLERS *//
 
   return {
@@ -1081,6 +1082,58 @@ var App = function () {
 
     ajax: function(type, url, ajaxData, options) {
       ajax(type, url, ajaxData, options);
+    },
+
+
+    initDatatablesBootstrapIntegration: function(){
+
+      /* Set the defaults for DataTables initialisation */
+      $.extend( true, $.fn.dataTable.defaults, {
+        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+        "sPaginationType": "bootstrap",
+        "oLanguage": {
+          "sLengthMenu": "_MENU_ records per page"
+        }
+      } );
+
+
+
+      /*
+       * TableTools Bootstrap compatibility
+       * Required TableTools 2.1+
+       */
+      if ( $.fn.DataTable.TableTools ) {
+        // Set the classes that TableTools uses to something suitable for Bootstrap
+        $.extend( true, $.fn.DataTable.TableTools.classes, {
+          "container": "DTTT btn-group",
+          "buttons": {
+            "normal": "btn",
+            "disabled": "disabled"
+          },
+          "collection": {
+            "container": "DTTT_dropdown dropdown-menu",
+            "buttons": {
+              "normal": "",
+              "disabled": "disabled"
+            }
+          },
+          "print": {
+            "info": "DTTT_print_info modal"
+          },
+          "select": {
+            "row": "active"
+          }
+        } );
+
+        // Have the collection use a bootstrap compatible dropdown
+        $.extend( true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {
+          "collection": {
+            "container": "ul",
+            "button": "li",
+            "liner": "a"
+          }
+        } );
+      }
     }
 
   }

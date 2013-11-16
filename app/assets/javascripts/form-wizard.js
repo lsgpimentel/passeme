@@ -8,21 +8,6 @@ var FormWizard = function () {
                 return;
             }
 
-            function format(state) {
-                if (!state.id) return state.text; // optgroup
-                return "<img class='flag' src='assets/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
-            }
-
-            $("#country_list").select2({
-                placeholder: "Select",
-                allowClear: true,
-                formatResult: format,
-                formatSelection: format,
-                escapeMarkup: function (m) {
-                    return m;
-                }
-            });
-
             var form = $('#submit_form');
             var error = $('.alert-error', form);
             var success = $('.alert-success', form);

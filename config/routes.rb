@@ -18,6 +18,20 @@ Passeme::Application.routes.draw do
       end
     end
 
+    resources :notifications
+    resources :groups
+    resources :settings
+    resources :subjects do
+      get 'study_sources'
+      patch 'study_sources', to: 'subjects#update_study_sources'
+    end
+
+    resources :study_sources
+    resources :syllabuses do
+      resources :timetables
+    end
+
+
     authenticated :user do
       root to: 'dashboard#index', as: :authenticated_root
     end

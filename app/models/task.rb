@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)      not null
 #  created_at :datetime         not null
-#  done       :boolean
+#  done       :boolean          default(FALSE)
 #  due_in     :date
 #  user_id    :integer
 #
@@ -18,6 +18,7 @@ class Task < ActiveRecord::Base
   validates :user_id, presence: true
   validates :due_in, allow_nil: true, timeliness: { after: Date.current }
 
+  has_many :notifications, as: :object, dependent: :destroy
 
   def toggle_done!
     self.toggle!(:done)

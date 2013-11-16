@@ -22,6 +22,9 @@ module Passeme
     config.i18n.default_locale = :en
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += %W(#{config.root}/app/navigation_renderers)
+    config.autoload_paths += %W(#{config.root}/app/inputs)
+    config.autoload_paths += Dir[Rails.root.join("app/models/**")]
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|

@@ -4,6 +4,7 @@ FactoryGirl.define do
     name "Bla bla bla"
     user
   end
+
   factory :user do
     sequence(:email) { |n| "email_#{n}@example.com"} 
     password 'changeme'
@@ -18,6 +19,22 @@ FactoryGirl.define do
         FactoryGirl.create_list(:task, 5, due_in: rand(2.months).from_now, user: user)
       end
     end
+  end
+
+  factory :syllabus do
+
+  end
+
+  factory :timetable do
+
+  end
+
+  factory :subject do
+
+  end
+
+  factory :study_source do
+
   end
 
 end

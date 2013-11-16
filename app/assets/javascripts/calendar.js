@@ -35,7 +35,7 @@ var Calendar = function () {
                         center: '',
                         left: 'agendaDay, agendaWeek, month, today, prev,next'
                     };
-                }                
+                }
             } else {
                  if ($('#calendar').parents(".portlet").width() <= 720) {
                     $('#calendar').addClass("mobile");

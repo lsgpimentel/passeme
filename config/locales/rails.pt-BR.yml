@@ -222,7 +222,21 @@ pt-BR:
 
 ######## Buttons ##########
   buttons:
-    back: "Voltar"
-    submit: "Enviar"
-    login: "Login"
-    resend: "Reenviar"
+    back: Voltar
+    submit: Enviar
+    login: Login
+    resend: Reenviar
+
+####### Enumerize #########
+  enumerize:
+    notification_preferences:
+      type:
+      send_to:
+
+####### Notifications ########
+#TODO etc
+  notification:
+    task:
+      overdue:
+    group:
+      invitation:

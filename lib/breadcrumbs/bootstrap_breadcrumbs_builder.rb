@@ -22,7 +22,7 @@ class BootstrapBreadcrumbsBuilder < BreadcrumbsOnRails::Breadcrumbs::Builder
         item = @context.link_to(compute_name(element), compute_path(element), element.options)
       end
 
-      (home_icon || '') << item << (divider || '')
+      ((home_icon || '') << item << (divider || '')).html_safe
       
     end
   end

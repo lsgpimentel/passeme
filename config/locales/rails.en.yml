@@ -23,3 +23,6 @@ en:
   translation:
     en: English
     pt-BR: Portuguese
+
+  notification:
+    blabla: Seu email é %{group}

@@ -1,0 +1,17 @@
+form.button_to {
+  margin: 0;
+}
+
+/*
+ * Bootstrap fix for using text-align in tables, since that's an overloading issue
+ */
+table .text-right {text-align: right}
+table .text-left {text-align: left}
+table .text-center {text-align: center}
+
+
+table.table {
+  button.edit, button.delete {
+    padding: 1px 10px;
+  }
+}

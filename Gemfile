@@ -5,13 +5,13 @@ gem 'rails', '~> 4.0.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.14.0'
-  gem 'guard-rspec'
+  gem 'guard-rspec', '~> 4.0.0'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
-  gem 'guard-spork', '1.5.0'
+  gem 'guard-spork', '~> 1.5.1'
   gem 'childprocess'
   gem "bullet", "~> 4.6.0"
   gem 'annotate', "~> 2.5.0"
-  gem "better_errors", "~> 0.9.0"
+  gem "better_errors", "~> 1.0.1"
   gem "lol_dba", "~> 1.6.0"
   gem "quiet_assets", "~> 1.0.2"
   gem "rails-footnotes", "~> 3.7.9"
@@ -23,6 +23,9 @@ group :development, :test do
   gem "rails-erd", "~> 1.1.0"
   gem "binding_of_caller", "~> 0.7.2"
   gem "rack-mini-profiler", "~> 0.1.31"
+  #TODO review and generate foreign keys later
+  gem 'immigrant',github: 'jenseng/immigrant' 
+  gem "brakeman", "~> 2.1.2", :require => false
 end
 
 group :test do
@@ -55,7 +58,7 @@ gem "prawn", "~> 0.12.0"
 gem "breadcrumbs_on_rails", "~> 2.3.0"
 gem "wicked", "~> 1.0.0"
 gem "recaptcha", "~> 0.3.5"
-#gem "mailboxer", "~> 0.10.3" #rails 4 not supported yet
+#gem 'mailboxer', github: 'ging/mailboxer'
 gem "state_machine", "~> 1.2.0"
 #gem 'friendly_id', '5.0.0.beta1'
 gem "icalendar", "~> 1.4.1"
@@ -67,6 +70,17 @@ gem "google-api-client", "~> 0.6.4"
 gem "validates_timeliness", "~> 3.0.14"
 gem 'gritter', github: 'lsgpimentel/gritter'
 gem 'sprockets-urlrewriter',github: 'lsgpimentel/sprockets-urlrewriter' 
+gem "enumerize", "~> 0.7.0"
+gem "simple-navigation", "~> 3.11.0"
+gem 'foreigner',github: 'matthuhiggins/foreigner' 
+gem "clockwork", "~> 0.6.2"
+gem "delayed_job_active_record", "~> 4.0.0"
+gem 'merit',github: 'tute/merit' 
+gem "ice_cube", "~> 0.11.1"
+gem 'nested_form', github: 'ryanb/nested_form'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
+
 
 group :doc do
   gem 'sdoc', require: false

@@ -21,6 +21,7 @@
 #  locked_at              :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
+#  locale                 :string(255)      default("pt-BR")
 #
 
 class User < ActiveRecord::Base
@@ -34,7 +35,8 @@ class User < ActiveRecord::Base
   #, omniauthable_providers: [:facebook] -> tomando erro
 
 
-  before_save { email.downcase! }
+  before_create { email.downcase! }
+  after_create :build_default_notification_settings
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -42,6 +44,22 @@ class User < ActiveRecord::Base
 
   has_many :tasks, dependent: :destroy
 
+  #TODO migration
+  has_many :syllabuses, dependent: :destroy, foreign_key: "creator_id"
+  has_many :timetables, through: :syllabuses
+  has_and_belongs_to_many :others_timetables_that_can_view, class_name: "Timetable", join_table: :users_view_timetables, autosave: true
+  has_many :created_groups, class_name: "Group"
+  has_and_belongs_to_many :groups, class_name: "Group"
+  #want to receive group invitations?
+  
+  has_many :notifications
+
+  has_one :setting
+
+  has_many :subjects, dependent: :destroy, foreign_key: "creator_id"
+  has_many :study_sources, dependent: :destroy, foreign_key: "creator_id"
+
+  include Notifiable
 
   ####
   #Google OAuth2 callback after authentication
@@ -75,7 +93,47 @@ class User < ActiveRecord::Base
   end
 
   def overdue_tasks
-    tasks.where("due_in < ?", Date.today)
+    tasks.where("due_in < ? AND done = ?", Date.today, false)
+  end
+
+  ##########
+  #Syllabus
+  ##########
+
+  #Can the user view the syllabus if he didn't created it?
+  def can_view?(syllabus)
+    can_see = syllabus.public? #Yes, if it's public
+    can_see ||= others_syllabuses_that_can_view.include?(syllabus) #Yes, if the user have explicit permission to do so
+  end
+
+  ########
+  #Groups
+  ########
+
+  ##############
+  #Notifications
+  ##############
+  def unread_notifications
+    notifications.where(is_read: false).sent_to(:site)
+  end
+
+
+
+  private
+
+  def build_default_notification_settings
+    self.build_setting
+    NotificationSetting.default_notification_settings.each do |k, v|
+
+      if v.present?
+        n = NotificationSetting.new(type: k)
+        v.each do |s|
+          n.send("send_to_#{s}=".to_sym, true)
+        end
+        self.setting.notification_settings << n
+      end
+    end
+    self.setting.save!
   end
 
 end

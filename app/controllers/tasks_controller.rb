@@ -1,6 +1,8 @@
 class TasksController < AuthenticatedController
   include TasksHelper
 
+  before_filter :check_user_is_owner, :only => [:toggle_done, :update, :destroy]
+
   add_breadcrumb "Tasks", :index_path
 
   respond_to :js
@@ -10,7 +12,6 @@ class TasksController < AuthenticatedController
   end
 
   def update
-    @task = current_user.tasks.find(params[:id])
     @task.update_attributes(task_params)
     load_tasks_count
   end
@@ -26,7 +27,6 @@ class TasksController < AuthenticatedController
   end
 
   def destroy
-    @task = current_user.tasks.find(params[:id])
     @task.destroy!
     load_tasks_count
   end
@@ -52,7 +52,6 @@ class TasksController < AuthenticatedController
   end
 
   def toggle_done
-    @task = Task.find(params[:id])
     @task.toggle_done!
     load_tasks_count
   end
@@ -62,6 +61,13 @@ class TasksController < AuthenticatedController
 
   def task_params
     params.require(:task).permit(:name, :due_in)
+  end
+
+  def check_user_is_owner
+    @task = current_user.tasks.find_by_id(params[:id])
+    if @task.nil?
+      redirect_to tasks_path
+    end
   end
 
 end
