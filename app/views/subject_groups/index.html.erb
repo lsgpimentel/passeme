@@ -1,0 +1,48 @@
+<% provide(:title, "Subject Groups") %>
+
+<div class="span3 column sortable">
+  <div class="portlet box grey">
+    <div class="portlet-title">
+      <div class="caption"><i class="icon-reorder"></i>Portlet</div>
+      <div class="tools">
+        <a href="javascript:;" class="collapse"></a>
+      </div>
+    </div>
+
+    <div class="portlet-body">
+
+      <ul id="available-subjects" class="sortable-itens">
+        <%= render 'available_subjects', subjects: @subjects %>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+<div class="span6 column sortable">
+  <div class="portlet box grey">
+    <div class="portlet-title">
+      <div class="caption"><i class="icon-reorder"></i>Portlet1</div>
+      <div class="tools">
+        <a href="javascript:;" class="collapse"></a>
+      </div>
+    </div>
+    <div class="portlet-body">
+      <%= simple_form_for(@subject_group, remote: true,
+                          html: { method: :post, class: "form-inline subject-group-form" },
+                          defaults: { input_html: { class: "m-wrap placeholder-no-fix span8", autocomplete: "off" } }) do |f| %>
+
+        <%= f.input_field :name, label: false, placeholder: "Name" %>
+        <%= submit_button t("buttons.submit"), id:"new-subject-group" %>
+
+      <% end %>
+      <div class="clearfix"></div>
+      <ul id="new-subjects" class="sortable-itens sortable-box-placeholder empty">
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="subject-groups" class="span3 column sortable">
+  <%= render 'subject_groups', subject_groups: @subject_groups %>
+</div>

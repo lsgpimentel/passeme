@@ -54,4 +54,5 @@
 //= require timetables
 //= require subjects
 //= require study_sources
+//= require subject_groups
 //= require passeme

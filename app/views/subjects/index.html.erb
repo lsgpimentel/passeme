@@ -1,9 +1,14 @@
 <% provide(:title, "Subjects") %>
 
-<div class="table-toolbar">
-  <div class="btn-group">
+<div class="table-toolbar clearfix">
+  <div class="btn-group pull-left">
     <%= button_to new_subject_path, class: "btn green", id: "new-subject" do %>
       Add New <i class="icon-plus"></i>
+    <% end %>
+  </div>
+  <div class="btn-group pull-right">
+    <%= link_to subject_groups_path, class: "btn blue" do %>
+      Subject Groups <i class="icon-plus"></i>
     <% end %>
   </div>
 </div>
@@ -11,6 +16,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th class="text-center">Importance</th>
       <th class="text-center">Difficulty</th>
       <th class="text-center">Study Sources</th>
       <th class="text-center">Edit</th>
@@ -21,6 +27,7 @@
     <% @subjects.each do |s| %>
       <tr class="odd gradeX">
         <td><%= s.name %></td>
+        <td class="text-center"><%= s.importance_value %></td>
         <td class="text-center"><%= s.difficulty_value %></td>
         <td class="text-center">
           <%= button_to subject_study_sources_path(s), class: "btn mini green-stripe view-study-sources" do %>

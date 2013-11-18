@@ -52,6 +52,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :key_1, 'Home', root_path, icon: 'icon-home', class: 'start'
     primary.item :key_1, 'Groups', groups_path, icon: 'icon-group'
     primary.item :key_1, 'Subjects', subjects_path
+    primary.item :key_1, 'Subject Groups', subject_groups_path
     primary.item :key_1, 'Study Sources', study_sources_path
 
     primary.item :key_2, 'name', root_path do |sub_nav|

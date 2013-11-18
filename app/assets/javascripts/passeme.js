@@ -8,5 +8,6 @@ jQuery(document).ready(function() {
   Timetables.init();
   Subjects.init();
   StudySources.init();
+  SubjectGroups.init();
 
 });

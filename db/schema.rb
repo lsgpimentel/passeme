@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114002457) do
+ActiveRecord::Schema.define(version: 20131117182936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,13 +77,11 @@ ActiveRecord::Schema.define(version: 20131114002457) do
     t.boolean  "is_read",     default: false
     t.integer  "type",                        null: false
     t.integer  "user_id"
-    t.integer  "activity_id"
     t.integer  "object_id"
     t.string   "object_type"
     t.integer  "sent_to",                     null: false
   end
 
-  add_index "notifications", ["activity_id"], name: "index_notifications_on_activity_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "settings", force: true do |t|
@@ -109,12 +107,21 @@ ActiveRecord::Schema.define(version: 20131114002457) do
     t.integer "timetable_id", null: false
   end
 
+  create_table "subject_groups", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subjects", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "difficulty", null: false
-    t.integer  "creator_id", null: false
-    t.string   "name",       null: false
+    t.integer  "difficulty",       null: false
+    t.integer  "creator_id",       null: false
+    t.string   "name",             null: false
+    t.integer  "importance",       null: false
+    t.integer  "subject_group_id"
   end
 
   create_table "subjects_study_sources", id: false, force: true do |t|

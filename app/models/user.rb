@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   has_one :setting
 
   has_many :subjects, dependent: :destroy, foreign_key: "creator_id"
+  has_many :subject_groups, dependent: :destroy
   has_many :study_sources, dependent: :destroy, foreign_key: "creator_id"
 
   include Notifiable

@@ -66,7 +66,7 @@ class SubjectsController < AuthenticatedController
   private
 
   def subject_params
-    params.require(:subject).permit(:name, :difficulty, study_source_ids: [])
+    params.require(:subject).permit(:name, :difficulty, :importance, study_source_ids: [])
   end
 
   def check_user_is_owner_of_subject

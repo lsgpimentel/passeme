@@ -1,3 +1,4 @@
+
 form.button_to {
   margin: 0;
 }
@@ -15,3 +16,31 @@ table.table {
     padding: 1px 10px;
   }
 }
+
+
+/*
+ * Sortable (jQuery UI) itens
+ */
+.sortable-itens li.sortable-box-placeholder {
+  margin: 0 !important;
+}
+.sortable-itens.sortable-box-placeholder.empty {
+  height: 100px;
+  margin: 0 !important;
+}
+
+.sortable-itens {
+  display: block;
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.sortable-itens li { display: block; height: 30px; margin: 5px 0; cursor: move; padding: 5px 10px; color: #333; text-decoration: none; font-weight: 400; border: 1px solid #ccc;
+  background: #fafafa;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  box-sizing: border-box; -moz-box-sizing: border-box;
+}
+.sortable-itens li:hover { color: #2ea8e5; background: #fff; }
+

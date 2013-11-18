@@ -1,6 +1,7 @@
 <%= f.simple_fields_for(:notification_settings) do |n| %>
 <tr>
   <td>
+    <%= n.hidden_field :type %>
     <%= n.object.type_text %>
   </td>
   <td>

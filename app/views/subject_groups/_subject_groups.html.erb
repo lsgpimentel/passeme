@@ -1,0 +1,23 @@
+<% subject_groups.each do |sg| %>
+<div class="portlet box grey">
+
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-reorder"></i>Portlet1</div>
+    <div class="tools">
+      <a href="javascript:;" class="collapse"></a>
+      <a href="javascript:;" class="remove"></a>
+    </div>
+  </div>
+
+  <div class="portlet-body hide">
+    <ul class="sortable-itens">
+      <% sg.subjects.each do |s| %>
+        <li data-id="<%= sg.id %>" >
+      <%= sg.name %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+</div>
+<% end %>

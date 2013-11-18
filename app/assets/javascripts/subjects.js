@@ -14,6 +14,7 @@ var Subjects = function () {
       "aoColumns": [
         { "bSortable": true },
         { "bSortable": true },
+        { "bSortable": true },
         { "bSortable": false },
         { "bSortable": false },
         { "bSortable": false }

@@ -30,6 +30,7 @@ Passeme::Application.routes.draw do
     resources :syllabuses do
       resources :timetables
     end
+    resources :subject_groups
 
 
     authenticated :user do

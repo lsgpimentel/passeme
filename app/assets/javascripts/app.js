@@ -790,33 +790,37 @@ var App = function () {
   }
 
   //Handle Ajax requests made using rails UJS
-  // var handleAjaxRequestsRails = function(){
-  //   var options = {
-  //     elementToBlock: $('.page-content'),
-  //     reloadUniform: true,
-  //     fixContentHeight: false,
-  //     successMessage: undefined,
-  //     errorMessage: 'Ooopss... Ocorreu um erro ao tentar realizar a operação!',
-  //     completeMessage: undefined,
-  //     blockUI: true
-  //   };
+  var handleAjaxRequestsRails = function(){
+    var options = {
+      elementToBlock: $('.page-content'),
+      reloadUniform: true,
+      fixContentHeight: false,
+      successMessage: undefined,
+      errorMessage: 'Ooopss... Ocorreu um erro ao tentar realizar a operação!',
+      completeMessage: undefined,
+      blockUI: true,
+      ajaxBeforeSend: function(xhr, settings) {},
+      ajaxSuccess: function(evt, data, status, xhr){},
+      ajaxError: function(xhr, status, error){},
+      ajaxComplete: function(xhr, status){}
+    };
 
-  //   $(document).on('ajax:beforeSend', function(xhr, settings){
-  //     ajaxCallbacks(options).beforeSend(xhr, settings);
-  //   });
+    $(document).on('ajax:beforeSend', function(xhr, settings){
+      ajaxCallbacks(options).beforeSend(xhr, settings);
+    });
 
-  //   $(document).on('ajax:success', function(evt, data, status, xhr){
-  //     ajaxCallbacks(options).success(evt, data, status, xhr);
-  //   });
+    $(document).on('ajax:success', function(evt, data, status, xhr){
+      ajaxCallbacks(options).success(evt, data, status, xhr);
+    });
 
-  //   $(document).on('ajax:error', function(xhr, status, error){
-  //     ajaxCallbacks(options).error(xhr, status, error);
-  //   });
+    $(document).on('ajax:error', function(xhr, status, error){
+      ajaxCallbacks(options).error(xhr, status, error);
+    });
 
-  //   $(document).on('ajaxComplete', function(xhr, status){
-  //     ajaxCallbacks(options).complete(xhr, status);
-  //   });
-  // }
+    $(document).on('ajaxComplete', function(xhr, status){
+      ajaxCallbacks(options).complete(xhr, status);
+    });
+  }
 
   //Handle ajax requests callbacks, either using rails UJS or direct ajax requests via jQuery
   var ajaxCallbacks = function(options){
@@ -932,7 +936,7 @@ var App = function () {
       App.addResponsiveHandler(handleChoosenSelect); // reinitiate chosen dropdown on main content resize. disable this line if you don't really use chosen dropdowns.
       handleFullScreenMode(); // handles full screen
 
-      //handleAjaxRequestsRails();
+      handleAjaxRequestsRails();
     },
 
     fixContentHeight: function () {

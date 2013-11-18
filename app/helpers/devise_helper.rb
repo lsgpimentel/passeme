@@ -15,10 +15,11 @@ module DeviseHelper
     end
   end
 
-  def submit_button text
+  def submit_button text, options = {}
+    options[:class] = "m-icon-swapright m-icon-white"
     content_tag :button, type: "submit", class: "btn green pull-right" do
       concat text + " "
-      concat content_tag :i, '', class: "m-icon-swapright m-icon-white"
+      concat content_tag :i, '', options
     end
   end
 

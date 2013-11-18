@@ -1,5 +1,5 @@
 <%= simple_form_for @setting do |f| %>
-  <div class="tabbable tabbable-custom tabs-left">
+<div class="tabbable tabbable-custom tabs-left">
   <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs tabs-left">
     <li class="active"><a href="#general" data-toggle="tab">General</a></li>
@@ -30,6 +30,10 @@
     <div class="tab-pane" id="tab3">
       <p>tab3</p>
     </div>
+  </div>
+  <div class="form-actions">
+    <%= back_button %>
+    <%= submit_button t("buttons.submit") %>
   </div>
 </div>
 <% end %>
