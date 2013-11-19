@@ -10,6 +10,10 @@ class SubjectGroupsController < AuthenticatedController
     @subject_group = SubjectGroup.new
   end
 
+  def create
+
+  end
+
   def update
 
   end
@@ -17,7 +21,7 @@ class SubjectGroupsController < AuthenticatedController
   private
 
   def subject_group_params
-    params.require(:subject_group).permit()
+    params.require(:subject_group).permit(:name )
   end
 
   def check_user_is_owner_of_subject_group

@@ -48,16 +48,13 @@ var SubjectGroups = function () {
   }
 
   var new_subject_group = function(){
-    $('#new-subject-group').on('click', function(e){
-      e.preventDefault();
-
-      var url = $this.closest('form').attr('action');
-      var data = 
-
-      App.ajax("POST", url, data, {
-        reloadUniform: false,
-      });
+    App.ajaxRailsUJS('form#new-subject-group', {
+      reloadUniform: false,
+      ajaxComplete : function(xhr, status) {
+        console.log('complete! -> ' + status)
+      }
     });
+
   }
 
   // var updateOutput = function (e) {
@@ -76,6 +73,7 @@ var SubjectGroups = function () {
     init: function () {
       sortable_portlet();
       sortable_subjects();
+      new_subject_group();
     }
 
   };

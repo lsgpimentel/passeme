@@ -29,11 +29,11 @@
     </div>
     <div class="portlet-body">
       <%= simple_form_for(@subject_group, remote: true,
-                          html: { method: :post, class: "form-inline subject-group-form" },
+                          html: { method: :post, id: "new-subject-group", class: "form-inline subject-group-form" },
                           defaults: { input_html: { class: "m-wrap placeholder-no-fix span8", autocomplete: "off" } }) do |f| %>
 
         <%= f.input_field :name, label: false, placeholder: "Name" %>
-        <%= submit_button t("buttons.submit"), id:"new-subject-group" %>
+        <%= submit_button t("buttons.submit")  %>
 
       <% end %>
       <div class="clearfix"></div>

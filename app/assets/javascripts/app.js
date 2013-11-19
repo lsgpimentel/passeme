@@ -939,7 +939,7 @@ var App = function() {
 			reloadUniform : true,
 			fixContentHeight : false,
 			successMessage : undefined,
-			errorMessage : 'Ooopss... Ocorreu um erro ao tentar realizar a operação!',
+			errorMessage : 'Ooopss... Ocorreu um erro ao tentar realizar a operaÃ§Ã£o!',
 			completeMessage : undefined,
 			blockUI : true,
 			ajaxBeforeSend : function(xhr, settings) {
