@@ -15,7 +15,7 @@ var SubjectGroups = function () {
     });
 
     $(".portlet-title").disableSelection();
-  }
+  };
 
   var sortable_subjects = function() {
 
@@ -31,6 +31,28 @@ var SubjectGroups = function () {
     var updateSortableCallback = function(event, ui) {
       var $ulDest = ui.item.closest('ul');
       var $ulSender = ui.sender;
+      
+      var sgBox = ui.item.closest('.subject-group-box')[0];
+      var availableBox = ui.item.closest('#available-subjects-box')[0];
+      var newSubjectGroupBox = ui.item.closest('#new-subject-group-box')[0];
+      
+      var url = "<%= subject_group_update_subject_path %>";
+	  var idGroup = null;
+	  var idSubject = ui.item.children('.subject-id').val();
+	  
+      if(sgBox !== undefined) {
+    	  idGroup = sgBox.children('.subject-group-id').val();
+      } else if (availableBox !== undefined) {
+      } else if(newSubjectGroupBox !== undefined) {
+    	  
+      }
+      
+	  App.ajax("POST", url, {
+		  "subject_group_id": idGroup,
+		  "subject_id": idSubject
+		  }
+	  );
+	  
       toggleEmptyClass($ulDest);
       toggleEmptyClass($ulSender);
 
@@ -41,21 +63,21 @@ var SubjectGroups = function () {
           $(elem).addClass('sortable-box-placeholder empty');
         }
       }
-    }
+    };
 
     $( ".sortable-itens" ).on("sortupdate", updateSortableCallback );
     $( ".sortable-itens" ).disableSelection();
-  }
+  };
 
   var new_subject_group = function(){
     App.ajaxRailsUJS('form#new-subject-group', {
       reloadUniform: false,
       ajaxComplete : function(xhr, status) {
-        console.log('complete! -> ' + status)
+        console.log('complete! -> ' + status);
       }
     });
 
-  }
+  };
 
   // var updateOutput = function (e) {
   //   var list = e.length ? e : $(e.target),

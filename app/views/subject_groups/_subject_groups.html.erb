@@ -1,5 +1,6 @@
 <% subject_groups.each do |sg| %>
-<div class="portlet box grey">
+<div class="portlet box grey subject-group-box">
+  <input type="hidden" class="subject-group-id" value="<%= sg.id %>">
 
   <div class="portlet-title">
     <div class="caption"><i class="icon-reorder"></i>Portlet1</div>
@@ -11,11 +12,7 @@
 
   <div class="portlet-body hide">
     <ul class="sortable-itens">
-      <% sg.subjects.each do |s| %>
-        <li data-id="<%= sg.id %>" >
-      <%= sg.name %>
-      </li>
-    <% end %>
+	  <%= render 'subjects', subjects: sg.subjects %>
     </ul>
   </div>
 
