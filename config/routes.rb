@@ -24,6 +24,7 @@ Passeme::Application.routes.draw do
     resources :subjects do
       get 'study_sources'
       patch 'study_sources', to: 'subjects#update_study_sources'
+      patch 'update_subject_group'
     end
 
     resources :study_sources

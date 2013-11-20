@@ -1,0 +1,18 @@
+<div class="portlet box grey subject-group-box">
+  <input type="hidden" class="subject-group-id" value="<%= sg.id %>">
+
+  <div class="portlet-title">
+    <div class="caption"><%= sg.name %></div>
+    <div class="tools">
+      <a href="javascript:;" class="collapse"></a>
+      <%= link_to '', subject_group_path(sg), class: "remove", remote: true, method: :delete, confirm: "Are you sure?" %>
+    </div>
+  </div>
+
+  <div class="portlet-body">
+    <ul class="sortable-itens <%='sortable-box-placeholder empty' if sg.subjects.empty? %>">
+	  <%= render partial: 'subject', collection: sg.subjects, as: :s %>
+    </ul>
+  </div>
+
+</div>

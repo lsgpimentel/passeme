@@ -1,0 +1,7 @@
+var $box = $('.subject-group-id[value=<%= @subject_group.id %>]').closest('.subject-group-box');
+
+$box.find('.sortable-itens > li').each(function(index, ele){
+  $('#available-subjects').append($(ele));
+});
+$box.remove();
+

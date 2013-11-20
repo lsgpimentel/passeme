@@ -1,7 +1,7 @@
 class SubjectsController < AuthenticatedController
   add_breadcrumb "Subjects", :subjects_path
 
-  before_filter :check_user_is_owner_of_subject, :only => [:study_sources, :update_study_sources, :edit, :update, :destroy ]
+  before_filter :check_user_is_owner_of_subject, :only => [:study_sources, :update_study_sources, :edit, :update, :destroy, :update_subject_group ]
 
   def index
     @subjects = current_user.subjects
@@ -10,8 +10,8 @@ class SubjectsController < AuthenticatedController
   def create
     @subject = current_user.subjects.build(subject_params)
     if @subject.save!
-    else
       #TODO error
+    else
       #render :index
     end
 
@@ -53,7 +53,16 @@ class SubjectsController < AuthenticatedController
         format.html { redirect_to action: :index }
       end
     end
-
+  end
+  
+  #Update subject group
+  #Used in the subject group x subject association page
+  def update_subject_group
+    if params.has_key?(:subject_group_id)
+      @subject.update_attribute(:subject_group_id, params[:subject_group_id])
+    else
+      @subject.update_attribute(:subject_group, nil)
+    end
   end
 
   def destroy
@@ -66,7 +75,7 @@ class SubjectsController < AuthenticatedController
   private
 
   def subject_params
-    params.require(:subject).permit(:name, :difficulty, :importance, study_source_ids: [])
+    params.require(:subject).permit(:name, :difficulty, :importance, :subject_group_id, study_source_ids: [])
   end
 
   def check_user_is_owner_of_subject

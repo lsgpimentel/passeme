@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+var init = function() {
   App.init();
   FormEditable.init();
   Tasks.initDashboardWidget();
@@ -9,5 +9,10 @@ jQuery(document).ready(function() {
   Subjects.init();
   StudySources.init();
   SubjectGroups.init();
+};
 
+
+jQuery(document).ready(function() {
+  init();
 });
+

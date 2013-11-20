@@ -31,28 +31,26 @@ var SubjectGroups = function () {
     var updateSortableCallback = function(event, ui) {
       var $ulDest = ui.item.closest('ul');
       var $ulSender = ui.sender;
-      
-      var sgBox = ui.item.closest('.subject-group-box')[0];
+
+      var sgBox = $(ui.item.closest('.subject-group-box')[0]);
       var availableBox = ui.item.closest('#available-subjects-box')[0];
       var newSubjectGroupBox = ui.item.closest('#new-subject-group-box')[0];
-      
-      var url = "<%= subject_group_update_subject_path %>";
-	  var idGroup = null;
-	  var idSubject = ui.item.children('.subject-id').val();
-	  
+
+      var url = ui.item.children('.subject-update-url').val();
+      var idGroup = null;
+      //var idSubject = ui.item.children('.subject-id').val();
+
       if(sgBox !== undefined) {
-    	  idGroup = sgBox.children('.subject-group-id').val();
+        idGroup = $(sgBox).children('.subject-group-id').val();
       } else if (availableBox !== undefined) {
+
       } else if(newSubjectGroupBox !== undefined) {
-    	  
       }
-      
-	  App.ajax("POST", url, {
-		  "subject_group_id": idGroup,
-		  "subject_id": idSubject
-		  }
-	  );
-	  
+
+      App.ajax("PATCH", url, {
+        "subject_group_id": idGroup
+      });
+
       toggleEmptyClass($ulDest);
       toggleEmptyClass($ulSender);
 
@@ -65,18 +63,31 @@ var SubjectGroups = function () {
       }
     };
 
-    $( ".sortable-itens" ).on("sortupdate", updateSortableCallback );
+    $( ".sortable-itens" ).on("sortreceive", updateSortableCallback );
     $( ".sortable-itens" ).disableSelection();
   };
 
   var new_subject_group = function(){
     App.ajaxRailsUJS('form#new-subject-group', {
       reloadUniform: false,
-      ajaxComplete : function(xhr, status) {
+      ajaxComplete: function(xhr, status) {
         console.log('complete! -> ' + status);
       }
     });
 
+  };
+
+
+  /*
+   * Override the default behavior of the remove button of the portlet, so it removes it only after the ajax is done.
+   */ 
+  var remove_subject_group = function(){
+    var selector = '.portlet > .portlet-title > .tools > a.remove';
+    $('body').off('click', selector);
+
+    /*App.ajaxRailsUJS(selector, {
+      reloadUniform: false
+    });*/
   };
 
   // var updateOutput = function (e) {
@@ -96,6 +107,7 @@ var SubjectGroups = function () {
       sortable_portlet();
       sortable_subjects();
       new_subject_group();
+      remove_subject_group();
     }
 
   };

@@ -2,6 +2,17 @@
   <%= stylesheet_link_tag "static_pages", media: "all", "data-turbolinks-track" => true %>
 <% end %>
 
+<% content_for :javascripts do %>
+  <!-- BEGIN CORE PLUGINS -->
+  <%= javascript_include_tag "static_pages", "data-turbolinks-track" => true %>
+
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "static_pages-ie", "data-turbolinks-track" => true %>
+  <![endif]-->   
+
+  <!-- END JAVASCRIPTS -->
+<% end %>
+
 <% content_for :content do %>
 
 <body>
@@ -17,14 +28,6 @@
 <!-- END FOOTER -->
 
 
-<!-- BEGIN CORE PLUGINS -->
-<%= javascript_include_tag "static_pages", "data-turbolinks-track" => true %>
-
-<!--[if lt IE 9]>
-  <%= javascript_include_tag "static_pages-ie", "data-turbolinks-track" => true %>
-  <![endif]-->   
-
-<!-- END JAVASCRIPTS -->
 </body>
 
 <% end %>

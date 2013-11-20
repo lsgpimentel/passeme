@@ -22,6 +22,6 @@ class Subject < ActiveRecord::Base
 
   belongs_to :creator, class_name: "User"
 
-  has_one :subject_group
+  belongs_to :subject_group
 
 end

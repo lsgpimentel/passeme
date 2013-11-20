@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-migrate-1.2.1.min
 //= require jquery-ui/jquery-ui-1.10.1.custom.min

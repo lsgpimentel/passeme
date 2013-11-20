@@ -4,6 +4,17 @@
   <%= stylesheet_link_tag params[:controller], media: "all", "data-turbolinks-track" => true%>
 <% end %>
 
+<% content_for :javascripts do %>
+  <!-- BEGIN CORE PLUGINS -->
+  <%= javascript_include_tag "authenticated_and_devise", "data-turbolinks-track" => true %>
+
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "authenticated_and_devise-ie", "data-turbolinks-track" => true %>
+  <![endif]-->   
+
+  <%= javascript_include_tag params[:controller], media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
 <% content_for :content do %>
   <body class="login">
 <!-- BEGIN LOGO -->
@@ -23,14 +34,6 @@
 </div>
 
 
-<!-- BEGIN CORE PLUGINS -->
-<%= javascript_include_tag "authenticated_and_devise", "data-turbolinks-track" => true %>
-
-<!--[if lt IE 9]>
-    <%= javascript_include_tag "authenticated_and_devise-ie", "data-turbolinks-track" => true %>
-    <![endif]-->   
-
-<%= javascript_include_tag params[:controller], media: "all", "data-turbolinks-track" => true %>
 
 </body>
 <% end %>

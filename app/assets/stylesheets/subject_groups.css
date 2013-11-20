@@ -1,0 +1,11 @@
+form {
+  margin: 0;
+}
+
+#new-subjects {
+  margin-top: 20px;
+}
+
+#new-subject-group-box .separator {
+  margin-top: 10px;
+}
