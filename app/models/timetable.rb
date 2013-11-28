@@ -21,4 +21,8 @@ class Timetable < ActiveRecord::Base
 
   accepts_nested_attributes_for :study_times, allow_destroy: true
 
+  has_many :allocated_subjects, through: :study_times
+  has_many :subjects, through: :allocated_subjects
+  has_many :subject_groups, through: :subjects
+
 end

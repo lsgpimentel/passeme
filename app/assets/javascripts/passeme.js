@@ -4,7 +4,6 @@ var init = function() {
   Tasks.initDashboardWidget();
   Modals.init();
   Calendar.init();
-  FormWizard.init();
   Timetables.init();
   Subjects.init();
   StudySources.init();

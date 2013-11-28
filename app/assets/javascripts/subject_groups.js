@@ -71,7 +71,7 @@ var SubjectGroups = function () {
     App.ajaxRailsUJS('form#new-subject-group', {
       reloadUniform: false,
       ajaxComplete: function(xhr, status) {
-        console.log('complete! -> ' + status);
+        sortable_subjects();
       }
     });
 
@@ -85,9 +85,9 @@ var SubjectGroups = function () {
     var selector = '.portlet > .portlet-title > .tools > a.remove';
     $('body').off('click', selector);
 
-    /*App.ajaxRailsUJS(selector, {
+    App.ajaxRailsUJS(selector, {
       reloadUniform: false
-    });*/
+    });
   };
 
   // var updateOutput = function (e) {

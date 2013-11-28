@@ -1,0 +1,10 @@
+<h3 class="form-section">Subjects and Study Sources</h3>
+
+<div class="row-fluid">
+
+  <div class="span12">
+    <%= f.association :subject_groups, collection: @subject_groups, as: :grouped_select, group_method: :subjects, group_label_method: :name, input_html: { id: "study-sources-select" } %>
+  </div>
+
+</div>
+

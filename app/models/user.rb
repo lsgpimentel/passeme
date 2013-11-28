@@ -22,6 +22,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  locale                 :string(255)      default("pt-BR")
+#  name                   :string(255)
 #
 
 class User < ActiveRecord::Base

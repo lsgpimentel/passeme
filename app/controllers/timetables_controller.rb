@@ -15,6 +15,8 @@ class TimetablesController < AuthenticatedController
 
   def new
     @timetable = Timetable.new
+    @study_sources = current_user.study_sources
+    @subject_groups = SubjectGroup.includes(:subjects).where('subjects.subject_group_id is not null')
   end
 
   def edit

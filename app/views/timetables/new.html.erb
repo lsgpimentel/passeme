@@ -1,4 +1,4 @@
-<div class="portlet box blue" id="form_wizard_1">
+<div class="portlet box blue" id="portlet-wizard-timetable">
   <div class="portlet-title">
     <div class="caption">
       <i class="icon-reorder"></i> Planning phase - <span class="step-title">Step 1 of 4</span>
@@ -12,8 +12,8 @@
   </div>
   <div class="portlet-body form">
 
-    <%= simple_nested_form_for(@timetable, url: syllabus_timetables_path(@syllabus),
-                        html: { method: :post, id: "submit_form" },
+    <%= simple_form_for(@timetable, url: syllabus_timetables_path(@syllabus),
+                        html: { method: :post, id: "form-timetable" },
                         defaults: { input_html: { class: "m-wrap" } }
                        ) do |f| %>
       <div class="form-wizard">
@@ -35,7 +35,7 @@
               <li class="span3">
               <a href="#tab3" data-toggle="tab" class="step active">
                 <span class="number">3</span>
-                <span class="desc"><i class="icon-ok"></i> Billing Setup</span>   
+                <span class="desc"><i class="icon-ok"></i> Subjects</span>   
               </a>
               </li>
               <li class="span3">
@@ -66,7 +66,7 @@
             <%= render "study_time", f: f %>
           </div>
           <div class="tab-pane" id="tab3">
-            <%= render "subject", f: f %>
+            <%= render "subjects_study_sources", f: f %>
           </div>
           <div class="tab-pane" id="tab4">
 
@@ -79,9 +79,9 @@
           <a href="javascript:;" class="btn blue button-next">
             Continue <i class="m-icon-swapright m-icon-white"></i>
           </a>
-          <a href="javascript:;" class="btn green button-submit">
+          <button type="submit" class="btn green button-submit">
             Submit <i class="m-icon-swapright m-icon-white"></i>
-          </a>
+          </button>
         </div>
       </div>
     <% end %>

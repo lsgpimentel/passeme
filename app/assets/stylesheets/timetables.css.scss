@@ -7,6 +7,7 @@
 .time-table {
   thead th {
     width: percentage(1 / 7); /*7 days in a week*/
+    text-align: center;
   }
   td {
     height: 300px;
@@ -16,4 +17,58 @@
     background-color: #F5F5F5;
   }
 
+}
+
+#hours-table {
+  td {
+    width: percentage(1 / 7); /*7 days in a week*/
+    border: 0;
+  }
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.productivity-box {
+  margin: 10px 0px 10px;
+}
+
+.add-time {
+  border-radius: 15px !important;
+  padding: 2px 7px;
+}
+
+#insert-time {
+  margin-bottom: 10px;
+}
+
+.action-new-time {
+  text-align: center;
+}
+
+/*
+ * Hack to make the timepicker work inside a popover
+ */
+.bootstrap-timepicker-widget {
+  z-index: 99999999;
+}
+
+
+.study-item {
+  cursor: default;
+  span {
+    cursor: pointer;
+  }
+  a.link-remove:hover {
+  
+  }
+  i.icon-remove {
+    color: #fff !important;
+    font-size: 18px !important;
+  }
+
+  i.icon-remove:hover {
+    color: #000 !important;
+  }
 }

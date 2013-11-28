@@ -2,12 +2,14 @@
 #
 # Table name: subjects
 #
-#  id         :integer          not null, primary key
-#  created_at :datetime
-#  updated_at :datetime
-#  difficulty :integer          not null
-#  creator_id :integer          not null
-#  name       :string(255)      not null
+#  id               :integer          not null, primary key
+#  created_at       :datetime
+#  updated_at       :datetime
+#  difficulty       :integer          not null
+#  creator_id       :integer          not null
+#  name             :string(255)      not null
+#  importance       :integer          not null
+#  subject_group_id :integer
 #
 
 class Subject < ActiveRecord::Base

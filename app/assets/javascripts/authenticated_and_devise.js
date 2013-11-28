@@ -38,10 +38,11 @@
 //= require chosen-bootstrap/chosen/chosen.jquery.min
 //= require bootstrap-timepicker/js/bootstrap-timepicker.min
 //= require jquery_nested_form
-//= require star-rating/jquery.rating.pack
+// require star-rating/jquery.rating.pack
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery-multi-select/js/jquery.multi-select
+//= require moment-develop/min/moment-with-langs.min
 //
 //
 //= require turbolinks
@@ -51,7 +52,6 @@
 //= require modals
 //= require form-editable
 //= require calendar
-//= require form-wizard
 //= require timetables
 //= require subjects
 //= require study_sources
