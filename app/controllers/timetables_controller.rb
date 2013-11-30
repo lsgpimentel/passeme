@@ -19,6 +19,10 @@ class TimetablesController < AuthenticatedController
     @subject_groups = SubjectGroup.includes(:subjects).where('subjects.subject_group_id is not null')
   end
 
+  def create
+
+  end
+
   def edit
 
   end
