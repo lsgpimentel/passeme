@@ -48,6 +48,12 @@ GIT
       omniauth-oauth2 (~> 1.1)
 
 GIT
+  remote: git://github.com/preston/railroady.git
+  revision: 00bb49eedf0a368c6a5e78f6b5af32963727a9e9
+  specs:
+    railroady (1.1.1)
+
+GIT
   remote: git://github.com/rweng/jquery-datatables-rails.git
   revision: 9294f1ec8eceb601c5c0e36090aa18a5363dcc9f
   specs:
@@ -509,6 +515,7 @@ DEPENDENCIES
   prawn (~> 0.12.0)
   quiet_assets (~> 1.0.2)
   rack-mini-profiler (~> 0.1.31)
+  railroady!
   rails (~> 4.0.0)
   rails-erd (~> 1.1.0)
   rails-footnotes (~> 3.7.9)

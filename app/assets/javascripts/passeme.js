@@ -3,7 +3,6 @@ var init = function() {
   FormEditable.init();
   Tasks.initDashboardWidget();
   Modals.init();
-  Calendar.init();
   Timetables.init();
   Subjects.init();
   StudySources.init();

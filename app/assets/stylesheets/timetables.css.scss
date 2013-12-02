@@ -13,10 +13,6 @@
     height: 300px;
   }
 
-  tbody td:hover {
-    background-color: #F5F5F5;
-  }
-
 }
 
 #hours-table {
@@ -57,9 +53,8 @@
 
 .study-item {
   cursor: default;
-  span {
-    cursor: pointer;
-  }
+  height: 50px;
+  background-color: #F5F5F5 !important;
   a.link-remove:hover {
   
   }
@@ -71,4 +66,17 @@
   i.icon-remove:hover {
     color: #000 !important;
   }
+
+  .remove-study-time {
+    .badge {
+      cursor: pointer;
+      right: -8px;
+      top: -17px;
+    }
+  }
 }
+
+.info-study-time-hover {
+  margin-bottom: 20px;
+}
+

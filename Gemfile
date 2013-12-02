@@ -26,6 +26,7 @@ group :development, :test do
   #TODO review and generate foreign keys later
   gem 'immigrant',github: 'jenseng/immigrant' 
   gem "brakeman", "~> 2.1.2", :require => false
+  gem 'railroady', github: 'preston/railroady'
 end
 
 group :test do

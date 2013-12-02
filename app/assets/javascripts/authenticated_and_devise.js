@@ -51,7 +51,7 @@
 //= require notifications
 //= require modals
 //= require form-editable
-//= require calendar
+// require calendar
 //= require timetables
 //= require subjects
 //= require study_sources

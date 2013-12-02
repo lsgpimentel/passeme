@@ -29,8 +29,16 @@ Passeme::Application.routes.draw do
 
     resources :study_sources
     resources :syllabuses do
-      resources :timetables
+      resources :timetables do
+        post 'event_sources', to: 'calendars#event_sources', as: :calendar_event_sources
+        post 'event_resize', to: 'calendars#event_resize', as: :calendar_event_resize
+        post 'select', to: 'calendars#select', as: :calendar_select
+        post 'event_drop', to: 'calendars#event_drop', as: :calendar_event_drop
+        post 'day_click', to: 'calendars#day_click', as: :calendar_day_click
+        post 'event_click', to: 'calendars#event_click', as: :calendar_event_click
+      end
     end
+    post '/syllabuses/:syllabus_id/event_sources_from_study_times', controller: :timetables, action: :event_sources_from_study_times, as: :event_sources_from_study_times
     resources :subject_groups
 
 

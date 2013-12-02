@@ -53,25 +53,42 @@ var Timetables = function () {
       }
     });
 
-    var html = $('<div class="icon-btn span12 study-item" data-study-time="' + id + '">'
-                 + '<p><strong>' + title + '</strong></p>'
-                 + '<p>' + getProductivityStars(studyTime.productivity) + '</p>'
-                 + '<a class="remove-study-time"><span class="badge badge-important"><i class="icon-remove"></i></span></a>'
-                 + '</div>');
+    var html = $('<div class="icon-btn span12 study-item" data-study-time="' + id + '">' +
+                 '<p>' + title + '</p>' +
+                 '<a class="remove-study-time"><span class="badge badge-important"><i class="icon-remove"></i></span></a>' +
+                 '</div>');
 
-                 $('.remove-study-time', html).on('click', function(){
-                   var si = $(this).closest('.study-item');
-                   var fieldId = $(si).data('study-time');
+    $('.remove-study-time', html).on('click', function(){
+      var si = $(this).closest('.study-item');
+      var fieldId = $(si).data('study-time');
 
-                   $(si).remove();
-                   $("#study-times > .study-time[id=study-time-" + fieldId +"]").remove();
+      $(si).popover('destroy');
 
-                 });
-                 $(td).append($(html));
+      $(si).remove();
+      $("#study-times > .study-time[id=study-time-" + fieldId +"]").remove();
 
-                 function getSiblingNumber(oElement) {
-                   return $(oElement).parent().children(oElement.nodeName).index(oElement);
-                 }
+
+    });
+
+    $(html).popover({ 
+      html : true,
+      trigger: 'hover',
+      placement: 'top',
+      title: function() {
+        return 'Study Time';
+      },
+      content: function() {
+        return '<div class="info-study-time-hover">' + getProductivityStars(studyTime.productivity) + '</div>';
+      }
+    });
+
+    $(td).append($(html));
+
+    function getSiblingNumber(oElement) {
+      return $(oElement).parent().children(oElement.nodeName).index(oElement);
+    }
+
+
 
   }
 
@@ -106,69 +123,23 @@ var Timetables = function () {
 
   var loadTimes = function(){
     //predefined events
-    ('#time-list').html("");
-    addTimeToList("15:10", "15:20", 4);
-    addTimeToList("15:10", "15:20", 4);
-    addTimeToList("15:10", "15:20", 4);
-    addTimeToList("15:10", "15:20", 4);
-    addTimeToList("15:10", "15:20", 4);
-  }
-
-  var newTime = function(){
-    $('body').on('click', '.insert-time', function(){
-      var $popover = $(this).closest('.popover-content');
-      var from = $.trim($('#time-from', $popover).val());
-      var to = $.trim($('#time-to', $popover).val());
-      var productivity = $("input[name=productivity]:checked", $popover).val();
-
-      if(from != '' && to != '' && productivity > 0) {
-        var studyTime = {
-          day: $(this).closest('.popover').prev('.add-time').data('day'),
-          from: from,
-          to: to,
-          productivity: productivity
-        };
-        addTimeToList(studyTime);
-        //addTimeToTable(studyTime);
-        $('.timepicker-24').timepicker('clear');
-        //$('.rating-cancel').trigger('click'); //Had to trigger the cancel onclick event, since calling the select with empty argument had no effect;
-      }
-
-
-    });
-    /*
-     * Hack to insert a callback function in popover, so I can make timepicker work
-     */
-    var tmp = $.fn.popover.Constructor.prototype.show;
-    $.fn.popover.Constructor.prototype.show = function () {
-      tmp.call(this);
-      if (this.options.callback) {
-        this.options.callback();
-      }
+    $('#study-times').html("");
+    var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    for(var i=0; i<10; i++) {
+      var studyTime = {
+        day: days[Math.floor(Math.random()*days.length)],
+        from: "15:10",
+        to: "15:20",
+        productivity: 5
+      };
+      addTimeToList(studyTime);
     }
-
-    $('.add-time').popover({ 
-      html : true,
-      placement: 'left',
-      title: function() {
-        return $("#new-time-form-head").html();
-      },
-      content: function() {
-        return $("#new-time-form-content").html();
-      },
-      callback: function(){
-        handleTimePickers();
-
-      }
-    });
   }
-
 
   var initStudyTimeStep = function(){
 
-    //loadTimes();
+    loadTimes();
     addTimeClickEvent();
-    newTime();
 
     $('#days').select2({
       placeholder: "Select the days",
@@ -196,12 +167,16 @@ var Timetables = function () {
       errorClass: 'validate-inline', // default input error message class
       focusInvalid: false, // do not focus the last invalid input
       rules: {
+        "timetable[name]": {
+          required: true
+        }
       },
 
       messages: { // custom messages for radio buttons and checkboxes
       },
 
       errorPlacement: function (error, element) { // render error placement for each input type
+        error.insertAfter(element); // for other inputs, just perform default behavior
       },
 
       invalidHandler: function (event, validator) { //display error alert on form submit   
@@ -234,6 +209,23 @@ var Timetables = function () {
 
     });
 
+    var sendTabData = function(index){
+      var url = $("#url-step-" + index).val();
+
+      if(url != '') {
+        App.ajax("POST", url, form.serialize(), {
+          reloadUniform: false,
+          ajaxSuccess : function(data, status, xhr) {
+            //data
+            initCalendar(data);
+          }
+
+        });
+      }
+
+      return true;
+    }
+
     // default form wizard
     $('#portlet-wizard-timetable').bootstrapWizard({
       'nextSelector': '.button-next',
@@ -249,10 +241,15 @@ var Timetables = function () {
           return false;
         }
 
-        var total = navigation.find('li').length;
+
+        if(!sendTabData(index)){
+          return false;
+        }
+
         var current = index + 1;
+        var total = navigation.find('li').length;
         // set wizard title
-        $('.step-title', $('#portlet-wizard-timetable')).text('Step ' + (index + 1) + ' of ' + total);
+        $('.step-title', $('#portlet-wizard-timetable')).text('Step ' + current + ' of ' + total);
         // set done steps
         jQuery('li', $('#portlet-wizard-timetable')).removeClass("done");
         var li_list = navigation.find('li');
@@ -266,13 +263,15 @@ var Timetables = function () {
           $('#portlet-wizard-timetable').find('.button-previous').show();
         }
 
+        var buttonNext = $('#portlet-wizard-timetable').find('.button-next');
         if (current >= total) {
-          $('#portlet-wizard-timetable').find('.button-next').hide();
+          buttonNext.hide();
           $('#portlet-wizard-timetable').find('.button-submit').show();
         } else {
-          $('#portlet-wizard-timetable').find('.button-next').show();
+          buttonNext.show();
           $('#portlet-wizard-timetable').find('.button-submit').hide();
         }
+
         App.scrollTo($('.page-title'));
       },
       onPrevious: function (tab, navigation, index) {
@@ -319,6 +318,125 @@ var Timetables = function () {
     $('#portlet-wizard-timetable').find('.button-previous').hide();
     $('#portlet-wizard-timetable .button-submit').on('click').hide();
   };
+
+
+
+
+
+  var initCalendar = function (eventSources) {
+
+    if (!jQuery().fullCalendar) {
+      return;
+    }
+
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+
+    /*var h = {};
+
+      if (App.isRTL()) {
+      if ($('#calendar').parents(".portlet").width() <= 720) {
+      $('#calendar').addClass("mobile");
+      h = {
+right: 'title, prev, next',
+center: '',
+right: 'agendaDay, agendaWeek, month, today'
+};
+} else {
+$('#calendar').removeClass("mobile");
+h = {
+right: 'title',
+center: '',
+left: 'agendaDay, agendaWeek, month, today, prev,next'
+};
+}
+} else {
+if ($('#calendar').parents(".portlet").width() <= 720) {
+$('#calendar').addClass("mobile");
+h = {
+left: 'title, prev, next',
+center: '',
+right: 'today,month,agendaWeek,agendaDay'
+};
+} else {
+$('#calendar').removeClass("mobile");
+h = {
+left: 'title',
+center: '',
+right: 'prev,next,today,month,agendaWeek,agendaDay'
+};
+}
+}*/
+
+    $('#calendar').fullCalendar('destroy'); // destroy the calendar
+    $('#calendar').fullCalendar({ //re-initialize the calendar
+      selectable: true,
+      selectHelper: false,
+      header: { left: '', center: 'title', right: 'prev,next,today,month,agendaWeek,agendaDay' },
+      buttonText: { today: 'Hoje', day: 'Dia', week: 'Semana', month: 'Mês'},
+      allDaySlot: false,
+      columnFormat: { day: 'dddd, dd / MM / yyyy', week: 'ddd, dd / MM'},
+      titleFormat: { day: 'dddd, dd / MM / yyyy', week: "dd/MM[/yyyy]{ '&#8212;' dd/MM[/yyyy]}", month: 'MMMM/yyyy'},
+      monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
+      monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+      dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
+      dayNamesShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+      firstDay: 1,
+      axisFormat: 'H:mm',
+      timeFormat: 'H:mm{ - H:mm}',
+      slotMinutes: 15,
+      editable: true,
+      eventResize: function (event,dayDelta,minuteDelta,revertFunc,jsEvent,ui,view) {
+        var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'eventId': event.id};
+        var url = $(this).closest('#calendar').data('url-event-resize');
+        App.ajax("POST", url, data, {
+          reloadUniform: false
+        });
+      },
+      select: function (startDate,endDate,allDay,jsEvent,view) {
+        var data = {'startDate': startDate.getTime(),'endDate': endDate.getTime(),'allDay': allDay,'viewName': view.name};
+        var url = $(this).closest('#calendar').data('url-select');
+        App.ajax("POST", url, data, {
+          reloadUniform: false
+        });
+      },
+      eventDrop: function (event,dayDelta,minuteDelta,allDay,revertFunc,jsEvent,ui,view) {
+        var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'allDay': allDay,'eventId': event.id};
+        var url = $(this).closest('#calendar').data('url-event-drop');
+        App.ajax("POST", url, data, {
+          reloadUniform: false
+        });
+      },
+      eventSources: eventSources,
+      dayClick: function (date,allDay,jsEvent,view) {
+        var data = {'date': date.getTime(),'allDay': allDay,'viewName': view.name};
+        var url = $(this).closest('#calendar').data('url-day-click');
+        App.ajax("POST", url, data, {
+          reloadUniform: false
+        });
+      },
+      eventClick: function (event,jsEvent,view) {
+        var data = {'eventId': event.id,'viewName': view.name};
+        var url = $(this).closest('#calendar').data('url-event-click');
+        App.ajax("POST", url, data, {
+          reloadUniform: false
+        });
+      }
+    });
+
+    var newEvent = $('<a id="new-event" class="btn green">' +
+                     'Add Event <i class="icon-plus"></i>' +
+                     '</a>');
+    newEvent.on('click', function(){
+      alert('open modal');
+    });
+    $('.fc-header-left').append(newEvent);
+
+  };
+
+
 
 
   return {

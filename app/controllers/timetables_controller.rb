@@ -13,6 +13,15 @@ class TimetablesController < AuthenticatedController
 
   end
 
+  def event_sources_from_study_times
+    @timetable = @syllabus.timetables.build(timetable_params)
+    event_sources = EventsGenerator.new(@timetable.study_times).event_sources
+
+    respond_to do |format|
+      format.json { render json: event_sources }
+    end
+  end
+
   def new
     @timetable = Timetable.new
     @study_sources = current_user.study_sources
@@ -20,7 +29,12 @@ class TimetablesController < AuthenticatedController
   end
 
   def create
-
+    @timetable = @syllabus.timetables.build(timetable_params)
+    if @timetable.save!
+      #TODO error
+    else
+      #render :index
+    end
   end
 
   def edit
@@ -36,6 +50,10 @@ class TimetablesController < AuthenticatedController
   end
 
   private
+
+  def timetable_params
+    params.require(:timetable).permit(:name, subject_group_ids: [], study_times_attributes: [:day, :from, :to, :productivity])
+  end
 
   def check_user_is_owner_of_timetable
     @timetable = current_user.timetables.find_by_id(params[:id])

@@ -1,7 +1,7 @@
 
 # TODO List
 
-- [x] Ao passar de página, a página inteira não é recarregada devido ao turbolinks, porém o javascript deve ser recarregado no page:change. Tem que ser verificado o javascript atual, pois em alguns casos ao passar de página algumas funcionalidades javascript não funcionam.
+- [x] ~~Ao passar de página, a página inteira não é recarregada devido ao turbolinks, porém o javascript deve ser recarregado no page:change. Tem que ser verificado o javascript atual, pois em alguns casos ao passar de página algumas funcionalidades javascript não funcionam.~~
 - [ ] QUando tentar mudar a data de expiração de uma tarefa, limitar as datas do calendário para o usuário não colocar uma data anterior à de hoje
 - [ ] Quando alguma tarefa for concluída, atualizar o widget de tarefas na barra superior
 - [ ] Não permitir que uma tarefa seja editada se ela já está concluída.
@@ -17,7 +17,8 @@
 - [ ] Na tabela de matérias, depois que uma nova for adicionada, recarregar a tabela ou a página. Tem que verificar bem, porque pode ser que eu use a resposta do controller tanto em formato html como js. Se for JS, o esquema de recarregar a página não vai dar certo se estiver no meio da criação de uma timetable. Neste caso, usar a API do dataTable e adicionar a linha no callback de sucesso.
 - [ ] Atualmente antes de realizar operações como atualizar ou criar um novo em um modelo, eu estou testando se o usuário é o dono do objeto a ser modificado/criado. Isso seria melhor se fosse feito pelo cancan na classe Ability, ao invés de em cada controller. Lembrar de alterar isso nas telas com nested attributes, como em setting que grava notification_settings (id do notification_setting).
   +(http://stackoverflow.com/questions/6323658/how-can-i-allow-a-user-to-only-visit-their-own-show-page-using-cancan)
-- [x] Corrigir bug no qual o ajaxRailsUJS não está funcionando quando usado link_to (... remote: true) na página de subject groups. Comentei a integração, porque o callback de ajax:complete não estava executando, o que fazia com que o loading não saísse da tela.
+- [x] ~~Corrigir bug no qual o ajaxRailsUJS não está funcionando quando usado link_to (... remote: true) na página de subject groups. Comentei a integração, porque o callback de ajax:complete não estava executando, o que fazia com que o loading não saísse da tela.~~
+- [ ] Na página de criação do timetable, colocar a inicialização dos javascripts de cada etapa conforme eu passar para ela, ao invés de pôr tudo no carregamento da página. Isso deve corrigir o problema com a inicialização do calendário.
 
 
 
@@ -110,7 +111,7 @@
 
 - [ ] Considerar que na fase inicial do planejamento, o mesmo está em adequação, então é provável que nem tudo o que está planejado será cumprido. A fase de "testes" poderia ser útil para definir inicialmente o quanto o usuário é capaz de estudar. Esta fase poderia ser opcional, para usuários mais iniciantes, como por exemplo.
 
-- [ ] "a ênfase em ir marcando o completamento de cada tarefa ao longo do dia, não apenas porque oferece oportunidade de colocar o restante do dia em perspectiva, mas também porque é um grande motivador a produzir mais." <- [ ] Interessante, principalmente se eu disponibilizar vários meios para se marcar a tarefa como concluída (celular, tablet, etc), assim com o Wunderlist.
+- [ ] "a ênfase em ir marcando o completamento de cada tarefa ao longo do dia, não apenas porque oferece oportunidade de colocar o restante do dia em perspectiva, mas também porque é um grande motivador a produzir mais." <- Interessante, principalmente se eu disponibilizar vários meios para se marcar a tarefa como concluída (celular, tablet, etc), assim com o Wunderlist.
 
 - [ ] O usuário deve gerenciar sua base de conhecimento. Quem não registra o que aprendeu, acaba condenado a pesquisar/estudar tudo de novo. Isso em concurso é ainda mais importante. Seria bom o sistema atuar também como gerenciador de conhecimento adquirido, disponibilizando meios de organização, como anotações para o dia de estudo tal, mapa mental (bem ousada essa), etc.
 
@@ -167,7 +168,7 @@
 Se o plano é público ele pode ser visualizado por pessoas externas, o que não acontece no privado, que só pode ser visualizado pelo próprio usuário.
 Além disso, no caso dos planos públicos, o usuário também tem a opção de colocar uma senha de acesso nele, permitindo o acesso somente a pessoas que possuem esta senha compartilhada.
 
-- [ ] Nessa questão de medir o desempenho, seria bom avaliar até que ponto eu posso acelerar meu aprendizado - [ ] acelerando leitura, resumo, exercicios, etc - [ ] sem perder a capacidade de aprendizado. A intenção seria chegar na melhor medida velocidade de aprendizado X qualidade do aprendizado.
+- [ ] Nessa questão de medir o desempenho, seria bom avaliar até que ponto eu posso acelerar meu aprendizado - acelerando leitura, resumo, exercicios, etc - sem perder a capacidade de aprendizado. A intenção seria chegar na melhor medida velocidade de aprendizado X qualidade do aprendizado.
 Alguns gráficos mostrando essa relação seriam interessantes.
 
 - [ ] Não esquecer de usar o conceito da aprendizagem espaçada (revisões, etc).

@@ -26,4 +26,7 @@ class Subject < ActiveRecord::Base
 
   belongs_to :subject_group
 
+  #Can be in many calendar event_sources
+  has_many :calendar_event_sources
+
 end

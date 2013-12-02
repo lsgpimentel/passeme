@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117182936) do
+ActiveRecord::Schema.define(version: 20131201232139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,25 @@ ActiveRecord::Schema.define(version: 20131117182936) do
     t.time    "from",                      null: false
     t.time    "to",                        null: false
     t.integer "interval",      default: 0
+  end
+
+  create_table "calendar_event_sources", force: true do |t|
+    t.integer  "timetable_id", null: false
+    t.integer  "subject_id",   null: false
+    t.string   "color",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "calendar_events", force: true do |t|
+    t.integer  "calendar_event_source_id", null: false
+    t.string   "title",                    null: false
+    t.text     "schedule"
+    t.date     "date",                     null: false
+    t.time     "from_time",                null: false
+    t.time     "to_time",                  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -154,11 +173,11 @@ ActiveRecord::Schema.define(version: 20131117182936) do
   create_table "timetables", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",           default: false
-    t.boolean  "public",           default: true
-    t.integer  "syllabus_id",                      null: false
+    t.boolean  "active",         default: false
+    t.boolean  "public",         default: true
+    t.integer  "syllabus_id",                    null: false
     t.integer  "forked_from_id"
-    t.boolean  "no_specific_time", default: false
+    t.string   "name"
   end
 
   create_table "users", force: true do |t|
