@@ -7,6 +7,7 @@ var init = function() {
   Subjects.init();
   StudySources.init();
   SubjectGroups.init();
+  Calendars.init();
 };
 
 

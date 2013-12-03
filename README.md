@@ -19,6 +19,7 @@
   +(http://stackoverflow.com/questions/6323658/how-can-i-allow-a-user-to-only-visit-their-own-show-page-using-cancan)
 - [x] ~~Corrigir bug no qual o ajaxRailsUJS não está funcionando quando usado link_to (... remote: true) na página de subject groups. Comentei a integração, porque o callback de ajax:complete não estava executando, o que fazia com que o loading não saísse da tela.~~
 - [ ] Na página de criação do timetable, colocar a inicialização dos javascripts de cada etapa conforme eu passar para ela, ao invés de pôr tudo no carregamento da página. Isso deve corrigir o problema com a inicialização do calendário.
+- [ ] Verificar alguma forma de obter os eventSources do calendário. Pelo que parece, vendo a API do fullcalendar, não daria pra obter todos os event sources a partir de uma única URL. Cada event source deve possuir uma URL. Se realmente não puder ser feito dessa maneira, eu vou ter que obter todos os events mesmo.
 
 
 

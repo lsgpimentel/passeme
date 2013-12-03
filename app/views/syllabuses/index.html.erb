@@ -114,7 +114,7 @@
         </div>
       </div>
       <div class="span9">
-        <div id="calendar" class="has-toolbar"></div>
+        <%= render partial: 'calendars/calendar_portlet', locals: { calendar: @active_timetable.calendar } %>
       </div>
     </div>
     <!-- END CALENDAR PORTLET-->

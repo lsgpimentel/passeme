@@ -21,13 +21,12 @@ class Timetable < ActiveRecord::Base
 
   accepts_nested_attributes_for :study_times, allow_destroy: true
 
-  #TODO remover para substituir pela relação com EventSource
-  #has_many :allocated_subjects, through: :study_times
-  #has_many :subjects, through: :allocated_subjects
-  #has_many :subject_groups, through: :subjects
+  has_one :calendar
 
-  has_many :calendar_event_sources
+  has_many :calendar_event_sources, through: :calendar
   has_many :subjects, through: :calendar_event_sources
   has_many :subject_groups, through: :subjects
+
+  #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
 
 end

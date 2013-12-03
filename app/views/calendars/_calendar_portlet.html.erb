@@ -1,0 +1,32 @@
+<div class="row-fluid">
+
+  <div class="span12">
+    <div class="portlet box light-grey calendar">
+      <div class="portlet-title">
+        <div class="caption"><i class="icon-calendar"></i>Calendar</div>
+      </div>
+      <div class="portlet-body light-grey">
+        <div class="row-fluid">
+          <div class="calendar-init" class="has-toolbar" 
+            data-url-event-sources="<%= calendar_event_sources_path(calendar) %>"
+            data-url-event-resize="<%= calendar_event_resize_path(calendar) %>"
+            data-url-select="<%= calendar_select_path(calendar) %>"
+            data-url-event-drop="<%= calendar_event_drop_path(calendar) %>"
+            data-url-day-click="<%= calendar_day_click_path(calendar) %>"
+            data-url-event-click="<%= calendar_event_click_path(calendar) %>">
+
+            <%= button_to new_calendar_calendar_event_path(calendar), class: "btn green", id: "new-event" do %>
+              Add Event <i class="icon-plus"></i>
+            <% end %>
+
+          </div>
+        </div>
+        <!-- END CALENDAR PORTLET-->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="calendar-event-modal" class="modal hide fade" tabindex="-1">
+</div>

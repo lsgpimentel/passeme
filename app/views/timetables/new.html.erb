@@ -18,7 +18,7 @@
                        ) do |f| %>
       <input type="hidden" id="url-step-1" value="" >
       <input type="hidden" id="url-step-2" value="" >
-      <input type="hidden" id="url-step-3" value="<%= event_sources_from_study_times_path(@syllabus) %>" >
+      <input type="hidden" id="url-step-3" value="" >
       <input type="hidden" id="url-step-4" value="" >
       <div class="form-wizard">
         <div class="navbar steps">
@@ -73,7 +73,11 @@
             <%= render "subjects_study_sources", f: f %>
           </div>
           <div class="tab-pane" id="tab4">
-            <%= render "calendar", f: f %>
+            <p>confirmação exibindo tudo que foi selecionado</p>
+            <p>confirmação exibindo tudo que foi selecionado</p>
+            <p>confirmação exibindo tudo que foi selecionado</p>
+            <p>confirmação exibindo tudo que foi selecionado</p>
+            <p>confirmação exibindo tudo que foi selecionado</p>
           </div>
         </div>
         <div class="form-actions clearfix">

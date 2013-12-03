@@ -4,6 +4,8 @@ class SyllabusesController < AuthenticatedController
 
   def index
     @syllabuses = current_user.syllabuses
+    #TODO regra para somente um timetable ativo
+    @active_timetable = @syllabuses[9].timetables.last
   end
 
   def create

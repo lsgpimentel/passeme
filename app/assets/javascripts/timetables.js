@@ -216,8 +216,6 @@ var Timetables = function () {
         App.ajax("POST", url, form.serialize(), {
           reloadUniform: false,
           ajaxSuccess : function(data, status, xhr) {
-            //data
-            initCalendar(data);
           }
 
         });
@@ -318,125 +316,6 @@ var Timetables = function () {
     $('#portlet-wizard-timetable').find('.button-previous').hide();
     $('#portlet-wizard-timetable .button-submit').on('click').hide();
   };
-
-
-
-
-
-  var initCalendar = function (eventSources) {
-
-    if (!jQuery().fullCalendar) {
-      return;
-    }
-
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-    /*var h = {};
-
-      if (App.isRTL()) {
-      if ($('#calendar').parents(".portlet").width() <= 720) {
-      $('#calendar').addClass("mobile");
-      h = {
-right: 'title, prev, next',
-center: '',
-right: 'agendaDay, agendaWeek, month, today'
-};
-} else {
-$('#calendar').removeClass("mobile");
-h = {
-right: 'title',
-center: '',
-left: 'agendaDay, agendaWeek, month, today, prev,next'
-};
-}
-} else {
-if ($('#calendar').parents(".portlet").width() <= 720) {
-$('#calendar').addClass("mobile");
-h = {
-left: 'title, prev, next',
-center: '',
-right: 'today,month,agendaWeek,agendaDay'
-};
-} else {
-$('#calendar').removeClass("mobile");
-h = {
-left: 'title',
-center: '',
-right: 'prev,next,today,month,agendaWeek,agendaDay'
-};
-}
-}*/
-
-    $('#calendar').fullCalendar('destroy'); // destroy the calendar
-    $('#calendar').fullCalendar({ //re-initialize the calendar
-      selectable: true,
-      selectHelper: false,
-      header: { left: '', center: 'title', right: 'prev,next,today,month,agendaWeek,agendaDay' },
-      buttonText: { today: 'Hoje', day: 'Dia', week: 'Semana', month: 'Mês'},
-      allDaySlot: false,
-      columnFormat: { day: 'dddd, dd / MM / yyyy', week: 'ddd, dd / MM'},
-      titleFormat: { day: 'dddd, dd / MM / yyyy', week: "dd/MM[/yyyy]{ '&#8212;' dd/MM[/yyyy]}", month: 'MMMM/yyyy'},
-      monthNames: [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
-      monthNamesShort: [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
-      dayNames: [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado' ],
-      dayNamesShort: [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
-      firstDay: 1,
-      axisFormat: 'H:mm',
-      timeFormat: 'H:mm{ - H:mm}',
-      slotMinutes: 15,
-      editable: true,
-      eventResize: function (event,dayDelta,minuteDelta,revertFunc,jsEvent,ui,view) {
-        var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'eventId': event.id};
-        var url = $(this).closest('#calendar').data('url-event-resize');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
-      },
-      select: function (startDate,endDate,allDay,jsEvent,view) {
-        var data = {'startDate': startDate.getTime(),'endDate': endDate.getTime(),'allDay': allDay,'viewName': view.name};
-        var url = $(this).closest('#calendar').data('url-select');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
-      },
-      eventDrop: function (event,dayDelta,minuteDelta,allDay,revertFunc,jsEvent,ui,view) {
-        var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'allDay': allDay,'eventId': event.id};
-        var url = $(this).closest('#calendar').data('url-event-drop');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
-      },
-      eventSources: eventSources,
-      dayClick: function (date,allDay,jsEvent,view) {
-        var data = {'date': date.getTime(),'allDay': allDay,'viewName': view.name};
-        var url = $(this).closest('#calendar').data('url-day-click');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
-      },
-      eventClick: function (event,jsEvent,view) {
-        var data = {'eventId': event.id,'viewName': view.name};
-        var url = $(this).closest('#calendar').data('url-event-click');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
-      }
-    });
-
-    var newEvent = $('<a id="new-event" class="btn green">' +
-                     'Add Event <i class="icon-plus"></i>' +
-                     '</a>');
-    newEvent.on('click', function(){
-      alert('open modal');
-    });
-    $('.fc-header-left').append(newEvent);
-
-  };
-
-
 
 
   return {
