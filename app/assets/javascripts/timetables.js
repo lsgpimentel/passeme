@@ -1,19 +1,6 @@
 var Timetables = function () {
 
 
-
-  var handleTimePickers = function () {
-
-    if (jQuery().timepicker) {
-      $('.timepicker-24').timepicker({
-        minuteStep: 5,
-        showMeridian: false,
-        defaultTime: '00:00',
-        disableFocus: true
-      });
-    }
-  }
-
   var getProductivityStars = function(n){
     var html = '';
     for(i=0; i<n; i++){
@@ -146,7 +133,6 @@ var Timetables = function () {
       allowClear: true,
       closeOnSelect: false
     });
-    handleTimePickers();
   }
 
   var initStudySourcesStep = function() {

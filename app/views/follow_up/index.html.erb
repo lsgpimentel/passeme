@@ -1,0 +1,25 @@
+<% content_for :breadcrumb do
+  render_breadcrumbs :builder => ::BootstrapBreadcrumbsBuilder, date_range_picker: true
+end
+%>
+
+<table class="table table-striped table-bordered" id="table-follow-ups">
+  <thead>
+    <tr>
+      <th class="text-center">Date</th>
+      <th class="text-center">Net Hours</th>
+      <th class="text-center">Subject</th>
+      <th class="text-center">Studied time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @follow_up_items.each do |i| %>
+      <tr class="<%= follow_up_item_class(i) %>">
+        <td class="text-center"><%= i.date %></td>
+        <td class="text-center"><%= i.net_hours %></td>
+        <td class="text-center"><%= i.subject %></td>
+        <td class="text-center"><%= i.studied_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

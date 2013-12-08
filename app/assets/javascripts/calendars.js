@@ -29,20 +29,21 @@ var Calendars = function () {
       timeFormat: 'H:mm{ - H:mm}',
       slotMinutes: 15,
       editable: true,
-      eventResize: function (event,dayDelta,minuteDelta,revertFunc,jsEvent,ui,view) {
+      eventDurationEditable: false,
+      /*eventResize: function (event,dayDelta,minuteDelta,revertFunc,jsEvent,ui,view) {
         var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'eventId': event.id};
         var url = $(this).closest('.calendar-init').data('url-event-resize');
         App.ajax("POST", url, data, {
           reloadUniform: false
         });
-      },
-      select: function (startDate,endDate,allDay,jsEvent,view) {
+      },*/
+      /*select: function (startDate,endDate,allDay,jsEvent,view) {
         var data = {'startDate': startDate.getTime(),'endDate': endDate.getTime(),'allDay': allDay,'viewName': view.name};
         var url = $(this).closest('.calendar-init').data('url-select');
         App.ajax("POST", url, data, {
           reloadUniform: false
         });
-      },
+      },*/
       eventDrop: function (event,dayDelta,minuteDelta,allDay,revertFunc,jsEvent,ui,view) {
         var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'allDay': allDay,'eventId': event.id};
         var url = $(this).closest('.calendar-init').data('url-event-drop');
@@ -55,7 +56,12 @@ var Calendars = function () {
         var data = {'date': date.getTime(),'allDay': allDay,'viewName': view.name};
         var url = $(this).closest('.calendar-init').data('url-day-click');
         App.ajax("POST", url, data, {
-          reloadUniform: false
+          reloadUniform: false,
+          reloadTimepicker: true,
+          reloadDatepicker: true,
+          ajaxSuccess : function(data, status, xhr) {
+            eventSourceSelection();
+          }
         });
       },
       eventClick: function (event,jsEvent,view) {
@@ -70,8 +76,25 @@ var Calendars = function () {
 
   };
 
+
+  var eventSourceSelection = function(){
+    function format(es){
+      if (!es.id) return es.text; // optgroup
+      return '<span class="option-color" style="background-color: ' + $(es.element).data("color") + '">&nbsp;&nbsp;</span>' + es.text;
+    }
+    $("#calendar_event_calendar_event_source_id").select2({
+      allowClear: true,
+      formatResult: format,
+      formatSelection: format,
+      escapeMarkup: function (m) {
+        return m;
+      }
+    });
+
+  }
+
   var new_event = function() {
-      //Moving the element (with append) to the top left of the calendar
+    //Moving the element (with append) to the top left of the calendar
     $('.fc-header-left').append($("#new-event").closest("form"));
 
     $("#new-event").on('click', function(e){
@@ -79,11 +102,22 @@ var Calendars = function () {
 
       var url = $(this).closest('form').attr('action');
       App.ajax("GET", url, {}, {
-        reloadUniform: false
+        reloadUniform: false,
+        reloadTimepicker: true,
+        reloadDatepicker: true,
+        ajaxSuccess : function(data, status, xhr) {
+          eventSourceSelection();
+        }
       });
 
     });
 
+  }
+
+  var timetables = function(){
+    App.ajaxRailsUJS(".activate-timetable", {
+      reloadUniform: false
+    });
   }
 
   return {
@@ -91,6 +125,7 @@ var Calendars = function () {
     init: function () {
       initCalendar();
       new_event();
+      timetables();
     },
 
 

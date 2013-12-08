@@ -46,8 +46,7 @@ class User < ActiveRecord::Base
   has_many :tasks, dependent: :destroy
 
   #TODO migration
-  has_many :syllabuses, dependent: :destroy, foreign_key: "creator_id"
-  has_many :timetables, through: :syllabuses
+  has_many :timetables, dependent: :destroy, foreign_key: "creator_id"
   has_and_belongs_to_many :others_timetables_that_can_view, class_name: "Timetable", join_table: :users_view_timetables, autosave: true
   has_many :created_groups, class_name: "Group"
   has_and_belongs_to_many :groups, class_name: "Group"
@@ -99,13 +98,13 @@ class User < ActiveRecord::Base
   end
 
   ##########
-  #Syllabus
+  #Timetables
   ##########
 
   #Can the user view the syllabus if he didn't created it?
-  def can_view?(syllabus)
-    can_see = syllabus.public? #Yes, if it's public
-    can_see ||= others_syllabuses_that_can_view.include?(syllabus) #Yes, if the user have explicit permission to do so
+  def can_view?(timetable)
+    can_see = timetable.public? #Yes, if it's public
+    can_see ||= others_timetables_that_can_view.include?(timetable) #Yes, if the user have explicit permission to do so
   end
 
   ########

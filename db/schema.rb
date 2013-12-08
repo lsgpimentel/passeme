@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202224417) do
+ActiveRecord::Schema.define(version: 20131207130139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(version: 20131202224417) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "follow_up_items", force: true do |t|
+    t.integer  "calendar_event_id", null: false
+    t.time     "studied_time"
+    t.integer  "debt_reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", force: true do |t|
     t.integer  "creator_id"
@@ -156,15 +164,6 @@ ActiveRecord::Schema.define(version: 20131202224417) do
 
   add_index "subjects_study_sources", ["subject_id", "study_source_id"], name: "index_subjects_study_sources_on_subject_id_and_study_source_id", unique: true, using: :btree
 
-  create_table "syllabuses", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name",                       null: false
-    t.string   "goal",                       null: false
-    t.boolean  "specific",   default: false
-    t.integer  "creator_id",                 null: false
-  end
-
   create_table "tasks", force: true do |t|
     t.string   "name",                       null: false
     t.datetime "created_at",                 null: false
@@ -181,9 +180,11 @@ ActiveRecord::Schema.define(version: 20131202224417) do
     t.datetime "updated_at"
     t.boolean  "active",         default: false
     t.boolean  "public",         default: true
-    t.integer  "syllabus_id",                    null: false
     t.integer  "forked_from_id"
     t.string   "name"
+    t.string   "goal",                           null: false
+    t.boolean  "specific",       default: false
+    t.integer  "creator_id",                     null: false
   end
 
   create_table "users", force: true do |t|

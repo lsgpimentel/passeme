@@ -15,7 +15,7 @@
             data-url-day-click="<%= calendar_day_click_path(calendar) %>"
             data-url-event-click="<%= calendar_event_click_path(calendar) %>">
 
-            <%= button_to new_calendar_calendar_event_path(calendar), class: "btn green", id: "new-event" do %>
+            <%= button_to new_calendar_event_path(calendar), class: "btn green", id: "new-event" do %>
               Add Event <i class="icon-plus"></i>
             <% end %>
 

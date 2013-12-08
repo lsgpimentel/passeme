@@ -1,0 +1,38 @@
+<div class="portlet box blue calendar">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-reorder"></i>Calendar</div>
+  </div>
+  <div class="portlet-body light-grey">
+    <div class="row-fluid">
+      <div class="span3 responsive" data-tablet="span12 fix-margin" data-desktop="span8">
+        <div class="btn-group">
+          <a class="btn purple" href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+            <i class="icon-calendar"></i> Actions
+            <i class="icon-angle-down"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to new_timetable_path do %>
+                <i class="icon-plus"></i> Add
+              <% end %>
+            </li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="i"></i> Full Settings</a></li>
+          </ul>
+        </div>
+        <div class="accordion scrollable" id="accordion-timetables">
+          <%= render(@timetables.active_first) || "You haven't created any timetable yet!" %>
+        </div>
+      </div>
+      <div class="span9">
+        <%= if @active_timetable
+              render partial: 'calendars/calendar_portlet', locals: { calendar: @active_timetable.calendar }
+            else
+              "You have no active timetable at the moment."
+            end
+        %>
+      </div>
+    </div>
+    <!-- END CALENDAR PORTLET-->
+  </div>
+</div>

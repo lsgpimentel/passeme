@@ -1,3 +1,51 @@
+.portlet.calendar .fc-header {
+  margin-bottom: 0px;
+}
+.portlet.calendar .fc-header-title h2 {
+  font-size: 20px !important;
+}
+
+/*  Green */
+.active-timetable {
+  color: white;
+  text-shadow: none;	 
+  background-color: #35aa47;
+}
+.active-timetable:hover, 
+.active-timetable:focus, 
+.active-timetable:active, 
+.active-timetable.active,
+.active-timetable.disabled, 
+.active-timetable[disabled]{ 
+  background-color: #1d943b !important;
+  color: #fff !important;
+}
+
+
+#calendar-event-modal {
+  .control-group {
+    display: inline-block;
+  }
+  .control-group.calendar_event_title {
+    display: block;
+    width: 500px;
+  }
+  #calendar_event_title {
+    width: 100%;
+  }
+}
+
+.select2-results .select2-result-label .option-color {
+    border: 1px solid #999999;
+    border-radius: 3px;
+    display: block;
+    float: left;
+    height: 16px;
+    margin: 5px;
+    width: 16px;
+}
+
+
 /*Duplicating star-rating CSS so I can use in other parts of the app as I wish, since the actual one is being applied only to anchor tags.*/
 #time-list {
   div.star-rating-on{background-position:0 -16px!important}

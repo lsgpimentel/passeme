@@ -43,7 +43,8 @@
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery-multi-select/js/jquery.multi-select
 //= require moment-develop/min/moment-with-langs.min
-//
+//= require bootstrap-daterangepicker/daterangepicker
+//= require jquery.simplecolorpicker
 //
 //= require turbolinks
 //= require app
@@ -56,4 +57,6 @@
 //= require subjects
 //= require study_sources
 //= require subject_groups
+//= require follow_up
+//= require event_sources
 //= require passeme

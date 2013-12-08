@@ -8,6 +8,9 @@ var init = function() {
   StudySources.init();
   SubjectGroups.init();
   Calendars.init();
+  FollowUp.init();
+  Syllabuses.init();
+  EventSources.init();
 };
 
 

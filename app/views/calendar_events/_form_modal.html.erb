@@ -1,15 +1,23 @@
 <%= simple_form_for @calendar_event, remote: true,
   defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
-  html: { class: "form-vertical subject-form", novalidate: "novalidate" } do |f| %>
+  html: { class: "form-inline subject-form", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h3>New Calendar Event</h3>
   </div>
   <div class="modal-body">
-    <%= f.input :title %>
-    <%= f.input :date %>
-    <%= f.input :from_time %>
-    <%= f.input :to_time %>
+    <%= f.input :title, label: false, input_html: { placeholder: "Title" } %>
+    <div class="clearfix"></div>
+    <%= f.input :date, as: :date_picker, label: false, input_html: { placeholder: "Date" } %>
+    <%= f.input :from_time, as: :time_picker, label: false, input_html: { placeholder: "From" } %>
+    <%= f.input :to_time, as: :time_picker, label: false, input_html: { placeholder: "To" } %>
+
+    <div class="row-fluid">
+      <%= f.input :calendar_event_source_id do %>
+        <%= f.select :calendar_event_source_id, @event_sources.map { |es| [es.name, es.id, { data: { color: es.color } }] }, { include_blank: true }, { class: "select2" } %>
+      <% end %>
+    </div>
+
 
   </div>
   <div class="modal-footer">

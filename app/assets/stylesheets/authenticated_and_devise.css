@@ -2,14 +2,6 @@
  *= require bootstrap/css/bootstrap.min
  *= require bootstrap/css/bootstrap-responsive.min
  *= require font-awesome/css/font-awesome
- *= require style-metro
- *= require style
- *= require style-responsive
- *= require themes/default
- *= require uniform/css/uniform.default.min
- *= require tasks
- *= require notifications
- *= require syllabuses
  *= require bootstrap-modal/css/bootstrap-modal
  *= require jquery-ui/jquery-ui-1.10.1.custom.min
  *= require select2/select2_metro
@@ -24,7 +16,18 @@
  *= require star-rating/jquery.rating
  *= require dataTables/jquery.dataTables.bootstrap
  *= require jquery-multi-select/css/multi-select-metro
+ *= require bootstrap-daterangepicker/daterangepicker-bs2
+ *= require jquery.simplecolorpicker
+ *= require jquery.simplecolorpicker-fontawesome
 
+
+ *= require style-metro
+ *= require style
+ *= require style-responsive
+ *= require themes/default
+ *= require uniform/css/uniform.default.min
+ *= require tasks
+ *= require notifications
  *= require timetables
  *= require subjects
  *= require subject_groups

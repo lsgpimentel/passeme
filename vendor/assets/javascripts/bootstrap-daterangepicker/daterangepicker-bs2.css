@@ -1,5 +1,16 @@
+/*!
+ * Stylesheet for the Date Range Picker, for use with Bootstrap 2.x
+ *
+ * Copyright 2013 Dan Grossman ( http://www.dangrossman.info )
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Built for http://www.improvely.com
+ */
+
 .daterangepicker.dropdown-menu {
   max-width: none;
+  z-index: 3000;
 }
 
 .daterangepicker.opensleft .ranges, .daterangepicker.opensleft .calendar {
@@ -27,7 +38,7 @@
 
 .daterangepicker .calendar {
   display: none;
-  max-width: 230px;
+  max-width: 250px;
 }
 
 .daterangepicker .calendar th, .daterangepicker .calendar td {
@@ -73,11 +84,17 @@
   color: #fff;
 }
 
-.daterangepicker .calendar {
+.daterangepicker .calendar-date {
   border: 1px solid #ddd;
   padding: 4px;
   border-radius: 4px;
   background: #fff;
+}
+
+.daterangepicker .calendar-time {
+  text-align: center;
+  margin: 8px auto 0 auto;
+  line-height: 30px;
 }
 
 .daterangepicker {
@@ -157,12 +174,20 @@
 .daterangepicker td.off {
   color: #999;
 }
+
 .daterangepicker td.disabled {
   color: #999;
 }
 
 .daterangepicker td.available:hover, .daterangepicker th.available:hover {
   background: #eee;
+}
+
+.daterangepicker td.in-range {
+  background: #ebf4f8;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
@@ -183,6 +208,28 @@
 }
 
 .daterangepicker td.week, .daterangepicker th.week {
-    font-size: 80%;
-    color: #ccc;
+  font-size: 80%;
+  color: #ccc;
+}
+
+.daterangepicker select.monthselect, .daterangepicker select.yearselect {
+  font-size: 12px;
+  padding: 1px;
+  height: auto;
+  margin: 0;
+  cursor: default;
+}
+
+.daterangepicker select.monthselect {
+  margin-right: 2%;
+  width: 56%;
+}
+
+.daterangepicker select.yearselect {
+  width: 40%;
+}
+
+.daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.ampmselect {
+  width: 60px;
+  margin-bottom: 0;
 }

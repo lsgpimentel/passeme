@@ -12,7 +12,7 @@
   </div>
   <div class="portlet-body form">
 
-    <%= simple_form_for(@timetable, url: syllabus_timetables_path(@syllabus),
+    <%= simple_form_for(@timetable,
                         html: { method: :post, id: "form-timetable" },
                         defaults: { input_html: { class: "m-wrap" } }
                        ) do |f| %>

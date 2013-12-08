@@ -20,6 +20,9 @@
 - [x] ~~Corrigir bug no qual o ajaxRailsUJS não está funcionando quando usado link_to (... remote: true) na página de subject groups. Comentei a integração, porque o callback de ajax:complete não estava executando, o que fazia com que o loading não saísse da tela.~~
 - [ ] Na página de criação do timetable, colocar a inicialização dos javascripts de cada etapa conforme eu passar para ela, ao invés de pôr tudo no carregamento da página. Isso deve corrigir o problema com a inicialização do calendário.
 - [ ] Verificar alguma forma de obter os eventSources do calendário. Pelo que parece, vendo a API do fullcalendar, não daria pra obter todos os event sources a partir de uma única URL. Cada event source deve possuir uma URL. Se realmente não puder ser feito dessa maneira, eu vou ter que obter todos os events mesmo.
+- [ ] Verificar por que a porra da seleção não aparece corretamente quando insiro o elemento diretamente pelo builder do breadcrumb. O elemento é gerado, mas não aparece na tela por algum motivo.
+- [ ] Tratar todas as datas para que a aplicação fique internacionalizada, ou seja, conforme é usado um time zone diferente os padrões de data colocados pelo usuários serão diferentes. Pode ter uma opção também em settings para o timezone e/ou padrão de datas.
+- [ ] Consertar o input picker de color. O ideal seria colocar pro cara só escolher a cor, e não poder digitar o hexadecimal, pra ficar mais amigável. A cor também deve aparecer no grid. No banco só deverá ser gravado o hexadecimal sem a cerquilha.
 
 
 

@@ -75,6 +75,13 @@ GIT
       spork (>= 1.0rc0)
 
 GIT
+  remote: git://github.com/tkrotoff/jquery-simplecolorpicker-rails.git
+  revision: ccdca033e6799d3d1dba1a364abe185c07ecaab5
+  specs:
+    jquery-simplecolorpicker-rails (0.5.0)
+      railties (>= 3.1.0)
+
+GIT
   remote: git://github.com/tute/merit.git
   revision: de942a473ccd147e13ed1cc405ebcc1a8cf86c98
   specs:
@@ -504,6 +511,7 @@ DEPENDENCIES
   jbuilder (= 1.5.0)
   jquery-datatables-rails!
   jquery-rails (= 2.2.1)
+  jquery-simplecolorpicker-rails!
   jquery-turbolinks (~> 2.0.1)
   lol_dba (~> 1.6.0)
   merit!

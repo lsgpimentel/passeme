@@ -27,6 +27,8 @@ class CalendarsController < AuthenticatedController
   end
 
   def day_click
+    @calendar_event = CalendarEvent.new
+    @calendar_event.date = Date.strptime(params[:date], "%Q")
 
   end
 
@@ -38,8 +40,9 @@ class CalendarsController < AuthenticatedController
 
 
   def check_user_is_owner_of_calendar
-    @calendar = Calendar.find_by_id(params[:id])
-    if @calendar.present? && @calendar.timetable.syllabus.creator != current_user
+    id = params[:id] || params[:calendar_id]
+    @calendar = Calendar.find_by_id(id)
+    if @calendar.blank? || @calendar.timetable.creator != current_user
       redirect_to root_path
     end
   end

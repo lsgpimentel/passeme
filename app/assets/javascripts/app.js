@@ -930,11 +930,38 @@ var App = function() {
     });
   };
 
+  var handleTimePickers = function () {
+
+    if (jQuery().timepicker) {
+      $('.timepicker-24').timepicker({
+        minuteStep: 5,
+        showMeridian: false,
+        defaultTime: '00:00',
+        disableFocus: true
+      });
+    }
+  }
+
+  var handleDatePickers = function () {
+
+    if (jQuery().datepicker) {
+      $('.date-picker').datepicker({
+        rtl : App.isRTL()
+      });
+    }
+  }
+
+  var handleSimpleColorPicker = function () {
+    $('select.color-picker').simplecolorpicker({picker: true, theme: 'fontawesome', pickerDelay: 700});
+  }
 
   var getAjaxDefaultOptions = function() {
     return {
       elementToBlock : $('.page-content'),
       reloadUniform : true,
+      reloadTimepicker : false,
+      reloadDatepicker: false,
+      reloadColorpicker: false,
       fixContentHeight : false,
       successMessage : undefined,
       errorMessage : 'Ooopss... Ocorreu um erro ao tentar realizar a operação!',
@@ -981,6 +1008,15 @@ var App = function() {
         }
         if (options.blockUI) {
           App.unblockUI(options.elementToBlock);
+        }
+        if(options.reloadTimepicker) {
+          handleTimePickers();
+        }
+        if(options.reloadDatepicker) {
+          handleDatePickers();
+        }
+        if(options.reloadColorpicker) {
+          handleSimpleColorPicker();
         }
       }
     };
@@ -1088,7 +1124,11 @@ var App = function() {
         // dropdowns.
         handleFullScreenMode(); // handles full screen
 
+        handleTimePickers();
+        handleDatePickers();
+        handleSimpleColorPicker();
       },
+
 
       fixContentHeight : function() {
         handleSidebarAndContentHeight();

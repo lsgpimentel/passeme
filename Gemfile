@@ -81,7 +81,7 @@ gem 'merit',github: 'tute/merit'
 gem "ice_cube", "~> 0.11.1"
 gem 'nested_form', github: 'ryanb/nested_form'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
-
+gem 'jquery-simplecolorpicker-rails', github: 'tkrotoff/jquery-simplecolorpicker-rails'
 
 
 group :doc do

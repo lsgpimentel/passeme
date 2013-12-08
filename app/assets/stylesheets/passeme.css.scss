@@ -39,3 +39,21 @@ table.table {
 }
 .sortable-itens li:hover { color: #2ea8e5; background: #fff; }
 
+/*
+ * Simple color picker
+ */
+.simplecolorpicker{
+  &.picker {
+    //z-index fix for bootstrap modal
+    z-index: 10051;
+  }
+  &.icon {
+    border: 1px solid #CCCCCC;
+    display: block;
+    height: 34px;
+    width: 100px;
+  }
+  span {
+    width: 18px;
+  }
+}

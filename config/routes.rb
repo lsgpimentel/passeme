@@ -28,11 +28,13 @@ Passeme::Application.routes.draw do
     end
 
     resources :study_sources
-    resources :syllabuses do
-      resources :timetables
+    resources :timetables do
+      put 'make_active'
+      get 'follow_up', to: 'follow_up#index'
     end
     resources :calendars do
-      resources :calendar_events
+      resources :calendar_events, as: 'events'
+      resources :calendar_event_sources, as: 'event_sources'
 
       post 'event_sources'
       post 'event_resize'
@@ -41,8 +43,9 @@ Passeme::Application.routes.draw do
       post 'day_click'
       post 'event_click'
     end
-    post '/syllabuses/:syllabus_id/event_sources_from_study_times', controller: :timetables, action: :event_sources_from_study_times, as: :event_sources_from_study_times
+    #post '/syllabuses/:syllabus_id/event_sources_from_study_times', controller: :timetables, action: :event_sources_from_study_times, as: :event_sources_from_study_times
     resources :subject_groups
+
 
 
     authenticated :user do
