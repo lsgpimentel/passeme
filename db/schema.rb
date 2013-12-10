@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207130139) do
+ActiveRecord::Schema.define(version: 20131209220118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,14 +42,32 @@ ActiveRecord::Schema.define(version: 20131207130139) do
   end
 
   create_table "calendar_events", force: true do |t|
-    t.integer  "calendar_event_source_id", null: false
-    t.string   "title",                    null: false
-    t.text     "schedule"
-    t.date     "date",                     null: false
-    t.time     "from_time",                null: false
-    t.time     "to_time",                  null: false
+    t.integer  "calendar_event_source_id",                    null: false
+    t.date     "date",                                        null: false
+    t.time     "from_time",                                   null: false
+    t.time     "to_time",                                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "studied_time"
+    t.integer  "debt_reason"
+    t.integer  "study_source_id",                             null: false
+    t.string   "repeats"
+    t.integer  "repeats_every_n_days"
+    t.integer  "repeats_every_n_weeks"
+    t.integer  "repeats_weekly_each_days_of_the_week_mask"
+    t.integer  "repeats_every_n_months"
+    t.string   "repeats_monthly"
+    t.integer  "repeats_monthly_each_days_of_the_month_mask"
+    t.integer  "repeats_monthly_on_ordinals_mask"
+    t.integer  "repeats_monthly_on_days_of_the_week_mask"
+    t.integer  "repeats_every_n_years"
+    t.integer  "repeats_yearly_each_months_of_the_year_mask"
+    t.boolean  "repeats_yearly_on"
+    t.integer  "repeats_yearly_on_ordinals_mask"
+    t.integer  "repeats_yearly_on_days_of_the_week_mask"
+    t.string   "repeat_ends"
+    t.date     "repeat_ends_on"
+    t.string   "time_zone"
   end
 
   create_table "calendars", force: true do |t|
@@ -73,14 +91,6 @@ ActiveRecord::Schema.define(version: 20131207130139) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
-  create_table "follow_up_items", force: true do |t|
-    t.integer  "calendar_event_id", null: false
-    t.time     "studied_time"
-    t.integer  "debt_reason"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "groups", force: true do |t|
     t.integer  "creator_id"

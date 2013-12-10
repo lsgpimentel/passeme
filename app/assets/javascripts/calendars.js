@@ -34,16 +34,16 @@ var Calendars = function () {
         var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'eventId': event.id};
         var url = $(this).closest('.calendar-init').data('url-event-resize');
         App.ajax("POST", url, data, {
-          reloadUniform: false
+        reloadUniform: false
         });
-      },*/
+        },*/
       /*select: function (startDate,endDate,allDay,jsEvent,view) {
         var data = {'startDate': startDate.getTime(),'endDate': endDate.getTime(),'allDay': allDay,'viewName': view.name};
         var url = $(this).closest('.calendar-init').data('url-select');
         App.ajax("POST", url, data, {
-          reloadUniform: false
+        reloadUniform: false
         });
-      },*/
+        },*/
       eventDrop: function (event,dayDelta,minuteDelta,allDay,revertFunc,jsEvent,ui,view) {
         var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'allDay': allDay,'eventId': event.id};
         var url = $(this).closest('.calendar-init').data('url-event-drop');
@@ -60,7 +60,7 @@ var Calendars = function () {
           reloadTimepicker: true,
           reloadDatepicker: true,
           ajaxSuccess : function(data, status, xhr) {
-            eventSourceSelection();
+            initModalEvent();
           }
         });
       },
@@ -76,7 +76,6 @@ var Calendars = function () {
 
   };
 
-
   var eventSourceSelection = function(){
     function format(es){
       if (!es.id) return es.text; // optgroup
@@ -91,6 +90,93 @@ var Calendars = function () {
       }
     });
 
+    $("#calendar_event_study_source_id").select2({
+    });
+  }
+
+
+  var initSchedule = function() {
+    var toggle_repeats_yearly_on = function(){
+      if($('#calendar_event_repeats_yearly_on').is(':checked')){
+        $('#event_repeats_yearly_on_options').show();
+      } else {
+        $('#event_repeats_yearly_on_options').hide();
+      }
+    }
+    toggle_repeats_yearly_on();
+    $('#calendar_event_repeats_yearly_on').on('change',function(){
+      toggle_repeats_yearly_on();
+    });
+    var toggle_event_times = function(){
+      $('.event_time').show();
+    }
+    toggle_event_times();
+    var toggle_event_options = function(){
+      $('.event_option').hide();
+      switch ($('#calendar_event_repeats').val())
+      {
+        case 'never':
+          // Nothing
+          break;
+        case 'daily':
+          $('#repeats_options').show();
+        $('#repeats_daily_options').show();
+        break;
+        case 'weekly':
+          $('#repeats_options').show();
+        $('#repeats_weekly_options').show();
+        break;
+        case 'monthly':
+          $('#repeats_options').show();
+        $('#repeats_monthly_options').show();
+        break;
+        case 'yearly':
+          $('#repeats_options').show();
+        $('#repeats_yearly_options').show();
+        break;
+      }
+    }
+    toggle_event_options();
+    $('#calendar_event_repeats').on('change',function(){
+      toggle_event_options();
+    });
+    var toggle_repeat_ends_on = function(){
+      switch ($('#calendar_event_repeat_ends').val())
+      {
+        case 'never':
+          $('#event_repeat_ends_on').hide();
+        break;
+        case 'on':
+          $('#event_repeat_ends_on').show();
+        break;
+      }
+    }
+    toggle_repeat_ends_on();
+    $('#calendar_event_repeat_ends').on('change',function(){
+      toggle_repeat_ends_on();
+    });
+    var toggle_repeats_monthly = function(){
+      switch ($('#calendar_event_repeats_monthly').val())
+      {
+        case 'each':
+          $('#event_repeats_monthly_each').show();
+        $('#event_repeats_monthly_on').hide();
+        break;
+        case 'on':
+          $('#event_repeats_monthly_each').hide();
+        $('#event_repeats_monthly_on').show();
+        break;
+      }
+    }
+    toggle_repeats_monthly();
+    $('#calendar_event_repeats_monthly').on('change',function(){
+      toggle_repeats_monthly();
+    });
+  }
+
+  var initModalEvent = function() {
+    eventSourceSelection();
+    initSchedule();
   }
 
   var new_event = function() {
@@ -106,7 +192,7 @@ var Calendars = function () {
         reloadTimepicker: true,
         reloadDatepicker: true,
         ajaxSuccess : function(data, status, xhr) {
-          eventSourceSelection();
+          initModalEvent();
         }
       });
 

@@ -18,6 +18,10 @@ namespace :db do
     task subjects_study_sources: :environment do
       make_subjects_study_sources
     end
+
+    task generate_events: :environment do
+      make_events
+    end
   end
 
 end
@@ -34,6 +38,13 @@ def populate_all
   end
 
   make_subjects_study_sources
+end
+
+def make_events
+  t = Timetable.find_by_id(10)
+  t.calendar.calendar_event_sources << EventsGenerator.new(t).event_sources
+  t.save!
+
 end
 
 def make_user

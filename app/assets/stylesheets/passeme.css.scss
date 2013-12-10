@@ -7,7 +7,7 @@ table .text-center {text-align: center}
 
 
 table.table {
-  button.edit, button.delete {
+  td button {
     padding: 1px 10px;
   }
 }
@@ -56,4 +56,12 @@ table.table {
   span {
     width: 18px;
   }
+}
+
+/*
+ * Tabletools
+ */
+.DTTT.btn-group {
+  float: right;
+  margin-left: 10px;
 }

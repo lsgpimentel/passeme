@@ -14,7 +14,8 @@
  *= require gritter
  *= require fullcalendar/fullcalendar/fullcalendar
  *= require star-rating/jquery.rating
- *= require dataTables/jquery.dataTables.bootstrap
+ *= require dataTables/extras/TableTools
+ *= require dataTables/extras/TableTools_JUI
  *= require jquery-multi-select/css/multi-select-metro
  *= require bootstrap-daterangepicker/daterangepicker-bs2
  *= require jquery.simplecolorpicker
@@ -24,6 +25,8 @@
  *= require style-metro
  *= require style
  *= require style-responsive
+ datatables.bootstrap depois do style, porque este estava sobrescrevendo o z-index do dropdown
+ *= require dataTables/jquery.dataTables.bootstrap
  *= require themes/default
  *= require uniform/css/uniform.default.min
  *= require tasks

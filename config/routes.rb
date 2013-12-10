@@ -32,8 +32,14 @@ Passeme::Application.routes.draw do
       put 'make_active'
       get 'follow_up', to: 'follow_up#index'
     end
+    #Get the active timetable
+    get 'follow_up', to: 'follow_up#index_active_timetable'
     resources :calendars do
-      resources :calendar_events, as: 'events'
+      resources :calendar_events, as: 'events' do
+        get 'edit_complete'
+        put 'complete'
+        put 'info_net_hours'
+      end
       resources :calendar_event_sources, as: 'event_sources'
 
       post 'event_sources'
@@ -43,7 +49,8 @@ Passeme::Application.routes.draw do
       post 'day_click'
       post 'event_click'
     end
-    #post '/syllabuses/:syllabus_id/event_sources_from_study_times', controller: :timetables, action: :event_sources_from_study_times, as: :event_sources_from_study_times
+    resources :event_instances
+
     resources :subject_groups
 
 

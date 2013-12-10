@@ -65,7 +65,7 @@ SimpleNavigation::Configuration.run do |navigation|
     # thus you can use all the methods and vars you have available in the views.
     primary.item :key_3, 'Settings', settings_path, icon: 'icon-cogs'
     primary.item :key_4, 'Syllabuses', timetables_path, icon: 'icon-calendar'
-    #primary.item :key_4, 'Follow Up', timetable_follow_up_path(current_user.timetables.where(active: true)[0]), class: 'last', icon: 'icon-calendar'
+    primary.item :key_4, 'Follow Up', follow_up_path, class: 'last', icon: 'icon-calendar'
 
 
     # you can also specify a css id or class to attach to this particular level

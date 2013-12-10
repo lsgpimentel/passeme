@@ -1,0 +1,29 @@
+
+<table class="table table-striped table-bordered" id="table-events-to-study">
+  <thead>
+    <tr>
+      <th class="text-center">Date</th>
+      <th class="text-center">Subject</th>
+      <th class="text-center">Meta</th>
+      <th class="text-center">Complete</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @events.to_study.each do |e| %>
+    <tr class="<%= follow_up_item_class(e) %>">
+      <td class="text-center"><%= e.date %></td>
+      <td class="text-center"><%= e.subject.name %></td>
+      <td class="text-center"><%= e.meta %></td>
+      <td class="text-center">
+        <%= button_to calendar_event_edit_complete_path(e.calendar_event_source.calendar, e), method: :get, remote: true, class: 'btn green complete' do %>
+          <i class="icon-check"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div id="complete-event-modal" class="modal hide fade" tabindex="-1">
+</div>
+

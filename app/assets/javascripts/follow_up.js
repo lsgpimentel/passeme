@@ -1,5 +1,63 @@
 var FollowUp = function () {
 
+  var initTables = function(){
+    App.initDatatablesBootstrapIntegration();
+
+    if (!jQuery().dataTable) {
+      return;
+    }
+
+    $('#table-events-to-study').dataTable({
+      "aoColumns": [
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": false }
+      ],
+      "aLengthMenu": [
+        [20, 50, 100, -1],
+        [20, 50, 100, "All"] // change per page values here
+      ]
+    });
+    jQuery('#table-events-to-study_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
+    jQuery('#table-events-to-study_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
+    jQuery('#table-events-to-study_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+
+    $('#table-events-studied-with-debt').dataTable({
+      "aoColumns": [
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": true }
+      ],
+      "aLengthMenu": [
+        [20, 50, 100, -1],
+        [20, 50, 100, "All"] // change per page values here
+      ]
+    });
+    jQuery('#table-events-studied-with-debt_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
+    jQuery('#table-events-studied-with-debt_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
+    jQuery('#table-events-studied-with-debt_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+
+    $('#table-events-studied').dataTable({
+      "aoColumns": [
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": true },
+        { "bSortable": true }
+      ],
+      "aLengthMenu": [
+        [20, 50, 100, -1],
+        [20, 50, 100, "All"] // change per page values here
+      ]
+    });
+    jQuery('#table-events-studied_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
+    jQuery('#table-events-studied_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
+    jQuery('#table-events-studied_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
+
+  };
+
   var initDashboardDaterange = function () {
 
     $('.dashboard-date-range').daterangepicker({
@@ -52,11 +110,34 @@ var FollowUp = function () {
     ).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
   };
 
+  var completeEvent = function(){
+    var el = $("#table-events-to-study .btn.complete").closest("form");
+    App.ajaxRailsUJS(el, {
+      reloadTimepicker : true,
+      ajaxSuccess : function(data, status, xhr) {
+        init();
+      },
+    });
+
+    var init = function(){
+      $("input[name=studied-all]").on('click', function(evt){
+        var showDebtReason = $(evt.target).val() == 0;
+        if(showDebtReason){
+          $(".debt-item").show();
+        } else {
+          $(".debt-item").hide();
+        }
+      });
+    }
+  }
+
   return {
 
     //main function
     init: function () {
       initDashboardDaterange();
+      initTables();
+      completeEvent();
     },
 
 

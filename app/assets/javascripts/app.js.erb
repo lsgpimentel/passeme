@@ -1280,13 +1280,17 @@ var App = function() {
       },
 
       initDatatablesBootstrapIntegration : function() {
-
         /* Set the defaults for DataTables initialisation */
         $.extend(true, $.fn.dataTable.defaults, {
-          "sDom" : "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+          "sDom": "<'row-fluid'<'span6'l><'span6'Tf>r>t<'row-fluid'<'span6'i><'span6'p>>",
           "sPaginationType" : "bootstrap",
-          "oLanguage" : {
-            "sLengthMenu" : "_MENU_ records per page"
+          "iDisplayLength": 20,
+          "oLanguage": {
+            "sLengthMenu": "_MENU_ records per page",
+            "oPaginate": {
+              "sPrevious": "Prev",
+              "sNext": "Next"
+            }
           }
         });
 
@@ -1294,6 +1298,26 @@ var App = function() {
          * TableTools Bootstrap compatibility Required TableTools 2.1+
          */
         if ($.fn.DataTable.TableTools) {
+          TableTools.DEFAULTS = {
+            "sSwfPath": "<%= asset_path("dataTables/extras/swf/copy_csv_xls_pdf.swf") %>",
+            "aButtons": [{
+              "sExtends":    "collection",
+              "sButtonText": 'Export <span class="caret" />',
+              "aButtons":    [ "csv", "xls", "pdf" ]
+            }],
+            "oTags": {
+              "container": "div",
+              "button": "a", // We really want to use buttons here, but Firefox and IE ignore the
+              // click on the Flash element in the button (but not mouse[in|out]).
+              "liner": "span",
+              "collection" : {
+                "container" : "ul",
+                "button" : "li",
+                "liner" : "a"
+              }
+            }
+          }; 
+
           // Set the classes that TableTools uses to something suitable
           // for Bootstrap
           $.extend(true, $.fn.DataTable.TableTools.classes, {
@@ -1317,14 +1341,6 @@ var App = function() {
             }
           });
 
-          // Have the collection use a bootstrap compatible dropdown
-          $.extend(true, $.fn.DataTable.TableTools.DEFAULTS.oTags, {
-            "collection" : {
-              "container" : "ul",
-              "button" : "li",
-              "liner" : "a"
-            }
-          });
         }
       }
 

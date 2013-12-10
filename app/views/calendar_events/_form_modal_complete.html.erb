@@ -1,0 +1,30 @@
+<%= simple_form_for @calendar_event, url: calendar_event_complete_path(@calendar_event.calendar_event_source.calendar, @calendar_event),
+  remote: true, method: :put,
+  defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
+  html: { class: "form-horizontal", novalidate: "novalidate" } do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h3>Complete Event</h3>
+  </div>
+  <div class="modal-body">
+    <div class="control-group">
+      <label class="control-label">Have you studied all the content?</label>
+      <div class="controls">
+        <label class="radio">
+          <input type="radio" name="studied-all" value="1" />
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="studied-all" value="0" />
+          No
+        </label>
+      </div>
+    </div>
+    <%= f.input :studied_time, as: :time_picker, label: "How long have you studied?", hint: "max. #{@calendar_event.meta} mins.", wrapper_html: { class: "hide debt-item" } %>
+    <%= f.input :debt_reason, wrapper_html: { class: "hide debt-item" } %>
+  </div>
+  <div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn">Close</button>
+    <button type="submit" class="btn green">Ok</button>
+  </div>
+<% end %>

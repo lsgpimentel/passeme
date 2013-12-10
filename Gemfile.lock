@@ -243,6 +243,11 @@ GEM
       spork (>= 0.8.4)
     haml (4.0.4)
       tilt
+    haml-rails (0.5.2)
+      actionpack (~> 4.0.1)
+      activesupport (~> 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (~> 4.0.1)
     hashery (2.1.1)
     hashie (2.0.5)
     highline (1.6.20)
@@ -504,6 +509,7 @@ DEPENDENCIES
   gritter!
   guard-rspec (~> 4.0.0)
   guard-spork (~> 1.5.1)
+  haml-rails (~> 0.5.2)
   i18n-js (~> 2.1.2)
   icalendar (~> 1.4.1)
   ice_cube (~> 0.11.1)

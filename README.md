@@ -23,6 +23,9 @@
 - [ ] Verificar por que a porra da seleção não aparece corretamente quando insiro o elemento diretamente pelo builder do breadcrumb. O elemento é gerado, mas não aparece na tela por algum motivo.
 - [ ] Tratar todas as datas para que a aplicação fique internacionalizada, ou seja, conforme é usado um time zone diferente os padrões de data colocados pelo usuários serão diferentes. Pode ter uma opção também em settings para o timezone e/ou padrão de datas.
 - [ ] Consertar o input picker de color. O ideal seria colocar pro cara só escolher a cor, e não poder digitar o hexadecimal, pra ficar mais amigável. A cor também deve aparecer no grid. No banco só deverá ser gravado o hexadecimal sem a cerquilha.
+- [ ] Colocar o evento de day click do calendário junto com o de add event. Os 2 estão em controllers separados, porém os 2 se referem à criação de eventos, devendo ficar portando no controller de calendar_events. A única diferença é que no day click o dia do evento já é enviado.
+- [ ] Rever os padrões do callback ajax. Colocar o uniform como false pra recarregar.
+- [ ] Retirar as divs com "ajax-modal" das páginas que usam ajax e modal.
 
 
 

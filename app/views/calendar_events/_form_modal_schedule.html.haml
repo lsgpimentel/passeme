@@ -1,0 +1,43 @@
+- start_date = params[:start_date].to_datetime.strftime('%F') if params[:start_date]
+- start_time = params[:start_date].to_datetime.strftime('%I:%M %p') if params[:start_date]
+- end_time = (params[:start_date].to_datetime + 30.minutes).strftime('%I:%M %p') if params[:start_date]
+.row
+  .span6
+    -#= f.text_field :name, class: 'span4'
+    -#= f.text_area :description, class: 'span4', rows: 5
+    -#= f.select :calendar_id, options_from_collection_for_select(Calendar.all, 'id', 'name', f.object.calendar_id), include_blank: false
+  .span6
+    - if params[:start_date]
+      = f.text_field :date, {style: 'width:auto;', :class => 'datepicker', :value => "#{start_date}"}
+    - else
+      = f.text_field :date, {style: 'width:auto;', :class => 'datepicker'}
+    .event_time
+      - if params[:start_date]
+        = f.text_field :from_time, {style: 'width:auto;', :class => 'timepicker', :value => "#{start_time}"}
+      - else
+        = f.text_field :from_time, {style: 'width:auto;', :class => 'timepicker'}
+    - if params[:start_date]
+      = f.text_field :date, {style: 'width:auto;', :class => 'datepicker', :value => "#{start_date}"}
+    - else
+      = f.text_field :date, {style: 'width:auto;', :class => 'datepicker'}
+    .event_time
+      - if params[:start_date]
+        = f.text_field :to_time, {style: 'width:auto;', :class => 'timepicker', :value => "#{end_time}"}
+      - else
+        = f.text_field :to_time, {style: 'width:auto;', :class => 'timepicker'}
+    .event_time
+      = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, :default => "Eastern Time (US & Canada)"
+    = f.select :repeats, CalendarEvent::RepeatsOptions
+    = render partial: 'calendar_events/schedule/repeats_daily_options', locals: {f: f}
+    = render partial: 'calendar_events/schedule/repeats_weekly_options', locals: {f: f}
+    = render partial: 'calendar_events/schedule/repeats_monthly_options', locals: {f: f}
+    = render partial: 'calendar_events/schedule/repeats_yearly_options', locals: {f: f}
+    #repeats_options.event_option.hide
+      = f.select :repeat_ends, CalendarEvent::RepeatEndsOptions
+      #event_repeat_ends_on
+        = f.date_select :repeat_ends_on, {}, {style: 'width:auto;'}
+
+.form-actions
+  = link_to 'Cancel', root_path, :class => 'btn'
+  = f.submit 'Save'
+

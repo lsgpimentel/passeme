@@ -7,9 +7,11 @@
 #  updated_at     :datetime
 #  active         :boolean          default(FALSE)
 #  public         :boolean          default(TRUE)
-#  syllabus_id    :integer          not null
 #  forked_from_id :integer
 #  name           :string(255)
+#  goal           :string(255)      not null
+#  specific       :boolean          default(FALSE)
+#  creator_id     :integer          not null
 #
 
 class Timetable < ActiveRecord::Base
@@ -29,7 +31,6 @@ class Timetable < ActiveRecord::Base
   has_many :calendar_event_sources, through: :calendar
   has_many :subjects, through: :calendar_event_sources
   has_many :calendar_events, through: :calendar_event_sources
-  has_many :follow_up_items, through: :calendar_events
   has_many :subject_groups, through: :subjects
 
   #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true

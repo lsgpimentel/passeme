@@ -1,0 +1,17 @@
+<%= f.input :date, as: :date_picker, label: false, input_html: { placeholder: "Date" } %>
+<%= f.input :from_time, as: :time_picker, label: false, input_html: { placeholder: "From" } %>
+<%= f.input :to_time, as: :time_picker, label: false, input_html: { placeholder: "To" } %>
+
+<div class="row-fluid">
+  <div class="span6">
+    <%= f.input :calendar_event_source_id, label: false do %>
+      <%= f.select :calendar_event_source_id, @event_sources.map { |es| [es.name, es.id, { data: { color: es.color } }] }, { prompt: "Event Source"}, { class: "select2" } %>
+    <% end %>
+  </div>
+
+  <div class="span6">
+    <%= f.input :study_source_id, label: false do %>
+      <%= f.select :study_source_id, @study_sources.map { |es| [es.title, es.id] }, { prompt: "Study Source"}, { class: "select2" } %>
+    <% end %>
+  </div>
+</div>

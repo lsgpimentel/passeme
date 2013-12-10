@@ -41,10 +41,13 @@
 // require star-rating/jquery.rating.pack
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
+//= require dataTables/extras/TableTools
+//= require dataTables/extras/ZeroClipboard
 //= require jquery-multi-select/js/jquery.multi-select
 //= require moment-develop/min/moment-with-langs.min
 //= require bootstrap-daterangepicker/daterangepicker
 //= require jquery.simplecolorpicker
+//= require jquery_chained/jquery.chained.min
 //
 //= require turbolinks
 //= require app

@@ -29,6 +29,8 @@ class CalendarsController < AuthenticatedController
   def day_click
     @calendar_event = CalendarEvent.new
     @calendar_event.date = Date.strptime(params[:date], "%Q")
+    @event_sources = @calendar.calendar_event_sources
+    @study_sources = @calendar.study_sources
 
   end
 

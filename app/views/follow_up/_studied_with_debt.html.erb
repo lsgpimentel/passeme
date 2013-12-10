@@ -1,0 +1,23 @@
+
+<table class="table table-striped table-bordered" id="table-events-studied-with-debt">
+  <thead>
+    <tr>
+      <th class="text-center">Date</th>
+      <th class="text-center">Subject</th>
+      <th class="text-center">Meta</th>
+      <th class="text-center">Studied time</th>
+      <th class="text-center">Debt Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @events.studied_debt.each do |e| %>
+    <tr class="<%= follow_up_item_class(e) %>">
+      <td class="text-center"><%= e.date %></td>
+      <td class="text-center"><%= e.subject.name %></td>
+      <td class="text-center"><%= e.meta %></td>
+      <td class="text-center"><%= e.studied_time %></td>
+      <td class="text-center"><%= e.debt_reason %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
