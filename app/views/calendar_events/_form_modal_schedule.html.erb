@@ -1,0 +1,26 @@
+<%# start_date = params[:start_date].to_datetime.strftime('%F') if params[:start_date] %>
+<%# start_time = params[:start_date].to_datetime.strftime('%I:%M %p') if params[:start_date] %>
+<%# end_time = (params[:start_date].to_datetime + 30.minutes).strftime('%I:%M %p') if params[:start_date] %>
+<div class="row-fluid">
+  <div class="span6">
+    <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, :default => "Eastern Time (US & Canada)" %>
+    <%= f.select :repeats, CalendarEvent::RepeatsOptions %>
+    <%= render partial: 'calendar_events/schedule/repeats_daily_options', locals: {f: f} %>
+    <%= render partial: 'calendar_events/schedule/repeats_weekly_options', locals: {f: f} %>
+    <%= render partial: 'calendar_events/schedule/repeats_monthly_options', locals: {f: f} %>
+    <%= render partial: 'calendar_events/schedule/repeats_yearly_options', locals: {f: f} %>
+    
+    <div id="repeats_options.event_option hide">
+		<%= f.select :repeat_ends, CalendarEvent::RepeatEndsOptions %>
+      	<div id="event_repeat_ends_on">
+        	<%= f.date_select :repeat_ends_on, {}, {style: 'width:auto;'} %>
+      	</div>
+    </div>
+  </div>       
+</div>
+
+<div class="form-actions">
+  <%= link_to 'Cancel', root_path, :class => 'btn' %>
+  <%= f.submit 'Save' %>
+</div>
+

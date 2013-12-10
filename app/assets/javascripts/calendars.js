@@ -92,7 +92,7 @@ var Calendars = function () {
 
     $("#calendar_event_study_source_id").select2({
     });
-  }
+  };
 
 
   var initSchedule = function() {
@@ -102,14 +102,14 @@ var Calendars = function () {
       } else {
         $('#event_repeats_yearly_on_options').hide();
       }
-    }
+    };
     toggle_repeats_yearly_on();
     $('#calendar_event_repeats_yearly_on').on('change',function(){
       toggle_repeats_yearly_on();
     });
     var toggle_event_times = function(){
       $('.event_time').show();
-    }
+    };
     toggle_event_times();
     var toggle_event_options = function(){
       $('.event_option').hide();
@@ -134,8 +134,8 @@ var Calendars = function () {
           $('#repeats_options').show();
         $('#repeats_yearly_options').show();
         break;
-      }
-    }
+      };
+    };
     toggle_event_options();
     $('#calendar_event_repeats').on('change',function(){
       toggle_event_options();
@@ -150,7 +150,7 @@ var Calendars = function () {
           $('#event_repeat_ends_on').show();
         break;
       }
-    }
+    };
     toggle_repeat_ends_on();
     $('#calendar_event_repeat_ends').on('change',function(){
       toggle_repeat_ends_on();
@@ -167,17 +167,17 @@ var Calendars = function () {
         $('#event_repeats_monthly_on').show();
         break;
       }
-    }
+    };
     toggle_repeats_monthly();
     $('#calendar_event_repeats_monthly').on('change',function(){
       toggle_repeats_monthly();
     });
-  }
+  };
 
   var initModalEvent = function() {
     eventSourceSelection();
     initSchedule();
-  }
+  };
 
   var new_event = function() {
     //Moving the element (with append) to the top left of the calendar
@@ -198,13 +198,13 @@ var Calendars = function () {
 
     });
 
-  }
+  };
 
   var timetables = function(){
     App.ajaxRailsUJS(".activate-timetable", {
       reloadUniform: false
     });
-  }
+  };
 
   return {
     //main function to initiate the module
