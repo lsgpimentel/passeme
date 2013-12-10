@@ -78,7 +78,7 @@ var Registration = function () {
 
     jQuery('#register-back-btn').click(function () {
     });
-  }
+  };
 
   return {
     //main function to initiate the module

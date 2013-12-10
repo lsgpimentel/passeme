@@ -63,7 +63,7 @@ var UnlockPassword = function () {
     jQuery('#back-btn').click(function () {
     });
 
-  }
+  };
 
   return {
     //main function to initiate the module

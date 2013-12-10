@@ -128,8 +128,8 @@ var FollowUp = function () {
           $(".debt-item").hide();
         }
       });
-    }
-  }
+    };
+  };
 
   return {
 

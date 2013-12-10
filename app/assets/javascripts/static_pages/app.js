@@ -19,7 +19,7 @@ var App = function () {
         if (isIE10) {
             jQuery('html').addClass('ie10'); // detect IE10 version
         }
-    }
+    };
 
     function handleIEFixes() {
         //fix html5 placeholder attribute for ie7 & ie8
@@ -111,7 +111,7 @@ var App = function () {
                 type: 'iframe'
             });
         }
-    }
+    };
 
     var handleTheme = function () {
 	
@@ -124,7 +124,7 @@ var App = function () {
             $('#rev-hint1').attr("src", "assets/img/sliders/revolution/hint1-" + color + ".png");
             $('#rev-hint2').attr("src", "assets/img/sliders/revolution/hint2-" + color + ".png");
             //$.cookie('style_color', color);                
-        }
+        };
 
         $('.icon-color', panel).click(function () {
             $('.color-mode').show();
@@ -143,7 +143,7 @@ var App = function () {
             $(this).addClass("current");
         });
 		
-	}
+	};
 	
     return {
         init: function () {

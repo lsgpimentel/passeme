@@ -8,7 +8,7 @@ var Timetables = function () {
     }
     return html;
 
-  }
+  };
 
   var addTimeToList = function (studyTime) {
     var lastEle = $("#study-times > .study-time").last();
@@ -77,7 +77,7 @@ var Timetables = function () {
 
 
 
-  }
+  };
 
 
   var addTimeClickEvent = function(){
@@ -105,7 +105,7 @@ var Timetables = function () {
         $("input[name=productivity]").prop('checked', false);
       }
     });
-  }
+  };
 
 
   var loadTimes = function(){
@@ -121,7 +121,7 @@ var Timetables = function () {
       };
       addTimeToList(studyTime);
     }
-  }
+  };
 
   var initStudyTimeStep = function(){
 
@@ -133,13 +133,13 @@ var Timetables = function () {
       allowClear: true,
       closeOnSelect: false
     });
-  }
+  };
 
   var initStudySourcesStep = function() {
     $('#study-sources-select').multiSelect({
       selectableOptgroup: true
     });
-  }
+  };
 
   var initWizard = function() {
 
@@ -208,7 +208,7 @@ var Timetables = function () {
       }
 
       return true;
-    }
+    };
 
     // default form wizard
     $('#portlet-wizard-timetable').bootstrapWizard({

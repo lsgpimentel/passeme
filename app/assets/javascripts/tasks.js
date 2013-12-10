@@ -2,7 +2,7 @@ var Tasks = function () {
 
   var elementToBlockInAjax = function(ele){
     return ele.closest(".portlet");
-  }
+  };
 
   var toggle_done = function() {
     $('.task-list').on('change', 'input.liChild', function() {
@@ -13,7 +13,7 @@ var Tasks = function () {
         elementToBlock: elementToBlockInAjax($(this))
       });
     });
-  }
+  };
 
   var editable_due_data = function() {
 
@@ -34,7 +34,7 @@ var Tasks = function () {
         //if (v && v.getDate() == 10) return 'Day cant be 10!';
       },
     });
-  }
+  };
 
   var editable_name = function() {
     $('.task-title-sp').editable({
@@ -52,7 +52,7 @@ var Tasks = function () {
         if ($.trim(value) == '') return 'This field is required';
       }
     });
-  }
+  };
 
 
   var list_tasks = function(url) {
@@ -68,7 +68,7 @@ var Tasks = function () {
       });
     });
 
-  }
+  };
 
   var delete_task = function() {
     $(".task-list").on('click', '.delete-task', function(e){
@@ -85,7 +85,7 @@ var Tasks = function () {
         reloadUniform: false
       });
     });
-  }
+  };
 
   var create_task = function() {
     $("#create-task").on('click', function(e){
@@ -97,7 +97,7 @@ var Tasks = function () {
     });
 
 
-  }
+  };
 
   return {
     //main function to initiate the module

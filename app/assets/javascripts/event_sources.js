@@ -27,7 +27,7 @@ var EventSources = function () {
     jQuery('#table-event-sources_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
     jQuery('#table-event-sources_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
     jQuery('#table-event-sources_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
-  }
+  };
 
 
   var new_event_source = function() {
@@ -42,7 +42,7 @@ var EventSources = function () {
 
     });
 
-  }
+  };
 
   var edit_event_source = function() {
     $('#table-event-sources .edit').on('click', function (e) {
@@ -56,7 +56,7 @@ var EventSources = function () {
 
     });
 
-  }
+  };
 
   var delete_event_source = function() {
     $('#table-event-sources .delete').on('click', function (e) {
@@ -78,7 +78,7 @@ var EventSources = function () {
         }
       });
     });
-  }
+  };
 
 
   return {

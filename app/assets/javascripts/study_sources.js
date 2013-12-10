@@ -28,7 +28,7 @@ var StudySources = function () {
     jQuery('#table-study-sources_wrapper .dataTables_filter input').addClass("m-wrap medium"); // modify table search input
     jQuery('#table-study-sources_wrapper .dataTables_length select').addClass("m-wrap small"); // modify table per page dropdown
     jQuery('#table-study-sources_wrapper .dataTables_length select').select2(); // initialize select2 dropdown
-  }
+  };
 
 
   var new_study_source = function() {
@@ -42,7 +42,7 @@ var StudySources = function () {
 
     });
 
-  }
+  };
 
   var edit_study_source = function() {
     $('#table-study-sources .edit').on('click', function (e) {
@@ -57,7 +57,7 @@ var StudySources = function () {
 
     });
 
-  }
+  };
 
   var delete_study_source = function() {
     $('#table-study-sources .delete').on('click', function (e) {
@@ -79,7 +79,7 @@ var StudySources = function () {
         }
       });
     });
-  }
+  };
 
 
   return {

@@ -64,7 +64,7 @@ var Login = function () {
 	                return false;
 	            }
 	        });
-	}
+	};
 
     
     return {
