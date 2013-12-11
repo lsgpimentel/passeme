@@ -1,6 +1,5 @@
 var init = function() {
   App.init();
-  FormEditable.init();
   Tasks.initDashboardWidget();
   Modals.init();
   Timetables.init();

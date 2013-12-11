@@ -54,7 +54,6 @@
 //= require tasks
 //= require notifications
 //= require modals
-//= require form-editable
 //= require timetables
 //= require calendars
 //= require subjects

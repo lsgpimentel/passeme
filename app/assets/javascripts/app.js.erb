@@ -930,6 +930,12 @@ var App = function() {
     });
   };
 
+  var handleEditables = function(){
+    $.fn.editable.defaults.inputclass = 'm-wrap';
+    $.fn.editableform.buttons = '<button type="submit" class="btn blue editable-submit"><i class="icon-ok"></i></button>';
+    $.fn.editableform.buttons += '<button type="button" class="btn editable-cancel"><i class="icon-remove"></i></button>';
+  }
+
   var handleTimePickers = function () {
 
     if (jQuery().timepicker) {
@@ -1127,6 +1133,8 @@ var App = function() {
         handleTimePickers();
         handleDatePickers();
         handleSimpleColorPicker();
+
+        handleEditables();
       },
 
 
