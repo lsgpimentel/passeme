@@ -200,7 +200,6 @@ var Timetables = function () {
 
       if(url != '') {
         App.ajax("POST", url, form.serialize(), {
-          reloadUniform: false,
           ajaxSuccess : function(data, status, xhr) {
           }
 

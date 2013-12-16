@@ -37,7 +37,6 @@ var StudySources = function () {
 
       var url = $(this).closest('form').attr('action');
       App.ajax("GET", url, {}, {
-        reloadUniform: false
       });
 
     });
@@ -50,7 +49,6 @@ var StudySources = function () {
 
       var url = $(this).closest('form').attr('action');
       App.ajax("GET", url, {}, {
-        reloadUniform: false,
         ajaxSuccess: function(evt, data, status, xhr){
         }
       });
@@ -72,7 +70,6 @@ var StudySources = function () {
       var url = $this.closest('form').attr('action');
 
       App.ajax("POST", url, data, {
-        reloadUniform: false,
         ajaxSuccess: function(evt, data, status, xhr){
           var nRow = $this.parents('tr')[0];
           oTable.fnDeleteRow(nRow);

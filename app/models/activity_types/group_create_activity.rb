@@ -9,14 +9,16 @@
 #  type        :integer          not null
 #
 
-class CreateGroupActivity < Activity
+class GroupCreateActivity < Activity
+  
+  NOTIFICATION_TYPE = :group_create
 
   def notify
-    self.owner.notify(:group_blabla, self.object)
+    self.owner.notify(NOTIFICATION_TYPE, self.object)
   end
 
   def set_type
-    self.type = :group_blabla
+    self.type = :group_create
   end
 
 end

@@ -105,6 +105,7 @@ var FollowUp = function () {
   var completeEvent = function(){
     var el = $("#table-events-to-study .btn.complete").closest("form");
     App.ajaxRailsUJS(el, {
+      reloadUniform : true,
       reloadTimepicker : true,
       ajaxSuccess : function(data, status, xhr) {
         init();

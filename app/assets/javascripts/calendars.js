@@ -226,13 +226,11 @@ var Calendars = function () {
 
   var remove_event = function() {
     App.ajaxRailsUJS("#remove-event", {
-      reloadUniform: false
     });
   };
 
   var timetables = function(){
     App.ajaxRailsUJS(".activate-timetable", {
-      reloadUniform: false
     });
   };
 

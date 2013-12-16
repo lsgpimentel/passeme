@@ -21,6 +21,6 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :object, polymorphic: :true
 
-  enumerize :type, in: { group_blabla: 1, group_bla2: 2, syllabus_blabla: 3, syllabus_blabla2: 4 }, predicates: { prefix: true }
+  enumerize :type, in: { task_before_overdue: 1, follow_up_next_day: 2, follow_up_next_month: 3, follow_up_past_month: 4, group_create: 5 }, predicates: { prefix: true }
   enumerize :sent_to, in: { phone: 1, email: 2, site: 3 }, predicates: { prefix: true }, scope: :sent_to
 end

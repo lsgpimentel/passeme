@@ -48,6 +48,7 @@ var SubjectGroups = function () {
       }
 
       App.ajax("PATCH", url, {
+    	reloadUniform: true,
         "subject_group_id": idGroup
       });
 
@@ -69,7 +70,6 @@ var SubjectGroups = function () {
 
   var new_subject_group = function(){
     App.ajaxRailsUJS('form#new-subject-group', {
-      reloadUniform: false,
       ajaxComplete: function(xhr, status) {
         sortable_subjects();
       }
@@ -86,7 +86,6 @@ var SubjectGroups = function () {
     $('body').off('click', selector);
 
     App.ajaxRailsUJS(selector, {
-      reloadUniform: false
     });
   };
 

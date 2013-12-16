@@ -23,7 +23,7 @@ class Activity < ActiveRecord::Base
     where('object_id' => obj.id,'object_type' => obj.class.to_s)
   }
 
-  enumerize :type, in: { group_blabla: 1, group_bla2: 2, syllabus_blabla: 3, syllabus_blabla2: 4 }, predicates: { prefix: true }
+  enumerize :type, in: { group_create: 1, timetable_create: 2 }, predicates: { prefix: true }
 
   #Notify of the creation of the activity.
   after_create :notify

@@ -26,8 +26,7 @@ var Tasks = function () {
         var data = { _method: "PUT", 'task[due_in]': params.value };
 
         App.ajax("POST", url, data, {
-          elementToBlock: elementToBlockInAjax($(this)),
-          reloadUniform: false
+          elementToBlock: elementToBlockInAjax($(this))
         });
       },
       validate: function (v) {
@@ -45,7 +44,8 @@ var Tasks = function () {
         var data = { _method: "PUT", 'task[name]': params.value };
 
         App.ajax("POST", url, data, {
-          elementToBlock: elementToBlockInAjax($(this)) 
+          elementToBlock: elementToBlockInAjax($(this)),
+          reloadUniform: true
         });
       },
       validate: function (value) {
@@ -60,6 +60,7 @@ var Tasks = function () {
       e.preventDefault();
 
       App.ajax("GET", this.href, {}, {
+    	reloadUniform: true,
         elementToBlock: elementToBlockInAjax($(this)),
         ajaxComplete: function(xhr, status) {
           editable_due_data();
@@ -81,8 +82,7 @@ var Tasks = function () {
       var data = { _method: "DELETE" };
 
       App.ajax("POST", this.href, data, {
-        elementToBlock: elementToBlockInAjax($(this)),
-        reloadUniform: false
+        elementToBlock: elementToBlockInAjax($(this))
       });
     });
   };
@@ -91,6 +91,7 @@ var Tasks = function () {
     $("#create-task").on('click', function(e){
       e.preventDefault();
       App.ajax("GET", this.href, {}, {
+    	reloadUniform: true,
         elementToBlock: elementToBlockInAjax($(this)) 
       });
 
