@@ -1,4 +1,4 @@
-<%= simple_form_for @calendar_event, url: calendar_event_complete_path(@calendar_event.calendar_event_source.calendar, @calendar_event),
+<%= simple_form_for @follow_up_item, url: calendar_calendar_event_complete_path(@calendar_event.calendar_event_source.calendar, @calendar_event),
   remote: true, method: :put,
   defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
   html: { class: "form-horizontal", novalidate: "novalidate" } do |f| %>
@@ -22,6 +22,9 @@
     </div>
     <%= f.input :studied_time, as: :time_picker, label: "How long have you studied?", hint: "max. #{@calendar_event.meta} mins.", wrapper_html: { class: "hide debt-item" } %>
     <%= f.input :debt_reason, wrapper_html: { class: "hide debt-item" } %>
+    <%= f.hidden_field :date %>
+    <%= f.hidden_field :from_time %>
+    <%= f.hidden_field :to_time %>
   </div>
   <div class="modal-footer">
     <button type="button" data-dismiss="modal" class="btn">Close</button>

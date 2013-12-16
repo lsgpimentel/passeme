@@ -12,19 +12,20 @@
 
 class NotificationSetting < ActiveRecord::Base
   self.inheritance_column = :_type_disabled
-
   extend Enumerize
+
+  default_scope -> { order('type') }
 
   cattr_reader :default_notification_settings
   @@default_notification_settings = {
-    group_blabla: [:phone, :site],
-    group_bla2: [:email],
-    syllabus_blabla: [:site],
-    syllabus_blabla2: [:site, :phone, :email]
+    task_before_overdue: [:site],
+    follow_up_next_day: [:site],
+    follow_up_next_month: [:site],
+    follow_up_past_month:[:site]
   }
 
   belongs_to :setting
 
-  enumerize :type, in: { group_blabla: 1, group_bla2: 2, syllabus_blabla: 3, syllabus_blabla2: 4 }, predicates: { prefix: true }
+  enumerize :type, in: { task_before_overdue: 1, follow_up_next_day: 2, follow_up_next_month: 3, follow_up_past_month: 4 }, predicates: { prefix: true }
 
 end

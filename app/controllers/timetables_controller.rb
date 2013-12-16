@@ -13,7 +13,6 @@ class TimetablesController < AuthenticatedController
 
   end
 
-
   def new
     @timetable = Timetable.new
     @study_sources = current_user.study_sources

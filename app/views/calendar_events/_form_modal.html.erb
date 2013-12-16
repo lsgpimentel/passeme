@@ -1,4 +1,4 @@
-<%= simple_form_for @calendar_event, remote: true,
+<%= simple_nested_form_for [@calendar, @calendar_event], remote: true,
   defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
   html: { class: "form-inline subject-form", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
@@ -7,6 +7,15 @@
   </div>
   <div class="modal-body">
 
+
+    <% if @calendar_event.persisted? %>
+      <div class="pull-right">
+        <%= link_to calendar_calendar_event_path(@calendar, @calendar_event), method: :delete, remote: true, id:"remove-event", class: "btn red", data: { confirm: "Are you sure" } do %>
+          Remove
+          <i class="icon-remove"></i>
+        <% end %>
+      </div>
+    <% end %>
     <div class="tabbable tabbable-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
@@ -21,11 +30,12 @@
           <%= render "calendar_events/form_modal_schedule", f: f %>
         </div>
       </div>
+
     </div>
 
   </div>
   <div class="modal-footer">
     <button type="button" data-dismiss="modal" class="btn">Close</button>
-    <button type="submit" class="btn green">Ok</button>
+    <button type="submit" id="create-event" class="btn green">Ok</button>
   </div>
 <% end %>

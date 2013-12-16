@@ -13,5 +13,4 @@ class Setting < ActiveRecord::Base
 
   accepts_nested_attributes_for :notification_settings
 
-  #TODO callbacks para preencher e gravar notification_setting
 end

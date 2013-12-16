@@ -10,11 +10,11 @@
     </tr>
   </thead>
   <tbody>
-  <% @events.studied_debt.each do |e| %>
+  <% @items_studied_debt.each do |e| %>
     <tr class="<%= follow_up_item_class(e) %>">
       <td class="text-center"><%= e.date %></td>
-      <td class="text-center"><%= e.subject.name %></td>
-      <td class="text-center"><%= e.meta %></td>
+      <td class="text-center"><%= e.calendar_event.subject.name %></td>
+      <td class="text-center"><%= e.calendar_event.meta %></td>
       <td class="text-center"><%= e.studied_time %></td>
       <td class="text-center"><%= e.debt_reason %></td>
     </tr>

@@ -14,7 +14,6 @@ class StudyTime < ActiveRecord::Base
   extend Enumerize
 
   belongs_to :timetable
-  has_many :allocated_subjects
 
   enumerize :day, in: { sunday: 1, monday: 2, tuesday: 3, wednesday: 4, thursday: 5, friday: 6, saturday: 7 }, predicates: true
 

@@ -12,6 +12,7 @@
   <%= f.input :email, wrapper: :with_icon, label: "E-Mail", placeholder: "E-Mail", icon: "icon-user", hint: "You can't change your e-mail", disabled: true %>
   <%= f.input :password, wrapper: :with_icon, placeholder: "Password", icon: "icon-lock", hint: "Leave blank if you don't want to change it" %>
   <%= f.input :password_confirmation, wrapper: :with_icon, label: "Re-type Your Password", placeholder: "Re-type Your Password", icon: "icon-ok" %>
+  <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

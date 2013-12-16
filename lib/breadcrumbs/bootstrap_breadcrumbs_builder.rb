@@ -25,19 +25,6 @@ class BootstrapBreadcrumbsBuilder < BreadcrumbsOnRails::Breadcrumbs::Builder
       ((home_icon || '') << item << (divider || '')).html_safe
     end
 
-    #if @options[:date_range_picker] && last
-    #  li << render_date_range_picker
-    #end
-  end
-
-  def render_date_range_picker
-    @context.content_tag(:li, class: "pull-right no-text-shadow") do
-      @context.content_tag(:div, class: "dashboard-date-range tooltips no-tooltip-on-touch-device responsive", data: { tablet: "", desktop: "tooltips", placement: "top", :"original-title" => "Change dashboard date range" } ) do
-        @context.concat @context.content_tag(:i, '', class: "icon-calendar")
-        @context.concat @context.content_tag(:span, '')
-        @context.concat @context.content_tag(:i, '', class: "icon-angle-down")
-      end
-    end
   end
 
 end

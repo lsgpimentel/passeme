@@ -9,13 +9,13 @@
     </tr>
   </thead>
   <tbody>
-  <% @events.to_study.each do |e| %>
-    <tr class="<%= follow_up_item_class(e) %>">
-      <td class="text-center"><%= e.date %></td>
-      <td class="text-center"><%= e.subject.name %></td>
-      <td class="text-center"><%= e.meta %></td>
+  <% @items_to_study.each do |ei| %>
+    <tr >
+      <td class="text-center"><%= ei.start.to_s + ' - ' + ei.end.to_s %></td>
+      <td class="text-center"><%= ei.title %></td>
+      <td class="text-center"><%= ei.event.duration %></td>
       <td class="text-center">
-        <%= button_to calendar_event_edit_complete_path(e.calendar_event_source.calendar, e), method: :get, remote: true, class: 'btn green complete' do %>
+        <%= button_to calendar_calendar_event_edit_complete_path(ei.event.calendar_event_source.calendar, ei.event, start: ei.start, end: ei.end), method: :get, remote: true, class: 'btn green complete' do %>
           <i class="icon-check"></i>
         <% end %>
       </td>

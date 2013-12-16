@@ -1,17 +1,48 @@
-<%= f.input :date, as: :date_picker, label: false, input_html: { placeholder: "Date" } %>
-<%= f.input :from_time, as: :time_picker, label: false, input_html: { placeholder: "From" } %>
-<%= f.input :to_time, as: :time_picker, label: false, input_html: { placeholder: "To" } %>
-
 <div class="row-fluid">
   <div class="span6">
-    <%= f.input :calendar_event_source_id, label: false do %>
-      <%= f.select :calendar_event_source_id, @event_sources.map { |es| [es.name, es.id, { data: { color: es.color } }] }, { prompt: "Event Source"}, { class: "select2" } %>
-    <% end %>
+    <div class="row-fluid">
+      <%= f.input :date, as: :date_picker, label: false, input_html: { placeholder: "Date" } %>
+      <%= f.input :from_time, as: :time_picker, label: false, input_html: { placeholder: "From" } %>
+      <%= f.input :to_time, as: :time_picker, label: false, input_html: { placeholder: "To" } %>
+    </div>
+    <div class="row-fluid">
+      <%= f.input :calendar_event_source_id, label: false do %>
+        <%= f.select :calendar_event_source_id, @event_sources.map { |es| [es.name, es.id, { data: { color: es.color } }] }, { prompt: "Event Source"}, { class: "select2" } %>
+      <% end %>
+      <%= f.input :study_source_id, label: false do %>
+        <%= f.select :study_source_id, @study_sources.map { |es| [es.title, es.id] }, { prompt: "Study Source"}, { class: "select2" } %>
+      <% end %>
+    </div>
+    <div class="row-fluid">
+      <%= f.input :interval, as: :time_picker, label: false, input_html: { placeholder: "Interval" }, hint: "Total interval time" %>
+    </div>
   </div>
 
   <div class="span6">
-    <%= f.input :study_source_id, label: false do %>
-      <%= f.select :study_source_id, @study_sources.map { |es| [es.title, es.id] }, { prompt: "Study Source"}, { class: "select2" } %>
-    <% end %>
+
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox" name="calendar_event[spaced_revision]" id="use-spaced-revision" /> Use spaced revisions
+        </label>
+      </div>
+    </div>
+
+    <div id="spaced-revision-block" class="hide">
+      <%= f.simple_fields_for :revision_events do |r| %>
+        <%= r.input :date, as: :date_picker, label: false, input_html: { placeholder: "Date" } %>
+        <%= r.input :from_time, as: :time_picker, label: false, input_html: { placeholder: "From" } %>
+        <%= r.input :to_time, as: :time_picker, label: false, input_html: { placeholder: "To" } %>
+        <%= r.hidden_field :repeats, value: "never" %>
+        <%= r.link_to_remove(class: "btn red") do %>
+          <i class="icon-remove"></i>
+        <% end %>
+      <% end %>
+
+      <%= f.link_to_add :revision_events, class: "btn green" do %>
+        <i class="icon-plus"></i> Add
+      <% end %>
+    </div>
+
   </div>
 </div>

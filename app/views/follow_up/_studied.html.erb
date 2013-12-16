@@ -8,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-  <% @events.studied.each do |e| %>
-    <tr class="<%= follow_up_item_class(e) %>">
+  <% @items_studied.each do |e| %>
+    <tr>
       <td class="text-center"><%= e.date %></td>
-      <td class="text-center"><%= e.subject.name %></td>
-      <td class="text-center"><%= e.meta %></td>
-      <td class="text-center"><%= e.studied_time %></td>
+      <td class="text-center"><%= e.calendar_event.subject.name %></td>
+      <td class="text-center"><%= e.calendar_event.meta %></td>
+      <td class="text-center <%= follow_up_item_class(e) %>"><%= e.studied_time %></td>
     </tr>
   <% end %>
   </tbody>

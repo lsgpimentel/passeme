@@ -31,11 +31,13 @@ class Timetable < ActiveRecord::Base
   has_many :calendar_event_sources, through: :calendar
   has_many :subjects, through: :calendar_event_sources
   has_many :calendar_events, through: :calendar_event_sources
+  has_many :follow_up_items, through: :calendar_events
   has_many :subject_groups, through: :subjects
 
   #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
   #
 
+  attr_accessor :pomodoro_technique, :spaced_repetition
 
   def make_active
     #Deactive all other timetables from the user

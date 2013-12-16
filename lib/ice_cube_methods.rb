@@ -17,7 +17,7 @@ module IceCubeMethods
   end
 
   RepeatsOptions = ['never','daily','weekly','monthly','yearly']
-  RepeatEndsOptions = ['never','on']
+  RepeatEndsOptions = ['never','on','count']
   RepeatMonthlyOptions = ['each','on']
   DaysOfTheWeek = %w[sunday monday tuesday wednesday thursday friday saturday]
   DaysOfTheMonth = (1..31).to_a
@@ -92,15 +92,15 @@ module IceCubeMethods
   end
 
   def from
-    ActiveSupport::TimeZone[time_zone].parse(date.to_datetime.strftime('%Y-%m-%d')).beginning_of_day + from_time.seconds_since_midnight
+    ActiveSupport::TimeZone[Time.zone.name].parse(date.to_datetime.strftime('%Y-%m-%d')).beginning_of_day + from_time.seconds_since_midnight
   end
 
   def to
-    ActiveSupport::TimeZone[time_zone].parse(date.to_datetime.strftime('%Y-%m-%d')).beginning_of_day + to_time.seconds_since_midnight
+    ActiveSupport::TimeZone[Time.zone.name].parse(date.to_datetime.strftime('%Y-%m-%d')).beginning_of_day + to_time.seconds_since_midnight
   end
 
   def duration
-    d = to - from - 1
+    to - from
   end
 
   def schedule(starts_at = nil, ends_at = nil)
@@ -143,7 +143,19 @@ module IceCubeMethods
         s.add_recurrence_rule IceCube::Rule.yearly(repeats_every_n_years).month_of_year(*months)
       end
     end
+    add_repeat_ends(s)
+
     return s
+  end
+
+  def add_repeat_ends(schedule)
+    schedule.recurrence_rules.each do |r|
+      if repeat_ends_on
+        r.until(repeat_ends_on)
+      elsif repeat_ends_count
+        r.count(repeat_ends_count)
+      end
+    end
   end
 
 private

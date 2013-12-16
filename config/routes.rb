@@ -35,21 +35,18 @@ Passeme::Application.routes.draw do
     #Get the active timetable
     get 'follow_up', to: 'follow_up#index_active_timetable'
     resources :calendars do
-      resources :calendar_events, as: 'events' do
+      resources :calendar_events do
         get 'edit_complete'
         put 'complete'
         put 'info_net_hours'
       end
       resources :calendar_event_sources, as: 'event_sources'
 
-      post 'event_sources'
-      post 'event_resize'
-      post 'select'
-      post 'event_drop'
+      get 'event_instances', to: "event_instances#index"
       post 'day_click'
       post 'event_click'
+      post 'select'
     end
-    resources :event_instances
 
     resources :subject_groups
 

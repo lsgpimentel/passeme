@@ -12,6 +12,7 @@ class Calendar < ActiveRecord::Base
   belongs_to :timetable
   has_many :calendar_event_sources
   has_many :calendar_events, through: :calendar_event_sources
+  has_many :follow_up_items, through: :calendar_events
   has_many :subjects, through: :calendar_event_sources
   has_many :subject_groups, through: :subjects
   has_many :study_sources, through: :subjects

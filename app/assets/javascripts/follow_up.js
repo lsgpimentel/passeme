@@ -58,9 +58,9 @@ var FollowUp = function () {
 
   };
 
-  var initDashboardDaterange = function () {
+  var initFollowUpDaterange = function () {
 
-    $('.dashboard-date-range').daterangepicker({
+    $('#follow-up-date-range').daterangepicker({
       ranges: {
         'Today': [moment(), moment()],
         'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
@@ -86,26 +86,18 @@ var FollowUp = function () {
         firstDay: 1
       },
       showWeekNumbers: true,
-      buttonClasses: ['btn-danger']
+      cancelClass: '',
+      applyClass: ''
     },
 
     function (start, end) {
-      App.blockUI(jQuery("#dashboard"));
-      setTimeout(function () {
-        App.unblockUI(jQuery("#dashboard"));
-        $.gritter.add({
-          title: 'Dashboard',
-          text: 'Dashboard date range updated.'
-        });
-        App.scrollTo();
-      }, 1000);
-      $('.dashboard-date-range span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, yyyy'));
+      var url = this.element.data('url-callback');
+      var data = {start: start.format('X'), end: end.format('X')};
+      window.location.replace(url + '?' + $.param(data));
 
     });
 
-    $('.dashboard-date-range').show();
-
-    $('.dashboard-date-range span').html(moment().subtract(
+    $('#follow-up-date-range span').html(moment().subtract(
       'days', 29
     ).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
   };
@@ -135,7 +127,7 @@ var FollowUp = function () {
 
     //main function
     init: function () {
-      initDashboardDaterange();
+      initFollowUpDaterange();
       initTables();
       completeEvent();
     },

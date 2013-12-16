@@ -1,14 +1,10 @@
 module FollowUpHelper
 
-  def follow_up_item_class(event)
-    if event.filled?
-      if event.in_debt?
-        "red"
-      else
-        "green"
-      end
+  def follow_up_item_class(item)
+    if item.in_debt?
+      "debt-item"
     else
-      "grey"
+      "no-debt-item"
     end
   end
 

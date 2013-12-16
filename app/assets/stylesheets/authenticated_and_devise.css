@@ -34,5 +34,6 @@
  *= require timetables
  *= require subjects
  *= require subject_groups
+ *= require follow_up
  *= require passeme
  */

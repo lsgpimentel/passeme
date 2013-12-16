@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209220118) do
+ActiveRecord::Schema.define(version: 20131215213121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20131209220118) do
   end
 
   add_index "activities", ["owner_id"], name: "index_activities_on_owner_id", using: :btree
-
-  create_table "allocated_subjects", force: true do |t|
-    t.integer "subject_id",                null: false
-    t.integer "study_time_id",             null: false
-    t.time    "from",                      null: false
-    t.time    "to",                        null: false
-    t.integer "interval",      default: 0
-  end
 
   create_table "calendar_event_sources", force: true do |t|
     t.integer  "subject_id",  null: false
@@ -48,8 +40,6 @@ ActiveRecord::Schema.define(version: 20131209220118) do
     t.time     "to_time",                                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.time     "studied_time"
-    t.integer  "debt_reason"
     t.integer  "study_source_id",                             null: false
     t.string   "repeats"
     t.integer  "repeats_every_n_days"
@@ -67,8 +57,12 @@ ActiveRecord::Schema.define(version: 20131209220118) do
     t.integer  "repeats_yearly_on_days_of_the_week_mask"
     t.string   "repeat_ends"
     t.date     "repeat_ends_on"
-    t.string   "time_zone"
+    t.integer  "repeat_ends_count"
+    t.integer  "father_id"
+    t.time     "interval"
   end
+
+  add_index "calendar_events", ["father_id"], name: "index_calendar_events_on_father_id", using: :btree
 
   create_table "calendars", force: true do |t|
     t.integer  "timetable_id", null: false
@@ -91,6 +85,17 @@ ActiveRecord::Schema.define(version: 20131209220118) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "follow_up_items", force: true do |t|
+    t.integer  "calendar_event_id", null: false
+    t.time     "studied_time"
+    t.integer  "debt_reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "date",              null: false
+    t.time     "from_time",         null: false
+    t.time     "to_time",           null: false
+  end
 
   create_table "groups", force: true do |t|
     t.integer  "creator_id"
@@ -218,6 +223,7 @@ ActiveRecord::Schema.define(version: 20131209220118) do
     t.datetime "updated_at"
     t.string   "locale",                 default: "pt-BR"
     t.string   "name"
+    t.string   "time_zone"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

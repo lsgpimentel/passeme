@@ -28,35 +28,30 @@ var Calendars = function () {
       axisFormat: 'H:mm',
       timeFormat: 'H:mm{ - H:mm}',
       slotMinutes: 15,
-      editable: true,
-      eventDurationEditable: false,
-      /*eventResize: function (event,dayDelta,minuteDelta,revertFunc,jsEvent,ui,view) {
-        var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'eventId': event.id};
-        var url = $(this).closest('.calendar-init').data('url-event-resize');
-        App.ajax("POST", url, data, {
-        reloadUniform: false
-        });
-        },*/
-      /*select: function (startDate,endDate,allDay,jsEvent,view) {
-        var data = {'startDate': startDate.getTime(),'endDate': endDate.getTime(),'allDay': allDay,'viewName': view.name};
-        var url = $(this).closest('.calendar-init').data('url-select');
-        App.ajax("POST", url, data, {
-        reloadUniform: false
-        });
-        },*/
-      eventDrop: function (event,dayDelta,minuteDelta,allDay,revertFunc,jsEvent,ui,view) {
-        var data = {'dayDelta': dayDelta,'minuteDelta': minuteDelta,'allDay': allDay,'eventId': event.id};
-        var url = $(this).closest('.calendar-init').data('url-event-drop');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
-      },
-      eventSources: $(this).closest('.calendar-init').data('url-event-sources'),
+      allDayDefault: false,
+      ignoreTimezone: false,
+      eventStartEditable: false,
+      eventDurationEditable: true,
+      events: $('.calendar-init').data('url-events'),
       dayClick: function (date,allDay,jsEvent,view) {
-        var data = {'date': date.getTime(),'allDay': allDay,'viewName': view.name};
-        var url = $(this).closest('.calendar-init').data('url-day-click');
+        if(view.name == 'month') {
+          var data = {'date': date.getTime(),'viewName': view.name};
+          var url = $(this).closest('.calendar-init').data('url-day-click');
+          App.ajax("POST", url, data, {
+            reloadUniform: true,
+            reloadTimepicker: true,
+            reloadDatepicker: true,
+            ajaxSuccess : function(data, status, xhr) {
+              initModalEvent();
+            }
+          });
+        }
+      },
+      eventClick: function (event,jsEvent,view) {
+        var data = {'eventId': event.id,'viewName': view.name};
+        var url = $(this).closest('.calendar-init').data('url-event-click');
         App.ajax("POST", url, data, {
-          reloadUniform: false,
+          reloadUniform: true,
           reloadTimepicker: true,
           reloadDatepicker: true,
           ajaxSuccess : function(data, status, xhr) {
@@ -64,15 +59,28 @@ var Calendars = function () {
           }
         });
       },
-      eventClick: function (event,jsEvent,view) {
-        var data = {'eventId': event.id,'viewName': view.name};
-        var url = $(this).closest('.calendar-init').data('url-event-click');
-        App.ajax("POST", url, data, {
-          reloadUniform: false
-        });
+      select: function(startDate, endDate, allDay, jsEvent, view) {
+        if(view.name != 'month') {
+          var data = {'startDate': startDate.getTime(), 'endDate': endDate.getTime(), 'viewName': view.name};
+          var url = $(jsEvent.target).closest('.calendar-init').data('url-select');
+          App.ajax("POST", url, data, {
+            reloadUniform: true,
+            reloadTimepicker: true,
+            reloadDatepicker: true,
+            ajaxSuccess : function(data, status, xhr) {
+              initModalEvent();
+            }
+          });
+        }
+      },
+      loading: function(isLoading, view) {
+        if(isLoading){
+          App.blockUI(this);
+        } else {
+          App.unblockUI(this);
+        }
       }
     });
-
 
   };
 
@@ -111,9 +119,9 @@ var Calendars = function () {
       $('.event_time').show();
     };
     toggle_event_times();
-    var toggle_event_options = function(){
+    var toggle_event_options = function(selected){
       $('.event_option').hide();
-      switch ($('#calendar_event_repeats').val())
+      switch (selected)
       {
         case 'never':
           // Nothing
@@ -136,27 +144,33 @@ var Calendars = function () {
         break;
       };
     };
-    toggle_event_options();
-    $('#calendar_event_repeats').on('change',function(){
-      toggle_event_options();
+    toggle_event_options($('input[name="calendar_event[repeats]"]:checked').val());
+    $('input[name="calendar_event[repeats]"]').on('change',function(){
+      toggle_event_options($(this).val());
     });
-    var toggle_repeat_ends_on = function(){
-      switch ($('#calendar_event_repeat_ends').val())
+    var toggle_repeat_ends = function(selected){
+      switch (selected)
       {
         case 'never':
           $('#event_repeat_ends_on').hide();
+        $('#event_repeat_ends_count').hide();
         break;
         case 'on':
           $('#event_repeat_ends_on').show();
+        $('#event_repeat_ends_count').hide();
+        break;
+        case 'count':
+          $('#event_repeat_ends_count').show();
+        $('#event_repeat_ends_on').hide();
         break;
       }
     };
-    toggle_repeat_ends_on();
-    $('#calendar_event_repeat_ends').on('change',function(){
-      toggle_repeat_ends_on();
+    toggle_repeat_ends($('select[name="calendar_event[repeat_ends]"]').val());
+    $('select[name="calendar_event[repeat_ends]"]').on('change',function(){
+      toggle_repeat_ends($(this).val());
     });
-    var toggle_repeats_monthly = function(){
-      switch ($('#calendar_event_repeats_monthly').val())
+    var toggle_repeats_monthly = function(selected){
+      switch (selected)
       {
         case 'each':
           $('#event_repeats_monthly_each').show();
@@ -168,10 +182,19 @@ var Calendars = function () {
         break;
       }
     };
-    toggle_repeats_monthly();
-    $('#calendar_event_repeats_monthly').on('change',function(){
-      toggle_repeats_monthly();
+    toggle_repeats_monthly($('select[name="calendar_event[repeats_monthly]"]').val());
+    $('select[name="calendar_event[repeats_monthly]"]').on('change',function(){
+      toggle_repeats_monthly($(this).val());
     });
+
+    $("#use-spaced-revision").on('click', function(e){
+      $("#spaced-revision-block").toggle();
+    });
+
+    $(document).on('nested:fieldAdded:revision_events', function(event){
+      App.initDatePickers();
+      App.initTimePickers();
+    })
   };
 
   var initModalEvent = function() {
@@ -188,7 +211,7 @@ var Calendars = function () {
 
       var url = $(this).closest('form').attr('action');
       App.ajax("GET", url, {}, {
-        reloadUniform: false,
+        reloadUniform: true,
         reloadTimepicker: true,
         reloadDatepicker: true,
         ajaxSuccess : function(data, status, xhr) {
@@ -198,6 +221,13 @@ var Calendars = function () {
 
     });
 
+  };
+
+
+  var remove_event = function() {
+    App.ajaxRailsUJS("#remove-event", {
+      reloadUniform: false
+    });
   };
 
   var timetables = function(){
@@ -211,6 +241,7 @@ var Calendars = function () {
     init: function () {
       initCalendar();
       new_event();
+      remove_event();
       timetables();
     },
 

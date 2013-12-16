@@ -5,6 +5,7 @@ class SettingsController < AuthenticatedController
 
   def index
     @setting = current_user.setting
+    p @setting.notification_settings
   end
 
   def update

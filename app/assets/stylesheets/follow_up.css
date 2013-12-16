@@ -1,0 +1,6 @@
+table td.debt-item {
+  background-color: #e0bebe !important;
+}
+table td.no-debt-item {
+  background-color: #90aa94 !important;
+}

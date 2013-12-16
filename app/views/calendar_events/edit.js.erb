@@ -1,0 +1,7 @@
+$('#calendar-event-modal').html("<%= j render 'calendar_events/form_modal' %>");
+$('#calendar-event-modal').modal('show');
+if($("#spaced-revision-block").has('.fields').length) {
+  $("#spaced-revision-block").show();
+  $("#use-spaced-revision").attr('checked', true);
+}
+

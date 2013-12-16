@@ -952,7 +952,8 @@ var App = function() {
 
     if (jQuery().datepicker) {
       $('.date-picker').datepicker({
-        rtl : App.isRTL()
+        rtl : App.isRTL(),
+        format: "dd/mm/yyyy"
       });
     }
   }
@@ -1285,6 +1286,13 @@ var App = function() {
 
       ajaxRailsUJS : function(elem, options) {
         ajaxRailsUJS(elem, options);
+      },
+
+      initDatePickers: function() {
+        handleTimePickers();
+      },
+      initTimePickers: function() {
+        handleDatePickers();
       },
 
       initDatatablesBootstrapIntegration : function() {

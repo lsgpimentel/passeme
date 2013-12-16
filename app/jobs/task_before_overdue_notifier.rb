@@ -1,7 +1,6 @@
-class OverdueTaskNotifier
+class TaskBeforeOverdueNotifier
   
-  #NOTIFICATION_TYPE = :overdue_task
-  NOTIFICATION_TYPE = :group_blabla
+  NOTIFICATION_TYPE = :task_before_overdue
 
   def perform
     tasks = Task.where("due_in = ? AND done = ?", Date.tomorrow, false)

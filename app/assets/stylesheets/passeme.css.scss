@@ -65,3 +65,35 @@ table.table {
   float: right;
   margin-left: 10px;
 }
+
+
+/*
+ * Date range picker
+ */
+.page-content .date-range  {
+  padding: 8px;
+  padding-bottom: 7px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #e02222;
+  display: inline-block;
+}
+.page-content .date-range span {
+  font-size: 12px;
+  font-weight: 300; 
+  color: #fff;
+  text-transform: uppercase;
+}
+.page-content .date-range .icon-calendar {
+  text-transform: normal;
+  color: #fff;
+  margin-top: 0px;
+  font-size: 14px;
+}
+.page-content .date-range span {
+  font-weight: normal; 
+}
+.page-content .date-range .icon-angle-down {
+  color:#fff;
+  font-size: 16px;
+}
