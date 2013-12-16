@@ -19,17 +19,17 @@
   +(http://stackoverflow.com/questions/6323658/how-can-i-allow-a-user-to-only-visit-their-own-show-page-using-cancan)
 - [x] ~~Corrigir bug no qual o ajaxRailsUJS não está funcionando quando usado link_to (... remote: true) na página de subject groups. Comentei a integração, porque o callback de ajax:complete não estava executando, o que fazia com que o loading não saísse da tela.~~
 - [ ] Na página de criação do timetable, colocar a inicialização dos javascripts de cada etapa conforme eu passar para ela, ao invés de pôr tudo no carregamento da página. Isso deve corrigir o problema com a inicialização do calendário.
-- [x] ~~ Verificar alguma forma de obter os eventSources do calendário. Pelo que parece, vendo a API do fullcalendar, não daria pra obter todos os event sources a partir de uma única URL. Cada event source deve possuir uma URL. Se realmente não puder ser feito dessa maneira, eu vou ter que obter todos os events mesmo. ~~
-- [x] ~~ Verificar por que a porra da seleção não aparece corretamente quando insiro o elemento diretamente pelo builder do breadcrumb. O elemento é gerado, mas não aparece na tela por algum motivo. ~~
+- [x] ~~Verificar alguma forma de obter os eventSources do calendário. Pelo que parece, vendo a API do fullcalendar, não daria pra obter todos os event sources a partir de uma única URL. Cada event source deve possuir uma URL. Se realmente não puder ser feito dessa maneira, eu vou ter que obter todos os events mesmo. ~~
+- [x] ~~Verificar por que a porra da seleção não aparece corretamente quando insiro o elemento diretamente pelo builder do breadcrumb. O elemento é gerado, mas não aparece na tela por algum motivo. ~~
 - [ ] Tratar todas as datas para que a aplicação fique internacionalizada, ou seja, conforme é usado um time zone diferente os padrões de data colocados pelo usuários serão diferentes. Pode ter uma opção também em settings para o timezone e/ou padrão de datas.
-- [x] ~~ Consertar o input picker de color. O ideal seria colocar pro cara só escolher a cor, e não poder digitar o hexadecimal, pra ficar mais amigável. A cor também deve aparecer no grid. No banco só deverá ser gravado o hexadecimal sem a cerquilha. ~~
-- [x] ~~ Colocar o evento de day click do calendário junto com o de add event. Os 2 estão em controllers separados, porém os 2 se referem à criação de eventos, devendo ficar portando no controller de calendar_events. A única diferença é que no day click o dia do evento já é enviado. ~~
-- [x] ~~ Rever os padrões do callback ajax. Colocar o uniform como false pra recarregar. ~~
-- [x] ~~ Retirar as divs com "ajax-modal" das páginas que usam ajax e modal. ~~
+- [x] ~~Consertar o input picker de color. O ideal seria colocar pro cara só escolher a cor, e não poder digitar o hexadecimal, pra ficar mais amigável. A cor também deve aparecer no grid. No banco só deverá ser gravado o hexadecimal sem a cerquilha. ~~
+- [x] ~~Colocar o evento de day click do calendário junto com o de add event. Os 2 estão em controllers separados, porém os 2 se referem à criação de eventos, devendo ficar portando no controller de calendar_events. A única diferença é que no day click o dia do evento já é enviado. ~~
+- [x] ~~Rever os padrões do callback ajax. Colocar o uniform como false pra recarregar. ~~
+- [x] ~~Retirar as divs com "ajax-modal" das páginas que usam ajax e modal. ~~
 - [ ] Deixar os date e time pickers de uma forma modular, passando todas as opções via input criado do simple_form
-- [x] ~~ Remover o timezone do calendar_event ~~
-- [x] ~~ No cadastro do usuário, colocar mais atributos: país, timezone e language ~~
-- [x] ~~ Escolher as cores da tabelade follow up quando o tempo de estudo tiver débito e quando não tiver débito ~~
+- [x] ~~Remover o timezone do calendar_event ~~
+- [x] ~~No cadastro do usuário, colocar mais atributos: país, timezone e language ~~
+- [x] ~~Escolher as cores da tabelade follow up quando o tempo de estudo tiver débito e quando não tiver débito ~~
 - [ ] Mudar o comportamento da seleção do filtro do follow up para funcionar usando ajax ao invés de redirect
 - [ ] Quando um item já está como estudado, ele não deve aparecer na aba de "para estudar". Porém, devido a um problema na manipulação do timezone dos objetos time, não tá funcionando direito. Verificar depois.
 - [ ] Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.

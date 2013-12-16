@@ -22,7 +22,7 @@ class TimetablesController < AuthenticatedController
   def create
     @timetable = current_user.timetables.build(timetable_params)
     @timetable.build_calendar
-    @timeable.calendar.calendar_event_sources = EventsGenerator.new(@timetable).event_sources
+    @timetable.calendar.calendar_event_sources = EventsGenerator.new(@timetable).event_sources
     if @timetable.save!
     else
       #render :index
