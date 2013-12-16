@@ -32,6 +32,7 @@
 - [x] ~~ Escolher as cores da tabelade follow up quando o tempo de estudo tiver débito e quando não tiver débito ~~
 - [ ] Mudar o comportamento da seleção do filtro do follow up para funcionar usando ajax ao invés de redirect
 - [ ] Quando um item já está como estudado, ele não deve aparecer na aba de "para estudar". Porém, devido a um problema na manipulação do timezone dos objetos time, não tá funcionando direito. Verificar depois.
+- [ ] Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.
 
 
 

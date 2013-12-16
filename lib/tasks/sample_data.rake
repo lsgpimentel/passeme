@@ -70,7 +70,8 @@ def make_subjects(user)
   10.times do 
     name = Faker::Lorem.sentence(5)
     difficulty = rand(1..5)
-    Subject.create!(creator_id: user.id, name: name, difficulty: difficulty)
+    importance = rand(1..5)
+    Subject.create!(creator_id: user.id, name: name, difficulty: difficulty, importance: importance )
   end
 end
 
