@@ -17,7 +17,7 @@ class PassemeMenuRenderer < SimpleNavigation::Renderer::Base
       #Insert the toggler_button and the search field before the menu items
       if item_container.items.first == item && item_container.level == 1
         list << toggler_button
-        list << search
+        #list << search
       end
 
 

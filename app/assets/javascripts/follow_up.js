@@ -72,10 +72,8 @@ var FollowUp = function () {
       opens: (App.isRTL() ? 'right' : 'left'),
       format: 'DD/MM/YYYY',
       separator: ' to ',
-      startDate: moment().subtract('days', 29),
-      endDate: moment(),
-      minDate: '01/01/2012',
-      maxDate: '31/12/2014',
+      startDate: moment(),
+      endDate: moment().add('months', 1),
       locale: {
         applyLabel: 'Submit',
         fromLabel: 'From',
@@ -97,9 +95,7 @@ var FollowUp = function () {
 
     });
 
-    $('#follow-up-date-range span').html(moment().subtract(
-      'days', 29
-    ).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+    $('#follow-up-date-range span').html(moment().format('MMMM D, YYYY') + ' - ' + moment().add('months', 1).format('MMMM D, YYYY'));
   };
 
   var completeEvent = function(){

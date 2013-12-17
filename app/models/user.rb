@@ -46,11 +46,10 @@ class User < ActiveRecord::Base
 
   has_many :tasks, dependent: :destroy
 
-  #TODO migration
   has_many :timetables, dependent: :destroy, foreign_key: "creator_id"
   has_and_belongs_to_many :others_timetables_that_can_view, class_name: "Timetable", join_table: :users_view_timetables, autosave: true
-  has_many :created_groups, class_name: "Group"
-  has_and_belongs_to_many :groups, class_name: "Group"
+  #has_many :created_groups, class_name: "Group"
+  #has_and_belongs_to_many :groups, class_name: "Group"
   #want to receive group invitations?
   
   has_many :notifications

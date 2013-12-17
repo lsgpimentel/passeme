@@ -13,9 +13,13 @@ class FollowUpController < AuthenticatedController
 
   def index_active_timetable
     @timetable = current_user.timetables.where(active: true)[0]
+    if @timetable.blank?
+      render 'timetables/_no_timetable'
+    else
+      fill_items
+      render :index
+    end
 
-    fill_items
-    render :index
   end
 
   private

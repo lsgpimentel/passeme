@@ -128,3 +128,24 @@
   margin-bottom: 20px;
 }
 
+.no-timetable {
+  text-align: center;
+}
+
+.no-timetable .title {
+  display: inline-block;
+  letter-spacing: -10px;
+  margin-top: 0px;
+  line-height: 128px;
+  font-size: 158px;
+  font-weight: 300;
+  color: #7bbbd6;
+  text-align: right;
+}
+
+.no-timetable .details {
+  margin-left: 40px;
+  display: inline-block;
+  padding-top: 0px;
+  text-align: left;
+}

@@ -1,15 +1,25 @@
 module AuthenticatedHelper
 
   NOTIFICATIONS = {
-    group_blabla: {
+    task_before_overdue: {
       icon: "group",
       color: "warning",
-      message: ->(notification){ I18n.t("notification.blabla", group: notification.object.name) }
+      message: ->(notification){ I18n.t("notification.task.before_overdue", task: notification.object.name) }
     },
-    syllabus_blabla: {
+    follow_up_next_day: {
       icon: "calendar",
       color: "success",
-      message: ->(notification){ I18n.t("notification.blabla", group: notification.object.name) }
+      message: ->(notification){ I18n.t("notification.follow_up.next_day", timetable: notification.object.timetable.name) }
+    },
+    follow_up_next_month: {
+      icon: "group",
+      color: "warning",
+      message: ->(notification){ I18n.t("notification.follow_up.next_month", timetable: notification.object.timetable.name) }
+    },
+    follow_up_past_month: {
+      icon: "group",
+      color: "warning",
+      message: ->(notification){ I18n.t("notification.follow_up.past_month", timetable: notification.object.timetable.name) }
     }
   }
 

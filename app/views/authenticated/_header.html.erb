@@ -2,11 +2,6 @@
   <!-- BEGIN TOP NAVIGATION BAR -->
   <div class="navbar-inner">
     <div class="container-fluid">
-      <!-- BEGIN LOGO -->
-      <a class="brand" href="index.html">
-        <%= image_tag "logo.png", alt: "logo" %>
-      </a>
-      <!-- END LOGO -->
       <!-- BEGIN RESPONSIVE MENU TOGGLER -->
       <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
         <%= image_tag "menu-toggler.png" %>
@@ -75,9 +70,16 @@
         </a>
         <ul class="dropdown-menu">
           <li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li>
-          <li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
-          <li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox <span class="badge badge-important">3</span></a></li>
-          <li><a href="#"><i class="icon-tasks"></i> My Tasks <span class="badge badge-success">8</span></a></li>
+          <li>
+            <%= link_to timetables_path do %>
+            <i class="icon-calendar"></i> My Timetables
+            <% end %>
+          </li>
+          <li>
+            <%= link_to follow_up_path do %>
+            <i class="icon-check"></i> Follow Up
+            <% end %>
+          </li>
           <li>
             <%= link_to settings_path do %>
               <i class="icon-cogs"></i> My Settings

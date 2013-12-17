@@ -1,7 +1,6 @@
 class GroupsController < AuthenticatedController
 
   def index
-    @groups = current_user.groups
   end
 
   def show

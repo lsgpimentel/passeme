@@ -1,62 +1,60 @@
-<div class="span6">
-  <div class="portlet box green tasks-widget">
-    <div class="portlet-title">
-      <div class="caption"><i class="icon-check"></i>Tasks</div>
-      <div class="tools">
-        <a href="#portlet-config" data-toggle="modal" class="config"></a>
-        <a href="" class="reload"></a>
-      </div>
-      <div class="actions">
-        <div class="btn-group">
-          <a class="btn mini" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-            More
-            <i class="icon-angle-down"></i>
-          </a>
-          <ul class="dropdown-menu pull-right">
-            <li>
-              <%= link_to list_all_tasks_path, class: "list-tasks" do %>
-                <i class="i"></i> All <span id="all-tasks-count" class="badge"><%= @all_tasks_count %></span>
-              <% end %>
-            </li>
-            <li class="divider"></li>
-            <li>
-            <%= link_to list_pending_tasks_path, class: "list-tasks" do %>
-              Pending <span id="pending-tasks-count" class="badge badge-important"><%= @pending_tasks_count %></span>
+<div class="portlet box green tasks-widget">
+  <div class="portlet-title">
+    <div class="caption"><i class="icon-check"></i>Tasks</div>
+    <div class="tools">
+      <a href="#portlet-config" data-toggle="modal" class="config"></a>
+      <a href="" class="reload"></a>
+    </div>
+    <div class="actions">
+      <div class="btn-group">
+        <a class="btn mini" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+          More
+          <i class="icon-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu pull-right">
+          <li>
+          <%= link_to list_all_tasks_path, class: "list-tasks" do %>
+            <i class="i"></i> All <span id="all-tasks-count" class="badge"><%= @all_tasks_count %></span>
           <% end %>
-            </li>
+          </li>
+          <li class="divider"></li>
+          <li>
+          <%= link_to list_pending_tasks_path, class: "list-tasks" do %>
+            Pending <span id="pending-tasks-count" class="badge badge-important"><%= @pending_tasks_count %></span>
+          <% end %>
+          </li>
 
-            <li>
-            <%= link_to list_overdue_tasks_path, class: "list-tasks" do %>
-              Overdue <span id="overdue-tasks-count" class="badge badge-warning"><%= @overdue_tasks_count %></span> 
+          <li>
+          <%= link_to list_overdue_tasks_path, class: "list-tasks" do %>
+            Overdue <span id="overdue-tasks-count" class="badge badge-warning"><%= @overdue_tasks_count %></span> 
           <% end %>
-            </li>
+          </li>
 
-            <li>
-            <%= link_to list_done_tasks_path, class: "list-tasks" do %>
-              Completed <span id="done-tasks-count" class="badge badge-success"><%= @done_tasks_count %></span> 
+          <li>
+          <%= link_to list_done_tasks_path, class: "list-tasks" do %>
+            Completed <span id="done-tasks-count" class="badge badge-success"><%= @done_tasks_count %></span> 
           <% end %>
-            </li>
-          </ul>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="portlet-body">
-      <div class="task-content">
-        <div class="scroller" style="height:305px" data-always-visible="1" data-rail-visible1="1">
-          <!-- START TASK LIST -->
-          <ul class="task-list unstyled">
-            <%= render @tasks %>
-          </ul>
-          <!-- END START TASK LIST -->
-        </div>
+  </div>
+  <div class="portlet-body">
+    <div class="task-content">
+      <div class="scroller" style="height:305px" data-always-visible="1" data-rail-visible1="1">
+        <!-- START TASK LIST -->
+        <ul class="task-list unstyled">
+          <%= render @tasks %>
+        </ul>
+        <!-- END START TASK LIST -->
       </div>
-      <div class="task-footer">
-        <span class="pull-right">
-          <%= link_to new_task_path, id: "create-task" do %>
-            Create New Task <i class="icon-plus"></i> &nbsp;
+    </div>
+    <div class="task-footer">
+      <span class="pull-right">
+        <%= link_to new_task_path, id: "create-task" do %>
+          Create New Task <i class="icon-plus"></i> &nbsp;
         <% end %>
-        </span>
-      </div>
+      </span>
     </div>
   </div>
 </div>

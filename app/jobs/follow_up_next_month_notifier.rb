@@ -3,10 +3,13 @@ class FollowUpNextMonthNotifier
   NOTIFICATION_TYPE = :follow_up_next_month
 
   def perform
-    tasks = Task.where("due_in = ? AND done = ?", Date.tomorrow, false)
+    Calendar.all.each do |c|
 
-    tasks.each do |t|
-      t.user.notify(NOTIFICATION_TYPE, t)
+      event_instances = EventInstance.calendar_occurrences_between(c, Date.today.at_beginning_of_month.next_month, Date.today.next_month.end_of_month)
+
+      if event_instances.present?
+        c.timetable.creator.notify(NOTIFICATION_TYPE, c, c.timetable.creator)
+      end
     end
   end
 

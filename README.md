@@ -16,7 +16,7 @@
 - [ ] Rever o conceito da tela de Planos de estudo para que o calendário ocupe todo o espaço, colocando as ações da tela em opções de dropdowns.
 - [ ] Na tabela de matérias, depois que uma nova for adicionada, recarregar a tabela ou a página. Tem que verificar bem, porque pode ser que eu use a resposta do controller tanto em formato html como js. Se for JS, o esquema de recarregar a página não vai dar certo se estiver no meio da criação de uma timetable. Neste caso, usar a API do dataTable e adicionar a linha no callback de sucesso.
 - [ ] Atualmente antes de realizar operações como atualizar ou criar um novo em um modelo, eu estou testando se o usuário é o dono do objeto a ser modificado/criado. Isso seria melhor se fosse feito pelo cancan na classe Ability, ao invés de em cada controller. Lembrar de alterar isso nas telas com nested attributes, como em setting que grava notification_settings (id do notification_setting).
-  +(http://stackoverflow.com/questions/6323658/how-can-i-allow-a-user-to-only-visit-their-own-show-page-using-cancan)
++(http://stackoverflow.com/questions/6323658/how-can-i-allow-a-user-to-only-visit-their-own-show-page-using-cancan)
 - [x] ~~Corrigir bug no qual o ajaxRailsUJS não está funcionando quando usado link_to (... remote: true) na página de subject groups. Comentei a integração, porque o callback de ajax:complete não estava executando, o que fazia com que o loading não saísse da tela.~~
 - [ ] Na página de criação do timetable, colocar a inicialização dos javascripts de cada etapa conforme eu passar para ela, ao invés de pôr tudo no carregamento da página. Isso deve corrigir o problema com a inicialização do calendário.
 - [x] ~~Verificar alguma forma de obter os eventSources do calendário. Pelo que parece, vendo a API do fullcalendar, não daria pra obter todos os event sources a partir de uma única URL. Cada event source deve possuir uma URL. Se realmente não puder ser feito dessa maneira, eu vou ter que obter todos os events mesmo. ~~
@@ -33,6 +33,7 @@
 - [ ] Mudar o comportamento da seleção do filtro do follow up para funcionar usando ajax ao invés de redirect
 - [ ] Quando um item já está como estudado, ele não deve aparecer na aba de "para estudar". Porém, devido a um problema na manipulação do timezone dos objetos time, não tá funcionando direito. Verificar depois.
 - [ ] Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.
+- [ ] No follow up não deve ser deixado o usuário marcar como completo horários que ainda não aconteceram, e sim somente os que já passaram.
 
 
 

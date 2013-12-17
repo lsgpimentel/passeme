@@ -49,24 +49,18 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
-    primary.item :key_1, 'Home', root_path, icon: 'icon-home', class: 'start'
-    primary.item :key_1, 'Groups', groups_path, icon: 'icon-group'
-    primary.item :key_1, 'Subjects', subjects_path
-    primary.item :key_1, 'Subject Groups', subject_groups_path
-    primary.item :key_1, 'Study Sources', study_sources_path
+    primary.item :home, 'Dashboard', root_path, icon: 'icon-home', class: 'start'
 
-    primary.item :key_2, 'name', root_path do |sub_nav|
-      # Add an item to the sub navigation (same params again)
-      sub_nav.item :key_2_1, 'name', root_path
+    primary.item :planning, 'Planning', icon: 'icon-edit' do |sub_nav|
+      sub_nav.item :subjects, 'Subjects', subjects_path
+      sub_nav.item :subject_groups, 'Subject Groups', subject_groups_path
+      sub_nav.item :study_sources, 'Study Sources', study_sources_path
     end
 
-    # You can also specify a condition-proc that needs to be fullfilled to display an item.
-    # Conditions are part of the options. They are evaluated in the context of the views,
-    # thus you can use all the methods and vars you have available in the views.
-    primary.item :key_3, 'Settings', settings_path, icon: 'icon-cogs'
-    primary.item :key_4, 'Syllabuses', timetables_path, icon: 'icon-calendar'
-    primary.item :key_4, 'Follow Up', follow_up_path, class: 'last', icon: 'icon-calendar'
-
+    primary.item :timetables, 'Timetables', timetables_path, icon: 'icon-calendar'
+    primary.item :follow_up, 'Follow Up', follow_up_path, icon: 'icon-check'
+    primary.item :groups, 'Groups', groups_path, icon: 'icon-group'
+    primary.item :settings, 'Settings', settings_path, icon: 'icon-cogs'
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu

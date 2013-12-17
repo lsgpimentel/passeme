@@ -237,7 +237,11 @@ pt-BR:
 #TODO etc
   notification:
     task:
-      overdue:
+      before_overdue: Sua tarefa %{task} expirará em breve
+    follow_up:
+      next_day: Verifique o que você tem para estudar amanhã na sua timetable %{timetable}
+      next_month: Verifique o que você tem para estudar no próximo mês na sua timetable %{timetable}
+      past_month: Verifique o que você estudou durante o mês passado na sua timetable %{timetable}
     group:
       invitation:
 
