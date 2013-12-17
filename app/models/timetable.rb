@@ -34,6 +34,7 @@ class Timetable < ActiveRecord::Base
   has_many :follow_up_items, through: :calendar_events
   has_many :subject_groups, through: :subjects
 
+  accepts_nested_attributes_for :calendar, allow_destroy: true
   #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
   #
 

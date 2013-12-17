@@ -17,5 +17,5 @@ class Calendar < ActiveRecord::Base
   has_many :subject_groups, through: :subjects
   has_many :study_sources, through: :subjects
 
-  #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
+  accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
 end

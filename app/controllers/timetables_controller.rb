@@ -24,6 +24,7 @@ class TimetablesController < AuthenticatedController
     @timetable.build_calendar
     @timetable.calendar.calendar_event_sources = EventsGenerator.new(@timetable).event_sources
     if @timetable.save!
+      p @timetable.calendar
     else
       #render :index
       #TODO error
