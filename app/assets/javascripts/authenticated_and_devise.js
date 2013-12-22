@@ -47,7 +47,11 @@
 //= require moment-develop/min/moment-with-langs.min
 //= require bootstrap-daterangepicker/daterangepicker
 //= require jquery.simplecolorpicker
-//= require jquery_chained/jquery.chained.min
+//= require flot/jquery.flot
+//= require flot/jquery.flot.resize
+//= require flot/jquery.flot.pie
+//= require flot/jquery.flot.stack
+//= require flot/jquery.flot.crosshair
 //
 //= require turbolinks
 //= require app
@@ -61,4 +65,5 @@
 //= require subject_groups
 //= require follow_up
 //= require event_sources
+//= require reports
 //= require passeme

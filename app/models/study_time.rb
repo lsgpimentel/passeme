@@ -19,4 +19,8 @@ class StudyTime < ActiveRecord::Base
 
   enumerize :productivity, in: { one: 1, two: 2, three: 3, four: 4, five: 5}, predicates: { prefix: true }
 
+  def duration
+    to - from
+  end
+
 end

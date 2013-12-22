@@ -1,0 +1,19 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h4 class="show-results-timetable">Showing results for the timetable: &nbsp;&nbsp;&nbsp;</h4>
+
+    <select id="timetable-select" style="width: 45%;" data-url-callback="<%= change_timetable_report_path %>">
+      <% current_user.timetables.each do |t| %>
+        <option data-test="123" value="<%= t.id %>" <%= 'selected' if @timetable == t %>><%= t.name %></option>
+      <% end %>
+    </select>
+  </div>
+</div>
+<hr>
+
+<div class="row-fluid">
+  <div class="span6">
+    <%= render 'follow_up_not_studied_reason' %>
+  </div>
+</div>
+

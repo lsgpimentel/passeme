@@ -90,16 +90,29 @@ var Calendars = function () {
       return '<span class="option-color" style="background-color: ' + $(es.element).data("color") + '">&nbsp;&nbsp;</span>' + es.text;
     }
     $("#calendar_event_calendar_event_source_id").select2({
-      allowClear: true,
       formatResult: format,
       formatSelection: format,
       escapeMarkup: function (m) {
         return m;
       }
     });
-
-    $("#calendar_event_study_source_id").select2({
+    $("#calendar_event_calendar_event_source_id").on('change', function(e){
+      var url = $(this).data("url-callback");
+      var id = e.val;
+      App.ajax("GET", url, { id: id }, {
+        ajaxSuccess : function(data, status, xhr) {
+          data = JSON.parse(data);
+          $('#calendar_event_study_source_id').empty();
+          $('#calendar_event_study_source_id').append($('<option>').attr('value', ""));
+          $('#calendar_event_study_source_id').select2('data', null);
+          $.each(data, function(i, value) {
+            $('#calendar_event_study_source_id').append($('<option>').text(value.title).attr('value', value.id));
+          });
+        }
+      });
     });
+
+    $("#calendar_event_study_source_id").select2();
   };
 
 
@@ -204,12 +217,12 @@ var Calendars = function () {
 
   var new_event = function() {
     //Moving the element (with append) to the top left of the calendar
-    $('.fc-header-left').append($("#new-event").closest("form"));
+    $('.fc-header-left').append($("#calendar-options"));
 
-    $("#new-event").on('click', function(e){
+    $(".new-event").on('click', function(e){
       e.preventDefault();
 
-      var url = $(this).closest('form').attr('action');
+      var url = this.href;
       App.ajax("GET", url, {}, {
         reloadUniform: true,
         reloadTimepicker: true,

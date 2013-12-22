@@ -59,6 +59,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :timetables, 'Timetables', timetables_path, icon: 'icon-calendar'
     primary.item :follow_up, 'Follow Up', follow_up_path, icon: 'icon-check'
+    primary.item :reports, 'Reports', reports_path, icon: 'icon-bar-chart'
     primary.item :groups, 'Groups', groups_path, icon: 'icon-group'
     primary.item :settings, 'Settings', settings_path, icon: 'icon-cogs'
 

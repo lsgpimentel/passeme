@@ -6,11 +6,11 @@
       <%= f.input :to_time, as: :time_picker, label: false, input_html: { placeholder: "To" } %>
     </div>
     <div class="row-fluid">
-      <%= f.input :calendar_event_source_id, label: false do %>
-        <%= f.select :calendar_event_source_id, @event_sources.map { |es| [es.name, es.id, { data: { color: es.color } }] }, { prompt: "Event Source"}, { class: "select2" } %>
+      <%= f.input :calendar_event_source_id, label: false, wrapper_html: { class: "span6" } do %>
+        <%= f.select :calendar_event_source_id, @event_sources.map { |es| [es.name, es.id, { data: { color: es.color } }] }, { include_blank: true }, { class: "select2 span12", data: { placeholder: "Subjects", url_callback: "#{calendar_get_study_sources_for_event_source_path(calendar)}" } } %>
       <% end %>
-      <%= f.input :study_source_id, label: false do %>
-        <%= f.select :study_source_id, @study_sources.map { |es| [es.title, es.id] }, { prompt: "Study Source"}, { class: "select2" } %>
+      <%= f.input :study_source_id, label: false, wrapper_html: { class: "span6" } do %>
+        <%= f.select :study_source_id, [], { include_blank: true }, { class: "select2 span12", data: { placeholder: "Study Sources" } } %>
       <% end %>
     </div>
     <div class="row-fluid">

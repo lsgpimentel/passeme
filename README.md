@@ -35,6 +35,7 @@
 - [ ] Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.
 - [ ] No follow up não deve ser deixado o usuário marcar como completo horários que ainda não aconteceram, e sim somente os que já passaram.
 - [ ] Se o usuário estiver criando a primeira timetable, então esta deverá se tornar ativa por padrão.
+- [ ] Na criação do evento do calendário, no dropdown select2 de event sources, o alinhamento dos itens do select está com problema.
 
 
 # Anotações Caderno

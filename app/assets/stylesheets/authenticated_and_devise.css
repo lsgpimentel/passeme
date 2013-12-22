@@ -35,6 +35,7 @@
  *= require subjects
  *= require subject_groups
  *= require follow_up
+ *= require reports
  *= require dashboard
  *= require passeme
  */

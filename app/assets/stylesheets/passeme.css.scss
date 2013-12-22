@@ -104,3 +104,13 @@ table.table {
 .page-sidebar .sidebar-toggler {
   margin-bottom: 15px;
 }
+
+/*
+ * Dropdown caret fix
+ */
+.dropdown-menu li > a {
+  padding: 6px 20px 6px 13px;
+}
+.dropdown-menu {
+  padding: 5px 0;
+}

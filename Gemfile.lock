@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/SergioFierens/ai4r.git
+  revision: 9d4278d7aee41a08ab2805430f671f180fdf07be
+  specs:
+    ai4r (1.12)
+
+GIT
   remote: git://github.com/bmabey/database_cleaner.git
   revision: 733849482546297c48f97b292cf3ad4e498eaad0
   specs:
@@ -482,6 +488,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ai4r!
   annotate (~> 2.5.0)
   bcrypt-ruby (= 3.0.1)
   better_errors (~> 1.0.1)

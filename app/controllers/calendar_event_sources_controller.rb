@@ -1,6 +1,8 @@
 class CalendarEventSourcesController < AuthenticatedController
   before_filter :check_user_is_owner_of_calendar
-  before_filter :check_user_is_owner_of_event_source, :only => [:edit, :update, :destroy ]
+  before_filter :check_user_is_owner_of_event_source, :only => [:edit, :update, :destroy, :get_study_sources ]
+
+  add_breadcrumb "Event Sources", :calendar_event_sources_path
 
   def index
     @event_sources = @calendar.calendar_event_sources
@@ -46,6 +48,13 @@ class CalendarEventSourcesController < AuthenticatedController
       format.js
     end
   end
+
+  def get_study_sources
+    respond_to do |format|
+      format.js { render json: @event_source.subject.study_sources, only: [:id, :title] }
+    end
+  end
+
 
   private
 

@@ -19,7 +19,7 @@ class FollowUpItem < ActiveRecord::Base
   scope :studied, -> { where('studied_time IS NOT NULL') }
   scope :studied_debt, -> { studied.where('debt_reason IS NOT NULL') }
 
-  enumerize :debt_reason, in: { reason_one: 1, reason_two: 2, reason_three: 3, reason_four: 4, reason_five: 5}, predicates: { prefix: true }
+  enumerize :debt_reason, in: { reason_one: 1, reason_two: 2, reason_three: 3, reason_four: 4, reason_five: 5}, predicates: { prefix: true }, scope: true
 
   belongs_to :calendar_event
 

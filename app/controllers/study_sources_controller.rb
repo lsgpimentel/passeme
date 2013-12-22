@@ -21,13 +21,6 @@ class StudySourcesController < AuthenticatedController
     end
   end
 
-  def study_sources
-    #just return the study_source
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def new
     @study_source = StudySource.new
     respond_to do |format|

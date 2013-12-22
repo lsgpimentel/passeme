@@ -1,8 +1,17 @@
-.portlet.calendar .fc-header {
-  margin-bottom: 0px;
-}
-.portlet.calendar .fc-header-title h2 {
-  font-size: 20px !important;
+.portlet.calendar {
+  .fc-header {
+    margin-bottom: 0px;
+  }
+  .fc-header-title h2 {
+    font-size: 20px !important;
+  }
+  .portlet-title .actions {
+    float: left;
+    margin-left: 15px;
+  }
+  .timetables-group {
+    margin: -7px 0 4px;
+  }
 }
 
 /*  Green */
@@ -35,14 +44,14 @@
   }
 }
 
-.select2-results .select2-result-label .option-color {
-    border: 1px solid #999999;
-    border-radius: 3px;
-    display: block;
-    float: left;
-    height: 16px;
-    margin: 5px;
-    width: 16px;
+.select2-results .select2-result-label .option-color, .select2-chosen .option-color {
+  border: 1px solid #999999;
+  border-radius: 3px;
+  display: block;
+  float: left;
+  height: 16px;
+  margin: 5px;
+  width: 16px;
 }
 
 
@@ -94,58 +103,58 @@
 /*
  * Hack to make the timepicker work inside a popover
  */
-.bootstrap-timepicker-widget {
-  z-index: 99999999;
-}
-
-
-.study-item {
-  cursor: default;
-  height: 50px;
-  background-color: #F5F5F5 !important;
-  a.link-remove:hover {
-  
-  }
-  i.icon-remove {
-    color: #fff !important;
-    font-size: 18px !important;
+  .bootstrap-timepicker-widget {
+    z-index: 99999999;
   }
 
-  i.icon-remove:hover {
-    color: #000 !important;
-  }
 
-  .remove-study-time {
-    .badge {
-      cursor: pointer;
-      right: -8px;
-      top: -17px;
+  .study-item {
+    cursor: default;
+    height: 50px;
+    background-color: #F5F5F5 !important;
+    a.link-remove:hover {
+
+    }
+    i.icon-remove {
+      color: #fff !important;
+      font-size: 18px !important;
+    }
+
+    i.icon-remove:hover {
+      color: #000 !important;
+    }
+
+    .remove-study-time {
+      .badge {
+        cursor: pointer;
+        right: -8px;
+        top: -17px;
+      }
     }
   }
-}
 
-.info-study-time-hover {
-  margin-bottom: 20px;
-}
+  .info-study-time-hover {
+    margin-bottom: 20px;
+  }
 
-.no-timetable {
-  text-align: center;
-}
+  .no-timetable {
+    text-align: center;
+  }
 
-.no-timetable .title {
-  display: inline-block;
-  letter-spacing: -10px;
-  margin-top: 0px;
-  line-height: 128px;
-  font-size: 158px;
-  font-weight: 300;
-  color: #7bbbd6;
-  text-align: right;
-}
+  .no-timetable .title {
+    display: inline-block;
+    letter-spacing: -10px;
+    margin-top: 0px;
+    line-height: 128px;
+    font-size: 158px;
+    font-weight: 300;
+    color: #7bbbd6;
+    text-align: right;
+  }
 
-.no-timetable .details {
-  margin-left: 40px;
-  display: inline-block;
-  padding-top: 0px;
-  text-align: left;
-}
+  .no-timetable .details {
+    margin-left: 40px;
+    display: inline-block;
+    padding-top: 0px;
+    text-align: left;
+  }

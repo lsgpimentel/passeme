@@ -9,6 +9,7 @@ var init = function() {
   Calendars.init();
   FollowUp.init();
   EventSources.init();
+  Reports.init();
 };
 
 
