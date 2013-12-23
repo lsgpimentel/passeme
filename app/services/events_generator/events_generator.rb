@@ -1,20 +1,15 @@
 module EventsService
   class EventsGenerator
-    def initialize(timetable)
-      @timetable = timetable
+    def initialize(study_times)
+      @study_times = study_times
 
       run
     end
-    def run
-      search = Ai4r::GeneticAlgorithm::GeneticSearch.new(800, 100)
-      result = search.run
-      puts "COST #{-1 * result.fitness} TOUR: "+
-        "#{result.data.collect{|c| data_set.data_labels[c]} * ', '}"
-    end
 
-    def event_sources
+
+    def _event_sources
       #TODO calculo maluco para gerar a parada
-      if @timetable.study_times.present?
+      if @study_times.present?
         sources = []
         3.times do
           s =  CalendarEventSource.new(subject: @timetable.creator.subjects[0], color: "F4F4F4")
@@ -31,8 +26,17 @@ module EventsService
 
     end
 
+    def validate
+
+    end
+
 
     private
+    def run
+      search = EventsService::GeneticAlgorithm::GeneticSearch.new(study_times, subjects)
+      result = search.run
+      p result
+    end
 
   end
 end

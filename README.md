@@ -36,6 +36,7 @@
 - [ ] No follow up não deve ser deixado o usuário marcar como completo horários que ainda não aconteceram, e sim somente os que já passaram.
 - [ ] Se o usuário estiver criando a primeira timetable, então esta deverá se tornar ativa por padrão.
 - [ ] Na criação do evento do calendário, no dropdown select2 de event sources, o alinhamento dos itens do select está com problema.
+- [ ] Mudar a tela de criação da timetable, para que na última etapa o usuário selecione as matérias e para cada matéria selecione as fontes de estudo que ele quer usar para colocar no calendário gerado pelo algoritmo. Tem que pensar em como vai fazer feita a interface, já que uma fonte de estudo pode estar sendo usada em várias matérias. O Algoritmo precisa receber um hash
 
 
 # Anotações Caderno

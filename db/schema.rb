@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215213121) do
+ActiveRecord::Schema.define(version: 20131223005026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20131215213121) do
     t.time    "to",           null: false
     t.integer "productivity", null: false
     t.integer "timetable_id", null: false
+    t.time    "interval",     null: false
   end
 
   create_table "subject_groups", force: true do |t|

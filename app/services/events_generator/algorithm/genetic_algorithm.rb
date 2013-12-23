@@ -27,12 +27,18 @@ module EventsService
     class GeneticSearch
 
       attr_accessor :population
+      attr_accessor :study_times
+      attr_accessor :subjects
 
+      DEFAULT_INITIAL_POPULATION_SIZE = 800
+      DEFAULT_GENERATIONS = 100
 
-      def initialize(initial_population_size, generations)
-        @population_size = initial_population_size
-        @max_generation = generations
+      def initialize(study_times, subjects, options = {})
+        @population_size = options[:initial_population_size] || DEFAULT_INITIAL_POPULATION_SIZE
+        @max_generation = options[:generations] || DEFAULT_GENERATIONS
         @generation = 0
+        @study_times = study_times
+        @subjects = subjects
       end
 
       #     1. Choose initial population

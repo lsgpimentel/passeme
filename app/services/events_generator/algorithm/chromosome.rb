@@ -1,5 +1,5 @@
 # A Chromosome is a representation of an individual solution for a specific 
-# problem. 
+# problem.
 class EventsService::GeneticAlgorithm::Chromosome
 
   attr_accessor :data

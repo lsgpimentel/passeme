@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe FollowUpsController do
+describe FollowUpController do
 
 end

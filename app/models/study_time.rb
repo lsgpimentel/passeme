@@ -23,4 +23,8 @@ class StudyTime < ActiveRecord::Base
     to - from
   end
 
+  def arrange(study_times)
+
+  end
+
 end

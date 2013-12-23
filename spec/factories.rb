@@ -21,10 +21,6 @@ FactoryGirl.define do
     end
   end
 
-  factory :syllabus do
-
-  end
-
   factory :timetable do
 
   end
@@ -36,5 +32,25 @@ FactoryGirl.define do
   factory :study_source do
 
   end
+
+  factory :study_times do
+    t = Time.current.midnight
+    timetable = FactoryGirl.create(:timetable)
+
+    #7 days
+    7.times do |d|
+      10.times do |i|
+        StudyTime.new(
+          day: d,
+          from: t + i.hours,
+          to: t + (i+1).hours,
+          productivity: rand(1..5),
+          timetable: timetable
+        )
+      end
+    end
+
+  end
+
 
 end
