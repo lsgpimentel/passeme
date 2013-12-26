@@ -25,8 +25,8 @@ class FollowUpController < AuthenticatedController
   private
 
   def fill_items
-    start_date = Date.strptime(params[:start], "%s") if params[:start].present?
-    end_date = Date.strptime(params[:end], "%s") if params[:end].present?
+    start_date = Date.strptime(params[:start], "%s").in_time_zone if params[:start].present?
+    end_date = Date.strptime(params[:end], "%s").in_time_zone if params[:end].present?
     @items_to_study = EventInstance.follow_up_occurrences_between(@timetable.calendar, (start_date || DEFAULT_START_DATE), (end_date || DEFAULT_END_DATE))
     @items_studied = @timetable.follow_up_items.studied
     @items_studied_debt = @timetable.follow_up_items.studied_debt

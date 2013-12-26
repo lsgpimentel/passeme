@@ -4,14 +4,14 @@ class CalendarsController < AuthenticatedController
   before_filter :check_user_is_owner_of_calendar_event, only: [:event_click]
 
   def day_click
-    date = Date.strptime(params[:date], "%Q")
+    date = Date.strptime(params[:date], "%Q").in_time_zone
     redirect_to new_calendar_calendar_event_path(@calendar, date: date)
   end
 
   def select
-    date = Date.strptime(params[:startDate], "%Q")
-    from_time = DateTime.strptime(params[:startDate], "%Q")
-    to_time = DateTime.strptime(params[:endDate], "%Q")
+    date = Date.strptime(params[:startDate], "%Q").in_time_zone
+    from_time = DateTime.strptime(params[:startDate], "%Q").in_time_zone
+    to_time = DateTime.strptime(params[:endDate], "%Q").in_time_zone
     redirect_to new_calendar_calendar_event_path(@calendar, date: date, from_time: from_time, to_time: to_time)
   end
 

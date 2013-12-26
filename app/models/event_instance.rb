@@ -10,8 +10,8 @@ class EventInstance
       event.schedule.occurrences_between(begin_date,end_date).map { |date|
         i = EventInstance.new()
         i.event = event
-        i.start = date.utc
-        i.end = date.utc + event.duration
+        i.start = date
+        i.end = date + event.duration
 
         if event.father_id.present?
           id = event.father_id
@@ -24,13 +24,12 @@ class EventInstance
         i.id = id
         i.title = title
 
-        #TODO Se o start, o end, o date, e o event estiverem no follow_up_items
-        #então não retornar o event_instance
-        if not items_studied.any? { |f| f.date == date.to_date && f.from_time == i.start.to_time && f.to_time == i.end.to_time }
+        #If the event is already in the follow up, don't show as a "To Study" event
+        if not items_studied.any? { |f| f.date == date.to_date && f.from_time == event.from_time && f.to_time == event.to_time }
           i
         end
       }
-    }.flatten.sort! {|x,y| x.start <=> y.start }
+    }.flatten.compact.sort! {|x,y| x.start <=> y.start }
   end
 
   def self.calendar_occurrences_between(calendar, begin_date,end_date)

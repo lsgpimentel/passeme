@@ -3,7 +3,7 @@ class EventInstancesController < AuthenticatedController
   before_filter :check_user_is_owner_of_calendar
 
   def index
-    @event_instances = EventInstance.calendar_occurrences_between(@calendar, Date.strptime(params[:start], "%s"), Date.strptime(params[:end], "%s"))
+    @event_instances = EventInstance.calendar_occurrences_between(@calendar, Date.strptime(params[:start], "%s").in_time_zone, Date.strptime(params[:end], "%s").in_time_zone)
     respond_to do |format|
       format.html
       format.json { render json: @event_instances.to_json(:methods => [:color]) }

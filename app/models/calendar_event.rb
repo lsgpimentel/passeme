@@ -50,7 +50,7 @@ class CalendarEvent < ActiveRecord::Base
   end
 
   def meta
-    Time.at(to_time - from_time).utc
+    Time.zone.at(to_time - from_time)
   end
 
   def subject

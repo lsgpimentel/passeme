@@ -12,6 +12,7 @@ var FollowUp = function () {
         { "bSortable": true },
         { "bSortable": true },
         { "bSortable": true },
+        { "bSortable": true },
         { "bSortable": false }
       ],
       "aLengthMenu": [

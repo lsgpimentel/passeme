@@ -10,10 +10,10 @@
   <tbody>
   <% @items_studied.each do |e| %>
     <tr>
-      <td class="text-center"><%= e.date %></td>
+      <td class="text-center"><%= l e.date %></td>
       <td class="text-center"><%= e.calendar_event.subject.name %></td>
       <td class="text-center"><%= e.calendar_event.meta %></td>
-      <td class="text-center <%= follow_up_item_class(e) %>"><%= e.studied_time %></td>
+      <td class="text-center <%= follow_up_item_class(e) %>"><%= l(e.studied_time, format: :only_time) %></td>
     </tr>
   <% end %>
   </tbody>

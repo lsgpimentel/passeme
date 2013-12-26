@@ -64,7 +64,7 @@ module EventsService
       def generate_initial_population
         @population = []
         @population_size.times do
-          population << Chromosome.seed
+          population << Chromosome.seed(study_times, subjects)
         end
       end
 

@@ -3,7 +3,8 @@ class FollowUpNextDayNotifier
   NOTIFICATION_TYPE = :follow_up_next_day
 
   def perform
-    Calendar.all.each do |c|
+    active_calendars = Calendar.joins(:timetable).where(timetables: { active: true })
+    active_calendars.each do |c|
 
       event_instances = EventInstance.calendar_occurrences_between(c, Date.tomorrow, Date.tomorrow)
 

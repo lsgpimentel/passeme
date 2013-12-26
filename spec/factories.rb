@@ -22,7 +22,8 @@ FactoryGirl.define do
   end
 
   factory :timetable do
-
+    goal 'goal'
+    creator user
   end
 
   factory :subject do
