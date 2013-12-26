@@ -37,6 +37,8 @@
 - [ ] Se o usuário estiver criando a primeira timetable, então esta deverá se tornar ativa por padrão.
 - [ ] Na criação do evento do calendário, no dropdown select2 de event sources, o alinhamento dos itens do select está com problema.
 - [ ] Mudar a tela de criação da timetable, para que na última etapa o usuário selecione as matérias e para cada matéria selecione as fontes de estudo que ele quer usar para colocar no calendário gerado pelo algoritmo. Tem que pensar em como vai fazer feita a interface, já que uma fonte de estudo pode estar sendo usada em várias matérias. O Algoritmo precisa receber um hash
+- [ ] Não faz sentido ter tempo de intervalo no study_time, quando o tempo de intervalo é aplicado após um bloco ser concluído e é fixo para toda a Timetable. Neste caso, excluir o tempo de intervalo do study_time, e adicioná-lo na timetable.
+- [ ] Adicionar um atributo em Timetable para armazenar o tamanho do bloco de estudos
 
 
 # Anotações Caderno
