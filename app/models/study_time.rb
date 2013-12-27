@@ -12,7 +12,7 @@
 
 class StudyTime < ActiveRecord::Base
   extend Enumerize
-  validates_with StudyTimeValidator
+  validates_with StudyTimeValidator, timetable: self.timetable
 
   belongs_to :timetable
 

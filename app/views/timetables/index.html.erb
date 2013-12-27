@@ -22,12 +22,7 @@
             <%= render(@timetables.active_first) %>
           </ul>
         </div>
-        <%= if @active_timetable
-              render partial: 'calendars/calendar_portlet', locals: { calendar: @active_timetable.calendar }
-            else
-              render partial: 'no_timetable'
-            end
-          %>
+        <%= render partial: 'calendars/calendar_portlet', locals: { calendar: @active_timetable.calendar } %>
         </div>
         </div>
         <!-- END CALENDAR PORTLET-->

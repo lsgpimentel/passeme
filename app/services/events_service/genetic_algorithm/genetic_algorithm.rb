@@ -36,6 +36,8 @@ module EventsService
       def initialize(study_times, subjects, options = {})
         @population_size = options[:initial_population_size] || DEFAULT_INITIAL_POPULATION_SIZE
         @max_generation = options[:generations] || DEFAULT_GENERATIONS
+        @block_interval = options[:interval]
+        @block_size = options[:block_size]
         @generation = 0
         @study_times = study_times
         @subjects = subjects

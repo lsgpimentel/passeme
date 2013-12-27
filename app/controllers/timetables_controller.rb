@@ -7,6 +7,9 @@ class TimetablesController < AuthenticatedController
   def index
     @timetables = current_user.timetables
     @active_timetable = @timetables.where(active: true)[0]
+    if @active_timetable.blank?
+      render :no_timetable
+    end
   end
 
   def show
@@ -17,12 +20,22 @@ class TimetablesController < AuthenticatedController
     @timetable = Timetable.new
     @study_sources = current_user.study_sources
     @subject_groups = current_user.subject_groups.includes(:subjects).where('subjects.subject_group_id is not null')
+
+    @active_timetable = current_user.timetables.where(active: true)[0]
   end
 
   def create
     @timetable = current_user.timetables.build(timetable_params)
     @timetable.build_calendar
-    @timetable.calendar.calendar_event_sources = EventsService::EventsGenerator.new(@timetable.study_times).event_sources
+    @timetable.calendar.calendar_event_sources = ::EventsService::EventsGenerator.new(@timetable.study_times).event_sources
+
+    #If there's not any other timetable created, then this one must
+    #be the active
+    @active_timetable = current_user.timetables.where(active: true)[0]
+    if @active_timetable.blank?
+      @timetable.active = true
+    end
+
     if @timetable.save
       p @timetable.calendar
     else

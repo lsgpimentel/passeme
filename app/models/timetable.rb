@@ -23,6 +23,7 @@ class Timetable < ActiveRecord::Base
   has_and_belongs_to_many :others_users_that_can_view, class_name: "User", join_table: :users_view_timetables, autosave: true
   has_one :forked_from, class_name: "Timetable"
   has_many :study_times, dependent: :destroy
+  validates_associated :study_times
 
   accepts_nested_attributes_for :study_times, allow_destroy: true
 

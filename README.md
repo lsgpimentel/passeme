@@ -9,11 +9,11 @@
 - [ ] Realizar o envio de notificações para as operações que podem receber notificação.
 - [ ] Revisar o routes.rb e retirar as rotas não usadas
 - [ ] Verificar e retirar os css's e js's que não estão sendo usados pela aplicação (foram copiados do template)
-- [ ] Verificar se há algum nome melhor para a entidade StudyTime (Tempo de estudo), que corresponde à um determinado horário de estudo do usuário dentro da grade.
+- [x] ~~Verificar se há algum nome melhor para a entidade StudyTime (Tempo de estudo), que corresponde à um determinado horário de estudo do usuário dentro da grade.~~
 - [ ] Incluir validações nos models para não incluir valores inválidos
 - [ ] Verificar quals tabelas estão com a coluna de ID e se é realmente necessário estarem. Caso não seja, tirar e adicionar outra PK.
 - [ ] Definir como será implementado os diversos tipos de fontes de estudo em termos de modelagem: Se irei criar uma tabela para cada tipo diferente ou deixar todos os atributos na mesma tabela. Atualmente a entidade está só com os atributos em comum.
-- [ ] Rever o conceito da tela de Planos de estudo para que o calendário ocupe todo o espaço, colocando as ações da tela em opções de dropdowns.
+- [x] ~~Rever o conceito da tela de Planos de estudo para que o calendário ocupe todo o espaço, colocando as ações da tela em opções de dropdowns.~~
 - [ ] Na tabela de matérias, depois que uma nova for adicionada, recarregar a tabela ou a página. Tem que verificar bem, porque pode ser que eu use a resposta do controller tanto em formato html como js. Se for JS, o esquema de recarregar a página não vai dar certo se estiver no meio da criação de uma timetable. Neste caso, usar a API do dataTable e adicionar a linha no callback de sucesso.
 - [ ] Atualmente antes de realizar operações como atualizar ou criar um novo em um modelo, eu estou testando se o usuário é o dono do objeto a ser modificado/criado. Isso seria melhor se fosse feito pelo cancan na classe Ability, ao invés de em cada controller. Lembrar de alterar isso nas telas com nested attributes, como em setting que grava notification_settings (id do notification_setting).
 +(http://stackoverflow.com/questions/6323658/how-can-i-allow-a-user-to-only-visit-their-own-show-page-using-cancan)
@@ -31,14 +31,14 @@
 - [x] ~~No cadastro do usuário, colocar mais atributos: país, timezone e language ~~
 - [x] ~~Escolher as cores da tabelade follow up quando o tempo de estudo tiver débito e quando não tiver débito ~~
 - [ ] Mudar o comportamento da seleção do filtro do follow up para funcionar usando ajax ao invés de redirect
-- [ ] Quando um item já está como estudado, ele não deve aparecer na aba de "para estudar". Porém, devido a um problema na manipulação do timezone dos objetos time, não tá funcionando direito. Verificar depois.
-- [ ] Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.
+- [x] ~~Quando um item já está como estudado, ele não deve aparecer na aba de "para estudar". Porém, devido a um problema na manipulação do timezone dos objetos time, não tá funcionando direito. Verificar depois.~~
+- [x] ~~Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.~~
 - [x] ~~No follow up não deve ser deixado o usuário marcar como completo horários que ainda não aconteceram, e sim somente os que já passaram.~~
 - [ ] Se o usuário estiver criando a primeira timetable, então esta deverá se tornar ativa por padrão.
 - [ ] Na criação do evento do calendário, no dropdown select2 de event sources, o alinhamento dos itens do select está com problema.
 - [ ] Mudar a tela de criação da timetable, para que na última etapa o usuário selecione as matérias e para cada matéria selecione as fontes de estudo que ele quer usar para colocar no calendário gerado pelo algoritmo. Tem que pensar em como vai fazer feita a interface, já que uma fonte de estudo pode estar sendo usada em várias matérias. O Algoritmo precisa receber um hash
-- [ ] Não faz sentido ter tempo de intervalo no study_time, quando o tempo de intervalo é aplicado após um bloco ser concluído e é fixo para toda a Timetable. Neste caso, excluir o tempo de intervalo do study_time, e adicioná-lo na timetable.
-- [ ] Adicionar um atributo em Timetable para armazenar o tamanho do bloco de estudos
+- [x] ~~Não faz sentido ter tempo de intervalo no study_time, quando o tempo de intervalo é aplicado após um bloco ser concluído e é fixo para toda a Timetable. Neste caso, excluir o tempo de intervalo do study_time, e adicioná-lo na timetable.~~
+- [x] ~~Adicionar um atributo em Timetable para armazenar o tamanho do bloco de estudos~~
 
 
 # Anotações Caderno

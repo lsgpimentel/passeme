@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223005026) do
+ActiveRecord::Schema.define(version: 20131226220215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,7 +153,6 @@ ActiveRecord::Schema.define(version: 20131223005026) do
     t.time    "to",           null: false
     t.integer "productivity", null: false
     t.integer "timetable_id", null: false
-    t.time    "interval",     null: false
   end
 
   create_table "subject_groups", force: true do |t|
@@ -201,6 +200,8 @@ ActiveRecord::Schema.define(version: 20131223005026) do
     t.string   "goal",                           null: false
     t.boolean  "specific",       default: false
     t.integer  "creator_id",                     null: false
+    t.time     "block_interval",                 null: false
+    t.time     "block_size",                     null: false
   end
 
   create_table "users", force: true do |t|

@@ -92,7 +92,8 @@ var Tasks = function () {
       e.preventDefault();
       App.ajax("GET", this.href, {}, {
     	reloadUniform: true,
-        elementToBlock: elementToBlockInAjax($(this)) 
+        elementToBlock: elementToBlockInAjax($(this)),
+        reloadDatepicker: true
       });
 
     });

@@ -3,18 +3,18 @@ module EventsService
     def initialize(study_times)
       @study_times = study_times
 
-      run
+      #run
     end
 
 
-    def _event_sources
+    def event_sources
       #TODO calculo maluco para gerar a parada
       if @study_times.present?
         sources = []
         3.times do
-          s =  CalendarEventSource.new(subject: @timetable.creator.subjects[0], color: "F4F4F4")
+          s =  CalendarEventSource.new(subject: Subject.first, color: "F4F4F4")
           3.times do
-            s.calendar_events.build(date: Date.current, from_time: Time.current - 5.hours, to_time: Time.current, study_source: @timetable.creator.study_sources[0], repeats: 'never')
+            s.calendar_events.build(date: Date.current, from_time: Time.current - 5.hours, to_time: Time.current, study_source: StudySource.first, repeats: 'never')
             sources << s
           end
         end

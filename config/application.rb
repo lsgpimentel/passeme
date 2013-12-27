@@ -25,6 +25,7 @@ module Passeme
     config.autoload_paths += %W(#{config.root}/app/navigation_renderers)
     config.autoload_paths += %W(#{config.root}/app/inputs)
     config.autoload_paths += Dir[Rails.root.join("app/models/**")]
+    config.autoload_paths += Dir[Rails.root.join("app/services/**")]
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
