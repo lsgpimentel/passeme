@@ -12,8 +12,8 @@ class TimetablesController < AuthenticatedController
     end
   end
 
-  def show
 
+  def show
   end
 
   def new
@@ -27,7 +27,7 @@ class TimetablesController < AuthenticatedController
   def create
     @timetable = current_user.timetables.build(timetable_params)
     @timetable.build_calendar
-    @timetable.calendar.calendar_event_sources = ::EventsService::EventsGenerator.new(@timetable.study_times).event_sources
+    @timetable.calendar.calendar_event_sources = ::EventsService::EventsGenerator.new(@timetable).event_sources
 
     #If there's not any other timetable created, then this one must
     #be the active
@@ -64,7 +64,7 @@ class TimetablesController < AuthenticatedController
   private
 
   def timetable_params
-    params.require(:timetable).permit(:name, :goal, :specific, :active, :public, subject_group_ids: [], study_times_attributes: [:day, :from, :to, :productivity])
+    params.require(:timetable).permit(:name, :goal, :specific, :active, :public, :use_pomodoro_technique, :use_spaced_repetition, :spaced_repetition_time, :block_size, :block_interval, :start_date, :end_date, pomodoro_technique: [:time_short_break, :time_long_break], subjects: [], study_times_attributes: [:day, :from, :to, :productivity])
   end
 
   def check_user_is_owner_of_timetable

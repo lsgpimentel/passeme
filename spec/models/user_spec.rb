@@ -89,7 +89,7 @@ describe User do
     end
 
     it "should have the tasks in the right order" do
-      expect(@user.tasks.to_a).to eq [newer_task, older_task]
+      expect(@user.tasks.to_a).to eq [newer_task, lder_task]
     end
 
     it "should destroy associated tasks" do

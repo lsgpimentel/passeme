@@ -12,7 +12,6 @@
 
 class StudyTime < ActiveRecord::Base
   extend Enumerize
-  validates_with StudyTimeValidator, timetable: self.timetable
 
   belongs_to :timetable
 
@@ -21,7 +20,7 @@ class StudyTime < ActiveRecord::Base
   enumerize :productivity, in: { one: 1, two: 2, three: 3, four: 4, five: 5}, predicates: { prefix: true }
 
   def duration
-    to - from
+    to - from.to_i
   end
 
   def arrange(study_times)

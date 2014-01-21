@@ -8,17 +8,21 @@ module EventsService::GeneticAlgorithm::Constraint
       type: :soft,
       fitness: -> (alloc_time) { subject_importance_difficulty(alloc_time) }
     },
+    subject_difficulty_intercalation: {
+      type: :soft,
+      fitness: -> (alloc_time_1, alloc_time_2) { subject_difficulty_intercalation(alloc_time_1, alloc_time_2) }
+    },
     subject_group_intercalation: {
       type: :soft,
       fitness: -> (alloc_time_1, alloc_time_2) { subject_group_intercalation(alloc_time_1, alloc_time_2) }
     }
   }
 
-  def calculate(chromosome)
+  def self.calculate(chromosome)
     fitness = 0
     chromosome.data.each_with_index do |alloc_time, i|
 
-      fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time)
+      #fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time)
 
       #Chama para os tempos de alocação imediatamente anterior e posterior
       prev_time = chromosome.data[i-1]
@@ -37,21 +41,21 @@ module EventsService::GeneticAlgorithm::Constraint
 
   #Relação entre a dificuldade da matéria e a produtividade do horário
   #Matérias de maior dificuldade devem ficar em horários mais produtivos
-  def subject_difficulty(alloc_time)
+  def self.subject_difficulty(alloc_time)
 
   end
 
   #Relação entre a importância da matéria e a produtividade do horário
   #Matérias de maior importância devem ficar em horários mais produtivos
-  def subject_importance(alloc_time)
+  def self.subject_importance(alloc_time)
 
   end
 
-  def subject_importance_difficulty(alloc_time)
-    importance = alloc_time.subject.importance
-    difficulty = alloc_time.subject.difficulty
-    prod = alloc_time.study_time.productivity
-    
+  def self.subject_importance_difficulty(alloc_time)
+    importance = alloc_time.subject.importance.value
+    difficulty = alloc_time.subject.difficulty.value
+    prod = alloc_time.study_time.productivity.value
+
     diff = (importance - difficulty).abs
 
     #Diferença > 50%
@@ -70,14 +74,20 @@ module EventsService::GeneticAlgorithm::Constraint
 
   end
 
+
+  def self.subject_difficulty_intercalation(alloc_time_1, alloc_time_2)
+
+  end
+
+
   #Os grupos das matérias devem ser intercalados.
   #Se o grupo da matéria anterior ou posterior for diferente
   #aumenta em 1 o fitness
-  def subject_group_intercalation(alloc_time_1, alloc_time_2)
+  def self.subject_group_intercalation(alloc_time_1, alloc_time_2)
     if alloc_time_1.subject.subject_group == alloc_time_2.subject.subject_group
-      0
-    else
       1
+    else
+      0
     end
   end
 

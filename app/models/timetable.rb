@@ -12,9 +12,13 @@
 #  goal           :string(255)      not null
 #  specific       :boolean          default(FALSE)
 #  creator_id     :integer          not null
+#  block_interval :time             not null
+#  block_size     :time             not null
 #
 
 class Timetable < ActiveRecord::Base
+
+  validates_with TimetableValidator
 
   scope :active_first, -> { order("active DESC") }
   before_create :make_active_on_create
@@ -30,7 +34,7 @@ class Timetable < ActiveRecord::Base
   has_one :calendar
 
   has_many :calendar_event_sources, through: :calendar
-  has_many :subjects, through: :calendar_event_sources
+  #has_many :subjects, through: :calendar_event_sources
   has_many :calendar_events, through: :calendar_event_sources
   has_many :follow_up_items, through: :calendar_events
   has_many :subject_groups, through: :subjects
@@ -39,7 +43,10 @@ class Timetable < ActiveRecord::Base
   #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
   #
 
-  attr_accessor :pomodoro_technique, :spaced_repetition
+  attr_accessor :use_pomodoro_technique, :pomodoro_technique
+  attr_accessor :use_spaced_repetition, :spaced_repetition_time
+  attr_accessor :start_date, :end_date
+  attr_reader :subjects
 
   def make_active
     #Deactive all other timetables from the user
@@ -55,6 +62,10 @@ class Timetable < ActiveRecord::Base
         t.update_attribute(:active, false)
       end
     end
+  end
+
+  def subjects=(subjects)
+    @subjects = Subject.find(subjects.reject(&:empty?))
   end
 
 end

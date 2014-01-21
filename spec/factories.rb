@@ -23,7 +23,9 @@ FactoryGirl.define do
 
   factory :timetable do
     goal 'goal'
-    creator user
+    creator create(:user, { email: Faker::Internet.email })
+    block_interval Time.current.beginning_of_day + 10.minutes
+    block_size Time.current.beginning_of_day + 50.minutes
   end
 
   factory :subject do

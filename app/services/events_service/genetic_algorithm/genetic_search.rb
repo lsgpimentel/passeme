@@ -31,13 +31,15 @@ module EventsService
       attr_accessor :subjects
 
       DEFAULT_INITIAL_POPULATION_SIZE = 800
-      DEFAULT_GENERATIONS = 100
+      DEFAULT_GENERATIONS = 5
 
       def initialize(study_times, subjects, options = {})
         @population_size = options[:initial_population_size] || DEFAULT_INITIAL_POPULATION_SIZE
         @max_generation = options[:generations] || DEFAULT_GENERATIONS
-        @block_interval = options[:interval]
+        @block_interval = options[:block_interval]
         @block_size = options[:block_size]
+        @pomodoro_technique = options[:pomodoro_technique]
+        @spaced_repetition_time = options[:spaced_repetition_time]
         @generation = 0
         @study_times = study_times
         @subjects = subjects
@@ -54,10 +56,12 @@ module EventsService
       #     5. Return the best chromosome
       def run
         generate_initial_population                    #Generate initial population 
+
         @max_generation.times do
           selected_to_breed = selection                #Evaluates current population 
           offsprings = reproduction selected_to_breed  #Generate the population for this new generation
           replace_worst_ranked offsprings
+
         end
         return best_chromosome
       end
@@ -103,6 +107,7 @@ module EventsService
         ((2*@population_size)/3).times do 
           selected_to_breed << select_random_individual(acum_fitness)
         end
+
         selected_to_breed
       end
 
@@ -148,6 +153,18 @@ module EventsService
           local_acum += chromosome.normalized_fitness
           return chromosome if local_acum >= select_random_target
         end
+      end
+
+      #TODO
+      def calculate_population_size
+
+      end
+
+      #TODO
+      def calculate_number_of_generations
+        #(study_times.size * subjects.length) *
+
+
       end
 
     end

@@ -119,34 +119,63 @@
 </div>
 
 <div class="row-fluid">
-  <div class="span6">
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <input type="checkbox" name="timetable[pomodoro_technique]" id="use-pomodoro-technique" /> Use the pomodoro technique
-        </label>
+  <div class="portlet box light-grey new-time">
+    <div class="portlet-title">
+      <div class="caption"><i class="icon-coffee"></i>Options</div>
+      <div class="tools">
+        <a href="javascript:;" class="collapse"></a>
       </div>
     </div>
-  </div>
-  <div class="span6">
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <input type="checkbox" name="timetable[spaced_repetition]" id="use-spaced-repetition" /> Use spaced repetition
-        </label>
+    <div class="portlet-body form-horizontal">
+      <div class="row-fluid">
+
+        <div class="span4">
+          <%= f.input :block_size, as: :time_picker %>
+          <%= f.input :block_interval, as: :time_picker %>
+        </div>
+
+        <div class="span4">
+          <label class="checkbox">
+            <input type="checkbox" name="timetable[use_pomodoro_technique]" id="use-pomodoro-technique" /> Use the pomodoro technique
+          </label>
+
+          <div id="pomodoro-technique-block" class="hide">
+            <%= f.simple_fields_for :pomodoro_technique do |p| %>
+              <%= p.input :time_short_break, as: :time_picker %>
+              <%= p.input :time_long_break, as: :time_picker %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="span4">
+          <label class="checkbox">
+            <input type="checkbox" name="timetable[use_spaced_repetition]" id="use-spaced-repetition" /> Use spaced repetition
+          </label>
+          <div id="spaced-repetition-block" class="hide">
+            <%= f.input :spaced_repetition_time, as: :time_picker %>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
 
+<div class="row-fluid">
+  <div class="span6">
+  </div>
+  <div class="span6">
+  </div>
+</div>
+
 <div id="study-times">
-<%= f.simple_fields_for :study_times do |s| %>
+  <%= f.simple_fields_for :study_times do |s| %>
 
-  <%= s.hidden_field :day %>
-  <%= s.hidden_field :from, label: false, wrapper_html: { class: "input-append bootstrap-timepicker-component" }, placeholder: "From" %>
-  <%= s.input :to, as: :string, label: false, wrapper_html: { class: "input-append bootstrap-timepicker-component" }, placeholder: "To" %>
-  <%= s.input :productivity, as: :radio_buttons %>
+    <%= s.hidden_field :day %>
+    <%= s.hidden_field :from, label: false, wrapper_html: { class: "input-append bootstrap-timepicker-component" }, placeholder: "From" %>
+    <%= s.input :to, as: :string, label: false, wrapper_html: { class: "input-append bootstrap-timepicker-component" }, placeholder: "To" %>
+    <%= s.input :productivity, as: :radio_buttons %>
 
-<% end %>
+  <% end %>
 
 </div>

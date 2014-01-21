@@ -9,7 +9,7 @@ class ReportsController < AuthenticatedController
   def index_active_timetable
     @timetable = current_user.timetables.where(active: true)[0]
     if @timetable.blank?
-      render 'timetables/_no_timetable'
+      render 'timetables/no_timetable'
     else
       render :index
     end

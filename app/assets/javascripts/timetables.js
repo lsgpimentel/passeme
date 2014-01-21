@@ -1,142 +1,155 @@
 var Timetables = function () {
 
 
-  var getProductivityStars = function(n){
-    var html = '';
-    for(i=0; i<n; i++){
-      html += '<div class="star-rating star-rating-hover"></div>';
-    }
-    return html;
 
-  };
-
-  var addTimeToList = function (studyTime) {
-    var lastEle = $("#study-times > .study-time").last();
-    var id = 0;
-    if(lastEle.length > 0) {
-      id = parseInt(lastEle.attr('id').replace('study-time-', '')) + 1;
-    }
-
-
-    var studyTimeDiv = $('<div id="study-time-' + id + '" class="study-time"></div>');
-    $("#study-times").append(studyTimeDiv);
-
-    $.each(studyTime, function(i, n){
-      $('<input type="hidden">').attr({
-        name: 'timetable[study_times_attributes][' + id + '][' + i + ']',
-        value: n
-      }).appendTo($(studyTimeDiv));
-    });
-
-
-    //--//
-    var title = studyTime.from + " - " + studyTime.to;
-
-    var td;
-    $(".time-table th").each(function(i, n){
-      if($(n).data("day") == studyTime.day) {
-        td = $(n).closest("table").find('td')[getSiblingNumber($(n))];
-        return false;
-      }
-    });
-
-    var html = $('<div class="icon-btn span12 study-item" data-study-time="' + id + '">' +
-                 '<p>' + title + '</p>' +
-                 '<a class="remove-study-time"><span class="badge badge-important"><i class="icon-remove"></i></span></a>' +
-                 '</div>');
-
-    $('.remove-study-time', html).on('click', function(){
-      var si = $(this).closest('.study-item');
-      var fieldId = $(si).data('study-time');
-
-      $(si).popover('destroy');
-
-      $(si).remove();
-      $("#study-times > .study-time[id=study-time-" + fieldId +"]").remove();
-
-
-    });
-
-    $(html).popover({ 
-      html : true,
-      trigger: 'hover',
-      placement: 'top',
-      title: function() {
-        return 'Study Time';
-      },
-      content: function() {
-        return '<div class="info-study-time-hover">' + getProductivityStars(studyTime.productivity) + '</div>';
-      }
-    });
-
-    $(td).append($(html));
-
-    function getSiblingNumber(oElement) {
-      return $(oElement).parent().children(oElement.nodeName).index(oElement);
-    }
-
-
-
-  };
-
-
-  var addTimeClickEvent = function(){
-
-    $('#add-time').on('click', function () {
-      var from = $.trim($('#time-from').val());
-      var to = $.trim($('#time-to').val());
-      var productivity = $("input[name=productivity]:checked").val();
-      var days = $("#days").val();
-
-      if(from != '' && to != '' && productivity > 0 && days.length > 0) {
-
-        $.each(days, function(i,n){
-          var studyTime = {
-            day: n,
-            from: from,
-            to: to,
-            productivity: productivity
-          };
-          addTimeToList(studyTime);
-        });
-
-        $('.timepicker-24').timepicker('clear');
-        $("#days").select2('data', null);
-        $("input[name=productivity]").prop('checked', false);
-      }
-    });
-  };
-
-
-  var loadTimes = function(){
-    //predefined events
-    $('#study-times').html("");
-    var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-    for(var i=0; i<10; i++) {
-      var studyTime = {
-        day: days[Math.floor(Math.random()*days.length)],
-        from: "15:10",
-        to: "15:20",
-        productivity: 5
-      };
-      addTimeToList(studyTime);
-    }
-  };
 
   var initStudyTimeStep = function(){
 
-    loadTimes();
-    addTimeClickEvent();
+    var addTimeToList = function (studyTime) {
+
+      var getProductivityStars = function(n){
+        var html = '';
+        for(i=0; i<n; i++){
+          html += '<div class="star-rating star-rating-hover"></div>';
+        }
+        return html;
+
+      };
+
+      var lastEle = $("#study-times > .study-time").last();
+      var id = 0;
+      if(lastEle.length > 0) {
+        id = parseInt(lastEle.attr('id').replace('study-time-', '')) + 1;
+      }
+
+
+      var studyTimeDiv = $('<div id="study-time-' + id + '" class="study-time"></div>');
+      $("#study-times").append(studyTimeDiv);
+
+      $.each(studyTime, function(i, n){
+        $('<input type="hidden">').attr({
+          name: 'timetable[study_times_attributes][' + id + '][' + i + ']',
+          value: n
+        }).appendTo($(studyTimeDiv));
+      });
+
+
+      //--//
+      var title = studyTime.from + " - " + studyTime.to;
+
+      var td;
+      $(".time-table th").each(function(i, n){
+        if($(n).data("day") == studyTime.day) {
+          td = $(n).closest("table").find('td')[getSiblingNumber($(n))];
+          return false;
+        }
+      });
+
+      var html = $('<div class="icon-btn span12 study-item" data-study-time="' + id + '">' +
+                   '<p>' + title + '</p>' +
+                   '<a class="remove-study-time"><span class="badge badge-important"><i class="icon-remove"></i></span></a>' +
+                   '</div>');
+
+      $('.remove-study-time', html).on('click', function(){
+        var si = $(this).closest('.study-item');
+        var fieldId = $(si).data('study-time');
+
+        $(si).popover('destroy');
+
+        $(si).remove();
+        $("#study-times > .study-time[id=study-time-" + fieldId +"]").remove();
+
+
+      });
+
+      $(html).popover({ 
+        html : true,
+        trigger: 'hover',
+        placement: 'top',
+        title: function() {
+          return 'Study Time';
+        },
+        content: function() {
+          return '<div class="info-study-time-hover">' + getProductivityStars(studyTime.productivity) + '</div>';
+        }
+      });
+
+      $(td).append($(html));
+
+      function getSiblingNumber(oElement) {
+        return $(oElement).parent().children(oElement.nodeName).index(oElement);
+      }
+
+    };
+
+
+    var addTimeClickEvent = function(){
+
+      $('#add-time').on('click', function () {
+        var from = $.trim($('#time-from').val());
+        var to = $.trim($('#time-to').val());
+        var productivity = $("input[name=productivity]:checked").val();
+        var days = $("#days").val();
+
+        if(from != '' && to != '' && productivity > 0 && days.length > 0) {
+
+          $.each(days, function(i,n){
+            var studyTime = {
+              day: n,
+              from: from,
+              to: to,
+              productivity: productivity
+            };
+            addTimeToList(studyTime);
+          });
+
+          $('.timepicker-24').timepicker('clear');
+          $("#days").select2('data', null);
+          $("input[name=productivity]").prop('checked', false);
+        }
+      });
+    };
+
+
+    var loadTimes = function(){
+      //predefined events
+      $('#study-times').html("");
+      var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+      for(var i=0; i<100; i++) {
+        var studyTime = {
+          day: days[Math.floor(Math.random()*days.length)],
+          from: "15:10",
+          to: "15:20",
+          productivity: 5
+        };
+        addTimeToList(studyTime);
+      }
+    };
+
+
+    var initOptionsBlock = function(){
+      $("#use-pomodoro-technique").on('change', function(){
+        $("#pomodoro-technique-block").toggle();
+
+      });
+      $("#use-spaced-repetition").on('change', function(){
+        $("#spaced-repetition-block").toggle();
+      });
+    };
 
     $('#days').select2({
       placeholder: "Select the days",
       allowClear: true,
       closeOnSelect: false
     });
+
+    //loadTimes();
+    addTimeClickEvent();
+    initOptionsBlock();
   };
 
   var initStudySourcesStep = function() {
-    $('#study-sources-select').multiSelect({
+    $('#subjects-select').multiSelect({
       selectableOptgroup: true
     });
   };

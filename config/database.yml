@@ -15,3 +15,7 @@ test:
 production:
   <<: *common
   database: passeme_production
+
+algorithm:
+  <<: *common
+  database: passeme_algorithm
