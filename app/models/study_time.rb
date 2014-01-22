@@ -22,6 +22,9 @@ class StudyTime < ActiveRecord::Base
   def duration
     to - from.to_i
   end
+  def duration_in_seconds
+    to - from
+  end
 
   def arrange(study_times)
 

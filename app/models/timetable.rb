@@ -68,4 +68,8 @@ class Timetable < ActiveRecord::Base
     @subjects = Subject.find(subjects.reject(&:empty?))
   end
 
+  def block_size_in_seconds
+    block_size - block_size.at_beginning_of_day
+  end
+
 end

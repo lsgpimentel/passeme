@@ -85,12 +85,24 @@ module EventsService
 
       end
 
+      new_sts = []
       sts.each do |st|
-        diff = st.duration - @timetable.block_size
-        if diff > 0
+        blocks = st.duration_in_seconds / @timetable.block_size_in_seconds
 
-
+        blocks.ceil.times do
+          new_st = st.dup
+          new_st.from = 
+          new_st.to = new_st.from + @timetable.block_size_in_seconds
+          new_sts << new_st
         end
+
+        if blocks % 1 > 0 do
+          new_st = st.dup
+          new_st.from = 
+          new_st.to = new_st.from + (@timetable.block_size_in_seconds * (blocks % 1))
+          new_sts << new_st
+        end
+
       end
 
       sts
