@@ -55,23 +55,51 @@ module EventsService
       #     4. Until termination    
       #     5. Return the best chromosome
       def run
-        generate_initial_population                    #Generate initial population 
+        calculate_ideal_subject_distribution
 
-        @max_generation.times do
+        @population = []
+        @max_generation.times do |g|
+          generate_initial_population                    #Generate initial population 
+
           selected_to_breed = selection                #Evaluates current population 
+          #p selected_to_breed.size
           offsprings = reproduction selected_to_breed  #Generate the population for this new generation
+          #p offsprings.size
           replace_worst_ranked offsprings
 
+          fs = @population.collect {|x| x.fitness }
+          File.open("fitnesses.txt", "a") do |f|
+            f.puts "generation (#{fs.size})  #{g.to_s} = " + fs.join(",")
+          end
         end
         return best_chromosome
       end
 
 
+      #Generate the initial population applying elitism
+      #in the sequencial generations
       def generate_initial_population
-        @population = []
-        @population_size.times do
-          population << Chromosome.seed(study_times, subjects)
+        p = @population_size
+
+        #First generation
+        if @population.empty?
+          p.times do
+            population << Chromosome.seed(study_times, subjects)
+          end
+        else
+          #Generate only 90% of the total population, so the others 10%
+          #come from the previous population
+          p = (p * 0.9).truncate
+
+          new_population = []
+          p.times do
+            new_population << Chromosome.seed(study_times, subjects)
+          end
+
+          #TODO
+          @population = @population[0..((-1*new_population.size)-1)] + new_population
         end
+
       end
 
       # Select best-ranking individuals to reproduce
@@ -104,7 +132,7 @@ module EventsService
           @population.each { |chromosome| chromosome.normalized_fitness = 1}  
         end
         selected_to_breed = []
-        ((2*@population_size)/3).times do 
+        ((@population_size)/4).times do 
           selected_to_breed << select_random_individual(acum_fitness)
         end
 
@@ -123,6 +151,7 @@ module EventsService
         offsprings = []
         0.upto(selected_to_breed.length/2-1) do |i|
           offsprings << Chromosome.reproduce(selected_to_breed[2*i], selected_to_breed[2*i+1])
+          offsprings.flatten! #reproduce is returning an array with 2 childs
         end
         @population.each do |individual|
           Chromosome.mutate(individual)
@@ -134,6 +163,10 @@ module EventsService
       def replace_worst_ranked(offsprings)
         size = offsprings.length
         @population = @population [0..((-1*size)-1)] + offsprings
+
+        #Sort the chromosomes again by fitness after offsprings
+        #being merged
+        @population.sort! { |a, b| b.fitness <=> a.fitness}
       end
 
       # Select the best chromosome in the population
@@ -163,8 +196,15 @@ module EventsService
       #TODO
       def calculate_number_of_generations
         #(study_times.size * subjects.length) *
+      end
 
+      #TODO
+      def calculate_ideal_subject_distribution
+        subjects
+        study_times
 
+        #Set the ideal subject distribution in the Constraint Module
+        EventsService::GeneticAlgorithm::Constraint.ideal_subject_distribution = {}
       end
 
     end

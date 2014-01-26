@@ -52,6 +52,7 @@ class EventsService::GeneticAlgorithm::Chromosome
   #e alocar em outro nó (talvez com fitness baixo também)
   def self.mutate(chromosome)
     if chromosome.normalized_fitness && rand < ((1 - chromosome.normalized_fitness) * 0.3)
+      #p chromosome.normalized_fitness
       data = chromosome.data
       index = rand(data.length-1)
       data[index].subject, data[index+1].subject = data[index+1].subject, data[index].subject
@@ -75,11 +76,11 @@ class EventsService::GeneticAlgorithm::Chromosome
     child2 = b.data[0, point] + a.data[point, a.data.length]
 
 
-    return EventsService::GeneticAlgorithm::Chromosome.new(child1)
-    # return [
-    #   EventsService::GeneticAlgorithm::Chromosome.new(child1),
-    #   EventsService::GeneticAlgorithm::Chromosome.new(child2)
-    # ]
+    #return EventsService::GeneticAlgorithm::Chromosome.new(child1)
+    return [
+      EventsService::GeneticAlgorithm::Chromosome.new(child1),
+      EventsService::GeneticAlgorithm::Chromosome.new(child2)
+    ]
 
   end
 
@@ -87,7 +88,7 @@ class EventsService::GeneticAlgorithm::Chromosome
   # population. Usually the chromosome is generated randomly, but you can 
   # use some problem domain knowledge, to generate a 
   # (probably) better initial solution.
-  def self.seed(study_times, subjects)
+  def self.seed(study_times, subjects, subject_distribution = nil)
     #TODO Para simplificar não tá considerando a importância e dificuldade
     #das matérias quando determina quantos tempos cada uma deve ganhar.
     #Isso não pode ser randômico do jeito que está.
@@ -102,6 +103,10 @@ class EventsService::GeneticAlgorithm::Chromosome
       allocated_times << EventsService::GeneticAlgorithm::AllocatedTime.new(st, subject, study_source)
     end
     return EventsService::GeneticAlgorithm::Chromosome.new(allocated_times)
+  end
+
+  def calculate
+    
   end
 
 end

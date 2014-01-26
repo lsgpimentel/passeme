@@ -6,34 +6,59 @@ module EventsService::GeneticAlgorithm::Constraint
   TYPES = {
     subject_importance_difficulty: {
       type: :soft,
+      weight: 1,
       fitness: -> (alloc_time) { subject_importance_difficulty(alloc_time) }
     },
     subject_difficulty_intercalation: {
       type: :soft,
+      weight: 1,
       fitness: -> (alloc_time_1, alloc_time_2) { subject_difficulty_intercalation(alloc_time_1, alloc_time_2) }
     },
     subject_group_intercalation: {
       type: :soft,
+      weight: 1,
       fitness: -> (alloc_time_1, alloc_time_2) { subject_group_intercalation(alloc_time_1, alloc_time_2) }
+    },
+    subject_distribution_probability: {
+      type: :soft,
+      weight: 1,
+      fitness: -> (distribution, ideal_subject_distribution) { subject_distribution_probability(distribution, ideal_subject_distribution) }
     }
   }
 
+
   def self.calculate(chromosome)
+    subject_distribution = {}
+
     fitness = 0
     chromosome.data.each_with_index do |alloc_time, i|
 
       #fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time)
 
-      #Chama para os tempos de alocação imediatamente anterior e posterior
-      prev_time = chromosome.data[i-1]
+      #Chama para os tempos de alocação imediatamente posterior
       next_time = chromosome.data[i+1]
-      fitness += TYPES[:subject_group_intercalation][:fitness].call(alloc_time, prev_time) unless prev_time.nil?
       fitness += TYPES[:subject_group_intercalation][:fitness].call(alloc_time, next_time) unless next_time.nil?
+      fitness += TYPES[:subject_difficulty_intercalation][:fitness].call(alloc_time, next_time) unless next_time.nil?
+
+      if subject_distribution[alloc_time.subject].nil?
+        subject_distribution[alloc_time.subject] = subject_distribution[alloc_time.study_time.duration_in_seconds]
+      else
+        subject_distribution[alloc_time.subject] += subject_distribution[alloc_time.study_time.duration_in_seconds]
+      end
 
     end
 
+    fitness += TYPES[:subject_distribution_probability][:fitness].call(subject_distribution, @ideal_subject_distribution)
+
     fitness
 
+  end
+
+  #Setter for the ideal distribution, so we can calculate it only
+  #one time in the GeneticSearch class and use it here to define
+  #the fitness
+  def self.ideal_subject_distribution=(distribution)
+    @ideal_subject_distribution = distribution
   end
 
 
@@ -76,12 +101,16 @@ module EventsService::GeneticAlgorithm::Constraint
 
 
   def self.subject_difficulty_intercalation(alloc_time_1, alloc_time_2)
-
+    if alloc_time_1.subject.difficulty == alloc_time_2.subject.difficulty
+      1
+    else
+      0
+    end
   end
 
 
   #Os grupos das matérias devem ser intercalados.
-  #Se o grupo da matéria anterior ou posterior for diferente
+  #Se o grupo da matéria anterior ou posterior for igual
   #aumenta em 1 o fitness
   def self.subject_group_intercalation(alloc_time_1, alloc_time_2)
     if alloc_time_1.subject.subject_group == alloc_time_2.subject.subject_group
@@ -89,6 +118,17 @@ module EventsService::GeneticAlgorithm::Constraint
     else
       0
     end
+  end
+
+  #As matérias possuem uma porcentagem que determina a proporção em
+  #que devem aparecer na grade. Esta constraint verifica o grau de
+  #variabilidade entre a porcentagem ideal e a que foi usada no cromossomo
+  def self.subject_distribution_probability(distribution, ideal_subject_distribution)
+    distribution.each do |subject, time|
+    end
+
+    0
+    
   end
 
 end

@@ -10,7 +10,7 @@ class TimetableValidator < ActiveModel::Validator
   def study_times(timetable)
     interval = timetable.block_interval - timetable.block_interval.beginning_of_day
     timetable.study_times.each do |st|
-      if st.duration <= interval
+      if st.duration_in_seconds <= interval
         st.errors[:base] << "The duration must be bigger than the interval of the Timetable"
       end
     end

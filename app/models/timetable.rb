@@ -45,7 +45,7 @@ class Timetable < ActiveRecord::Base
 
   attr_accessor :use_pomodoro_technique, :pomodoro_technique
   attr_accessor :use_spaced_repetition, :spaced_repetition_time
-  attr_accessor :start_date, :end_date
+  attr_reader :start_date, :end_date
   attr_reader :subjects
 
   def make_active
@@ -65,7 +65,17 @@ class Timetable < ActiveRecord::Base
   end
 
   def subjects=(subjects)
-    @subjects = Subject.find(subjects.reject(&:empty?))
+    #Eager loading because we'll use the subject groups and study sources
+    #to generate the calendar events in the algoritm
+    @subjects = Subject.find(subjects.reject(&:blank?), include: [:study_sources, :subject_group])
+  end
+
+  def start_date=(start_date)
+    @start_date = Date.strptime(start_date, '%d/%m/%Y') 
+  end
+
+  def end_date=(end_date)
+    @end_date = Date.strptime(end_date, '%d/%m/%Y') 
   end
 
   def block_size_in_seconds

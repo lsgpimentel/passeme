@@ -1,31 +1,17 @@
 module EventsService
   class EventsGenerator
+
+    attr_accessor :chromosome
+
     def initialize(timetable)
       @timetable = timetable
 
       @chromosome = run
     end
 
-
-    # def event_sources
-    #   #TODO calculo maluco para gerar a parada
-    #   if @timetable.study_times.present?
-    #     sources = []
-    #     3.times do
-    #       s =  CalendarEventSource.new(subject: Subject.first, color: "F4F4F4")
-    #       3.times do
-    #         s.calendar_events.build(date: Date.current, from_time: Time.current - 5.hours, to_time: Time.current, study_source: StudySource.first, repeats: 'never')
-    #         sources << s
-    #       end
-    #     end
-    #     sources
-    #   end
-    # end
-
     def event_sources
-      dfgdfg
       sources = []
-      colors = SimpleColorPicker::COLORS.values
+      colors = SimpleColorPickerInput::COLORS.values
       @chromosome.unique_subjects.each do |s|
         sources << CalendarEventSource.new(subject: s, color: colors[rand(colors.length)])
       end
@@ -38,7 +24,11 @@ module EventsService
                                      study_source: at.study_source,
                                      repeats: 'weekly',
                                      repeats_every_n_weeks: 1,
-                                     repeats_weekly_each_days_of_the_week_mask: '', #TODO
+                                     #TODO tá repetindo só no dia em que foi criado.
+                                     #Seria bom ver alguma forma de saber logo todos os dias
+                                     #em que se repete pra não ter que criar um evento pra
+                                     #cada dia
+                                     repeats_weekly_each_days_of_the_week_mask: 2**(at.study_time.day.value-1),
                                      repeat_ends: 'on',
                                      repeat_ends_on: @timetable.end_date
                                     )
@@ -61,51 +51,70 @@ module EventsService
 
     private
     def run
-      p normalize_study_times
-      search = EventsService::GeneticAlgorithm::GeneticSearch.new(@timetable.study_times,
+      search = EventsService::GeneticAlgorithm::GeneticSearch.new(get_normalize_study_times,
                                                                   @timetable.subjects,
                                                                   block_interval: @timetable.block_interval,
                                                                   block_size: @timetable.block_size,
                                                                   pomodoro_technique: @timetable.pomodoro_technique,
                                                                   spaced_repetition_time: @timetable.spaced_repetition_time)
-      search.run
+      
+      r = search.run
+      r
     end
 
-    def normalize_study_times
-      sts = @timetable.study_times
+    def get_normalize_study_times
+      grouped_sts = []
       #If the next block of availability is right after this,
       #we group the blocks to later divide then according the
       #block interval specified.
-      sts.each_with_index do |st, i|
-        if sts[i+1].present? && (st.to + 1.minute) >= sts[i+1].from
+      @timetable.study_times.each_with_index do |st, i|
+        last = grouped_sts.last
+        if last.present? && st.day == last.day && (st.to + 1.minute) >= last.from
           #Merge the blocks
-          st.to = sts[i+1].to
-          sts.delete_at(i+1)
+          last.to = st.to
+          
+        else
+          grouped_sts << st
+
         end
 
       end
 
       new_sts = []
-      sts.each do |st|
+      grouped_sts.each do |st|
         blocks = st.duration_in_seconds / @timetable.block_size_in_seconds
 
-        blocks.ceil.times do
+        #We truncate the number of blocks, so we only create complete blocks here
+        blocks.truncate.times do |i|
           new_st = st.dup
-          new_st.from = 
+          #In case it's the first block we use the original from's time
+          #of the grouped (not normalized) study time
+          if i != 0
+            new_st.from = new_sts.last.to + 1.minute
+          end
           new_st.to = new_st.from + @timetable.block_size_in_seconds
           new_sts << new_st
         end
 
-        if blocks % 1 > 0 do
+        #If any incomplete block is left, we create it anyway
+        #with what is left
+        if blocks % 1 > 0
           new_st = st.dup
-          new_st.from = 
-          new_st.to = new_st.from + (@timetable.block_size_in_seconds * (blocks % 1))
+
+          #If this incomplete block is not the only one that we have
+          if blocks.truncate != 0
+            new_st.from = new_sts.last.to + 1.minute
+          end
+
+          #We subtract some minutes because of the 1.minute that we
+          #add to separate the blocks
+          new_st.to = new_st.from + (@timetable.block_size_in_seconds * (blocks % 1)) - blocks.truncate.minutes
           new_sts << new_st
         end
 
       end
 
-      sts
+      new_sts
 
     end
 

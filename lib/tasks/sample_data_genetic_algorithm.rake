@@ -69,12 +69,14 @@ def make_subjects_study_sources(user)
 end
 
 def make_timetable(user)
-  Timetable.create!(
+  t = Timetable.create!(
     goal: 'goal',
     creator_id: user.id,
-    block_interval: Time.current.beginning_of_day + 10.minutes,
-    block_size: Time.current.beginning_of_day + 50.minutes
+    block_interval: Time.current.utc.beginning_of_day + 10.minutes,
+    block_size: Time.current.utc.beginning_of_day + 50.minutes
   )
+  t.build_calendar
+  t
 end
 
 def make_study_times(timetable)

@@ -37,7 +37,6 @@ class TimetablesController < AuthenticatedController
     end
 
     if @timetable.save
-      p @timetable.calendar
     else
       #render :index
       #TODO error
