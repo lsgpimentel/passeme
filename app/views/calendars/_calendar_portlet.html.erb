@@ -3,10 +3,10 @@
   <div class="span12">
     <div class="portlet box light-grey calendar">
       <div class="portlet-title">
-        <div class="caption"><i class="icon-calendar"></i>Calendar</div>
+        <div class="caption"><i class="icon-calendar"></i><%= t('.title') %></div>
         <div class="actions">
           <%= link_to new_calendar_calendar_event_path(calendar), class: "btn green mini new-event" do %>
-            Add Event <i class="icon-plus"></i>
+            <%= t('.buttons.add_event') %> <i class="icon-plus"></i>
           <% end %>
         </div>
       </div>
@@ -19,15 +19,15 @@
             data-url-event-click="<%= calendar_event_click_path(calendar) %>">
 
             <div class="btn-group" id="calendar-options">
-              <button data-close-others="true" data-delay="1000" data-hover="dropdown" data-toggle="dropdown" class="btn yellow dropdown-toggle">Options <i class="icon-angle-down"></i>
+              <button data-close-others="true" data-delay="1000" data-hover="dropdown" data-toggle="dropdown" class="btn yellow dropdown-toggle"><%= t('.options') %> <i class="icon-angle-down"></i>
               </button>
               <ul class="dropdown-menu">
                 <li>
                 <%= link_to new_calendar_calendar_event_path(calendar), class: "new-event" do %>
-                  Add Event <i class="icon-plus"></i>
+                  <%= t('.buttons.add_event') %> <i class="icon-plus"></i>
                 <% end %>
                 <%= link_to calendar_event_sources_path(calendar) do %>
-                  Subjects
+                  <%= t('.buttons.subjects') %> 
                 <% end %>
                 </li>
               </ul>

@@ -1,7 +1,7 @@
 <fieldset id="repeats_yearly_options" class="event_option form-horizontal hide">
 	<%= f.input :repeats_every_n_years %>
 	<div class="control-group">
-		<label class="control-label">Each</label>
+    <label class="control-label"><%= t('.each') %></label>
 		<div class="controls">
 			<% CalendarEvent::MonthsOfTheYear.each do |month_of_the_year| %>
 				<%= label_tag "calendar_event_repeats_yearly_each_months_of_the_year_#{month_of_the_year}", month_of_the_year.humanize, :class => 'checkbox inline' do %>
@@ -14,7 +14,7 @@
 	</div>
 	<%= f.input :repeats_yearly_on, label: false, inline_label: "Repeats yearly on" %>
 	<div id="event_repeats_yearly_on_options" class="control-group">
-		<label class="control-label">On the</label>
+		<label class="control-label"><%= t('.on_the') %></label>
 		<div class="controls">
 	    	<% CalendarEvent::Ordinals.each_with_index do |ordinal,index| %>
 	    		<%= label_tag "calendar_event_repeats_yearly_on_ordinals_#{ordinal}", ordinal, :class => 'checkbox inline' do %>

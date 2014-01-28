@@ -3,7 +3,7 @@
   html: { class: "form-inline subject-form", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-    <h3>New Calendar Event</h3>
+    <h3><%= t('.title') %></h3>
   </div>
   <div class="modal-body">
 
@@ -11,15 +11,15 @@
     <% if @calendar_event.persisted? %>
       <div class="pull-right">
         <%= link_to calendar_calendar_event_path(@calendar, @calendar_event), method: :delete, remote: true, id:"remove-event", class: "btn red", data: { confirm: "Are you sure" } do %>
-          Remove
+          <%= t('.delete') %>
           <i class="icon-remove"></i>
         <% end %>
       </div>
     <% end %>
     <div class="tabbable tabbable-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-        <li><a href="#tab-schedule" data-toggle="tab">Schedule</a></li>
+        <li class="active"><a href="#tab-general" data-toggle="tab"><%= t('.tab.general') %></a></li>
+        <li><a href="#tab-schedule" data-toggle="tab"><%= t('.tab.schedule') %></a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab-general">
@@ -35,7 +35,7 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn">Close</button>
-    <button type="submit" id="create-event" class="btn green">Ok</button>
+    <button type="button" data-dismiss="modal" class="btn"><%= t('buttons.close') %></button>
+    <button type="submit" id="create-event" class="btn green"><%= t('buttons.ok') %></button>
   </div>
 <% end %>

@@ -20,7 +20,7 @@
         </a>
         <ul class="dropdown-menu extended notification">
           <li>
-          <p>You have <%= current_user.unread_notifications.count %> new notifications</p>
+          <p><%= t('.new_notifications_count', count: current_user.unread_notifications.count) %> </p>
           </li>
           <li>
           <ul class="dropdown-menu-list scroller" style="height:250px">
@@ -29,7 +29,7 @@
           </li>
           <li class="external">
             <%= link_to(notifications_path) do %>
-              See all notifications <i class="m-icon-swapright"></i>
+              <%= t('.see_all_notifications') %> <i class="m-icon-swapright"></i>
             <% end %>
           </li>
         </ul>
@@ -44,7 +44,7 @@
         </a>
         <ul class="dropdown-menu extended tasks">
           <li>
-          <p>You have <%= current_user.pending_tasks.count %> pending tasks</p>
+          <p><%= t('.pending_tasks_count', count: current_user.pending_tasks.count) %></p>
           </li>
           <li>
           <ul class="dropdown-menu-list scroller" style="height:250px">
@@ -53,7 +53,7 @@
           </li>
           <li class="external">
             <%= link_to(root_path) do %>
-              See all tasks <i class="m-icon-swapright"></i>
+              <%= t('.see_all_tasks') %> <i class="m-icon-swapright"></i>
             <% end %>
           </li>
         </ul>
@@ -71,29 +71,29 @@
         <ul class="dropdown-menu">
           <li>
            <%= link_to root_path do %>
-             <i class="icon-user"></i> My Profile
+             <i class="icon-user"></i> <%= t('.my_profile') %>
            <% end %>
           </li>
           <li>
             <%= link_to timetables_path do %>
-            <i class="icon-calendar"></i> My Timetables
+            <i class="icon-calendar"></i> <%= t('.my_timetables') %> 
             <% end %>
           </li>
           <li>
             <%= link_to follow_up_path do %>
-            <i class="icon-check"></i> Follow Up
+            <i class="icon-check"></i> <%= t('.follow_up') %>
             <% end %>
           </li>
           <li>
             <%= link_to settings_path do %>
-              <i class="icon-cogs"></i> My Settings
+              <i class="icon-cogs"></i> <%= t('.my_settings') %>
             <% end %>
           </li>
           <li class="divider"></li>
-          <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> Full Screen</a></li>
+          <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> <%= t('.full_screen') %></a></li>
           <li>
             <%= link_to(destroy_user_session_path, method: :delete) do %>
-              <i class="icon-key"></i> Log Out
+              <i class="icon-key"></i> <%= t('.log_out') %> 
             <% end %>
           </li>
         </ul>

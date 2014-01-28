@@ -1,7 +1,7 @@
 <fieldset id="repeats_weekly_options" class="event_option form-horizontal hide">
 	<%= f.input :repeats_every_n_weeks %>
 	<div class="control-group">
-		<label class="control-label">Each</label>
+    <label class="control-label"><%= t('.each') %></label>
 		<div class="controls">
 			<% CalendarEvent::DaysOfTheWeek.each do |day_of_the_week| %>
 				<%= label_tag "calendar_event_repeats_weekly_each_days_of_the_week_#{day_of_the_week}", day_of_the_week.humanize, :class => 'checkbox inline' do %>

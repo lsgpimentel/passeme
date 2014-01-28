@@ -227,6 +227,9 @@ pt-BR:
     submit: Enviar
     login: Login
     resend: Reenviar
+    close: Fechar
+    ok: Ok
+    add: Adicionar
 
 ####### Enumerize #########
   enumerize:
@@ -234,6 +237,63 @@ pt-BR:
       type:
       send_to:
 
+####### Authenticated ########
+  authenticated:
+    header:
+      new_notifications_count: Você tem %{count} novas notificações
+      see_all_notifications: Ver todas notificações
+      pending_tasks_count: Você tem %{count} tarefas pendentes
+      see_all_tasks: Ver todas tarefas
+      my_profile: Meu Perfil
+      my_timetables: Minhas Grades
+      follow_up: Acompanhamento
+      my_settings: Minhas Configurações
+      full_screen: Tela cheia
+      log_out: Sair
+####### Calendar Event Sources #######
+  calendar_event_sources:
+    index:
+      table_label:
+        subject: Matéria
+        color: Cor
+        edit: Editar
+        delete: Excluir
+####### Calendar Events #######
+  calendar_events:
+    form_modal:
+      title: Novo Evento
+      delete: Excluir
+      tab:
+        general: Geral
+        schedule: Repetições
+    form_modal_complete:
+      title: Completar Evento
+      question: Você estudou todo o conteúdo, conforme o planejado?
+      answer_yes: Sim
+      answer_no: Não
+      studied_time_label: Quanto tempo você estudou?
+      studied_time_hint: max. %{meta} mins.
+    form_modal_general:
+      interval_hint: Tempo total de intervalo
+      use_revisions: Usar revisões espaçadas
+    schedule:
+      repeats_monthly_options:
+        each: Cada
+        on_the: Nos
+      repeats_weekly_options:
+        each: Cada
+      repeats_yearly_options:
+        each: Cada
+        on_the: Nos
+####### Calendars #######
+  calendars:
+    calendar_portlet:
+      title: Calendário
+
+      options: Opções
+      buttons:
+        add_event: Adicionar Evento
+        subjects: Matérias
 ####### Notifications ########
 #TODO etc
   notification:
