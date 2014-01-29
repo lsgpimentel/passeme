@@ -230,12 +230,33 @@ pt-BR:
     close: Fechar
     ok: Ok
     add: Adicionar
-
+####### Shared #######
+  shared:
+    form_error_messages:
+      contains_errors:
+        one: O formulário contém 1 erro
+        other: O formulário contém %{count} erros 
+####### Devise ########
+  devise:
+    shared:
+      links:
+        login: Login
+        no_account_text: Não possui conta ainda?
+        sign_up: Criar
+        forgot_password: Esqueceu sua senha?
+        no_confirmation_instructions: Didn't receive confirmation instructions?
+        no_unlock_instructions: Didn't receive unlock instructions?
+        sign_in_with_provider: Sign in with %{provider_name}
+        
+          
+          
 ####### Enumerize #########
   enumerize:
     notification_preferences:
       type:
       send_to:
+###### Static Pages ######
+  static_pages:
 
 ####### Authenticated ########
   authenticated:
@@ -295,8 +316,52 @@ pt-BR:
         add_event: Adicionar Evento
         subjects: Matérias
 ####### Dashboard #######
-
+  dashboard:
+    no_timetable:
+      no_active_timetable: It looks like you don't have any active timetable at the moment.
+      create_click_below: But don't worry! You can create one clicking below.
+      tour: If you want to make a tour through the system, click in the button below.
+      buttons:
+        create_timetable: Create my timetable!
+        make_tour: Make Tour!
+    stats:
+      title: General Stats
+####### Follow Up #######
+  follow_up:
+    studied_with_debt:
+      table_label:
+        date: Data
+        subjec: Matéria
+        meta: Meta
+        studied_time: Tempo Estudado
+        debt_reason: Razão do Débito
+    studied:
+      table_label:
+        date: Data
+        subjec: Matéria
+        meta: Meta
+        studied_time: Tempo Estudado
+    to_study:
+      table_label:
+        date: Data
+        time: Tempo
+        subjec: Matéria
+        meta: Meta
+        complete: Completo
+    index:
+      title: Acompanhamento
+      tabs:
+        studied_with_debt: Estudado com débito
+        studied: Estudado
+        to_study: À estudar
+      filter:
+        change_range: Mudar período
+          
 ####### Notifications ########
+notifications:
+  index:
+    title: Notificações
+
 #TODO etc
   notification:
     task:
@@ -308,6 +373,92 @@ pt-BR:
     group:
       invitation:
 
+###### Reports ######
+  reports:
+    index:
+      results_for: Mostrando resultados para a grade: 
+    follow_up_not_studied_reason: 
+      title: Razões para não estudar
+      
+###### Settings ######
+  settings:
+    index:
+      tabs:
+        general:
+          label: Geral
+          text: Geral
+        notifications:
+          label: Notificações
+          text: Receber notificações quando alguém...
+          site: Site
+          email: E-Mail
+          phone: Celular
+         
+###### Study Sources #####
+  study_sources:
+    form_modal:
+      title:
+        study_source: Fonte de Estudo
+    index:
+      table_label:
+        type: Tipo
+        title: Título
+        author: Autor
+        edit: Alterar
+        delete: Excluir
+##### Subject Groups ######
+  subject_groups:
+    index:
+      available_subjects: Matérias Disponíveis
+      new_group: Novo Grupo
+    subject_group:
+      delete_confirmation: Você tem certeza?
+###### Subjects #######
+  subjects:
+    index:
+      buttons:
+        subject_groups: Grupos
+        view_study_sources: Ver (%{count})
+      table_label:
+        name: Nome
+        importance: Importância
+        difficulty: Dificuldade
+        study_sources: Fontes de Estudo
+        edit: Alterar
+        delete: Excluir 
+    form_modal:
+      title: Matéria
+    study_sources:
+      title: Fontes de Estudo para %{subject}
+###### Tasks ######
+  tasks:
+    form_modal:
+      title: Tarefa
+    index:
+      title: Tarefas
+      more_options: Mais
+      list:
+        all: Todas
+        pending: Pendentes
+        overdue: Expiradas
+        completed: Completas
+      new_task: Nova Tarefa
+    task:
+      delete_task: Excluir
+      more_options: Mais
+      #name_placeholder: Nome
+      #due_in_placeholder: Data de Expiração
+###### Timetables ######
+  timetables:
+    initial_data:
+      title: Coloque algumas informações gerais sobre a grade
+    study_time:
+    subjects_study_sources:
+    timetable:
+    create:
+    index:
+    new:
+    no_timetable:
 ###### Date and time pickers ######
   datepicker:
     dformat: '%d/%m/%Y'        # display format of the date (this is the default, can be ommited)

@@ -5,7 +5,7 @@
     <div class="caption"><%= sg.name %></div>
     <div class="tools">
       <a href="javascript:;" class="collapse"></a>
-      <%= link_to '', subject_group_path(sg), class: "remove", remote: true, method: :delete, confirm: "Are you sure?" %>
+      <%= link_to '', subject_group_path(sg), class: "remove", remote: true, method: :delete, confirm: "<%= t('.delete_confirmation') %>" %>
     </div>
   </div>
 

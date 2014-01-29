@@ -2,33 +2,29 @@
 <div class="tabbable tabbable-custom tabs-left">
   <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs tabs-left">
-    <li class="active"><a href="#general" data-toggle="tab">General</a></li>
-    <li ><a href="#notifications" data-toggle="tab">Notifications</a></li>
-    <li><a href="#tab3" data-toggle="tab">Blablabla</a></li>
+    <li class="active"><a href="#general" data-toggle="tab"><%= t('.tabs.general.label') %></a></li>
+    <li ><a href="#notifications" data-toggle="tab"><%= t('.tabs.notifications.label') %></a></li>
   </ul>
 
   <div class="tab-content">
     <div class="tab-pane active" id="general">
-      <p>General</p>
+      <p><%= t('.tabs.general.text') %></p>
     </div>
     <div class="tab-pane" id="notifications">
-      <p>Get notified when someone...</p>
+      <p><%= t('.tabs.notifications.text') %></p>
       <table class="table table-hover">
         <thead>
           <tr>
             <th></th>
-            <th>Site</th>
-            <th>E-Mail</th>
-            <th>Phone</th>
+            <th><%= t('.tabs.notifications.site') %></th>
+            <th><%= t('.tabs.notifications.email') %></th>
+            <th><%= t('.tabs.notifications.phone') %></th>
           </tr>
         </thead>
         <tbody>
           <%= render partial: "settings/notification_setting", locals: { f: f } %>
         </tbody>
       </table>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <p>tab3</p>
     </div>
   </div>
   <div class="form-actions">

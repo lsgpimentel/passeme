@@ -3,7 +3,7 @@
   html: { class: "form-vertical study-source-form", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-    <h3>New Study Source</h3>
+    <h3><%= t(.title) %></h3>
   </div>
   <div class="modal-body">
     <%= f.input :type %>
@@ -12,7 +12,7 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn">Close</button>
-    <button type="submit" class="btn green">Ok</button>
+    <button type="button" data-dismiss="modal" class="btn"><%= t('buttons.close') %></button>
+    <button type="submit" class="btn green"><%= t('buttons.ok') %></button>
   </div>
 <% end %>

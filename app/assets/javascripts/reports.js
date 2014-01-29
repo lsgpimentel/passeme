@@ -15,7 +15,7 @@ var Reports = function() {
 
     //Trigger the onchange so the charts get filled when the screen is opened for the first time
     $("#timetable-select").trigger('change');
-  }
+  };
 
   var initReports = function(data){
     if(data.follow_up_not_studied_reason){
@@ -33,13 +33,13 @@ var Reports = function() {
 
 
 
-  }
+  };
 
 
   return {
     init: function(){
       timetableSelect();
     }
-  }
+  };
 
 }();

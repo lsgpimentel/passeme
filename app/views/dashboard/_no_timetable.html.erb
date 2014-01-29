@@ -1,16 +1,12 @@
 <div class="span6 no-timetable">
   <div class="details">
     <h4>
-      <p>
-      It looks like you don't have any active timetable at the moment.
-      </p>
-      <p>
-      But don't worry! You can create one clicking below.
-      </p>
+      <p><%= t('.no_active_timetable') %></p>
+      <p><%= t('.create_click_below') %></p>
     </h4>
     <p class="text-center">
     <%= link_to new_timetable_path, class: "btn light-grey big" do %>
-      Create my timetable!
+      <%= t('.buttons.create_timetable') %>
       <i class="m-icon-big-swapright m-icon-white"></i>
     <% end %>
     </p>
@@ -20,13 +16,11 @@
 <div class="span6 no-timetable">
   <div class="details">
     <h4>
-      <p>
-      If you want to make a tour through the system, click in the button below.
-      </p>
+      <p><%= t('.tour') %></p>
     </h4>
     <p class="text-center">
     <%= link_to new_timetable_path, class: "btn yellow big" do %>
-      Create my timetable!
+      <%= t('.buttons.make_tour') %>
       <i class="m-icon-big-swapright m-icon-white"></i>
     <% end %>
     </p>

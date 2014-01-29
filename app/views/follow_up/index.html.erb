@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <div class="span12">
-    <div id="follow-up-date-range" data-url-callback="<%= timetable_follow_up_path(@timetable) %>" class="date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="Change follow up date range">
+    <div id="follow-up-date-range" data-url-callback="<%= timetable_follow_up_path(@timetable) %>" class="date-range tooltips no-tooltip-on-touch-device responsive" data-tablet="" data-desktop="tooltips" data-placement="top" data-original-title="<%= t('.filter.change_range') %>">
       <i class="icon-calendar"></i>
       <span></span>
       <i class="icon-angle-down"></i>
@@ -11,14 +11,14 @@
 <div class="row-fluid">
   <div class="portlet box blue tabbable">
     <div class="portlet-title">
-      <div class="caption"><i class="icon-reorder"></i>Follow Up</div>
+      <div class="caption"><i class="icon-reorder"></i><%= t('.title') %></div>
     </div>
     <div class="portlet-body">
       <div class="tabbable portlet-tabs">
         <ul class="nav nav-tabs">
-          <li><a href="#portlet-studied-debt" data-toggle="tab">Studied with debt</a></li>
-          <li><a href="#portlet-studied" data-toggle="tab">Studied</a></li>
-          <li class="active"><a href="#portlet-to-study" data-toggle="tab">To Study</a></li>
+          <li><a href="#portlet-studied-debt" data-toggle="tab"><%= t('.tabs.studied_with_debt') %></a></li>
+          <li><a href="#portlet-studied" data-toggle="tab"><%= t('.tabs.studied') %></a></li>
+          <li class="active"><a href="#portlet-to-study" data-toggle="tab"><%= t('.tabs.to_study') %></a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="portlet-to-study">

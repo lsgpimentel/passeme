@@ -16,11 +16,11 @@
 </div>
 <div class="task-config">
   <div class="task-config-btn btn-group">
-    <a class="btn mini blue" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">More <i class="icon-angle-down"></i></a>
+    <a class="btn mini blue" href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"><%= t('.more_options') %> <i class="icon-angle-down"></i></a>
     <ul class="dropdown-menu pull-right">
       <li>
       <%= link_to task, class: "delete-task" do %>
-        <i class="icon-trash"></i> Delete
+        <i class="icon-trash"></i> <%= t('.delete_task') %>
       <% end %>
       </li>
     </ul>
