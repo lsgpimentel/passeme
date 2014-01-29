@@ -294,6 +294,8 @@ pt-BR:
       buttons:
         add_event: Adicionar Evento
         subjects: Matérias
+####### Dashboard #######
+
 ####### Notifications ########
 #TODO etc
   notification:
