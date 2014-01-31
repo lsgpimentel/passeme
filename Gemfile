@@ -84,6 +84,10 @@ gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem 'jquery-simplecolorpicker-rails', github: 'tkrotoff/jquery-simplecolorpicker-rails'
 gem "haml-rails", "~> 0.5.2"
 gem "table_print", "~> 1.5.1"
+gem "descriptive_statistics", github: 'thirtysixthspan/descriptive_statistics', require: 'descriptive_statistics/safe'
+
+#gem 'responders', github: 'plataformatec/responders'
+  
 
 
 

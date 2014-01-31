@@ -23,6 +23,8 @@ class FollowUpItem < ActiveRecord::Base
 
   belongs_to :calendar_event
 
+  validates :calendar_event, :date, :from_time, :to_time, presence: true
+
   def in_debt?
     debt_reason != nil
   end

@@ -40,6 +40,7 @@
 - [x] ~~Não faz sentido ter tempo de intervalo no study_time, quando o tempo de intervalo é aplicado após um bloco ser concluído e é fixo para toda a Timetable. Neste caso, excluir o tempo de intervalo do study_time, e adicioná-lo na timetable.~~
 - [x] ~~Adicionar um atributo em Timetable para armazenar o tamanho do bloco de estudos~~
 - [ ] Criar página de profile do usuário (users#show)
+- [ ] Usar a gem responders para refatorar as mensagens de flash lançadas pelo controller para não ter que ficar usando vários respond_to
 
 
 # Anotações Caderno

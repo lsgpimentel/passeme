@@ -23,4 +23,6 @@ class Notification < ActiveRecord::Base
 
   enumerize :type, in: { task_before_overdue: 1, follow_up_next_day: 2, follow_up_next_month: 3, follow_up_past_month: 4, group_create: 5 }, predicates: { prefix: true }
   enumerize :sent_to, in: { phone: 1, email: 2, site: 3 }, predicates: { prefix: true }, scope: :sent_to
+
+  validates :type, :sent_to, presence: true
 end

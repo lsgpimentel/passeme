@@ -3,31 +3,31 @@
 	<div class="control-group">
     <label class="control-label"><%= t('.each') %></label>
 		<div class="controls">
-			<% CalendarEvent::MonthsOfTheYear.each do |month_of_the_year| %>
+			<% CalendarEvent::MonthsOfTheYear.each_with_index do |month_of_the_year, index| %>
 				<%= label_tag "calendar_event_repeats_yearly_each_months_of_the_year_#{month_of_the_year}", month_of_the_year.humanize, :class => 'checkbox inline' do %>
 					<%= check_box_tag "calendar_event[repeats_yearly_each_months_of_the_year][#{month_of_the_year}]", month_of_the_year, f.object.repeats_yearly_each_months_of_the_year.include?(month_of_the_year), {:name => "calendar_event[repeats_yearly_each_months_of_the_year][]"} %>
-					<%= month_of_the_year.humanize %>
+					<%= t('date.month_names')[index].humanize %>
 				<% end %>
 			<% end %>
 			<%= hidden_field_tag "calendar_event[repeats_yearly_each_months_of_the_year][]", "" %>
 		</div>
 	</div>
-	<%= f.input :repeats_yearly_on, label: false, inline_label: "Repeats yearly on" %>
+	<%= f.input :repeats_yearly_on, label: false, inline_label: t('activerecord.attributes.calendar_event.repeats_yearly_on') %>
 	<div id="event_repeats_yearly_on_options" class="control-group">
 		<label class="control-label"><%= t('.on_the') %></label>
 		<div class="controls">
 	    	<% CalendarEvent::Ordinals.each_with_index do |ordinal,index| %>
 	    		<%= label_tag "calendar_event_repeats_yearly_on_ordinals_#{ordinal}", ordinal, :class => 'checkbox inline' do %>
 					<%= check_box_tag "calendar_event[repeats_yearly_on_ordinals][#{ordinal}]", ordinal, f.object.repeats_yearly_on_ordinals.include?(ordinal), {:name => "calendar_event[repeats_yearly_on_ordinals][]"} %>
-					<%= CalendarEvent::HumanOrdinals[index] %>
+          <%= t('repetitions.ordinals')[index] %>
 				<% end %>
 			<% end %>
 			<%= hidden_field_tag "calendar_event[repeats_yearly_on_ordinals][]", "" %>
 			<hr />
-			<% CalendarEvent::DaysOfTheWeek.each do |day_of_the_week| %>
+			<% CalendarEvent::DaysOfTheWeek.each_with_index do |day_of_the_week, index| %>
 				<%= label_tag "calendar_event_repeats_yearly_on_days_of_the_week_#{day_of_the_week}", day_of_the_week.humanize, :class => 'checkbox inline' do %>
 					<%= check_box_tag "calendar_event[repeats_yearly_on_days_of_the_week][#{day_of_the_week}]", day_of_the_week, f.object.repeats_yearly_on_days_of_the_week.include?(day_of_the_week), {:name => "calendar_event[repeats_yearly_on_days_of_the_week][]"} %>
-					<%= day_of_the_week.humanize %>
+          <%= t('date.day_names')[index].humanize %>
 				<% end %>
 			<% end %>
 	    	<%= hidden_field_tag "calendar_event[repeats_yearly_on_days_of_the_week][]", "" %>

@@ -19,6 +19,8 @@ class StudyTime < ActiveRecord::Base
 
   enumerize :productivity, in: { one: 1, two: 2, three: 3, four: 4, five: 5}, predicates: { prefix: true }
 
+  validates :day, :from, :to, :productivity, :timetable, presence: true
+
   def duration
     to - from.to_i
   end

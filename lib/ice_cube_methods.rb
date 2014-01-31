@@ -16,13 +16,10 @@ module IceCubeMethods
     base.send :validate, :from_must_come_before_to
   end
 
-  RepeatsOptions = ['never','daily','weekly','monthly','yearly']
-  RepeatEndsOptions = ['never','on','count']
-  RepeatMonthlyOptions = ['each','on']
+  #Ice_cube specific
   DaysOfTheWeek = %w[sunday monday tuesday wednesday thursday friday saturday]
   DaysOfTheMonth = (1..31).to_a
   Ordinals = [1,2,3,4,-1]
-  HumanOrdinals = ['first','second','third','fourth','last']
   MonthsOfTheYear = %w[january february march april may june july august september october november december]
 
   def repeats_weekly_each_days_of_the_week=(repeats_weekly_each_days_of_the_week)

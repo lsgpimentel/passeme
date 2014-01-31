@@ -1,9 +1,9 @@
-<%= simple_form_for @study_source, remote: true,
+<%= simple_form_for @study_source, 
   defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
   html: { class: "form-vertical study-source-form", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-    <h3><%= t(.title) %></h3>
+    <h3><%= t('.title') %></h3>
   </div>
   <div class="modal-body">
     <%= f.input :type %>

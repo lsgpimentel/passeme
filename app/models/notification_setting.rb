@@ -28,4 +28,6 @@ class NotificationSetting < ActiveRecord::Base
 
   enumerize :type, in: { task_before_overdue: 1, follow_up_next_day: 2, follow_up_next_month: 3, follow_up_past_month: 4, group_create: 5 }, predicates: { prefix: true }
 
+  validates :type, presence: true
+
 end

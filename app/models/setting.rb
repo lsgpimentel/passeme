@@ -13,4 +13,6 @@ class Setting < ActiveRecord::Base
 
   accepts_nested_attributes_for :notification_settings
 
+  validates :user, presence: true
+
 end

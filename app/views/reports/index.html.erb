@@ -1,6 +1,6 @@
 <div class="row-fluid">
   <div class="span12">
-    <h4 class="show-results-timetable"><%= t('.results_for') %> &nbsp;&nbsp;&nbsp;</h4>
+    <h4 class="show-results-timetable"><%= t('.results_for') %>: &nbsp;&nbsp;&nbsp;</h4>
 
     <select id="timetable-select" style="width: 45%;" data-url-callback="<%= change_timetable_report_path %>">
       <% current_user.timetables.each do |t| %>

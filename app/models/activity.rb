@@ -30,4 +30,7 @@ class Activity < ActiveRecord::Base
 
   before_create :set_type
 
+
+  validates :type, presence: true
+
 end

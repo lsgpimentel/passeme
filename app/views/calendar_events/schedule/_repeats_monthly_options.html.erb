@@ -1,6 +1,6 @@
 <fieldset id="repeats_monthly_options" class="event_option form-horizontal hide">
 	<%= f.input :repeats_every_n_months %>
-	<%= f.input :repeats_monthly, collection: CalendarEvent::RepeatMonthlyOptions, include_blank: false %>
+	<%= f.input :repeats_monthly, collection: t('repetitions.monthly_options'), include_blank: false %>
 	<div id="event_repeats_monthly_each" class="control-group">
     <label class="control-label"><%= t('.each') %></label>
 		<div class="controls">
@@ -19,15 +19,15 @@
 			<% CalendarEvent::Ordinals.each_with_index do |ordinal,index| %>
 		    	<%= label_tag "calendar_event_repeats_monthly_on_ordinals_#{ordinal}", ordinal, :class => 'checkbox inline' do %>
 		    		<%= check_box_tag "calendar_event[repeats_monthly_on_ordinals][#{ordinal}]", ordinal, f.object.repeats_monthly_on_ordinals.include?(ordinal), {:name => "calendar_event[repeats_monthly_on_ordinals][]"} %>
-		    		<%= CalendarEvent::HumanOrdinals[index] %>
+		    		<%= t('repetitions.ordinals')[index] %>
 		    	<% end %>
 		    <% end %>
 		  	<%= hidden_field_tag "calendar_event[repeats_monthly_on_ordinals][]", "" %>
 			<hr />
-			<% CalendarEvent::DaysOfTheWeek.each do |day_of_the_week| %>
+			<% CalendarEvent::DaysOfTheWeek.each_with_index do |day_of_the_week, index| %>
 				<%= label_tag "calendar_event_repeats_monthly_on_days_of_the_week_#{day_of_the_week}", day_of_the_week.humanize, :class => 'checkbox inline' do %>
 		    		<%= check_box_tag "calendar_event[repeats_monthly_on_days_of_the_week][#{day_of_the_week}]", day_of_the_week, f.object.repeats_monthly_on_days_of_the_week.include?(day_of_the_week), {:name => "calendar_event[repeats_monthly_on_days_of_the_week][]"} %>
-		    		<%= day_of_the_week.humanize %>
+		    		<%= t('date.day_names')[index].humanize %>
 		    	<% end %>
 			<% end %>
 			<%= hidden_field_tag "calendar_event[repeats_monthly_on_days_of_the_week][]", "" %>

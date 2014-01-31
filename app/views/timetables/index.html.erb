@@ -9,13 +9,13 @@
       <div class="span12">
         <div class="btn-group pull-right timetables-group">
           <a class="btn purple dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-            <i class="icon-calendar"></i> Timetables
-            <i class="icon-angle-down"></i>
+            <i class="icon-calendar"></i> <%= t('.title') %>
+          <i class="icon-angle-down"></i>
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <li>
             <%= link_to new_timetable_path do %>
-              <i class="icon-plus"></i> Add
+              <i class="icon-plus"></i> <%= t('buttons.add') %>
             <% end %>
             </li>
             <li class="divider"></li>
@@ -23,8 +23,8 @@
           </ul>
         </div>
         <%= render partial: 'calendars/calendar_portlet', locals: { calendar: @active_timetable.calendar } %>
-        </div>
-        </div>
-        <!-- END CALENDAR PORTLET-->
       </div>
     </div>
+    <!-- END CALENDAR PORTLET-->
+  </div>
+</div>

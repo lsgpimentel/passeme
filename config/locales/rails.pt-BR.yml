@@ -35,7 +35,6 @@ pt-BR:
       long: ! '%d de %B de %Y'
       short: ! '%d de %B'
     month_names:
-    -
     - Janeiro
     - Fevereiro
     - Março
@@ -213,8 +212,49 @@ pt-BR:
 
 ######## Models & Attributes ########
     models:
+      activity: Atividade
+      calendar: Calendário
+      calendar_event_source: Matéria do Calendário
+      calendar_event: Evento do Calendário
+      follow_up_item: Item de Acompanhamento
+      group: Grupo de Estudos
+      notification: Notificação
+      notification_setting: Configuração de Notificação
+      setting: Configuração
+      study_source: Fonte de Estudo
+      study_time: Tempo de Estudo
+      subject: Matéria
+      task: Tarefa
+      timetable: Grade de Tempo
+      user: Usuário
     attributes:
-      user:
+      activity:
+        type: Tipo
+      calendar:
+      calendar_event_source:
+        color: Cor
+      calendar_event:
+        date: Data
+        from_time: Tempo de Início
+        to_time: Tempo de Término
+        repeats: Repetição
+        repeats_every_n_days: Intervalo de dias
+        repeats_every_n_weeks: Intervalo de semanas
+        repeats_weekly_each_days_of_the_week_mask: Dias da semana a repetir
+        repeats_every_n_months: Intervalo de meses
+        repeats_monthly: Repete mensalmente
+        repeats_monthly_each_days_of_the_month_mask: Dias do mês a repetir
+        repeats_monthly_on_ordinals_mask: Repete mensalmente nos
+        repeats_monthly_on_days_of_the_week_mask: Dias da semana do mês
+        repeats_every_n_years: Intervalo de anos
+        repeats_yearly_each_months_of_the_year_mask: Meses do ano
+        repeats_yearly_on: Repete anualmente em
+        repeats_yearly_on_ordinals_mask: Repete anualmente nos
+        repeats_yearly_on_days_of_the_week_mask: Dias da semana do ano
+        repeat_ends: Termina
+        repeat_ends_on: Data de término
+        repeat_ends_count: Quantidade de repetições
+        interval: Intervalo
 
 ######### Languages ##########
   translation:
@@ -230,6 +270,7 @@ pt-BR:
     close: Fechar
     ok: Ok
     add: Adicionar
+    continue: Continuar
 ####### Shared #######
   shared:
     form_error_messages:
@@ -247,9 +288,6 @@ pt-BR:
         no_confirmation_instructions: Didn't receive confirmation instructions?
         no_unlock_instructions: Didn't receive unlock instructions?
         sign_in_with_provider: Sign in with %{provider_name}
-        
-          
-          
 ####### Enumerize #########
   enumerize:
     notification_preferences:
@@ -331,23 +369,23 @@ pt-BR:
     studied_with_debt:
       table_label:
         date: Data
-        subjec: Matéria
+        subject: Matéria
         meta: Meta
         studied_time: Tempo Estudado
         debt_reason: Razão do Débito
     studied:
       table_label:
         date: Data
-        subjec: Matéria
+        subject: Matéria
         meta: Meta
         studied_time: Tempo Estudado
     to_study:
       table_label:
         date: Data
         time: Tempo
-        subjec: Matéria
+        subject: Matéria
         meta: Meta
-        complete: Completo
+        complete: Completar
     index:
       title: Acompanhamento
       tabs:
@@ -358,9 +396,9 @@ pt-BR:
         change_range: Mudar período
           
 ####### Notifications ########
-notifications:
-  index:
-    title: Notificações
+  notifications:
+    index:
+      title: Notificações
 
 #TODO etc
   notification:
@@ -376,8 +414,8 @@ notifications:
 ###### Reports ######
   reports:
     index:
-      results_for: Mostrando resultados para a grade: 
-    follow_up_not_studied_reason: 
+      results_for: Mostrando resultados para a grade
+    follow_up_not_studied_reason:
       title: Razões para não estudar
       
 ###### Settings ######
@@ -397,8 +435,7 @@ notifications:
 ###### Study Sources #####
   study_sources:
     form_modal:
-      title:
-        study_source: Fonte de Estudo
+      title: Fonte de Estudo
     index:
       table_label:
         type: Tipo
@@ -406,6 +443,11 @@ notifications:
         author: Autor
         edit: Alterar
         delete: Excluir
+    #From controllers
+    create:
+      create_successful: A fonte de estudo foi criada com sucesso.
+    update:
+      update_successful: A fonte de estudo foi atualizada com sucesso.
 ##### Subject Groups ######
   subject_groups:
     index:
@@ -430,6 +472,12 @@ notifications:
       title: Matéria
     study_sources:
       title: Fontes de Estudo para %{subject}
+
+    #From Controllers
+    update_study_sources:
+      update_successful: Suas fontes de estudo foram atualizados com sucesso.
+    update:
+      update_successful: A matéria foi atualizada com sucesso.
 ###### Tasks ######
   tasks:
     form_modal:
@@ -453,12 +501,55 @@ notifications:
     initial_data:
       title: Coloque algumas informações gerais sobre a grade
     study_time:
+      title: Coloque sua disponibilidade de estudo
+      new_time: Novo Tempo
+      study_times: Tempos de Estudo
+      options: Opções
+      use_pomodoro: Usar a técnica de Pomodoro
+      use_repetition: Usar repetição espaçada
     subjects_study_sources:
+      title: Matérias e Fontes de Estudo
     timetable:
+      active: " (ativa)"
+      event_sources: Matérias associadas
+      make_active: Fazer desta a grade ativa
     create:
     index:
+      title: Grades de Tempo
     new:
+      planning_phase: Fase de Planejamento - 
+      phases:
+        initial_data:
+          number: 1
+          text: Dados Iniciais
+        availability:
+          number: 2
+          text: Disponibilidade
+        subjects:
+          number: 3
+          text: Matérias
+        confirmation:
+          number: 4
+          text: Confirmação
     no_timetable:
+      no_active_timetable: It looks like you don't have any active timetable at the moment.
+      create_click_below: But don't worry! You can create one clicking below.
+      buttons:
+        create_timetable: Create my timetable!
+###### Sidebar Navigation ######
+  navigation:
+    items:
+      dashboard: Painel
+      planning:
+        title: Planejamento
+        subjects: Matérias
+        subject_groups: Grupos de Matéria
+        study_sources: Fontes de Estudo
+      timetables: Grades de Tempo
+      follow_up: Acompanhamento
+      reports: Relatórios
+      groups: Grupos
+      settings: Configurações
 ###### Date and time pickers ######
   datepicker:
     dformat: '%d/%m/%Y'        # display format of the date (this is the default, can be ommited)
@@ -467,5 +558,29 @@ notifications:
   timepicker:
     dformat: '%R'              # display format of the time (this is the default, can be ommited)
     pformat: 'hh:mm'           # picking format of the time (this is the default, can be ommited)
+
+###### Repetitions ######
+  repetitions:
+    #TODO Bem feio dessa forma, mas só assim funfou
+    #Melhor fazer pelo simple_form
+    options:
+      Nunca: never
+      Diariamente: daily
+      Semanalmente: weekly
+      Mensalmente: monthly
+      Anualmente: yearly
+    end_options:
+      Nunca: never
+      Em: 'on'
+      Quantidade: count
+    monthly_options:
+      Cada: each
+      Em: 'on'
+    ordinals:
+      - Primeiro
+      - Segundo
+      - Terceiro
+      - Quarto
+      - Último
 
 

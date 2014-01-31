@@ -1,11 +1,11 @@
-<h3 class="form-section">Provide your study availability</h3>
+<h3 class="form-section"><%= t('.title') %></h3>
 
 <div class="row-fluid">
   <div class="span3 responsive" data-tablet="span12 fix-margin" data-desktop="span8">
 
     <div class="portlet box green new-time">
       <div class="portlet-title">
-        <div class="caption"><i class="icon-coffee"></i>New Time</div>
+        <div class="caption"><i class="icon-coffee"></i><%= t('.new_time') %></div>
         <div class="tools">
           <a href="javascript:;" class="collapse"></a>
         </div>
@@ -33,13 +33,9 @@
         <div class="row-fluid">
 
           <select id="days" class="span12 select2" multiple>
-            <option value="sunday">Sunday</option>
-            <option value="monday">Monday</option>
-            <option value="tuesday">Tuesday</option>
-            <option value="wednesday">Wednesday</option>
-            <option value="thursday">Thursday</option>
-            <option value="friday">Friday</option>
-            <option value="saturday">Saturday</option>
+            <% t('date.day_names').each_with_index do |day, i| %>
+              <option value="<%= Date::DAYNAMES[i].downcase %>"><%= day %></option>
+            <% end %>
           </select>
         </div>
 
@@ -69,7 +65,7 @@
 
     <div class="portlet box yellow">
       <div class="portlet-title">
-        <div class="caption"><i class="icon-coffee"></i>Study Times</div>
+        <div class="caption"><i class="icon-coffee"></i><%= t('.study_times') %></div>
         <div class="tools">
           <a href="javascript:;" class="collapse"></a>
         </div>
@@ -78,13 +74,9 @@
         <table class="time-table table table-bordered">
           <thead>
             <tr>
-              <th data-day="sunday">Sun</th>
-              <th data-day="monday">Mon</th>
-              <th data-day="tuesday">Tue</th>
-              <th data-day="wednesday">Wed</th>
-              <th data-day="thursday">Thu</th>
-              <th data-day="friday">Fri</th>
-              <th data-day="saturday">Sat</th>
+              <% t('date.abbr_day_names').each_with_index do |day, i| %>
+                <th data-day="<%= Date::DAYNAMES[i].downcase %>"><%= day %></th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -121,7 +113,7 @@
 <div class="row-fluid">
   <div class="portlet box light-grey new-time">
     <div class="portlet-title">
-      <div class="caption"><i class="icon-coffee"></i>Options</div>
+      <div class="caption"><i class="icon-coffee"></i><%= t('.options') %></div>
       <div class="tools">
         <a href="javascript:;" class="collapse"></a>
       </div>
@@ -136,7 +128,7 @@
 
         <div class="span4">
           <label class="checkbox">
-            <input type="checkbox" name="timetable[use_pomodoro_technique]" id="use-pomodoro-technique" /> Use the pomodoro technique
+            <input type="checkbox" name="timetable[use_pomodoro_technique]" id="use-pomodoro-technique" /> <%= t('.use_pomodoro') %>
           </label>
 
           <div id="pomodoro-technique-block" class="hide">
@@ -149,7 +141,7 @@
 
         <div class="span4">
           <label class="checkbox">
-            <input type="checkbox" name="timetable[use_spaced_repetition]" id="use-spaced-repetition" /> Use spaced repetition
+            <input type="checkbox" name="timetable[use_spaced_repetition]" id="use-spaced-repetition" /> <%= t('.use_repetition') %>
           </label>
           <div id="spaced-repetition-block" class="hide">
             <%= f.input :spaced_repetition_time, as: :time_picker %>

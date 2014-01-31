@@ -18,6 +18,10 @@ class CalendarEventSource < ActiveRecord::Base
 
   accepts_nested_attributes_for :calendar_events, allow_destroy: true
 
+  validates :subject, :color, :calendar, presence: true
+
+  validates_associated :calendar_events
+
   def name
     subject.name
   end

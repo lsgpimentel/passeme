@@ -3,13 +3,14 @@ class SubjectsController < AuthenticatedController
 
   before_filter :check_user_is_owner_of_subject, :only => [:study_sources, :update_study_sources, :edit, :update, :destroy, :update_subject_group ]
 
+
   def index
     @subjects = current_user.subjects
   end
 
   def create
     @subject = current_user.subjects.build(subject_params)
-    if @subject.save!
+    if @subject.save
       #TODO error
     else
       #render :index
@@ -17,7 +18,6 @@ class SubjectsController < AuthenticatedController
 
     respond_to do |format|
       format.html { redirect_to action: :index }
-      format.js
     end
   end
 
@@ -43,18 +43,19 @@ class SubjectsController < AuthenticatedController
   end
 
   def update
-    @subject.update_attributes(subject_params)
+    flash[:notice] = t('.update_successful') if @subject.update_attributes(subject_params)
+    respond_to do |format|
+      format.html { redirect_to action: :index }
+    end
   end
 
   def update_study_sources
+    flash[:notice] = t('.update_successful') if @subject.update_attributes(subject_params)
     respond_to do |format|
-      if @subject.update_attributes(subject_params)
-        flash[:notice] = 'Study sources successfully updated.'
-        format.html { redirect_to action: :index }
-      end
+      format.html { redirect_to action: :index }
     end
   end
-  
+
   #Update subject group
   #Used in the subject group x subject association page
   def update_subject_group

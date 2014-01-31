@@ -30,6 +30,7 @@ p timetable
 
 end
 tp all_runs
+p all_runs.map(&:fitness).inject(0, :+) / all_runs.size
 #tp all_runs[0].data.collect {|x| x.subject }
 
 

@@ -9,7 +9,8 @@ class StudySourcesController < AuthenticatedController
 
   def create
     @study_source = current_user.study_sources.build(study_source_params)
-    if @study_source.save!
+    if @study_source.save
+      flash[:notice] = t('.create_successful')
     else
       #TODO error
       #render :index
@@ -17,7 +18,6 @@ class StudySourcesController < AuthenticatedController
 
     respond_to do |format|
       format.html { redirect_to action: :index }
-      format.js
     end
   end
 
@@ -36,7 +36,10 @@ class StudySourcesController < AuthenticatedController
   end
 
   def update
-    @study_source.update_attributes(study_source_params)
+    flash[:notice] = t('.update_successful') if @study_source.update_attributes(study_source_params)
+    respond_to do |format|
+      format.html { redirect_to action: :index }
+    end
   end
 
   def destroy

@@ -26,4 +26,6 @@ class StudySource < ActiveRecord::Base
 
   has_many :calendar_events
 
+  validates :type, :title, :creator, presence: true
+
 end

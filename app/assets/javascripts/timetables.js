@@ -158,7 +158,6 @@ var Timetables = function () {
 
     var form = $('#form-timetable');
     var error = $('.alert-error', form);
-    var success = $('.alert-success', form);
 
     form.validate({
       doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
@@ -179,7 +178,6 @@ var Timetables = function () {
       },
 
       invalidHandler: function (event, validator) { //display error alert on form submit   
-        success.hide();
         error.show();
         App.scrollTo(error, -200);
       },
@@ -200,7 +198,6 @@ var Timetables = function () {
       },
 
       submitHandler: function (form) {
-        success.show();
         error.hide();
         form.submit();
         //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
@@ -230,7 +227,6 @@ var Timetables = function () {
         return false;
       },
       onNext: function (tab, navigation, index) {
-        success.hide();
         error.hide();
 
         if (form.valid() == false) {
@@ -271,7 +267,6 @@ var Timetables = function () {
         App.scrollTo($('.page-title'));
       },
       onPrevious: function (tab, navigation, index) {
-        success.hide();
         error.hide();
 
         var total = navigation.find('li').length;

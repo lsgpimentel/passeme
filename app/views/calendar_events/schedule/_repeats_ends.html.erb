@@ -1,5 +1,5 @@
 <fieldset id="repeats_options" class="event_option form-horizontal hide">
-  <%= f.input :repeat_ends, collection: CalendarEvent::RepeatEndsOptions, include_blank: false %>
+  <%= f.input :repeat_ends, collection: t('repetitions.end_options'), include_blank: false %>
   <div id="event_repeat_ends_on">
     <%= f.input :repeat_ends_on, as: :date_picker %>
   </div>

@@ -1,3 +1,5 @@
+require 'descriptive_statistics/safe'
+
 module EventsService
   # The GeneticAlgorithm module implements the GeneticSearch and Chromosome 
   # classes. The GeneticSearch is a generic class, and can be used to solved 
@@ -30,8 +32,8 @@ module EventsService
       attr_accessor :study_times
       attr_accessor :subjects
 
-      DEFAULT_INITIAL_POPULATION_SIZE = 800
-      DEFAULT_GENERATIONS = 5
+      DEFAULT_INITIAL_POPULATION_SIZE = 400
+      DEFAULT_GENERATIONS = 20
 
       def initialize(study_times, subjects, options = {})
         @population_size = options[:initial_population_size] || DEFAULT_INITIAL_POPULATION_SIZE
@@ -55,6 +57,8 @@ module EventsService
       #     4. Until termination    
       #     5. Return the best chromosome
       def run
+        calculate_number_of_generations
+        hbfg
         calculate_ideal_subject_distribution
 
         @population = []
@@ -62,10 +66,12 @@ module EventsService
           generate_initial_population                    #Generate initial population 
 
           selected_to_breed = selection                #Evaluates current population 
-          #p selected_to_breed.size
           offsprings = reproduction selected_to_breed  #Generate the population for this new generation
-          #p offsprings.size
           replace_worst_ranked offsprings
+
+          #Sort the chromosomes again by fitness after offsprings
+          #being merged
+          @population.sort! { |a, b| b.fitness <=> a.fitness}
 
           fs = @population.collect {|x| x.fitness }
           File.open("fitnesses.txt", "a") do |f|
@@ -132,7 +138,7 @@ module EventsService
           @population.each { |chromosome| chromosome.normalized_fitness = 1}  
         end
         selected_to_breed = []
-        ((@population_size)/4).times do 
+        ((2*@population_size)/3).times do 
           selected_to_breed << select_random_individual(acum_fitness)
         end
 
@@ -164,9 +170,6 @@ module EventsService
         size = offsprings.length
         @population = @population [0..((-1*size)-1)] + offsprings
 
-        #Sort the chromosomes again by fitness after offsprings
-        #being merged
-        @population.sort! { |a, b| b.fitness <=> a.fitness}
       end
 
       # Select the best chromosome in the population
@@ -190,21 +193,42 @@ module EventsService
 
       #TODO
       def calculate_population_size
-
+        study_times.size * subjects.size
       end
 
       #TODO
       def calculate_number_of_generations
+        sb = subjects
+        sb.extend(DescriptiveStatistics)
+        st = study_times
+        st.extend(DescriptiveStatistics)
+
+        diffulty_deviation = sb.map(&:difficulty_value).standard_deviation
+        importance_deviation = sb.map(&:importance_value).standard_deviation
+        productivity_deviation = st.map(&:productivity_value).standard_deviation
+        #importância das matérias, dificuldade das matérias e produtividade dos horários,
         #(study_times.size * subjects.length) *
+
+        p diffulty_deviation 
+        p importance_deviation 
+        p productivity_deviation 
+
       end
 
-      #TODO
+      #TODO Tá distribuindo somente conforme a importância.
+      #No futuro considerar também a dificuldade da matéria
       def calculate_ideal_subject_distribution
-        subjects
-        study_times
+        distribution = {}
+        total_time = study_times.map(&:duration_in_seconds).inject(0, :+)
+        total_importance = subjects.map(&:importance_value).inject(0, :+)
+
+        subjects.each_with_index do |subject, i|
+          percent = subject.importance_value.to_f / total_importance
+          distribution[subject] = percent * total_time
+        end
 
         #Set the ideal subject distribution in the Constraint Module
-        EventsService::GeneticAlgorithm::Constraint.ideal_subject_distribution = {}
+        EventsService::GeneticAlgorithm::Constraint.ideal_subject_distribution = distribution
       end
 
     end

@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   before_create { email.downcase! }
   after_create :build_default_notification_settings
 
+  validates :name, presence: true
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }

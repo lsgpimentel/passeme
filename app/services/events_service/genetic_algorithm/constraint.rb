@@ -41,9 +41,9 @@ module EventsService::GeneticAlgorithm::Constraint
       fitness += TYPES[:subject_difficulty_intercalation][:fitness].call(alloc_time, next_time) unless next_time.nil?
 
       if subject_distribution[alloc_time.subject].nil?
-        subject_distribution[alloc_time.subject] = subject_distribution[alloc_time.study_time.duration_in_seconds]
+        subject_distribution[alloc_time.subject] = alloc_time.study_time.duration_in_seconds
       else
-        subject_distribution[alloc_time.subject] += subject_distribution[alloc_time.study_time.duration_in_seconds]
+        subject_distribution[alloc_time.subject] += alloc_time.study_time.duration_in_seconds
       end
 
     end
@@ -124,10 +124,19 @@ module EventsService::GeneticAlgorithm::Constraint
   #que devem aparecer na grade. Esta constraint verifica o grau de
   #variabilidade entre a porcentagem ideal e a que foi usada no cromossomo
   def self.subject_distribution_probability(distribution, ideal_subject_distribution)
-    distribution.each do |subject, time|
+    cost = 0
+    distribution.each do |subject, duration|
+      #DIferença em minutos entre o ideal e o que foi usado
+      diff = (ideal_subject_distribution[subject] - duration).abs / 60
+
+      #Soma ao custo somente em caso de diferença maior que 5 minutos,
+      #por considerar diferenças menores do que isso irrelevantes.
+      if diff > 5
+        cost += diff
+      end
     end
 
-    0
+    cost
     
   end
 

@@ -15,7 +15,7 @@
       <td class="text-center"><%= l ei.start.to_date %></td>
       <td class="text-center"><%= l(ei.event.from_time, format: :only_time) + ' - ' + l(ei.event.to_time, format: :only_time) %></td>
       <td class="text-center"><%= ei.title %></td>
-      <td class="text-center"><%= ei.event.duration %></td>
+      <td class="text-center"><%= l(ei.event.meta, format: :only_time) %></td>
       <td class="text-center">
         <%= show_complete_button(ei) %>
       </td>

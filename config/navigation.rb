@@ -49,19 +49,19 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
-    primary.item :home, 'Dashboard', root_path, icon: 'icon-home', class: 'start'
+    primary.item :home, t('navigation.items.dashboard'), root_path, icon: 'icon-home', class: 'start'
 
-    primary.item :planning, 'Planning', icon: 'icon-edit' do |sub_nav|
-      sub_nav.item :subjects, 'Subjects', subjects_path
-      sub_nav.item :subject_groups, 'Subject Groups', subject_groups_path
-      sub_nav.item :study_sources, 'Study Sources', study_sources_path
+    primary.item :planning, t('navigation.items.planning.title'), icon: 'icon-edit' do |sub_nav|
+      sub_nav.item :subjects, t('navigation.items.planning.subjects'), subjects_path
+      sub_nav.item :subject_groups, t('navigation.items.planning.subject_groups'), subject_groups_path
+      sub_nav.item :study_sources, t('navigation.items.planning.study_sources'), study_sources_path
     end
 
-    primary.item :timetables, 'Timetables', timetables_path, icon: 'icon-calendar'
-    primary.item :follow_up, 'Follow Up', follow_up_path, icon: 'icon-check'
-    primary.item :reports, 'Reports', reports_path, icon: 'icon-bar-chart'
-    primary.item :groups, 'Groups', groups_path, icon: 'icon-group'
-    primary.item :settings, 'Settings', settings_path, icon: 'icon-cogs'
+    primary.item :timetables, t('navigation.items.timetables'), timetables_path, icon: 'icon-calendar'
+    primary.item :follow_up, t('navigation.items.follow_up'), follow_up_path, icon: 'icon-check'
+    primary.item :reports, t('navigation.items.reports'), reports_path, icon: 'icon-bar-chart'
+    primary.item :groups, t('navigation.items.groups'), groups_path, icon: 'icon-group'
+    primary.item :settings, t('navigation.items.settings'), settings_path, icon: 'icon-cogs'
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu

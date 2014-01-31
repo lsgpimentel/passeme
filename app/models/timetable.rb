@@ -48,6 +48,12 @@ class Timetable < ActiveRecord::Base
   attr_reader :start_date, :end_date
   attr_reader :subjects
 
+  validates :goal, :creator, :block_size, :block_interval, :start_date, :end_date, presence: true
+
+  validates_date :start_date, after: Date.current
+  validates_date :end_date, after: :start_date
+
+
   def make_active
     #Deactive all other timetables from the user
     creator.timetables.delete_if {|t| t == self }.each do |t|

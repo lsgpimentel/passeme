@@ -27,4 +27,6 @@ class Subject < ActiveRecord::Base
   #Can be in many calendar event_sources
   has_many :calendar_event_sources
 
+  validates :name, :difficulty, :importance, :creator, presence: true
+
 end

@@ -67,7 +67,9 @@ class CalendarEventsController < AuthenticatedController
       @calendar_event.revision_events.destroy_all
     end
 
-    @calendar_event.save
+    p @calendar_event
+
+    @calendar_event.save!
   end
 
   def info_net_hours

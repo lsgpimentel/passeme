@@ -7,7 +7,7 @@
     <%= f.association :study_sources, collection: current_user.study_sources, input_html: { id: "study-sources-select" } %>
   </div>
   <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn"><%= t('buttons.close') %><</button>
+    <button type="button" data-dismiss="modal" class="btn"><%= t('buttons.close') %></button>
     <button type="submit" class="btn green"><%= t('buttons.ok') %></button>
   </div>
 <% end %>

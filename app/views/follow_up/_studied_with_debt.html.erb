@@ -14,7 +14,7 @@
     <tr class="<%= follow_up_item_class(e) %>">
       <td class="text-center"><%= l e.date %></td>
       <td class="text-center"><%= e.calendar_event.subject.name %></td>
-      <td class="text-center"><%= e.calendar_event.meta %></td>
+      <td class="text-center"><%= l(e.calendar_event.meta, format: :only_time) %></td>
       <td class="text-center"><%= l(e.studied_time, format: :only_time) %></td>
       <td class="text-center"><%= e.debt_reason %></td>
     </tr>
