@@ -13,6 +13,8 @@
 class StudyTime < ActiveRecord::Base
   extend Enumerize
 
+  default_scope -> { order(day: :asc, from: :asc) }
+
   belongs_to :timetable
 
   enumerize :day, in: { sunday: 1, monday: 2, tuesday: 3, wednesday: 4, thursday: 5, friday: 6, saturday: 7 }, predicates: true

@@ -11,9 +11,9 @@
 #
 
 class Task < ActiveRecord::Base
-  belongs_to :user
   default_scope -> { order('created_at DESC') }
 
+  belongs_to :user
   validates :name, :user, presence: true
   validates :due_in, allow_nil: true, timeliness: { after: Date.current }
 

@@ -15,22 +15,23 @@ pt = PomodoroTechnique.new
 pt.time_long_break = Time.current.beginning_of_day + 30.minutes
 pt.time_short_break = Time.current.beginning_of_day + 5.minutes
 timetable.pomodoro_technique = pt
+timetable.use_pomodoro_technique = true
+timetable.block_size = Time.current.beginning_of_day + 25.minutes 
 
 
+tp EventsService::StudyTimesNormalization.new(timetable).get_normalized
 
-p timetable
-
-5.times do
-  Benchmark.bm do |bm|
-    bm.report do
-      generator = ::EventsService::EventsGenerator.new(timetable)
-      all_runs << generator.chromosome
-    end
-  end
-
-end
-tp all_runs
-p all_runs.map(&:fitness).inject(0, :+) / all_runs.size
+# 5.times do
+#   Benchmark.bm do |bm|
+#     bm.report do
+#       generator = ::EventsService::EventsGenerator.new(timetable)
+#       all_runs << generator.chromosome
+#     end
+#   end
+# 
+# end
+# tp all_runs
+# p all_runs.map(&:fitness).inject(0, :+) / all_runs.size
 #tp all_runs[0].data.collect {|x| x.subject }
 
 

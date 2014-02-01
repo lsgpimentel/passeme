@@ -88,4 +88,8 @@ class Timetable < ActiveRecord::Base
     block_size - block_size.at_beginning_of_day
   end
 
+  def block_interval_in_seconds
+    block_interval - block_interval.at_beginning_of_day
+  end
+
 end

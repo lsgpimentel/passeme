@@ -101,7 +101,9 @@ module EventsService::GeneticAlgorithm::Constraint
 
 
   def self.subject_difficulty_intercalation(alloc_time_1, alloc_time_2)
-    if alloc_time_1.subject.difficulty == alloc_time_2.subject.difficulty
+    if alloc_time_1.subject.difficulty == alloc_time_2.subject.difficulty &&
+      alloc_time_1.study_time.day == alloc_time_2.study_time.day &&
+      alloc_time_1.subject != alloc_time_2.subject
       1
     else
       0
@@ -113,7 +115,9 @@ module EventsService::GeneticAlgorithm::Constraint
   #Se o grupo da matéria anterior ou posterior for igual
   #aumenta em 1 o fitness
   def self.subject_group_intercalation(alloc_time_1, alloc_time_2)
-    if alloc_time_1.subject.subject_group == alloc_time_2.subject.subject_group
+    if alloc_time_1.subject.subject_group == alloc_time_2.subject.subject_group &&
+      alloc_time_1.study_time.day == alloc_time_2.study_time.day &&
+      alloc_time_1.subject != alloc_time_2.subject
       1
     else
       0
@@ -131,8 +135,9 @@ module EventsService::GeneticAlgorithm::Constraint
 
       #Soma ao custo somente em caso de diferença maior que 5 minutos,
       #por considerar diferenças menores do que isso irrelevantes.
+      #O custo é devolvido em horas
       if diff > 5
-        cost += diff
+        cost += diff / 60
       end
     end
 

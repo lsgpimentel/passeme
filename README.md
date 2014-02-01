@@ -34,13 +34,15 @@
 - [x] ~~Quando um item já está como estudado, ele não deve aparecer na aba de "para estudar". Porém, devido a um problema na manipulação do timezone dos objetos time, não tá funcionando direito. Verificar depois.~~
 - [x] ~~Quando não há nenhuma timetable criada está dando erro quando tento abrir o follow up. Deve ter algum tratamento dizendo que o usuário precisa criar uma timetable, ou então o item nem aparece no menu.~~
 - [x] ~~No follow up não deve ser deixado o usuário marcar como completo horários que ainda não aconteceram, e sim somente os que já passaram.~~
-- [ ] Se o usuário estiver criando a primeira timetable, então esta deverá se tornar ativa por padrão.
-- [ ] Na criação do evento do calendário, no dropdown select2 de event sources, o alinhamento dos itens do select está com problema.
+- [x] ~~Se o usuário estiver criando a primeira timetable, então esta deverá se tornar ativa por padrão.~~
+- [x] ~~Na criação do evento do calendário, no dropdown select2 de event sources, o alinhamento dos itens do select está com problema.~~
 - [ ] Mudar a tela de criação da timetable, para que na última etapa o usuário selecione as matérias e para cada matéria selecione as fontes de estudo que ele quer usar para colocar no calendário gerado pelo algoritmo. Tem que pensar em como vai fazer feita a interface, já que uma fonte de estudo pode estar sendo usada em várias matérias. O Algoritmo precisa receber um hash
 - [x] ~~Não faz sentido ter tempo de intervalo no study_time, quando o tempo de intervalo é aplicado após um bloco ser concluído e é fixo para toda a Timetable. Neste caso, excluir o tempo de intervalo do study_time, e adicioná-lo na timetable.~~
 - [x] ~~Adicionar um atributo em Timetable para armazenar o tamanho do bloco de estudos~~
 - [ ] Criar página de profile do usuário (users#show)
 - [ ] Usar a gem responders para refatorar as mensagens de flash lançadas pelo controller para não ter que ficar usando vários respond_to
+- [ ] Se tiver usando técnica de pomodoro, não usar o campo de block_interval (retirar da tela)
+- [ ] Bug quando a normalização dos tempos de estudo é feita usando a técnica de pomodoro. Neste caso, a divisão dos pomodoros está sendo feita de acordo com os tempos de estudos agrupados e separados pela produtividade, quando deveria ser agrupado independente da produtividade, mas mantendo esta quando for gerar o novo bloco.
 
 
 # Anotações Caderno
@@ -211,6 +213,7 @@ Um problema de planejar logo de cara a longo termo é que você tem que consider
 
 - [ ] Para o usuário não ter que ficar indo todo dia no sistema e marcando os horários de início e término do estudo, o sistema poderia imprimir para este um calendário semanal e no fim do ciclo (que pode ser no fim de semana), o usuário marcar se seguiu os horários ou não. Assim evitaria deste ter que ficar todo dia abrindo a aplicação para informar horários.
 Na impressão teria de ter campos já separados para ele anotar os horários à caneta, etc, para depois transpor para a aplicação.
+
 
 
 Copyright 2013 @ Leonardo Pimentel
