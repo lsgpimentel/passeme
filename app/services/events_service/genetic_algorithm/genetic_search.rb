@@ -36,15 +36,15 @@ module EventsService
       DEFAULT_GENERATIONS = 20
 
       def initialize(study_times, subjects, options = {})
-        @population_size = options[:initial_population_size] || DEFAULT_INITIAL_POPULATION_SIZE
-        @max_generation = options[:generations] || DEFAULT_GENERATIONS
+        @study_times = study_times
+        @subjects = subjects
+        @population_size = options[:initial_population_size] || calculate_population_size
+        @max_generation = options[:generations] || calculate_number_of_generations
         @block_interval = options[:block_interval]
         @block_size = options[:block_size]
         @pomodoro_technique = options[:pomodoro_technique]
         @spaced_repetition_time = options[:spaced_repetition_time]
         @generation = 0
-        @study_times = study_times
-        @subjects = subjects
       end
 
       #     1. Choose initial population
@@ -57,8 +57,6 @@ module EventsService
       #     4. Until termination    
       #     5. Return the best chromosome
       def run
-        calculate_number_of_generations
-        hbfg
         calculate_ideal_subject_distribution
 
         @population = []
@@ -191,27 +189,22 @@ module EventsService
         end
       end
 
-      #TODO
       def calculate_population_size
-        study_times.size * subjects.size
+        ((study_times.size * subjects.size)/2).truncate
       end
 
-      #TODO
       def calculate_number_of_generations
-        sb = subjects
-        sb.extend(DescriptiveStatistics)
-        st = study_times
-        st.extend(DescriptiveStatistics)
 
-        diffulty_deviation = sb.map(&:difficulty_value).standard_deviation
-        importance_deviation = sb.map(&:importance_value).standard_deviation
-        productivity_deviation = st.map(&:productivity_value).standard_deviation
-        #importância das matérias, dificuldade das matérias e produtividade dos horários,
-        #(study_times.size * subjects.length) *
+        d = subjects.map(&:difficulty_value).extend(DescriptiveStatistics)
+        i = subjects.map(&:importance_value).extend(DescriptiveStatistics)
+        p = study_times.map(&:productivity_value).extend(DescriptiveStatistics)
 
-        p diffulty_deviation 
-        p importance_deviation 
-        p productivity_deviation 
+        diffulty_deviation = d.standard_deviation
+        importance_deviation = i.standard_deviation
+        productivity_deviation = p.standard_deviation
+
+
+        Math.sqrt((study_times.size + subjects.size) * (diffulty_deviation + importance_deviation + productivity_deviation)).round
 
       end
 
