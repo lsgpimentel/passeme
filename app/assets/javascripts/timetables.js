@@ -135,6 +135,8 @@ var Timetables = function () {
       $("#use-spaced-repetition").on('change', function(){
         $("#spaced-repetition-block").toggle();
       });
+      $("#timetable_spaced_repetition_percent_block_size").inputmask({ "mask": "9", "repeat": 2, "greedy": false }); 
+
     };
 
     $('#days').select2({

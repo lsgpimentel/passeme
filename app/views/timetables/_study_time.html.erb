@@ -144,7 +144,10 @@
             <input type="checkbox" name="timetable[use_spaced_repetition]" id="use-spaced-repetition" /> <%= t('.use_repetition') %>
           </label>
           <div id="spaced-repetition-block" class="hide">
-            <%= f.input :spaced_repetition_time, as: :time_picker %>
+            <%= f.input :spaced_repetition_percent_block_size, as: :integer do %>
+              <%= f.input_field :spaced_repetition_percent_block_size, class: "m-wrap input-mini" %>
+              <span class="percent">%</span>
+            <% end %>
           </div>
         </div>
 

@@ -30,6 +30,16 @@ class EventsService::GeneticAlgorithm::Chromosome
     data.collect { |x| x.subject }.uniq
   end
 
+  def grouped_by_days
+    grouped = {}
+    data.each do |at|
+      grouped[at.study_time.day_value] = [] if grouped[at.study_time.day_value].nil?
+      grouped[at.study_time.day_value].push(at)
+    end
+
+    grouped
+  end
+
   # mutation method is used to maintain genetic diversity from one 
   # generation of a population of chromosomes to the next. It is analogous 
   # to biological mutation. 
@@ -55,7 +65,8 @@ class EventsService::GeneticAlgorithm::Chromosome
       #p chromosome.normalized_fitness
       data = chromosome.data
       index = rand(data.length-1)
-      data[index].subject, data[index+1].subject = data[index+1].subject, data[index].subject
+      index2 = rand(data.length-1)
+      data[index].subject, data[index2].subject = data[index2].subject, data[index].subject
       chromosome.data = data
       @fitness = nil
     end

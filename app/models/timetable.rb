@@ -44,7 +44,7 @@ class Timetable < ActiveRecord::Base
   #
 
   attr_accessor :use_pomodoro_technique, :pomodoro_technique
-  attr_accessor :use_spaced_repetition, :spaced_repetition_time
+  attr_accessor :use_spaced_repetition, :spaced_repetition_percent_block_size
   attr_reader :start_date, :end_date
   attr_reader :subjects
 
@@ -82,6 +82,14 @@ class Timetable < ActiveRecord::Base
 
   def end_date=(end_date)
     @end_date = Date.strptime(end_date, '%d/%m/%Y') 
+  end
+
+  def spaced_repetition_percent_block_size=(percent)
+    @spaced_repetition_percent_block_size = 1/percent
+  end
+
+  def spaced_repetition_block_size_in_seconds
+    spaced_repetition_percent_block_size * block_size_in_seconds
   end
 
   def block_size_in_seconds

@@ -52,6 +52,7 @@
 //= require flot/jquery.flot.pie
 //= require flot/jquery.flot.stack
 //= require flot/jquery.flot.crosshair
+//= require jquery-inputmask/jquery.inputmask.bundle.min
 //
 //= require turbolinks
 //= require app

@@ -34,7 +34,7 @@ module EventsService
           new_st = st.dup
           #In case it's the first block we use the original from's time
           #of the grouped (not normalized) study time, otherwise we get
-          #the last block's to_time + 1 minute + interval
+          #the last block's to_time + interval
           if i != 0
             if @timetable.use_pomodoro_technique
               #Take a long break in case we alreay have 4 blocks, otherwise take a short break

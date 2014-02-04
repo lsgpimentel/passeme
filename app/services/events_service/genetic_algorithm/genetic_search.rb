@@ -40,11 +40,6 @@ module EventsService
         @subjects = subjects
         @population_size = options[:initial_population_size] || calculate_population_size
         @max_generation = options[:generations] || calculate_number_of_generations
-        @block_interval = options[:block_interval]
-        @block_size = options[:block_size]
-        @pomodoro_technique = options[:pomodoro_technique]
-        @spaced_repetition_time = options[:spaced_repetition_time]
-        @generation = 0
       end
 
       #     1. Choose initial population
@@ -58,6 +53,9 @@ module EventsService
       #     5. Return the best chromosome
       def run
         calculate_ideal_subject_distribution
+
+        p "population size >>>>>> " + @population_size.to_s
+        p "max generations >>>>>> " + @max_generation.to_s
 
         @population = []
         @max_generation.times do |g|
@@ -190,7 +188,7 @@ module EventsService
       end
 
       def calculate_population_size
-        ((study_times.size * subjects.size)/2).truncate
+        (Math.log(study_times.size * subjects.size, 3) * 100).truncate
       end
 
       def calculate_number_of_generations
@@ -204,7 +202,7 @@ module EventsService
         productivity_deviation = p.standard_deviation
 
 
-        Math.sqrt((study_times.size + subjects.size) * (diffulty_deviation + importance_deviation + productivity_deviation)).round
+        Math.sqrt(((study_times.size + subjects.size) * diffulty_deviation * importance_deviation * productivity_deviation)/3).round
 
       end
 
