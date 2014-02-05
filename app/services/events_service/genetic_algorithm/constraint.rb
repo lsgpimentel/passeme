@@ -1,6 +1,7 @@
 module EventsService::GeneticAlgorithm::Constraint
 
   MAX_IMPORTANCE_DIFFICULTY_VALUE = 5
+  MAX_PRODUCTIVITY_VALUE = 5
 
   #Tipos de constraints usadas pelo sistema
   TYPES = {
@@ -76,26 +77,39 @@ module EventsService::GeneticAlgorithm::Constraint
 
   end
 
+  #Relação entre a importância e dificuldade da matéria e a produtividade
+  #do horário.
+  #Neste caso, temos quatro situações que devem ser tratadas,
+  #que dependendo do caso exigem uma determinada Produtividade de horário.
+  #1. Matérias com alta importância e baixa dificuldade -> Alta Produtividade
+  #2. Matérias com alta importância e alta dificuldade -> Alta Produtividade
+  #3. Matérias com baixa importância e baixa dificuldade -> Baixa Produtividade
+  #4. Matérias com baixa importância e alta dificuldade -> Baixa Produtividade
   def self.subject_importance_difficulty(alloc_time)
     importance = alloc_time.subject.importance.value
-    difficulty = alloc_time.subject.difficulty.value
+    # difficulty = alloc_time.subject.difficulty.value
     prod = alloc_time.study_time.productivity.value
 
-    diff = (importance - difficulty).abs
+    #Importância alta = >= do que 75% da maior importância
+    is_high_importance = importance >= MAX_IMPORTANCE_DIFFICULTY_VALUE * 0.75
 
-    #Diferença > 50%
-    if diff > (MAX_IMPORTANCE_DIFFICULTY_VALUE / 2)
-      #TODO considerar a importancia na dificuldade e vice-versa
-      if importance > difficulty
-        ((importance / MAX_IMPORTANCE_DIFFICULTY_VALUE) * (prod / 2))
-      else
-        difficulty / prod
+    #Importância baixa = <= do que 50% da maior importância
+    is_low_importance = importance <= MAX_IMPORTANCE_DIFFICULTY_VALUE * 0.55
+
+    is_high_productivity = prod >= MAX_PRODUCTIVITY_VALUE * 0.75
+
+    if is_high_importance
+      unless is_high_productivity
+        return 1
       end
 
-    else
-      #Se a diferença não for tão grande
-      ((importance / MAX_IMPORTANCE_DIFFICULTY_VALUE) * prod) + ((difficulty / MAX_IMPORTANCE_DIFFICULTY_VALUE) * prod)
+    elsif is_low_importance
+      if is_high_productivity
+        return 1
+      end
     end
+
+
 
   end
 

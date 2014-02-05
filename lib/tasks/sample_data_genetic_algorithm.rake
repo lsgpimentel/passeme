@@ -12,8 +12,12 @@ namespace :db do
       make_subjects_study_sources(user)
 
       timetable = make_timetable(user)
+      timetable1 = make_timetable(user)
+      timetable2 = make_timetable(user)
 
-      make_study_times(timetable)
+      make_study_times(timetable, 14, 7)
+      make_study_times(timetable1, 10, 5)
+      make_study_times(timetable2, 6, 4)
     end
 
   end
@@ -73,19 +77,21 @@ def make_timetable(user)
     goal: 'goal',
     creator_id: user.id,
     block_interval: Time.current.utc.beginning_of_day + 10.minutes,
-    block_size: Time.current.utc.beginning_of_day + 50.minutes
+    block_size: Time.current.utc.beginning_of_day + 50.minutes,
+    start_date: "15/02/2014",
+    end_date: "15/03/2015"
   )
   t.build_calendar
   t
 end
 
-def make_study_times(timetable)
+def make_study_times(timetable, hours, days)
 
   t = Time.current.midnight
 
   #7 days
-  7.times do |d|
-    14.times do |i|
+  days.times do |d|
+    hours.times do |i|
       StudyTime.create!(
         day: d+1,
         from: t + i.hours,

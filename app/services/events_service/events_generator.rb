@@ -2,11 +2,13 @@ module EventsService
   class EventsGenerator
 
     attr_accessor :chromosome
+    attr_accessor :result
 
     def initialize(timetable)
       @timetable = timetable
 
-      @chromosome = run
+      @result = run
+      @chromosome = @result[:chromosomes].last
     end
 
     def event_sources

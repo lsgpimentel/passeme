@@ -58,6 +58,8 @@ module EventsService
         p "max generations >>>>>> " + @max_generation.to_s
 
         @population = []
+        result = {}
+        best_chromosomes = []
         @max_generation.times do |g|
           generate_initial_population                    #Generate initial population 
 
@@ -71,10 +73,15 @@ module EventsService
 
           fs = @population.collect {|x| x.fitness }
           File.open("fitnesses.txt", "a") do |f|
-            f.puts "generation (#{fs.size})  #{g.to_s} = " + fs.join(",")
+            f.puts "generation (#{fs.size})  #{g.to_s} = " + fs.join(", ")
           end
+
+          best_chromosomes << @population[0]
         end
-        return best_chromosome
+        result[:chromosomes] = best_chromosomes
+        result[:population_size] = @population_size
+        result[:generations] = @max_generation+1
+        return result
       end
 
 
@@ -89,9 +96,9 @@ module EventsService
             population << Chromosome.seed(study_times, subjects)
           end
         else
-          #Generate only 90% of the total population, so the others 10%
+          #Generate only 95% of the total population, so the others 5%
           #come from the previous population
-          p = (p * 0.9).truncate
+          p = (p * 0.95).truncate
 
           new_population = []
           p.times do
