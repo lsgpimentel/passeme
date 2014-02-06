@@ -20,7 +20,8 @@ class EventsService::GeneticAlgorithm::Chromosome
     return @fitness if @fitness
 
     cost = EventsService::GeneticAlgorithm::Constraint.calculate(self)
-    @fitness = -1 * cost
+    @fitness = 1/(1+cost)
+    #@fitness = -1 * cost
     #p @fitness
 
     return @fitness

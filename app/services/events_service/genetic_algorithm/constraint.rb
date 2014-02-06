@@ -34,7 +34,7 @@ module EventsService::GeneticAlgorithm::Constraint
     fitness = 0
     chromosome.data.each_with_index do |alloc_time, i|
 
-      #fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time)
+      fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time)
 
       #Chama para os tempos de alocação imediatamente posterior
       next_time = chromosome.data[i+1]
@@ -65,18 +65,6 @@ module EventsService::GeneticAlgorithm::Constraint
 
   private
 
-  #Relação entre a dificuldade da matéria e a produtividade do horário
-  #Matérias de maior dificuldade devem ficar em horários mais produtivos
-  def self.subject_difficulty(alloc_time)
-
-  end
-
-  #Relação entre a importância da matéria e a produtividade do horário
-  #Matérias de maior importância devem ficar em horários mais produtivos
-  def self.subject_importance(alloc_time)
-
-  end
-
   #Relação entre a importância e dificuldade da matéria e a produtividade
   #do horário.
   #Neste caso, temos quatro situações que devem ser tratadas,
@@ -94,7 +82,7 @@ module EventsService::GeneticAlgorithm::Constraint
     is_high_importance = importance >= MAX_IMPORTANCE_DIFFICULTY_VALUE * 0.75
 
     #Importância baixa = <= do que 50% da maior importância
-    is_low_importance = importance <= MAX_IMPORTANCE_DIFFICULTY_VALUE * 0.55
+    is_low_importance = importance <= MAX_IMPORTANCE_DIFFICULTY_VALUE * 0.50
 
     is_high_productivity = prod >= MAX_PRODUCTIVITY_VALUE * 0.75
 
