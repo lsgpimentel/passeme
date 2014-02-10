@@ -7,7 +7,7 @@ module EventsService::GeneticAlgorithm::Constraint
   TYPES = {
     subject_importance_difficulty: {
       type: :soft,
-      weight: 1,
+      weight: 5,
       fitness: -> (alloc_time) { subject_importance_difficulty(alloc_time) }
     },
     subject_difficulty_intercalation: {
@@ -17,12 +17,12 @@ module EventsService::GeneticAlgorithm::Constraint
     },
     subject_group_intercalation: {
       type: :soft,
-      weight: 1,
+      weight: 2,
       fitness: -> (alloc_time_1, alloc_time_2) { subject_group_intercalation(alloc_time_1, alloc_time_2) }
     },
     subject_distribution_probability: {
       type: :soft,
-      weight: 1,
+      weight: 10,
       fitness: -> (distribution, ideal_subject_distribution) { subject_distribution_probability(distribution, ideal_subject_distribution) }
     }
   }
@@ -34,12 +34,12 @@ module EventsService::GeneticAlgorithm::Constraint
     fitness = 0
     chromosome.data.each_with_index do |alloc_time, i|
 
-      fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time)
+      fitness += TYPES[:subject_importance_difficulty][:fitness].call(alloc_time) * TYPES[:subject_importance_difficulty][:weight]
 
       #Chama para os tempos de alocação imediatamente posterior
       next_time = chromosome.data[i+1]
-      fitness += TYPES[:subject_group_intercalation][:fitness].call(alloc_time, next_time) unless next_time.nil?
-      fitness += TYPES[:subject_difficulty_intercalation][:fitness].call(alloc_time, next_time) unless next_time.nil?
+      fitness += TYPES[:subject_group_intercalation][:fitness].call(alloc_time, next_time) * TYPES[:subject_group_intercalation][:weight] unless next_time.nil?
+      fitness += TYPES[:subject_difficulty_intercalation][:fitness].call(alloc_time, next_time) * TYPES[:subject_difficulty_intercalation][:weight] unless next_time.nil?
 
       if subject_distribution[alloc_time.subject].nil?
         subject_distribution[alloc_time.subject] = alloc_time.study_time.duration_in_seconds
@@ -49,7 +49,7 @@ module EventsService::GeneticAlgorithm::Constraint
 
     end
 
-    fitness += TYPES[:subject_distribution_probability][:fitness].call(subject_distribution, @ideal_subject_distribution)
+    fitness += TYPES[:subject_distribution_probability][:fitness].call(subject_distribution, @ideal_subject_distribution) * TYPES[:subject_distribution_probability][:weight]
 
     fitness
 
@@ -84,20 +84,19 @@ module EventsService::GeneticAlgorithm::Constraint
     #Importância baixa = <= do que 50% da maior importância
     is_low_importance = importance <= MAX_IMPORTANCE_DIFFICULTY_VALUE * 0.50
 
+    #Produtividade alta = >= do que 75% da maior produtividade
     is_high_productivity = prod >= MAX_PRODUCTIVITY_VALUE * 0.75
 
-    if is_high_importance
-      unless is_high_productivity
-        return 1
-      end
+    #Produtividade baixa = <= do que 50% da maior produtividade
+    is_low_productivity = prod <= MAX_PRODUCTIVITY_VALUE * 0.50
 
-    elsif is_low_importance
-      if is_high_productivity
-        return 1
-      end
+    if is_high_importance && is_low_productivity
+      return 1
+    elsif is_low_importance && is_high_productivity
+      return 1
     end
 
-
+    return 0
 
   end
 
@@ -144,7 +143,7 @@ module EventsService::GeneticAlgorithm::Constraint
     end
 
     cost
-    
+
   end
 
 end

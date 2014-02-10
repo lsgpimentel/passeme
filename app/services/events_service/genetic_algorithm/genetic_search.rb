@@ -32,9 +32,6 @@ module EventsService
       attr_accessor :study_times
       attr_accessor :subjects
 
-      DEFAULT_INITIAL_POPULATION_SIZE = 400
-      DEFAULT_GENERATIONS = 20
-
       def initialize(study_times, subjects, options = {})
         @study_times = study_times
         @subjects = subjects
@@ -54,8 +51,8 @@ module EventsService
       def run
         calculate_ideal_subject_distribution
 
-        p "population size >>>>>> " + @population_size.to_s
-        p "max generations >>>>>> " + @max_generation.to_s
+        #p "population size >>>>>> " + @population_size.to_s
+        #p "max generations >>>>>> " + @max_generation.to_s
 
         @population = []
         result = {}
@@ -80,7 +77,7 @@ module EventsService
         end
         result[:chromosomes] = best_chromosomes
         result[:population_size] = @population_size
-        result[:generations] = @max_generation+1
+        result[:generations] = @max_generation
         return result
       end
 
@@ -195,7 +192,7 @@ module EventsService
       end
 
       def calculate_population_size
-        (Math.log(study_times.size * subjects.size, 3) * 100).truncate
+        ((study_times.size * subjects.size) / 2).truncate
       end
 
       def calculate_number_of_generations

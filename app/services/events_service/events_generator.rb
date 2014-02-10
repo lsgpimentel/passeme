@@ -4,8 +4,9 @@ module EventsService
     attr_accessor :chromosome
     attr_accessor :result
 
-    def initialize(timetable)
+    def initialize(timetable, algorithm_options = {})
       @timetable = timetable
+      @algorithm_options  = algorithm_options
 
       @result = run
       @chromosome = @result[:chromosomes].last
@@ -68,7 +69,7 @@ module EventsService
       normalized_study_times = StudyTimesNormalization.new(@timetable).get_normalized
       # mark_revision_events(normalized_study_times)
 
-      search = EventsService::GeneticAlgorithm::GeneticSearch.new(normalized_study_times, @timetable.subjects)
+      search = EventsService::GeneticAlgorithm::GeneticSearch.new(normalized_study_times, @timetable.subjects, @algorithm_options)
       search.run
     end
 
