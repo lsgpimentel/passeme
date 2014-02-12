@@ -32,6 +32,8 @@ module EventsService
       attr_accessor :study_times
       attr_accessor :subjects
 
+      ELITISM_PERCENTAGE = 0.05
+
       def initialize(study_times, subjects, options = {})
         @study_times = study_times
         @subjects = subjects
@@ -54,11 +56,10 @@ module EventsService
         #p "population size >>>>>> " + @population_size.to_s
         #p "max generations >>>>>> " + @max_generation.to_s
 
-        @population = []
         result = {}
         best_chromosomes = []
+        generate_initial_population                    #Generate initial population 
         @max_generation.times do |g|
-          generate_initial_population                    #Generate initial population 
 
           selected_to_breed = selection                #Evaluates current population 
           offsprings = reproduction selected_to_breed  #Generate the population for this new generation
@@ -68,10 +69,10 @@ module EventsService
           #being merged
           @population.sort! { |a, b| b.fitness <=> a.fitness}
 
-          fs = @population.collect {|x| x.fitness }
-          File.open("fitnesses.txt", "a") do |f|
-            f.puts "generation (#{fs.size})  #{g.to_s} = " + fs.join(", ")
-          end
+          # fs = @population.collect {|x| x.fitness }
+          # File.open("fitnesses.txt", "a") do |f|
+          #   f.puts "generation (#{fs.size})  #{g.to_s} = " + fs.join(", ")
+          # end
 
           best_chromosomes << @population[0]
         end
@@ -85,28 +86,34 @@ module EventsService
       #Generate the initial population applying elitism
       #in the sequencial generations
       def generate_initial_population
-        p = @population_size
-
-        #First generation
-        if @population.empty?
-          p.times do
-            population << Chromosome.seed(study_times, subjects)
-          end
-        else
-          #Generate only 95% of the total population, so the others 5%
-          #come from the previous population
-          p = (p * 0.95).truncate
-
-          new_population = []
-          p.times do
-            new_population << Chromosome.seed(study_times, subjects)
-          end
-
-          #TODO
-          @population = @population[0..((-1*new_population.size)-1)] + new_population
+        @population = []
+        @population_size.times do
+          population << Chromosome.seed(study_times, subjects)
         end
-
       end
+      # def generate_initial_population
+      #   p = @population_size
+
+      #   #First generation
+      #   if @population.empty?
+      #     p.times do
+      #       population << Chromosome.seed(study_times, subjects)
+      #     end
+      #   else
+      #     #Generate only 95% of the total population, so the others 5%
+      #     #come from the previous population
+      #     p = (p * 0.95).truncate
+
+      #     new_population = []
+      #     p.times do
+      #       new_population << Chromosome.seed(study_times, subjects)
+      #     end
+
+      #     #TODO
+      #     @population = @population[0..((-1*new_population.size)-1)] + new_population
+      #   end
+
+      # end
 
       # Select best-ranking individuals to reproduce
       # 
@@ -138,11 +145,16 @@ module EventsService
           @population.each { |chromosome| chromosome.normalized_fitness = 1}  
         end
         selected_to_breed = []
-        ((2*@population_size)/3).times do 
+        #selected_to_breed.concat(get_elitism_elements)
+        ((2*@population_size)/3).times do
           selected_to_breed << select_random_individual(acum_fitness)
         end
 
         selected_to_breed
+      end
+
+      def get_elitism_elements
+        @population.shift((@population_size * ELITISM_PERCENTAGE).ceil) || []
       end
 
       # We combine each pair of selected chromosome using the method 
@@ -157,8 +169,8 @@ module EventsService
         offsprings = []
         0.upto(selected_to_breed.length/2-1) do |i|
           offsprings << Chromosome.reproduce(selected_to_breed[2*i], selected_to_breed[2*i+1])
-          offsprings.flatten! #reproduce is returning an array with 2 childs
         end
+        offsprings.flatten! #reproduce is returning an array with 2 childs
         @population.each do |individual|
           Chromosome.mutate(individual)
         end

@@ -61,8 +61,7 @@ class EventsService::GeneticAlgorithm::Chromosome
   #um nó com fitness baixo e realizar mutação pegando o subject dele
   #e alocar em outro nó (talvez com fitness baixo também)
   def self.mutate(chromosome)
-    if chromosome.normalized_fitness && rand < ((1 - chromosome.normalized_fitness) * 0.3)
-      #p chromosome.normalized_fitness
+    if chromosome.normalized_fitness && rand < ((1 - chromosome.normalized_fitness) * 0.05)
       data = chromosome.data
       index = rand(data.length-1)
       index2 = rand(data.length-1)

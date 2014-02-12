@@ -10,7 +10,7 @@ class TestAlgorithm
   MAX_GENERATIONS = 25
 
   def initialize
-    $stdout = File.new('results', 'w')
+    $stdout = File.new('population_size', 'w')
     $stdout.sync = true
     run_best_case
     run_average_case
@@ -40,8 +40,8 @@ class TestAlgorithm
 
     p ">>>>>>> Running Best Case for Population Size"
     run_for_population_size(timetable)
-    p ">>>>>>> Running Best Case for Generations"
-    run_for_generations(timetable)
+    # p ">>>>>>> Running Best Case for Generations"
+    # run_for_generations(timetable)
 
     # tp all_runs
     #tp all_runs.map { |x| x[:chromosomes] }
@@ -58,8 +58,8 @@ class TestAlgorithm
 
     p ">>>>>>> Running Average Case for Population Size"
     run_for_population_size(timetable)
-    p ">>>>>>> Running Average Case for Generations"
-    run_for_generations(timetable)
+    # p ">>>>>>> Running Average Case for Generations"
+    # run_for_generations(timetable)
 
     # tp all_runs.map { |x| x[:chromosomes] }
     #p all_runs.map(&:fitness).inject(0, :+) / all_runs.size
@@ -75,8 +75,8 @@ class TestAlgorithm
 
     p ">>>>>>> Running Worst Case for Population Size"
     run_for_population_size(timetable)
-    p ">>>>>>> Running Worst Case for Generations"
-    run_for_generations(timetable)
+    # p ">>>>>>> Running Worst Case for Generations"
+    # run_for_generations(timetable)
 
     # tp all_runs.map { |x| x[:chromosomes] }
     #p all_runs.map(&:fitness).inject(0, :+) / all_runs.size
