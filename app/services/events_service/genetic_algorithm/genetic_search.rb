@@ -32,8 +32,6 @@ module EventsService
       attr_accessor :study_times
       attr_accessor :subjects
 
-      ELITISM_PERCENTAGE = 0.05
-
       def initialize(study_times, subjects, options = {})
         @study_times = study_times
         @subjects = subjects
@@ -62,7 +60,9 @@ module EventsService
         @max_generation.times do |g|
 
           selected_to_breed = selection                #Evaluates current population 
+
           offsprings = reproduction selected_to_breed  #Generate the population for this new generation
+
           replace_worst_ranked offsprings
 
           #Sort the chromosomes again by fitness after offsprings
@@ -145,16 +145,11 @@ module EventsService
           @population.each { |chromosome| chromosome.normalized_fitness = 1}  
         end
         selected_to_breed = []
-        #selected_to_breed.concat(get_elitism_elements)
         ((2*@population_size)/3).times do
           selected_to_breed << select_random_individual(acum_fitness)
         end
 
         selected_to_breed
-      end
-
-      def get_elitism_elements
-        @population.shift((@population_size * ELITISM_PERCENTAGE).ceil) || []
       end
 
       # We combine each pair of selected chromosome using the method 
@@ -170,7 +165,7 @@ module EventsService
         0.upto(selected_to_breed.length/2-1) do |i|
           offsprings << Chromosome.reproduce(selected_to_breed[2*i], selected_to_breed[2*i+1])
         end
-        offsprings.flatten! #reproduce is returning an array with 2 childs
+        offsprings.flatten! #reproduce is returning an array with 2 children
         @population.each do |individual|
           Chromosome.mutate(individual)
         end
@@ -181,7 +176,6 @@ module EventsService
       def replace_worst_ranked(offsprings)
         size = offsprings.length
         @population = @population [0..((-1*size)-1)] + offsprings
-
       end
 
       # Select the best chromosome in the population
@@ -193,7 +187,7 @@ module EventsService
         return the_best
       end
 
-      private 
+      private
       def select_random_individual(acum_fitness)
         select_random_target = acum_fitness * rand
         local_acum = 0
