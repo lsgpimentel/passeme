@@ -20,16 +20,44 @@ class TestAlgorithm
     timetable = user.timetables[1]
     timetable.subjects = user.subjects.ids[0..10]
 
-    Benchmark.bm do |bm|
-      bm.report do
-        generator = ::EventsService::EventsGenerator.new(timetable)
-        tp generator.result[:chromosomes]
+    all_runs = []
+    5.times do
+      Benchmark.bm do |bm|
+        bm.report do
+          generator = ::EventsService::EventsGenerator.new(timetable)
+          tp generator.result[:chromosomes]
+          all_runs << generator.result
+        end
       end
+    end
+
+    get_averages_for_evolutions(all_runs).each_with_index do |c, index|
+      p "Generation = #{index+1} and Cost = #{c}"
     end
 
     # tp all_runs.map { |x| x[:chromosomes] }
     #p all_runs.map(&:fitness).inject(0, :+) / all_runs.size
     #tp all_runs[0].data.collect {|x| x.subject }
+  end
+
+
+  private
+
+  def get_averages_for_evolutions(all_runs)
+    chromosomes = all_runs.map { |r| r[:chromosomes] }
+    avgs = []
+    generations = all_runs[0][:generations]
+
+    generations.times do |i|
+      avg = 0
+      chromosomes.each do |crs|
+        avg += crs[i].fitness
+      end
+      avg /= chromosomes.size
+      avgs << avg
+    end
+
+    avgs
   end
 
 
