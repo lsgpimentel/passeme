@@ -1,0 +1,228 @@
+">>>>>>> Running Average Case (2)"
+">>>>>>> Using Subjects >>>>>>>>>"
+ID | CREATED_AT                | UPDATED_AT                | DIFFICULTY | CREATOR_ID | NAME                           | IMPORTANCE | SUBJECT_GROUP_ID
+---|---------------------------|---------------------------|------------|------------|--------------------------------|------------|-----------------
+1  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | four       | 1          | Quam facilis repudiandae ip... | three      | 1               
+2  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | four       | 1          | A sequi possimus libero asp... | four       | 1               
+3  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | four       | 1          | Consectetur dicta quos aute... | two        | 1               
+4  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | one        | 1          | Libero sit modi ut cupidita... | four       | 1               
+5  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | two        | 1          | Molestiae ut ut asperiores ... | four       | 1               
+6  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | five       | 1          | Voluptas qui quisquam aut c... | one        | 1               
+7  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | one        | 1          | Sint et est occaecati dolor... | five       | 2               
+8  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | four       | 1          | Perspiciatis commodi aspern... | five       | 2               
+9  | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | five       | 1          | Ut consequatur corporis fug... | five       | 2               
+10 | 2014-02-05 04:21:15       | 2014-02-05 04:21:15       | five       | 1          | Consectetur ut amet autem r... | one        | 2               
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  5.090000   0.010000   5.100000 (  5.120791)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.880000   0.000000   4.880000 (  4.880554)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.730000   0.000000   4.730000 (  4.744247)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.850000   0.000000   4.850000 (  4.861991)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.760000   0.000000   4.760000 (  4.763929)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.700000   0.010000   4.710000 (  4.717851)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  5.010000   0.000000   5.010000 (  5.021657)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.940000   0.000000   4.940000 (  4.951974)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.820000   0.000000   4.820000 (  4.815509)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.900000   0.000000   4.900000 (  4.909087)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.812970)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.690000   0.000000   4.690000 (  4.692324)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.780000   0.000000   4.780000 (  4.788238)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.820000   0.000000   4.820000 (  4.829861)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.910000   0.000000   4.910000 (  4.917067)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  5.200000   0.000000   5.200000 (  5.202722)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.820000   0.000000   4.820000 (  4.824577)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.720000   0.000000   4.720000 (  4.731310)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.700000   0.000000   4.700000 (  4.708200)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.770000   0.000000   4.770000 (  4.772560)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.720000   0.000000   4.720000 (  4.728852)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.790000   0.000000   4.790000 (  4.790097)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.780000   0.000000   4.780000 (  4.785629)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.620000   0.000000   4.620000 (  4.635928)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.710000   0.000000   4.710000 (  4.707846)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.810000   0.000000   4.810000 (  4.814613)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.760000   0.000000   4.760000 (  4.773604)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.710000   0.000000   4.710000 (  4.717729)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.860000   0.000000   4.860000 (  4.866330)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.730000   0.000000   4.730000 (  4.737320)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.700000   0.000000   4.700000 (  4.699276)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.750000   0.000000   4.750000 (  4.758041)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.760000   0.000000   4.760000 (  4.764445)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.720000   0.000000   4.720000 (  4.731703)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.830000   0.000000   4.830000 (  4.837590)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.800067)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.750000   0.000000   4.750000 (  4.757551)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.809862)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.804496)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.710000   0.000000   4.710000 (  4.708389)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.807829)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.840000   0.000000   4.840000 (  4.847026)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.750000   0.000000   4.750000 (  4.757731)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.690000   0.000000   4.690000 (  4.696667)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.810000   0.000000   4.810000 (  4.818401)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.807173)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.770000   0.010000   4.780000 (  4.775138)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.800000   0.000000   4.800000 (  4.815993)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.790000   0.000000   4.790000 (  4.792725)
+       user     system      total        real
+ "Generations -> 14"
+"Population Size -> 250"
+  4.700000   0.000000   4.700000 (  4.701298)
+"Generation = 1 and Cost = -196.57686274509805"
+"Generation = 2 and Cost = -187.93058823529412"
+"Generation = 3 and Cost = -180.8282352941177"
+"Generation = 4 and Cost = -172.8086274509804"
+"Generation = 5 and Cost = -166.9109803921569"
+"Generation = 6 and Cost = -160.97372549019616"
+"Generation = 7 and Cost = -156.16196078431378"
+"Generation = 8 and Cost = -150.56117647058824"
+"Generation = 9 and Cost = -147.0258823529412"
+"Generation = 10 and Cost = -143.09882352941182"
+"Generation = 11 and Cost = -140.84705882352947"
+"Generation = 12 and Cost = -138.1525490196079"
+"Generation = 13 and Cost = -134.34588235294117"
+"Generation = 14 and Cost = -132.72627450980391"

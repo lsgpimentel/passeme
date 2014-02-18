@@ -212,7 +212,7 @@ module EventsService
         productivity_deviation = p.standard_deviation
 
 
-        Math.sqrt(((study_times.size + subjects.size) * diffulty_deviation * importance_deviation * productivity_deviation)/3).round
+        Math.sqrt(((study_times.size + subjects.size) * diffulty_deviation * importance_deviation * productivity_deviation)).round
 
       end
 
