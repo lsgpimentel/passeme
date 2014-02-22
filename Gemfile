@@ -46,7 +46,7 @@ gem "jquery-turbolinks", "~> 2.0.1"
 gem 'jbuilder', '1.5.0'
 gem "therubyracer", :require => 'v8'
 gem 'bootstrap-sass', '2.3.2.0'
-gem 'pg', '0.15.1'
+gem 'pg'
 gem 'bcrypt-ruby', '3.0.1'
 gem "ffaker", "~> 1.18.0"
 gem 'will_paginate', '3.0.4'

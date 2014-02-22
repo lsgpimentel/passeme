@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/bmabey/email-spec.git
-  revision: 70a4228442dafd31d0702e58d732dac4a851dcc8
+  revision: b21a2b340a92e89f993121bcfe74b4f9b885e918
   specs:
     email_spec (1.5.0)
       launchy (~> 2.1)
@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: git://github.com/preston/railroady.git
-  revision: 12e4505b2885c059cd233ee88fd9cb9a5f1d4524
+  revision: 6607f6ad63868a9afbff577ba4e3d4863dad0012
   specs:
     railroady (1.1.1)
 
@@ -90,14 +90,14 @@ GIT
 
 GIT
   remote: git://github.com/tute/merit.git
-  revision: cae04362d1a76fe75863666fa7690359f6093381
+  revision: b4c8033aabe9209590dc13983fdbba89bda7ee45
   specs:
-    merit (1.7.1)
+    merit (2.0.0)
       ambry (~> 0.3.0)
 
 GIT
   remote: git://github.com/zquestz/omniauth-google-oauth2.git
-  revision: bb13ac5f7c8eb001971eba9222152e66d1466c47
+  revision: 2c9f08d316f2994fad21d5bbcd3d88f1ab581f2d
   specs:
     omniauth-google-oauth2 (0.2.2)
       omniauth (~> 1.0)
@@ -107,25 +107,25 @@ GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.0.2)
-    actionmailer (4.0.2)
-      actionpack (= 4.0.2)
+    actionmailer (4.0.3)
+      actionpack (= 4.0.3)
       mail (~> 2.5.4)
-    actionpack (4.0.2)
-      activesupport (= 4.0.2)
+    actionpack (4.0.3)
+      activesupport (= 4.0.3)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.2)
-      activesupport (= 4.0.2)
+    activemodel (4.0.3)
+      activesupport (= 4.0.3)
       builder (~> 3.1.0)
-    activerecord (4.0.2)
-      activemodel (= 4.0.2)
+    activerecord (4.0.3)
+      activemodel (= 4.0.3)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.2)
+      activesupport (= 4.0.3)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
-    activesupport (4.0.2)
+    activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
@@ -136,7 +136,7 @@ GEM
     ambry (0.3.1)
     annotate (2.5.0)
       rake
-    arel (4.0.1)
+    arel (4.0.2)
     atomic (1.1.14)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
@@ -177,7 +177,10 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
-    childprocess (0.4.0)
+    celluloid-io (0.15.0)
+      celluloid (>= 0.15.0)
+      nio4r (>= 0.5.0)
+    childprocess (0.5.1)
       ffi (~> 1.0, >= 1.0.11)
     choice (0.1.6)
     clockwork (0.6.2)
@@ -211,10 +214,10 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     extlib (0.9.16)
-    factory_girl (4.3.0)
+    factory_girl (4.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.3.0)
-      factory_girl (~> 4.3.0)
+    factory_girl_rails (4.4.0)
+      factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
@@ -235,7 +238,7 @@ GEM
       multi_json (>= 1.0.0)
       signet (~> 0.4.5)
       uuidtools (>= 2.1.0)
-    guard (2.3.0)
+    guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
       lumberjack (~> 1.0)
@@ -264,14 +267,14 @@ GEM
     i18n-js (2.1.2)
       i18n
     icalendar (1.4.5)
-    ice_cube (0.11.2)
+    ice_cube (0.11.3)
     jbuilder (1.5.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-turbolinks (2.0.1)
+    jquery-turbolinks (2.0.2)
       railties (>= 3.1.0)
       turbolinks
     json (1.8.1)
@@ -280,8 +283,9 @@ GEM
     launchy (2.4.2)
       addressable (~> 2.3)
     libv8 (3.16.14.3)
-    listen (2.4.0)
+    listen (2.5.0)
       celluloid (>= 0.15.2)
+      celluloid-io (>= 0.15.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     lol_dba (1.6.0)
@@ -298,6 +302,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     multipart-post (1.2.0)
+    nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -319,8 +324,8 @@ GEM
       hashery (~> 2.0)
       ruby-rc4
       ttfunk
-    pg (0.15.1)
-    polyglot (0.3.3)
+    pg (0.17.1)
+    polyglot (0.3.4)
     prawn (0.12.0)
       pdf-reader (>= 0.9.0)
       ttfunk (~> 1.0.2)
@@ -335,13 +340,13 @@ GEM
       rack (>= 1.1.3)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (4.0.2)
-      actionmailer (= 4.0.2)
-      actionpack (= 4.0.2)
-      activerecord (= 4.0.2)
-      activesupport (= 4.0.2)
+    rails (4.0.3)
+      actionmailer (= 4.0.3)
+      actionpack (= 4.0.3)
+      activerecord (= 4.0.3)
+      activesupport (= 4.0.3)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.2)
+      railties (= 4.0.3)
       sprockets-rails (~> 2.0.0)
     rails-erd (1.1.0)
       activerecord (>= 3.0)
@@ -364,9 +369,9 @@ GEM
       ruby-progressbar
     rails_serve_static_assets (0.0.2)
     rails_stdout_logging (0.0.3)
-    railties (4.0.2)
-      actionpack (= 4.0.2)
-      activesupport (= 4.0.2)
+    railties (4.0.3)
+      actionpack (= 4.0.3)
+      activesupport (= 4.0.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.1)
@@ -388,9 +393,9 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     rspec-core (2.14.7)
-    rspec-expectations (2.14.4)
+    rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.4)
+    rspec-mocks (2.14.6)
     rspec-rails (2.14.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -436,12 +441,12 @@ GEM
       tilt (>= 1.3.3, < 2.1)
     slop (3.4.7)
     spork (1.0.0rc4)
-    sprockets (2.10.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
@@ -449,7 +454,7 @@ GEM
     table_print (1.5.1)
     temple (0.6.7)
     terminal-table (1.4.5)
-    therubyracer (0.12.0)
+    therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
@@ -534,7 +539,7 @@ DEPENDENCIES
   omniauth (~> 1.1.4)
   omniauth-facebook!
   omniauth-google-oauth2!
-  pg (= 0.15.1)
+  pg
   prawn (~> 0.12.0)
   quiet_assets (~> 1.0.2)
   rack-mini-profiler (~> 0.1.31)
