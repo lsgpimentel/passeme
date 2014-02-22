@@ -9,7 +9,6 @@ pt-BR:
     - Sex
     - Sáb
     abbr_month_names:
-    -
     - Jan
     - Fev
     - Mar
@@ -417,6 +416,13 @@ pt-BR:
       results_for: Mostrando resultados para a grade
     follow_up_not_studied_reason:
       title: Razões para não estudar
+    expected_and_accomplished:
+      title: Horas Previstas x Realizadas
+      labels:
+        expected: Previsto
+        accomplished: Realizado
+    study_hours_evolution:
+      title: Evolução da quantidade de horas estudadas
       
 ###### Settings ######
   settings:

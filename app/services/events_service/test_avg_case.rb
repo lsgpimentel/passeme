@@ -7,8 +7,8 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 class TestAlgorithm
 
   def initialize
-    $stdout = File.new('avg_case', 'w')
-    $stdout.sync = true
+    #$stdout = File.new('avg_case', 'w')
+    #$stdout.sync = true
     run_average_case
   end
 
@@ -31,8 +31,8 @@ class TestAlgorithm
 
   def run_for_generations(timetable)
     all_runs = []
-    50.times do
-      Benchmark.bm do |bm|
+    5.times do
+      Benchmark.bmbm do |bm|
         bm.report do
           generator = ::EventsService::EventsGenerator.new(timetable)
           result = generator.result

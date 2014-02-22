@@ -76,4 +76,8 @@ class EventInstance
     )
   end
 
+  def duration_in_hours
+    (@end - @start) / 3600
+  end
+
 end
