@@ -71,4 +71,4 @@ class TestAlgorithm
 end
 
 
-TestAlgorithm.new
+#TestAlgorithm.new
