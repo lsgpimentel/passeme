@@ -362,14 +362,14 @@ pt-BR:
 ####### Dashboard #######
   dashboard:
     no_timetable:
-      no_active_timetable: It looks like you don't have any active timetable at the moment.
-      create_click_below: But don't worry! You can create one clicking below.
-      tour: If you want to make a tour through the system, click in the button below.
+      no_active_timetable: Parece que você ainda não tem nenhuma grade de horários ativa no nomento.
+      create_click_below: Mas não se preocupe! Você pode criar uma clicando abaixo.
+      tour: Se você quiser realizar um tour pelo sistema, clique no botão abaixo.
       buttons:
-        create_timetable: Create my timetable!
-        make_tour: Make Tour!
+        create_timetable: Criar minha Grade!
+        make_tour: Fazer Tour!
     stats:
-      title: General Stats
+      title: Estatísticas Gerais
 ####### Follow Up #######
   follow_up:
     studied_with_debt:
