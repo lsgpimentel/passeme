@@ -19,6 +19,6 @@ class Calendar < ActiveRecord::Base
 
   accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
 
-  validates :timetable, presence: true
+  #validates :timetable, presence: true
   validates_associated :calendar_event_sources
 end

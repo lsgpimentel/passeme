@@ -31,7 +31,7 @@ class Timetable < ActiveRecord::Base
 
   accepts_nested_attributes_for :study_times, allow_destroy: true
 
-  has_one :calendar
+  has_one :calendar, autosave: true, dependent: :destroy
 
   has_many :calendar_event_sources, through: :calendar
   #has_many :subjects, through: :calendar_event_sources
@@ -39,7 +39,7 @@ class Timetable < ActiveRecord::Base
   has_many :follow_up_items, through: :calendar_events
   has_many :subject_groups, through: :subjects
 
-  accepts_nested_attributes_for :calendar, allow_destroy: true
+  #accepts_nested_attributes_for :calendar, allow_destroy: true
   #accepts_nested_attributes_for :calendar_event_sources, allow_destroy: true
   #
 

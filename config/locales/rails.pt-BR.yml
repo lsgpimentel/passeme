@@ -208,6 +208,13 @@ pt-BR:
   activerecord:
     errors:
       <<: *errors
+      models:
+        timetable:
+          attributes:
+            start_date:
+              after: A Data de Início deve ser posterior à data de hoje
+            end_date:
+              after: A Data de Fim deve ser posterior à data de início
 
 ######## Models & Attributes ########
     models:
