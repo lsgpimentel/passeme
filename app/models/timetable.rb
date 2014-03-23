@@ -18,7 +18,7 @@
 
 class Timetable < ActiveRecord::Base
 
-  validates_with TimetableValidator
+  #validates_with TimetableValidator
 
   scope :active_first, -> { order("active DESC") }
   before_create :make_active_on_create
@@ -27,7 +27,7 @@ class Timetable < ActiveRecord::Base
   has_and_belongs_to_many :others_users_that_can_view, class_name: "User", join_table: :users_view_timetables, autosave: true
   has_one :forked_from, class_name: "Timetable"
   has_many :study_times, dependent: :destroy
-  validates_associated :study_times
+  #validates_associated :study_times
 
   accepts_nested_attributes_for :study_times, allow_destroy: true
 
@@ -50,8 +50,8 @@ class Timetable < ActiveRecord::Base
 
   validates :goal, :creator, :block_size, :block_interval, :start_date, :end_date, presence: true
 
-  validates_date :start_date, after: Date.current
-  validates_date :end_date, after: :start_date
+  #validates_date :start_date, after: Date.current
+  #validates_date :end_date, after: :start_date
 
 
   def make_active

@@ -31,7 +31,6 @@ class TimetablesController < AuthenticatedController
     if @timetable.study_times.present? && @timetable.subjects.present?
       @timetable.calendar.calendar_event_sources = ::EventsService::EventsGenerator.new(@timetable).event_sources
     end
-    p @timetable.calendar
 
     #If there's not any other timetable created, then this one must
     #be the active
@@ -40,7 +39,7 @@ class TimetablesController < AuthenticatedController
       @timetable.active = true
     end
 
-    if @timetable.save!
+    if @timetable.save
     else
       p @timetable.errors
       render :new
