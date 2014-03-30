@@ -205,6 +205,8 @@ pt-BR:
   activemodel:
     errors:
       <<: *errors
+    attributes:
+
   activerecord:
     errors:
       <<: *errors
@@ -261,6 +263,33 @@ pt-BR:
         repeat_ends_on: Data de término
         repeat_ends_count: Quantidade de repetições
         interval: Intervalo
+      calendar_event_source:
+        color: Cor
+        subject_id: Matéria
+      subject:
+        name: Nome
+        difficulty: Dificuldade
+        importance: Importância
+      study_source:
+        type: Tipo
+        title: Título
+        author: Autor
+      follow_up_item:
+        debt_reason: Razão do Débito
+      notification:
+        is_read: Lida?
+        type: Tipo
+        sent_to: Enviada para
+      study_time:
+        from: De
+        to: Até
+        day: Dia
+        productivity: Produtividade
+      timetable:
+        block_size: Tamanho do bloco
+        block_interval: Intervalo do bloco
+        spaced_repetition_percent_block_size: Tamanho do bloco de revisão
+
 
 ######### Languages ##########
   translation:
@@ -299,6 +328,23 @@ pt-BR:
     notification_preferences:
       type:
       send_to:
+    study_source:
+      type:
+        book: Livro
+        class: Aula
+        video: Vídeo
+        audio: Áudio
+    follow_up_item:
+      debt_reason:
+    notification_setting:
+      type:
+        task_before_overdue: Quando alguma tarefa estiver próxima de expirar
+        follow_up_next_day: De acompanhamento do que tenho de estudar no próximo dia
+        follow_up_next_month: De acompanhamento do que tenho de estudar no próximo mês
+        follow_up_past_month: De acompanhamento do que estudei no mês passado
+        group_create: Quando alǵuem criar algum grupo que me envolva
+
+
 ###### Static Pages ######
   static_pages:
 
@@ -440,7 +486,7 @@ pt-BR:
           text: Geral
         notifications:
           label: Notificações
-          text: Receber notificações quando alguém...
+          text: Receber notificações...
           site: Site
           email: E-Mail
           phone: Celular
@@ -520,6 +566,7 @@ pt-BR:
       options: Opções
       use_pomodoro: Usar a técnica de Pomodoro
       use_repetition: Usar repetição espaçada
+      add_time_button: Adicionar
     subjects_study_sources:
       title: Matérias e Fontes de Estudo
     timetable:

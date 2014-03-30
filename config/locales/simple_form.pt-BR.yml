@@ -19,6 +19,11 @@ pt-BR:
           email: 'E-mail to sign in.'
         edit:
           email: 'E-mail.'
+      pomodoro_technique:
+        time_short_break: Tempo intervalo curto
+        time_long_break: Tempo intervalo longo
+
+
     hints:
       defaults:
         username: 'User name to sign in.'

@@ -140,7 +140,6 @@ var Timetables = function () {
     };
 
     $('#days').select2({
-      placeholder: "Select the days",
       allowClear: true,
       closeOnSelect: false
     });

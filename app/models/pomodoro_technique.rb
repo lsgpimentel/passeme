@@ -1,4 +1,6 @@
 class PomodoroTechnique
+  include ActiveModel::Model
+
   attr_accessor :time_short_break, :time_long_break
 
 
