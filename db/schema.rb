@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130133601) do
+ActiveRecord::Schema.define(version: 20140331010927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20140130133601) do
   end
 
   add_index "activities", ["owner_id"], name: "index_activities_on_owner_id", using: :btree
-
-  create_table "allocated_subjects", force: true do |t|
-    t.integer "subject_id",                null: false
-    t.integer "study_time_id",             null: false
-    t.time    "from",                      null: false
-    t.time    "to",                        null: false
-    t.integer "interval",      default: 0
-  end
 
   create_table "calendar_event_sources", force: true do |t|
     t.integer  "subject_id",  null: false
@@ -133,13 +125,11 @@ ActiveRecord::Schema.define(version: 20140130133601) do
     t.boolean  "is_read",     default: false
     t.integer  "type",                        null: false
     t.integer  "user_id"
-    t.integer  "activity_id"
     t.integer  "object_id"
     t.string   "object_type"
     t.integer  "sent_to",                     null: false
   end
 
-  add_index "notifications", ["activity_id"], name: "index_notifications_on_activity_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "settings", force: true do |t|
@@ -206,7 +196,7 @@ ActiveRecord::Schema.define(version: 20140130133601) do
     t.boolean  "active",         default: false
     t.boolean  "public",         default: true
     t.integer  "forked_from_id"
-    t.string   "name"
+    t.string   "name",                           null: false
     t.string   "goal",                           null: false
     t.boolean  "specific",       default: false
     t.integer  "creator_id",                     null: false
