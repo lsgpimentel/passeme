@@ -286,9 +286,13 @@ pt-BR:
         day: Dia
         productivity: Produtividade
       timetable:
+        name: Nome
+        goal: Objetivo
         block_size: Tamanho do bloco
         block_interval: Intervalo do bloco
         spaced_repetition_percent_block_size: Tamanho do bloco de revisão
+        start_date: Data de Início
+        end_date: Date de Término
 
 
 ######### Languages ##########

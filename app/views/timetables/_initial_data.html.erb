@@ -1,11 +1,11 @@
 <h3 class="form-section"><%= t('.title') %></h3>
 
 <%= f.input :name %>
-<%= f.input :public, label: false, inline_label: "Is this timetable visible to other users?" %>
 <%= f.input :goal, input_html: { class: 'm-wrap span6' } %>
-<%= f.input :specific, label: false, inline_label: "This timetable is specific for a contest?" %>
+<%= f.input :public, label: false, inline_label: t('simple_form.labels.timetable.public') %>
+<%= f.input :specific, label: false, inline_label: t('simple_form.labels.timetable.specific') %>
 <% if @active_timetable.present? %>
-  <%= f.input :active, label: false, inline_label: "Make this my active timetable." %>
+  <%= f.input :active, label: false, inline_label: t('simple_form.labels.timetable.active') %>
 <% end %>
 
 <%= f.input :start_date, as: :date_picker %>
