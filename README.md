@@ -45,6 +45,7 @@
 - [ ] Bug quando a normalização dos tempos de estudo é feita usando a técnica de pomodoro. Neste caso, a divisão dos pomodoros está sendo feita de acordo com os tempos de estudos agrupados e separados pela produtividade, quando deveria ser agrupado independente da produtividade, mas mantendo esta quando for gerar o novo bloco.
 - [ ] Tratamento para intervalo quando se cria um evento separado pelo calendário. Para o intervalo ter alguma utilidade deveria ser especificado o tamanho do bloco
 - [ ] Alterar tela de study times na criação da timetable para usar nested form no portlet de novo study time. Alterar as referências de i18n também.
+- [ ] Modificar o breadcrumb para obter o nome da página atual usando i18n. Talvez tenha que mudar a gem.
 
 
 # Anotações Caderno

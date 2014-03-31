@@ -411,6 +411,8 @@ pt-BR:
         subjects: Matérias
 ####### Dashboard #######
   dashboard:
+    index:
+      title: Painel
     no_timetable:
       no_active_timetable: Parece que você ainda não tem nenhuma grade de horários ativa no nomento.
       create_click_below: Mas não se preocupe! Você pode criar uma clicando abaixo.
@@ -500,6 +502,7 @@ pt-BR:
     form_modal:
       title: Fonte de Estudo
     index:
+      title: Fontes de Estudo
       table_label:
         type: Tipo
         title: Título
@@ -514,6 +517,7 @@ pt-BR:
 ##### Subject Groups ######
   subject_groups:
     index:
+      title: Grupos de Matérias
       available_subjects: Matérias Disponíveis
       new_group: Novo Grupo
     subject_group:
@@ -521,6 +525,7 @@ pt-BR:
 ###### Subjects #######
   subjects:
     index:
+      title: Matérias
       buttons:
         subject_groups: Grupos
         view_study_sources: Ver (%{count})
@@ -559,6 +564,11 @@ pt-BR:
       more_options: Mais
       #name_placeholder: Nome
       #due_in_placeholder: Data de Expiração
+
+###### Groups ######
+  groups:
+    index:
+      title: Grupos
 ###### Timetables ######
   timetables:
     initial_data:
@@ -596,10 +606,10 @@ pt-BR:
           number: 4
           text: Confirmação
     no_timetable:
-      no_active_timetable: It looks like you don't have any active timetable at the moment.
-      create_click_below: But don't worry! You can create one clicking below.
+      no_active_timetable: Parece que você ainda não tem nenhuma grade de horários ativa.
+      create_click_below: Mas não se preocupe! Você pode criar uma clicando no botão abaixo.
       buttons:
-        create_timetable: Create my timetable!
+        create_timetable: Criar minha Grade!
 ###### Sidebar Navigation ######
   navigation:
     items:
