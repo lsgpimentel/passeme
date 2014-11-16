@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
 
 gem 'rails', '~> 4.0.0'
 
@@ -52,7 +52,7 @@ gem "ffaker", "~> 1.18.0"
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "devise", "~> 3.0.2"
-gem 'omniauth', '~> 1.1.4'
+gem 'omniauth', '~> 1.2'
 gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook'
 gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
 gem "cancan", "~> 1.6.10"
@@ -85,6 +85,7 @@ gem 'jquery-simplecolorpicker-rails', github: 'tkrotoff/jquery-simplecolorpicker
 gem "haml-rails", "~> 0.5.2"
 gem "table_print", "~> 1.5.1"
 gem "descriptive_statistics", github: 'thirtysixthspan/descriptive_statistics', require: 'descriptive_statistics/safe'
+gem 'rb-readline'
 
 #gem 'responders', github: 'plataformatec/responders'
   
