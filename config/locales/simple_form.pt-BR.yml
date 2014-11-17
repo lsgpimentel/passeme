@@ -35,4 +35,5 @@ pt-BR:
     placeholders:
       defaults:
         password_confirmation: Password novamente
+        name: Nome
 

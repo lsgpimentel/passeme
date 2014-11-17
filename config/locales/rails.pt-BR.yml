@@ -236,6 +236,8 @@ pt-BR:
       timetable: Grade de Tempo
       user: Usuário
     attributes:
+      user:
+        name: Nome
       activity:
         type: Tipo
       calendar:

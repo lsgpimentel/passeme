@@ -10,6 +10,7 @@
   <p><%=t('.enter_account_details')%></p>
 
 <%= f.input :email, wrapper: :with_icon, autofocus: true, label: "E-Mail", placeholder: "E-Mail", icon: "icon-user" %>
+<%= f.input :name, wrapper: :with_icon, icon: "icon-user" %>
 <%= f.input :password, wrapper: :with_icon, placeholder: "Password", icon: "icon-lock" %>
 <%= f.input :password_confirmation, wrapper: :with_icon, icon: "icon-ok" %>
 <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, :default => Time.zone.name %>
