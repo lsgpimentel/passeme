@@ -55,13 +55,14 @@ Passeme::Application.routes.draw do
     resources :subject_groups
 
 
+    devise_scope :user do
+      authenticated :user do
+        root to: 'dashboard#index', as: :authenticated_root
+      end
 
-    authenticated :user do
-      root to: 'dashboard#index', as: :authenticated_root
-    end
-
-    unauthenticated do
-      root to: 'static_pages#home'
+      unauthenticated do
+        root to: 'devise/sessions#new'
+      end
     end
 
     match '/about', to: 'static_pages#about', via: 'get', as: 'about'
