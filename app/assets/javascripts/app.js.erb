@@ -958,6 +958,12 @@ var App = function() {
     }
   }
 
+  var handleBackButton = function() {
+    $('.back-btn').on('click', function(){
+      history.back();
+    });
+  }
+
   var handleSimpleColorPicker = function () {
     $('select.color-picker').simplecolorpicker({picker: true, theme: 'fontawesome', pickerDelay: 700});
   }
@@ -1136,6 +1142,8 @@ var App = function() {
         handleSimpleColorPicker();
 
         handleEditables();
+
+        handleBackButton();
       },
 
 

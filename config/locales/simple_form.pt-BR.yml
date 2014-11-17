@@ -14,9 +14,10 @@ pt-BR:
     labels:
       defaults:
         password: 'Password'
+        remember_me: Lembrar
       user:
         new:
-          email: 'E-mail to sign in.'
+          email: 'E-mail a ser usado no login.'
         edit:
           email: 'E-mail.'
       pomodoro_technique:
@@ -31,7 +32,7 @@ pt-BR:
 
     hints:
       defaults:
-        username: 'User name to sign in.'
-        password: 'No special characters, please.'
     placeholders:
+      defaults:
+        password_confirmation: Password novamente
 

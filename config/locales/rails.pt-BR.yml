@@ -324,9 +324,22 @@ pt-BR:
         no_account_text: Não possui conta ainda?
         sign_up: Criar
         forgot_password: Esqueceu sua senha?
-        no_confirmation_instructions: Didn't receive confirmation instructions?
-        no_unlock_instructions: Didn't receive unlock instructions?
-        sign_in_with_provider: Sign in with %{provider_name}
+        no_confirmation_instructions: Não recebeu as instruções de confirmação?
+        no_unlock_instructions: Não recebeu as instruções de desbloqueio?
+        sign_in_with_provider: Entrar usando %{provider_name}
+    sessions:
+      new:
+        login_to_account: Acesse sua conta
+    registrations:
+      new:
+        sign_up: Criar conta
+        enter_account_details: Entre com os detalhes da sua conta
+        agree_policy_terms: Eu aceito os termos de serviço
+    confirmations:
+    mailer:
+    passwords:
+    unlocks:
+
 ####### Enumerize #########
   enumerize:
     notification_preferences:

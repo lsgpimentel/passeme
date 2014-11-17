@@ -2,22 +2,22 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
                     defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" }, label_html: { class: "visible-ie8 visible-ie9" } },
                     html: { class: "form-vertical register-form", novalidate: "novalidate" }) do |f| %>
-  <h3>Sign Up</h3>
+  <h3><%= t('.sign_up') %></h3>
 
   <%= render 'shared/form_error_messages', object: f.object %>
   <%= render 'shared/flash_messages' %>
 
-<p>Enter your account details below:</p>
+  <p><%=t('.enter_account_details')%></p>
 
 <%= f.input :email, wrapper: :with_icon, autofocus: true, label: "E-Mail", placeholder: "E-Mail", icon: "icon-user" %>
 <%= f.input :password, wrapper: :with_icon, placeholder: "Password", icon: "icon-lock" %>
-<%= f.input :password_confirmation, wrapper: :with_icon, label: "Re-type Your Password", placeholder: "Re-type Your Password", icon: "icon-ok" %>
-<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, :default => "Eastern Time (US & Canada)" %>
+<%= f.input :password_confirmation, wrapper: :with_icon, icon: "icon-ok" %>
+<%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, :default => Time.zone.name %>
 
 <div class="control-group">
   <div class="controls">
     <label class="checkbox">
-      <input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+      <input type="checkbox" name="tnc"/> <%= t('.agree_policy_terms') %></a>
     </label>  
     <div id="register_tnc_error"></div>
   </div>

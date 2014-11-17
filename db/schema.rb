@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20140331010927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "activities", force: true do |t|
     t.integer "object_id"
@@ -125,11 +126,13 @@ ActiveRecord::Schema.define(version: 20140331010927) do
     t.boolean  "is_read",     default: false
     t.integer  "type",                        null: false
     t.integer  "user_id"
+    t.integer  "activity_id"
     t.integer  "object_id"
     t.string   "object_type"
     t.integer  "sent_to",                     null: false
   end
 
+  add_index "notifications", ["activity_id"], name: "index_notifications_on_activity_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "settings", force: true do |t|
