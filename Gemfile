@@ -80,7 +80,7 @@ gem "delayed_job_active_record", "~> 4.0.0"
 gem 'merit',github: 'tute/merit' 
 gem "ice_cube", "~> 0.11.1"
 gem 'nested_form', github: 'ryanb/nested_form'
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails',"~> 1.12.2"
 gem 'jquery-simplecolorpicker-rails', github: 'tkrotoff/jquery-simplecolorpicker-rails'
 gem "haml-rails", "~> 0.5.2"
 gem "table_print", "~> 1.5.1"

@@ -54,14 +54,6 @@ GIT
     railroady (1.2.0)
 
 GIT
-  remote: git://github.com/rweng/jquery-datatables-rails.git
-  revision: d0f07e9aded9de30a2ca796d8036b332b41645dc
-  specs:
-    jquery-datatables-rails (3.0.0)
-      jquery-rails
-      sass-rails
-
-GIT
   remote: git://github.com/ryanb/nested_form.git
   revision: 1b0689dfb4d230ceabd278eba159fcb02f23c68a
   specs:
@@ -77,9 +69,9 @@ GIT
 
 GIT
   remote: git://github.com/thirtysixthspan/descriptive_statistics.git
-  revision: 39e26755bbf5540b6f711a915b1c3c21834d1cfb
+  revision: 9eb35191f03a1c009ff49df7adaffb9e8f2774e6
   specs:
-    descriptive_statistics (2.3.0)
+    descriptive_statistics (2.4.0)
 
 GIT
   remote: git://github.com/tkrotoff/jquery-simplecolorpicker-rails.git
@@ -193,6 +185,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colored (1.2)
+    daemons (1.1.9)
     debug_inspector (0.0.2)
     delayed_job (4.0.4)
       activesupport (>= 3.0, < 4.2)
@@ -208,6 +201,7 @@ GEM
     enumerize (0.7.0)
       activesupport (>= 3.2)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.2.2)
     extlib (0.9.16)
     factory_girl (4.5.0)
@@ -267,6 +261,8 @@ GEM
     jbuilder (1.5.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -452,6 +448,10 @@ GEM
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -521,7 +521,7 @@ DEPENDENCIES
   ice_cube (~> 0.11.1)
   immigrant!
   jbuilder (= 1.5.0)
-  jquery-datatables-rails!
+  jquery-datatables-rails (~> 1.12.2)
   jquery-rails (= 2.2.1)
   jquery-simplecolorpicker-rails!
   jquery-turbolinks (~> 2.0.1)
@@ -556,6 +556,7 @@ DEPENDENCIES
   state_machine (~> 1.2.0)
   table_print (~> 1.5.1)
   therubyracer
+  thin
   traceroute (~> 0.3.0)
   turbolinks (~> 1.3.1)
   uglifier (= 2.1.1)
