@@ -52,7 +52,7 @@ gem "ffaker", "~> 1.18.0"
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "devise", "~> 3.0.2"
-gem 'omniauth', '~> 1.2'
+gem 'omniauth'
 gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook'
 gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
 gem "cancan", "~> 1.6.10"

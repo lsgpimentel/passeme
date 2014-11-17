@@ -528,7 +528,7 @@ DEPENDENCIES
   lol_dba (~> 1.6.0)
   merit!
   nested_form!
-  omniauth (~> 1.2)
+  omniauth
   omniauth-facebook!
   omniauth-google-oauth2!
   pg
