@@ -190,3 +190,9 @@ Login page
     font-size: 13px;
   }
 }
+
+
+.signin-google img {
+  height: 40px;
+  width: 230px;
+}
