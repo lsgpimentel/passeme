@@ -71,9 +71,13 @@ class Timetable < ActiveRecord::Base
   end
 
   def subjects=(subjects)
-    #Eager loading because we'll use the subject groups and study sources
-    #to generate the calendar events in the algoritm
-    @subjects = Subject.find(subjects.reject(&:blank?), include: [:study_sources, :subject_group])
+    if subjects.all? { |s| s.is_a? Subject }
+      @subjects = subjects
+    else
+      #Eager loading because we'll use the subject groups and study sources
+      #to generate the calendar events in the algoritm
+      @subjects = Subject.find(subjects.reject(&:blank?), include: [:study_sources, :subject_group])
+    end
   end
 
   def start_date=(start_date)

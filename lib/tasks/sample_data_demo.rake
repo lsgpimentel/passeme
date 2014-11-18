@@ -19,6 +19,7 @@ end
 
 class DatabaseDemoPopulation
   def initialize
+    delete_demo_user_if_exists
     @user = make_user
   end
 
@@ -160,6 +161,7 @@ class DatabaseDemoPopulation
 
   def populate
     @user.transaction do
+
       make_study_sources
       data[:groups].each do |group_data|
         group = make_subject_group(group_data[:name])
@@ -170,15 +172,58 @@ class DatabaseDemoPopulation
           end
         end
       end
+
+      t = make_timetable
+      t.subjects = @user.subjects
+      make_study_times(t, 10, 5)
+      make_events(t)
+      t.save!
     end
   end
 
   private
 
-  def make_events
-    t = Timetable.find_by_id(10)
-    t.calendar.calendar_event_sources << EventsGenerator.new(t).event_sources
-    t.save!
+  def make_events(timetable)
+    timetable.calendar.calendar_event_sources = ::EventsService::EventsGenerator.new(timetable).event_sources
+  end
+
+
+  def make_timetable
+    t = Timetable.new(
+      name: 'Grade de Teste',
+      goal: 'Objetivo de Teste',
+      creator_id: @user.id,
+      block_interval: Time.current.utc.beginning_of_day + 10.minutes,
+      block_size: Time.current.utc.beginning_of_day + 50.minutes,
+      start_date: "15/09/2014",
+      end_date: "15/09/2015",
+      active: true
+    )
+    t.build_calendar
+    t
+  end
+
+  def make_study_times(timetable, hours, days)
+
+    t = Time.current.midnight
+
+    #7 days
+    days.times do |d|
+      hours.times do |i|
+        timetable.study_times << StudyTime.new(
+          day: d+1,
+          from: t + i.hours,
+          to: t + (i+1).hours,
+          productivity: rand(1..5)
+        )
+      end
+    end
+
+  end
+
+  def delete_demo_user_if_exists
+    u = User.find_by_email("demo@passeme.com")
+    u.destroy! if u != nil
   end
 
   def make_user
@@ -190,14 +235,6 @@ class DatabaseDemoPopulation
                  password: password,
                  password_confirmation: password,
                  confirmed_at: Time.now)
-  end
-
-  def make_tasks
-    10.times do 
-      name = Faker::Lorem.sentence(5)
-      due_in = rand(2.years).from_now
-      Task.create!(user_id: @user.id, name: name, due_in: due_in)
-    end
   end
 
   def make_subject_group(name)
