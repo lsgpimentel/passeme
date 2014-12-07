@@ -211,6 +211,10 @@ module EventsService
         importance_deviation = i.standard_deviation
         productivity_deviation = p.standard_deviation
 
+        diffulty_deviation = 1 if diffulty_deviation.zero?
+        importance_deviation = 1 if importance_deviation.zero?
+        productivity_deviation = 1 if productivity_deviation.zero?
+
 
         Math.sqrt(((study_times.size + subjects.size) * diffulty_deviation * importance_deviation * productivity_deviation)).round
 
