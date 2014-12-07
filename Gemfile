@@ -27,6 +27,7 @@ group :development, :test do
   gem 'immigrant',github: 'jenseng/immigrant' 
   gem "brakeman", "~> 2.1.2", :require => false
   gem 'railroady', github: 'preston/railroady'
+  gem 'pry-byebug'
 end
 
 group :test do
