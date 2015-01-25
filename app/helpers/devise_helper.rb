@@ -9,7 +9,7 @@ module DeviseHelper
   end
 
   def back_button
-    content_tag :button, type: "button", class: "btn" do
+    content_tag :button, type: "button", class: "btn back-btn" do
       concat content_tag :i, '', class: "m-icon-swapleft"
       concat " " + t("buttons.back")
     end
