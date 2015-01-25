@@ -87,7 +87,7 @@ var Calendars = function () {
   var eventSourceSelection = function(){
     function format(es){
       if (!es.id) return es.text; // optgroup
-      return '<span class="option-color" style="background-color: ' + $(es.element).data("color") + '">&nbsp;&nbsp;</span>' + es.text;
+      return '<span class="simplecolorpicker"><span class="color" style="background-color: ' + $(es.element).data("color") + '"></span></span>' + es.text;
     }
     $("#calendar_event_calendar_event_source_id").select2({
       formatResult: format,
