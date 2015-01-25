@@ -51,6 +51,7 @@
 - [ ] Internacionalizar o texto da etapa atual ("Etapa X de Y") durante a criação da Timetable.
 - [ ] Internacionalizar textos de validação colocados diretamente no Javascript (principalmente a parte de Timetables)
 - [ ] Adicionar algumas validações que estão no Javascript também nos models (principalmente na criação da Timetable)
+- [ ] Criar views internacionalida dos e-mails enviados (devise e dos outros e-mails). pt_BR e padrão (sem locale)
 
 
 # Anotações Caderno
