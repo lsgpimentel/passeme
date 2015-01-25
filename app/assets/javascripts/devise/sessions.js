@@ -1,6 +1,3 @@
-//= require jquery-validation/dist/jquery.validate.min
-//= require select2/select2.min
-//= require_self
 
 jQuery(document).ready(function() {
 	Login.init();
@@ -22,15 +19,6 @@ var Login = function () {
 	                },
 	                "user[remember_me]": {
 	                    required: false
-	                }
-	            },
-
-	            messages: {
-	                "user[email]]": {
-	                    required: "E-Mail is required."
-	                },
-	                "user[password]": {
-	                    required: "Password is required."
 	                }
 	            },
 

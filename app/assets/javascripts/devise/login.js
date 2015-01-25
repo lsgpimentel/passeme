@@ -17,15 +17,6 @@ var Login = function () {
 	                }
 	            },
 
-	            messages: {
-	                username: {
-	                    required: "Username is required1."
-	                },
-	                password: {
-	                    required: "Password is required2."
-	                }
-	            },
-
 	            invalidHandler: function (event, validator) { //display error alert on form submit   
 	                $('.alert-error', $('.login-form')).show();
 	            },

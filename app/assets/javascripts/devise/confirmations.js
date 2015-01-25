@@ -1,7 +1,3 @@
-//= require jquery-validation/dist/jquery.validate.min
-//= require select2/select2.min
-//= require_self
-
 jQuery(document).ready(function() {
   ResendEmailConfirmation.init();
 });
@@ -18,12 +14,6 @@ var ResendEmailConfirmation = function () {
         "user[email]": {
           required: true,
           email: true
-        }
-      },
-
-      messages: {
-        email: {
-          required: "Email is required."
         }
       },
 
@@ -62,8 +52,6 @@ var ResendEmailConfirmation = function () {
     jQuery('#forget-password').click(function () {
     });
 
-    jQuery('#back-btn').click(function () {
-    });
 
   };
 

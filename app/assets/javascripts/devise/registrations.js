@@ -1,7 +1,3 @@
-//= require jquery-validation/dist/jquery.validate.min
-//= require select2/select2.min
-//= require_self
-
 jQuery(document).ready(function() {
 	Registration.init();
 });
@@ -27,12 +23,6 @@ var Registration = function () {
 
         tnc: {
           required: true
-        }
-      },
-
-      messages: { // custom messages for radio buttons and checkboxes
-        tnc: {
-          required: "Please accept TNC first."
         }
       },
 
@@ -76,8 +66,6 @@ var Registration = function () {
     // jQuery('#register-btn').click(function () {
     // });
 
-    jQuery('#register-back-btn').click(function () {
-    });
   };
 
   return {

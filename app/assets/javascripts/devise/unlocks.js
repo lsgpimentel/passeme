@@ -1,6 +1,3 @@
-//= require jquery-validation/dist/jquery.validate.min
-//= require select2/select2.min
-//= require_self
 
 jQuery(document).ready(function() {
   UnlockPassword.init();
@@ -19,12 +16,6 @@ var UnlockPassword = function () {
         "user[email]": {
           required: true,
           email: true
-        }
-      },
-
-      messages: {
-        "user[email]": {
-          required: "Email is required."
         }
       },
 
