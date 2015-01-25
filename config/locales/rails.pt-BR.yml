@@ -405,6 +405,7 @@ pt-BR:
     form_modal:
       title: Novo Evento
       delete: Excluir
+      delete_event_confirm_message: Tem certeza que deseja excluir este evento e todas suas repetições?
       tab:
         general: Geral
         schedule: Repetições

@@ -10,7 +10,7 @@
 
     <% if @calendar_event.persisted? %>
       <div class="pull-right">
-        <%= link_to calendar_calendar_event_path(@calendar, @calendar_event), method: :delete, remote: true, id:"remove-event", class: "btn red", data: { confirm: "Are you sure" } do %>
+        <%= link_to calendar_calendar_event_path(@calendar, @calendar_event), method: :delete, remote: true, id:"remove-event", class: "btn red", data: { confirm: t('.delete_event_confirm_message') } do %>
           <%= t('.delete') %>
           <i class="icon-remove"></i>
         <% end %>
