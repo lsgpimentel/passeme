@@ -12,7 +12,7 @@ class CalendarEventsController < AuthenticatedController
     @calendar_event.repeats = 'never'
     @calendar_event.revision_events << RevisionsGenerator.new(@calendar_event).default_revisions
     @event_sources = @calendar.calendar_event_sources
-    @study_sources = @calendar.study_sources
+    @study_sources = []
     respond_to do |format|
       format.js
     end
@@ -53,7 +53,7 @@ class CalendarEventsController < AuthenticatedController
 
   def edit
     @event_sources = @calendar.calendar_event_sources
-    @study_sources = @calendar.study_sources
+    @study_sources = @calendar_event.subject.study_sources
     #Just redirect the event
     respond_to do |format|
       format.js
