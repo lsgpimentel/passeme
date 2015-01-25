@@ -5,13 +5,13 @@
     <%= n.object.type_text %>
   </td>
   <td class="text-center">
-    <%= n.check_box :send_to_site, label: false %>
+    <%= n.check_box :send_to_site, label: false if type_can_be_sent_to?(n.object.type, :site) %>
   </td>
   <td class="text-center">
-    <%= n.check_box :send_to_email, label: false %>
+    <%= n.check_box :send_to_email, label: false if type_can_be_sent_to?(n.object.type, :email) %>
   </td>
   <td class="text-center">
-    <%= n.check_box :send_to_phone, label: false %>
+    <%= n.check_box :send_to_phone, label: false if type_can_be_sent_to?(n.object.type, :phone) %>
   </td>
 </tr>
 

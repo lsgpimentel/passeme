@@ -1,5 +1,5 @@
 class SubjectsController < AuthenticatedController
-  add_breadcrumb "Subjects", :subjects_path
+  add_breadcrumb I18n.t('subjects.breadcrumb'), :subjects_path
 
   before_filter :check_user_is_owner_of_subject, :only => [:study_sources, :update_study_sources, :edit, :update, :destroy, :update_subject_group ]
 

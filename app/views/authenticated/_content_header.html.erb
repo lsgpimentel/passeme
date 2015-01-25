@@ -4,7 +4,7 @@
     <h3 class="page-title">
       <%= yield(:title) %>
     </h3>
-    <%= if(content_for?(:breadcrum))
+    <%= if(content_for?(:breadcrumb))
           yield(:breadcrumb)
         else
           render_breadcrumbs :builder => ::BootstrapBreadcrumbsBuilder

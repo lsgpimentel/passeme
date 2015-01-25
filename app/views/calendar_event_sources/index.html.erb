@@ -1,4 +1,5 @@
-<% provide(:title, "Event Sources") %>
+<% provide(:title, t('.title')) %>
+
 
 
 <div class="table-toolbar">
@@ -21,7 +22,11 @@
     <% @event_sources.each do |s| %>
       <tr class="odd gradeX">
         <td class="text-center"><%= s.subject.name %></td>
-        <td><%= s.color %></td>
+        <td class="text-center">
+          <span class="simplecolorpicker">
+            <span style="background-color: <%= s.color %>;" class="color"></span>
+          </span>
+        </td>
         <td class="text-center">
           <%= button_to edit_calendar_event_source_path(@calendar, s), class: 'btn blue edit' do %>
             <i class="icon-pencil"></i>

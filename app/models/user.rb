@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
 
   def build_default_notification_settings
     self.build_setting
-    NotificationSetting.default_notification_settings.each do |k, v|
+    NotificationSetting.new_user_default_notification_settings.each do |k, v|
 
       if v.present?
         n = NotificationSetting.new(type: k)

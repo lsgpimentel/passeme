@@ -1,5 +1,5 @@
 class StudySourcesController < AuthenticatedController
-  add_breadcrumb "Study Sources", :study_sources_path
+  add_breadcrumb I18n.t('study_sources.breadcrumb'), :study_sources_path
 
   before_filter :check_user_is_owner_of_study_source, :only => [:edit, :update, :destroy ]
 

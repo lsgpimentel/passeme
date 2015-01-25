@@ -2,7 +2,7 @@ class TimetablesController < AuthenticatedController
 
   before_filter :check_user_is_owner_of_timetable, :only => [:update, :destroy, :make_active]
 
-  add_breadcrumb "Timetables", :timetables_path
+  add_breadcrumb I18n.t('timetables.breadcrumb'), :timetables_path
 
   def index
     @timetables = current_user.timetables
@@ -19,7 +19,7 @@ class TimetablesController < AuthenticatedController
   def new
     @timetable = Timetable.new
     @study_sources = current_user.study_sources
-    @subject_groups = current_user.subject_groups.includes(:subjects).where('subjects.subject_group_id is not null')
+    @subject_groups = current_user.subject_groups.joins(subjects: :study_sources).distinct
 
     @active_timetable = current_user.timetables.where(active: true)[0]
   end

@@ -15,6 +15,8 @@
 class Subject < ActiveRecord::Base
   extend Enumerize
 
+  scope :with_study_sources, -> { joins(:study_sources).distinct }
+
   enumerize :difficulty, in: { one: 1, two: 2, three: 3, four: 4, five: 5}, predicates: { prefix: true }
   enumerize :importance, in: { one: 1, two: 2, three: 3, four: 4, five: 5}, predicates: { prefix: true }
 

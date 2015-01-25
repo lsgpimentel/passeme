@@ -60,8 +60,9 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :timetables, t('navigation.items.timetables'), timetables_path, icon: 'icon-calendar'
     primary.item :follow_up, t('navigation.items.follow_up'), follow_up_path, icon: 'icon-check'
     primary.item :reports, t('navigation.items.reports'), reports_path, icon: 'icon-bar-chart'
-    primary.item :groups, t('navigation.items.groups'), groups_path, icon: 'icon-group'
+    #primary.item :groups, t('navigation.items.groups'), groups_path, icon: 'icon-group'
     primary.item :settings, t('navigation.items.settings'), settings_path, icon: 'icon-cogs'
+    primary.item :feedback, t('navigation.items.feedback'), 'https://docs.google.com/forms/d/11CZZugqzOc3CYY_cATA2_MuBQJN62J6n1PIh41iOYbo/viewform', icon: 'icon-thumbs-up', link: { target: '_blank' }
 
     # you can also specify a css id or class to attach to this particular level
     # works for all levels of the menu

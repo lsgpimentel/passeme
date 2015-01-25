@@ -1,7 +1,7 @@
 class ReportsController < AuthenticatedController
   before_filter :check_user_is_owner_of_timetable, except: [ :index_active_timetable ]
 
-  add_breadcrumb "Reports", :reports_path
+  add_breadcrumb I18n.t('reports.breadcrumb'), :reports_path
 
   def index
   end

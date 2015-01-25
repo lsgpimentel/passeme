@@ -3,8 +3,6 @@ class TasksController < AuthenticatedController
 
   before_filter :check_user_is_owner, :only => [:toggle_done, :update, :destroy]
 
-  add_breadcrumb "Tasks", :index_path
-
   respond_to :js
 
   def new

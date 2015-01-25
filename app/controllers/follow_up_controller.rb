@@ -5,7 +5,7 @@ class FollowUpController < AuthenticatedController
 
   before_filter :check_user_is_owner_of_timetable, except: [ :index_active_timetable ]
 
-  add_breadcrumb "Follow Up", :follow_up_path
+  add_breadcrumb I18n.t('follow_up.breadcrumb'), :follow_up_path
 
   def index
     fill_items

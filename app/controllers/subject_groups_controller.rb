@@ -1,6 +1,6 @@
 class SubjectGroupsController < AuthenticatedController
 
-  add_breadcrumb "Subject Groups", :subject_groups_path
+  add_breadcrumb I18n.t('subject_groups.breadcrumb'), :subject_groups_path
 
   before_filter :check_user_is_owner_of_subject_group, :only => [:update, :destroy ]
   

@@ -1,11 +1,10 @@
 class SettingsController < AuthenticatedController
-  add_breadcrumb "Settings", :settings_path
+  add_breadcrumb I18n.t('settings.breadcrumb'), :settings_path
 
   before_filter :check_user_is_owner_of_setting, :only => [:update]
 
   def index
     @setting = current_user.setting
-    p @setting.notification_settings
   end
 
   def update

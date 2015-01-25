@@ -32,8 +32,20 @@ pt-BR:
 
     hints:
       defaults:
+      calendar_event:
+        interval: Tempo total de intervalo
     placeholders:
       defaults:
         password_confirmation: Password novamente
         name: Nome
-
+      calendar_event:
+        date: Data
+        from_time: De
+        to_time: Até
+        calendar_event_source: Matéria
+        study_source: Fonte de Estudo
+        interval: Intervalo
+        revision_events:
+          date: Data
+          from_time: De
+          to_time: Até

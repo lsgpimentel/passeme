@@ -4,6 +4,10 @@ class CalendarEventsController < AuthenticatedController
   before_filter :check_user_is_owner_of_calendar_event, only: [:edit_complete, :complete, :info_net_hours, :edit, :update, :destroy]
 
   def new
+    #This param can be nil when the action is called without selecting in the calendar
+    if params[:date].blank?
+      params[:date] = Date.today
+    end
     @calendar_event = CalendarEvent.new(date: params[:date], from_time: params[:from_time], to_time: params[:to_time])
     @calendar_event.repeats = 'never'
     @calendar_event.revision_events << RevisionsGenerator.new(@calendar_event).default_revisions

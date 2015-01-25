@@ -26,7 +26,6 @@
 //= require bootstrap-wysihtml5/bootstrap-wysihtml5
 //= require bootstrap-datepicker/js/bootstrap-datepicker
 //= require bootstrap-datetimepicker/js/bootstrap-datetimepicker
-//= require moment.min
 //= require bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min
 //= require bootstrap-editable/inputs-ext/address/address
 //= require bootstrap-editable/inputs-ext/wysihtml5/wysihtml5
@@ -34,6 +33,7 @@
 //= require fullcalendar/fullcalendar/fullcalendar.min
 //= require jquery-validation/dist/jquery.validate.min
 //= require jquery-validation/dist/additional-methods.min
+//= require jquery-validation/localization/messages_pt_BR
 //= require bootstrap-wizard/jquery.bootstrap.wizard.min
 //= require chosen-bootstrap/chosen/chosen.jquery.min
 //= require bootstrap-timepicker/js/bootstrap-timepicker.min
@@ -44,7 +44,7 @@
 //= require dataTables/extras/TableTools
 //= require dataTables/extras/ZeroClipboard
 //= require jquery-multi-select/js/jquery.multi-select
-//= require moment-develop/min/moment-with-langs.min
+//= require moment-develop/min/moment-with-locales.min
 //= require bootstrap-daterangepicker/daterangepicker
 //= require jquery.simplecolorpicker
 //= require flot/jquery.flot

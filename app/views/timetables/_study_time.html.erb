@@ -39,21 +39,20 @@
           </select>
         </div>
 
-        <div class="row-fluid productivity-box">
-          <span class="pull-left"><%= t('activerecord.attributes.study_time.productivity') %></span>
-          <div class="pull-right">
-            <input type="radio" name="productivity" value="1">
-            <input type="radio" name="productivity" value="2">
-            <input type="radio" name="productivity" value="3">
-            <input type="radio" name="productivity" value="4">
-            <input type="radio" name="productivity" value="5">
+        <div class="row-fluid productivity-box form-horizontal">
+          <div class="control-group">
+            <label class="control-label"><%= t('activerecord.attributes.study_time.productivity') %></label>
+            <div class="controls text-center">
+              <div id="slider-productivity" class="slider bg-green"></div>
+              <span id="slider-productivity-value">3</span>
+            </div>
           </div>
         </div>
 
         <hr />
 
         <div class="action-new-time">
-          <a href="javascript:;" id="add-time" class="btn green"><%= t('.add_time_button') %></a>
+          <a id="add-time" class="btn green"><%= t('.add_time_button') %></a>
         </div>
 
       </div>
@@ -77,7 +76,7 @@
             <tr>
               <% t('date.abbr_day_names').each_with_index do |day, i| %>
                 <th data-day="<%= Date::DAYNAMES[i].downcase %>"><%= day %></th>
-            <% end %>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -95,13 +94,9 @@
 
         <table id="hours-table" class="table">
           <tr>
-            <td>jhj</td>
-            <td>fdgdf</td>
-            <td>dfgd</td>
-            <td>dfgd</td>
-            <td>dfg</td>
-            <td>dfg</td>
-            <td>dfgd</td>
+            <% t('date.abbr_day_names').each_with_index do |day, i| %>
+              <td data-day="<%= Date::DAYNAMES[i].downcase %>"><strong>Total: </strong>00:00</td>
+            <% end %>
           </tr>
         </table>
 

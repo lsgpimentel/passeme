@@ -29,6 +29,7 @@ var Timetables = function () {
       $.each(studyTime, function(i, n){
         $('<input type="hidden">').attr({
           name: 'timetable[study_times_attributes][' + id + '][' + i + ']',
+          class: i,
           value: n
         }).appendTo($(studyTimeDiv));
       });
@@ -59,6 +60,7 @@ var Timetables = function () {
         $(si).remove();
         $("#study-times > .study-time[id=study-time-" + fieldId +"]").remove();
 
+        recalculateTotalHoursFor(studyTime.day)
 
       });
 
@@ -76,6 +78,30 @@ var Timetables = function () {
 
       $(td).append($(html));
 
+      recalculateTotalHoursFor(studyTime.day)
+
+      function recalculateTotalHoursFor(day){
+        var duration = moment.duration();
+
+        var td = $('#hours-table').find('td').filter(function(){
+          return $(this).data('day') == day
+        });
+
+        $("#study-times > .study-time").filter(function(){
+          return $(this).children('[class=day]').val() == day
+        }).each(function(i, n){
+         var from = $('input[class=from]', n).val();
+         var to = $('input[class=to]', n).val();
+
+         duration.add(moment(to, 'HH:mm').subtract(moment(from, 'HH:mm')));
+
+        });
+
+        //Workaround, since Moment don't format durations. No problems in this conversion since we can't study more than 24hrs in a day, avoiding the counter resetting
+         td.html('<strong>Total: </strong>' + moment.utc(duration.asMilliseconds()).format("HH:mm"));
+
+      }
+
       function getSiblingNumber(oElement) {
         return $(oElement).parent().children(oElement.nodeName).index(oElement);
       }
@@ -88,10 +114,14 @@ var Timetables = function () {
       $('#add-time').on('click', function () {
         var from = $.trim($('#time-from').val());
         var to = $.trim($('#time-to').val());
-        var productivity = $("input[name=productivity]:checked").val();
+        var productivity = $("#slider-productivity").slider("value");
         var days = $("#days").val();
 
         if(from != '' && to != '' && productivity > 0 && days.length > 0) {
+          if(moment(to, 'HH:mm') <= moment(from, 'HH:mm')){
+            alert('O horário de início deve ser menor do que o horário de término.');
+            return false;
+          }
 
           $.each(days, function(i,n){
             var studyTime = {
@@ -105,7 +135,8 @@ var Timetables = function () {
 
           $('.timepicker-24').timepicker('clear');
           $("#days").select2('data', null);
-          $("input[name=productivity]").prop('checked', false);
+          $("#slider-productivity").slider("value", 3);
+          $("#slider-productivity-value").text('3');
         }
       });
     };
@@ -126,6 +157,17 @@ var Timetables = function () {
       }
     };
 
+    var initProductivitySlider = function(){
+      $("#slider-productivity").slider({
+        range: "max",
+        min: 1,
+        max: 5,
+        value: 3,
+        slide: function (event, ui) {
+          $("#slider-productivity-value").text(ui.value);
+        }
+      });
+    }
 
     var initOptionsBlock = function(){
       $("#use-pomodoro-technique").on('change', function(){
@@ -147,6 +189,7 @@ var Timetables = function () {
     //loadTimes();
     addTimeClickEvent();
     initOptionsBlock();
+    initProductivitySlider();
   };
 
   var initStudySourcesStep = function() {
@@ -162,7 +205,7 @@ var Timetables = function () {
 
     form.validate({
       doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
-      errorElement: 'span', //default input error message container
+        errorElement: 'span', //default input error message container
       errorClass: 'validate-inline', // default input error message class
       focusInvalid: false, // do not focus the last invalid input
       rules: {
@@ -242,7 +285,7 @@ var Timetables = function () {
         var current = index + 1;
         var total = navigation.find('li').length;
         // set wizard title
-        $('.step-title', $('#portlet-wizard-timetable')).text('Step ' + current + ' of ' + total);
+        $('.step-title', $('#portlet-wizard-timetable')).text('Etapa ' + current + ' de ' + total);
         // set done steps
         jQuery('li', $('#portlet-wizard-timetable')).removeClass("done");
         var li_list = navigation.find('li');
@@ -273,7 +316,7 @@ var Timetables = function () {
         var total = navigation.find('li').length;
         var current = index + 1;
         // set wizard title
-        $('.step-title', $('#portlet-wizard-timetable')).text('Step ' + (index + 1) + ' of ' + total);
+        $('.step-title', $('#portlet-wizard-timetable')).text('Etapa ' + (index + 1) + ' de ' + total);
         // set done steps
         jQuery('li', $('#portlet-wizard-timetable')).removeClass("done");
         var li_list = navigation.find('li');

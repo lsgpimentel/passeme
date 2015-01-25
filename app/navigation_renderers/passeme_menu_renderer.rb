@@ -1,11 +1,5 @@
 class PassemeMenuRenderer < SimpleNavigation::Renderer::Base 
 
-
-
-
-
-
-
   # def_delegators SimpleNavigation.adapter.template, :button_tag
 
   def render(item_container)

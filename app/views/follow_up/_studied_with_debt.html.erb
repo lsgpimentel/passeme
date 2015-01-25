@@ -16,7 +16,7 @@
       <td class="text-center"><%= e.calendar_event.subject.name %></td>
       <td class="text-center"><%= l(e.calendar_event.meta, format: :only_time) %></td>
       <td class="text-center"><%= l(e.studied_time, format: :only_time) %></td>
-      <td class="text-center"><%= e.debt_reason %></td>
+      <td class="text-center"><%= e.debt_reason_text %></td>
     </tr>
   <% end %>
   </tbody>

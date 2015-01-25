@@ -22,7 +22,7 @@ class FollowUpItem < ActiveRecord::Base
   scope :studied_debt, -> { studied.where('debt_reason IS NOT NULL') }
   scope :in_period, -> (start_date, end_date) { where('follow_up_items.date >= :start_date AND follow_up_items.date <= :end_date', start_date: start_date, end_date: end_date) }
 
-  enumerize :debt_reason, in: { reason_one: 1, reason_two: 2, reason_three: 3, reason_four: 4, reason_five: 5}, predicates: { prefix: true }, scope: true
+  enumerize :debt_reason, in: { solve_urgent_problem: 1, procrastination: 2, health_problems: 3, no_motivation: 4, very_tired: 5, others: 6}, predicates: { prefix: true }, scope: true
 
   belongs_to :calendar_event
 

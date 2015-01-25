@@ -355,6 +355,12 @@ pt-BR:
         audio: Áudio
     follow_up_item:
       debt_reason:
+        solve_urgent_problem: Necessidade de resolver outro problema mais urgente
+        procrastination: Procrastinação
+        health_problems: Problemas de saúde
+        no_motivation: Sem motivação
+        very_tired: Muito cansaço
+        others: Outros
     notification_setting:
       type:
         task_before_overdue: Quando alguma tarefa estiver próxima de expirar
@@ -369,6 +375,7 @@ pt-BR:
 
 ####### Authenticated ########
   authenticated:
+    breadcrumb: Home
     header:
       new_notifications_count: Você tem %{count} novas notificações
       see_all_notifications: Ver todas notificações
@@ -379,15 +386,20 @@ pt-BR:
       follow_up: Acompanhamento
       my_settings: Minhas Configurações
       full_screen: Tela cheia
+      feedback: Feedback
       log_out: Sair
 ####### Calendar Event Sources #######
   calendar_event_sources:
+    breadcrumb: Matérias Associadas
     index:
+      title: Matérias Associadas
       table_label:
         subject: Matéria
         color: Cor
         edit: Editar
         delete: Excluir
+    form_modal:
+      title: Nova Matéria Associada
 ####### Calendar Events #######
   calendar_events:
     form_modal:
@@ -404,7 +416,6 @@ pt-BR:
       studied_time_label: Quanto tempo você estudou?
       studied_time_hint: max. %{meta} mins.
     form_modal_general:
-      interval_hint: Tempo total de intervalo
       use_revisions: Usar revisões espaçadas
     schedule:
       repeats_monthly_options:
@@ -426,6 +437,7 @@ pt-BR:
         subjects: Matérias
 ####### Dashboard #######
   dashboard:
+    breadcrumb: Painel
     index:
       title: Painel
     no_timetable:
@@ -439,6 +451,7 @@ pt-BR:
       title: Estatísticas Gerais
 ####### Follow Up #######
   follow_up:
+    breadcrumb: Acompanhamento
     studied_with_debt:
       table_label:
         date: Data
@@ -470,6 +483,7 @@ pt-BR:
           
 ####### Notifications ########
   notifications:
+    breadcrumb: Notificações
     index:
       title: Notificações
 
@@ -486,6 +500,7 @@ pt-BR:
 
 ###### Reports ######
   reports:
+    breadcrumb: Relatórios
     index:
       results_for: Mostrando resultados para a grade
     follow_up_not_studied_reason:
@@ -500,6 +515,7 @@ pt-BR:
       
 ###### Settings ######
   settings:
+    breadcrumb: Configurações
     index:
       tabs:
         general:
@@ -514,6 +530,7 @@ pt-BR:
          
 ###### Study Sources #####
   study_sources:
+    breadcrumb: Fontes de Estudo
     form_modal:
       title: Fonte de Estudo
     index:
@@ -531,6 +548,7 @@ pt-BR:
       update_successful: A fonte de estudo foi atualizada com sucesso.
 ##### Subject Groups ######
   subject_groups:
+    breadcrumb: Grupos de Matérias
     index:
       title: Grupos de Matérias
       available_subjects: Matérias Disponíveis
@@ -539,6 +557,7 @@ pt-BR:
       delete_confirmation: Você tem certeza?
 ###### Subjects #######
   subjects:
+    breadcrumb: Matérias
     index:
       title: Matérias
       buttons:
@@ -582,10 +601,12 @@ pt-BR:
 
 ###### Groups ######
   groups:
+    breadcrumb: Grupos
     index:
       title: Grupos
 ###### Timetables ######
   timetables:
+    breadcrumb: Grades de Tempo
     initial_data:
       title: Coloque algumas informações gerais sobre a grade
     study_time:
@@ -639,6 +660,7 @@ pt-BR:
       reports: Relatórios
       groups: Grupos
       settings: Configurações
+      feedback: Feedback
 ###### Date and time pickers ######
   datepicker:
     dformat: '%d/%m/%Y'        # display format of the date (this is the default, can be ommited)

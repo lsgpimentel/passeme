@@ -2,7 +2,7 @@ class CalendarEventSourcesController < AuthenticatedController
   before_filter :check_user_is_owner_of_calendar
   before_filter :check_user_is_owner_of_event_source, :only => [:edit, :update, :destroy, :get_study_sources ]
 
-  add_breadcrumb "Event Sources", :calendar_event_sources_path
+  add_breadcrumb I18n.t('calendar_event_sources.breadcrumb'), :calendar_event_sources_path
 
   def index
     @event_sources = @calendar.calendar_event_sources

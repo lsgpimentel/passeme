@@ -1,6 +1,6 @@
 class DashboardController < AuthenticatedController
   include TasksHelper
-  add_breadcrumb "Dashboard", :index_path
+  add_breadcrumb I18n.t('dashboard.breadcrumb'), :index_path
 
   def index
     @tasks = current_user.tasks

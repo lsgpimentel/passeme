@@ -2,7 +2,7 @@ class NotificationsController < AuthenticatedController
 
   before_filter :check_user_is_owner, :only => [:show, :update, :destroy]
 
-  add_breadcrumb "Notifications", :notifications_path
+  add_breadcrumb I18n.t('notifications.breadcrumb'), :notifications_path
 
   def index
     @notifications = current_user.notifications.paginate(page: params[:page], per_page: 30)
