@@ -26,7 +26,7 @@ class NotificationSetting < ActiveRecord::Base
   }
 
   cattr_reader :new_user_default_notification_settings
-  @@default_notification_settings = {
+  @@new_user_default_notification_settings = {
     task_before_overdue: [:site],
     follow_up_next_day: [:email],
     follow_up_next_month: [:email],
