@@ -52,6 +52,7 @@
 - [ ] Internacionalizar textos de validação colocados diretamente no Javascript (principalmente a parte de Timetables)
 - [ ] Adicionar algumas validações que estão no Javascript também nos models (principalmente na criação da Timetable)
 - [ ] Criar views internacionalida dos e-mails enviados (devise e dos outros e-mails). pt_BR e padrão (sem locale)
+- [ ] Configuração para o usuário poder especificar os dias e horários que ele quer receber os e-mails de notificação.
 
 
 # Anotações Caderno

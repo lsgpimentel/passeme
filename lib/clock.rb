@@ -4,14 +4,14 @@ require 'clockwork'
 
 include Clockwork
 
-#Always when a new day starts
-every(1.day, 'Queueing scheduled job', :at => '14:17') { Delayed::Job.enqueue TaskBeforeOverdueNotifier.new }
+#Running at the day start
+every(1.day, 'Queueing Task Before Overdue Notifier', :at => '00:01') { Delayed::Job.enqueue TaskBeforeOverdueNotifier.new }
 
-#Always when a new day starts
-every(1.day, 'Queueing scheduled job', :at => '14:17') { Delayed::Job.enqueue FollowUpNextDayNotifier.new }
+#Running near the end of the day
+every(1.day, 'Queueing Follow Up Next Day Notifier', :at => '20:00') { Delayed::Job.enqueue FollowUpNextDayNotifier.new }
 
-#Always in the last day of the month
-every(1.month, 'Queueing scheduled job', :at => '14:17') { Delayed::Job.enqueue FollowUpNextMonthNotifier.new }
+#Running in the last day of the month
+every(1.month, 'Queueing Follow Up Next Month Notifier', :if => lambda { |t| t.day == Date.current.end_of_month.day }) { Delayed::Job.enqueue FollowUpNextMonthNotifier.new }
 
-#Always when a new month starts
-every(1.month, 'Queueing scheduled job', :at => '14:17') { Delayed::Job.enqueue FollowUpPastMonthNotifier.new }
+#Running in the first day of the month
+every(1.month, 'Queueing Follow Up Past Month Notifier', :if => lambda { |t| t.day == Date.current.at_beginning_of_month.day }) { Delayed::Job.enqueue FollowUpPastMonthNotifier.new }
