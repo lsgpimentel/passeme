@@ -91,7 +91,7 @@
           </li>
           <li class="divider"></li>
           <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> <%= t('.full_screen') %></a></li>
-          <li><a href="https://docs.google.com/forms/d/11CZZugqzOc3CYY_cATA2_MuBQJN62J6n1PIh41iOYbo/viewform" target="_blank"><i class="icon-thumbs-up"></i> <%= t('.feedback') %></a></li>
+          <li><a href="https://docs.google.com/forms/d/11CZZugqzOc3CYY_cATA2_MuBQJN62J6n1PIh41iOYbo/viewform" target="_blank"><i class="icon-thumbs-up"></i> <%= t('.evaluation_form') %></a></li>
           <li>
             <%= link_to(destroy_user_session_path, method: :delete) do %>
               <i class="icon-key"></i> <%= t('.log_out') %> 
@@ -102,6 +102,15 @@
         <!-- END USER LOGIN DROPDOWN -->
         <!-- END USER LOGIN DROPDOWN -->
       </ul>
+
+
+      <ul class="nav pull-left">
+        <li class="beta">
+          <h2>PasseMe <sup>Beta</sup></h2>
+        </li>
+      </ul>
+
+
       <!-- END TOP NAVIGATION MENU --> 
     </div>
   </div>

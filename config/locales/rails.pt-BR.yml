@@ -391,7 +391,7 @@ pt-BR:
       follow_up: Acompanhamento
       my_settings: Minhas Configurações
       full_screen: Tela cheia
-      feedback: Feedback
+      evaluation_form: Formulário de avaliação
       log_out: Sair
 ####### Calendar Event Sources #######
   calendar_event_sources:
@@ -666,7 +666,10 @@ pt-BR:
       reports: Relatórios
       groups: Grupos
       settings: Configurações
-      feedback: Feedback
+      feedback:
+        title: Feedback
+        evaluation_form: Formulário de avaliação
+        speak_with_author: Quero falar com o autor!
 ###### Date and time pickers ######
   datepicker:
     dformat: '%d/%m/%Y'        # display format of the date (this is the default, can be ommited)

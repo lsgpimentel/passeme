@@ -119,3 +119,13 @@ table.table {
     display: inline-block;
     float: right;
 }
+
+.nav .beta {
+  color: #ddd;
+  h2{
+    line-height: 20px;
+  }
+  sup {
+    color: #dd4b39;
+  }
+}
