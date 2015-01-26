@@ -1,7 +1,8 @@
 class UserNotificationMailer < ActionMailer::Base
-  default from: "no-reply@passeme.com"
 
   def task_before_overdue(task, user)
+    @task = task
+    @user = user
     mail(to: @user.email, subject: "Tarefa expirando em #{task.due_in}")
   end
 
