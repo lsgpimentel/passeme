@@ -1,5 +1,45 @@
-<p>Seja bem-vindo, <%= @email %>!</p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- If you delete this tag, the sky will fall on your head -->
+    <meta name="viewport" content="width=device-width" />
 
-<p>Você pode confirmar seu e-mail a partir do link abaixo:</p>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<p><%= link_to 'Confirmar minha conta!', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+    <%= stylesheet_link_tag "emails/zurb_template", media: "all" %>
+
+  </head>
+
+  <body bgcolor="#FFFFFF">
+
+
+    <!-- BODY -->
+    <table class="body-wrap">
+      <tr>
+        <td></td>
+        <td class="container" bgcolor="#FFFFFF">
+
+          <div class="content">
+            <table>
+              <tr>
+                <td>
+                  <h3>Seja bem-vindo, <%= @resource.name %>!</h3>
+                  <p>Você precisa confirmar seu e-mail antes de começar o aplicativo.</p>
+                  <p>Você pode confirmar seu e-mail a partir do link abaixo:</p>
+                  <%= link_to 'Confirmar minha conta!', confirmation_url(@resource, :confirmation_token => @token), class: 'btn' %>
+                  <br/>
+                  <br/>							
+
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </td>
+        <td></td>
+      </tr>
+    </table><!-- /BODY -->
+
+
+  </body>
+</html>

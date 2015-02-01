@@ -1,16 +1,14 @@
-<h2>Change your password</h2>
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" }, label_html: { class: "visible-ie8 visible-ie9" } },
+                    html: { method: :put, class: "form-vertical register-form", novalidate: "novalidate" }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.full_error :reset_password_token %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
-
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Change my password" %></div>
+  <h3><%= t('.reset_password') %></h3>
+  <%= f.input :password, wrapper: :with_icon, placeholder: "Password", icon: "icon-lock", required: true, autofocus: true %>
+  <%= f.input :password_confirmation, wrapper: :with_icon, icon: "icon-ok", required: true %>
+  <div class="form-actions">
+    <%= submit_button t("buttons.submit") %>
+  </div>
 <% end %>
-
 <%= render "devise/shared/links" %>

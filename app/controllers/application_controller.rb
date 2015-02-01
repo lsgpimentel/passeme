@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :set_locale
+  #before_filter :set_locale
 
   protected
 
@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
     #    end
   end
 
-  def default_url_options(options = {})
-    { locale: I18n.locale }
-  end
+  #def default_url_options(options = {})
+  #  { locale: I18n.locale }
+  #end
 
   #TODO Redirect to default locale page if locale is not set in the url
   def set_locale

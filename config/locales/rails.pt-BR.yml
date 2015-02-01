@@ -340,11 +340,12 @@ pt-BR:
     confirmations:
       new:
         title: Reenviar instruções de confirmação
-    mailer:
     passwords:
       new:
         title: Esqueceu sua senha?
         enter_email_to_reset: Entre com seu e-mail para resetar sua senha.
+      edit:
+        reset_password: Resetar senha
     unlocks:
 
 ####### Enumerize #########

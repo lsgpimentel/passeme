@@ -52,7 +52,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem "ffaker", "~> 1.18.0"
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem "devise", "~> 3.0.2"
+gem "devise", "~> 3.4.1"
 gem 'omniauth'
 gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook'
 gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
@@ -87,7 +87,8 @@ gem "haml-rails", "~> 0.5.2"
 gem "table_print", "~> 1.5.1"
 gem "descriptive_statistics", github: 'thirtysixthspan/descriptive_statistics', require: 'descriptive_statistics/safe'
 gem 'rb-readline'
-
+gem 'nokogiri'
+gem 'premailer-rails', '~> 1.8.0'
 #gem 'responders', github: 'plataformatec/responders'
   
 
