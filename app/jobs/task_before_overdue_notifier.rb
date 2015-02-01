@@ -6,7 +6,9 @@ class TaskBeforeOverdueNotifier
     tasks = Task.where("due_in = ? AND done = ?", Date.tomorrow, false)
 
     tasks.each do |t|
-      t.user.notify(NOTIFICATION_TYPE, t, t.user)
+      if t.user.can_receive_email_for(NOTIFICATION_TYPE)
+        UserNotificationMailer.task_before_overdue(t)
+      end
     end
   end
 

@@ -8,8 +8,8 @@ class FollowUpPastMonthNotifier
 
       event_instances = EventInstance.calendar_occurrences_between(c, Date.current.at_beginning_of_month.prev_month, Date.current.prev_month.end_of_month)
 
-      if event_instances.present?
-        c.timetable.creator.notify(NOTIFICATION_TYPE, c, c.timetable.creator)
+      if event_instances.present? && c.timetable.creator.can_receive_email_for(NOTIFICATION_TYPE)
+        UserNotificationMailer.follow_up_past_month(event_instances, c.timetable.creator)
       end
     end
   end

@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable,
-    :validatable, #:confirmable, :lockable,
+    :validatable, :confirmable,# :lockable,
     :omniauthable, omniauth_providers: [:google_oauth2]
   #, omniauthable_providers: [:facebook] -> tomando erro
 
@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   has_many :subject_groups, dependent: :destroy
   has_many :study_sources, dependent: :destroy, foreign_key: "creator_id"
 
-  include Notifiable
+  #include Notifiable
 
   ####
   #Google OAuth2 callback after authentication
@@ -120,7 +120,15 @@ class User < ActiveRecord::Base
     notifications.where(is_read: false).sent_to(:site)
   end
 
+  def get_notification_setting(type)
+    type_enum = NotificationSetting.type.values.find { |i| i == type.to_s }
+    self.setting.notification_settings.find_by_type(type_enum.value)
+  end
 
+  def can_receive_email_for(type)
+    setting = get_notification_setting(type)
+    setting && setting.send_to_email?
+  end
 
   private
 

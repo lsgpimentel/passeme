@@ -1,8 +1,46 @@
-</p>Olá, <%= @user.name %> <p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- If you delete this tag, the sky will fall on your head -->
+    <meta name="viewport" content="width=device-width" />
 
-  <p>Só para lhe informar que sua tarefa "<%= @task.name %>" está expirando amanhã (<%= I18n.l @task.due_in %>) </p>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<p>
-  Att,
-  PasseMe
-</p>
+    <%= stylesheet_link_tag "emails/zurb_template", media: "all" %>
+
+  </head>
+
+  <body bgcolor="#FFFFFF">
+
+
+    <!-- BODY -->
+    <table class="body-wrap">
+      <tr>
+        <td></td>
+        <td class="container" bgcolor="#FFFFFF">
+
+          <div class="content">
+            <table>
+              <tr>
+                <td>
+                  <h3>Olá, <%= @task.user.name %>!</h3>
+                  <p>Só para lhe informar que sua tarefa "<%= @task.name %>" está expirando amanhã (<%= I18n.l @task.due_in %>) </p>
+                  <br/>
+                  <br/>							
+
+                  <p class="callout">
+                    Você está recebendo este e-mail pois solicitou que lhe fosse informado quando uma tarefa estivesse próxima de expirar. Caso não queira mais receber este e-mail, desabilite este tipo de notificação no PasseMe, no menu de Configurações.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </td>
+        <td></td>
+      </tr>
+    </table><!-- /BODY -->
+
+
+  </body>
+</html>
