@@ -5,7 +5,7 @@ class SubjectsController < AuthenticatedController
 
 
   def index
-    @subjects = current_user.subjects
+    @subjects = current_user.subjects.includes(:study_sources)
   end
 
   def create

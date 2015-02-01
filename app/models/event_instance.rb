@@ -67,7 +67,7 @@ class EventInstance
   # line 3 = Event starts before our end date and repeats for N times
   # line 4 = Event repeats indefinitely, then all we care about is that it has started at somepoint in the past
   def self.events(calendar, begin_date, end_date)
-    calendar.calendar_events.where(
+    calendar.calendar_events.includes(:calendar_event_source).where(
       "(repeats = 'never' AND date >= :start AND date <= :end) OR " +
       "(repeats != 'never' AND date <= :end AND repeat_ends = 'on' AND repeat_ends_on >= :start) OR " +
       "(repeats != 'never' AND date <= :end AND repeat_ends = 'count') OR " +

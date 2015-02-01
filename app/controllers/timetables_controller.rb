@@ -5,7 +5,7 @@ class TimetablesController < AuthenticatedController
   add_breadcrumb I18n.t('timetables.breadcrumb'), :timetables_path
 
   def index
-    @timetables = current_user.timetables
+    @timetables = current_user.timetables.includes(:calendar)
     @active_timetable = @timetables.where(active: true)[0]
     if @active_timetable.blank?
       render :no_timetable
@@ -67,7 +67,7 @@ class TimetablesController < AuthenticatedController
   private
 
   def timetable_params
-    params.require(:timetable).permit(:name, :goal, :specific, :active, :public, :use_pomodoro_technique, :use_spaced_repetition, :spaced_repetition_time, :block_size, :block_interval, :start_date, :end_date, pomodoro_technique: [:time_short_break, :time_long_break], subjects: [], study_times_attributes: [:day, :from, :to, :productivity])
+    params.require(:timetable).permit(:name, :goal, :specific, :active, :public, :use_pomodoro_technique, :use_spaced_repetition, :spaced_repetition_percent_block_size, :block_size, :block_interval, :start_date, :end_date, pomodoro_technique: [:time_short_break, :time_long_break], subjects: [], study_times_attributes: [:day, :from, :to, :productivity])
   end
 
   def check_user_is_owner_of_timetable

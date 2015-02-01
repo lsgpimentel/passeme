@@ -130,8 +130,8 @@
           <div id="pomodoro-technique-block" class="hide">
             <%= f.simple_fields_for :pomodoro_technique do |p| %>
               <%= p.input :time_short_break, as: :time_picker %>
-            <%= p.input :time_long_break, as: :time_picker %>
-          <% end %>
+              <%= p.input :time_long_break, as: :time_picker %>
+            <% end %>
           </div>
         </div>
 
@@ -142,8 +142,8 @@
           <div id="spaced-repetition-block" class="hide">
             <%= f.input :spaced_repetition_percent_block_size, as: :integer do %>
               <%= f.input_field :spaced_repetition_percent_block_size, class: "m-wrap input-mini" %>
-            <span class="percent">%</span>
-          <% end %>
+              <span class="percent">%</span>
+            <% end %>
           </div>
         </div>
 

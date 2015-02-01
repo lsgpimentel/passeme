@@ -9,6 +9,9 @@
 #
 
 class Calendar < ActiveRecord::Base
+
+
+
   belongs_to :timetable
   has_many :calendar_event_sources
   has_many :calendar_events, through: :calendar_event_sources

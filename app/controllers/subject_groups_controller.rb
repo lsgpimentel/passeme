@@ -6,7 +6,7 @@ class SubjectGroupsController < AuthenticatedController
   
   def index
     @subjects = current_user.subjects.where(subject_group_id: nil)
-    @subject_groups = current_user.subject_groups
+    @subject_groups = current_user.subject_groups.includes(:subjects)
     @subject_group = SubjectGroup.new
   end
 
