@@ -1,4 +1,25 @@
 GIT
+  remote: git://github.com/MiniProfiler/rack-mini-profiler.git
+  revision: dbb7e4f07ed2369ffb1d7a27f7aa9d1ea86b72b2
+  specs:
+    rack-mini-profiler (0.9.2)
+      rack (>= 1.1.3)
+
+GIT
+  remote: git://github.com/amatsuda/traceroute.git
+  revision: 4df4c5cbc54d7891843cb3dc7253ed7de9f78020
+  specs:
+    traceroute (0.4.0)
+      rails (>= 3.0.0)
+
+GIT
+  remote: git://github.com/banister/binding_of_caller.git
+  revision: 21361f1b38b9a514f8280b69f919787235b5d354
+  specs:
+    binding_of_caller (0.7.3.pre1)
+      debug_inspector (>= 0.0.1)
+
+GIT
   remote: git://github.com/bmabey/database_cleaner.git
   revision: bef9fe27e7fdf470b737c4f9140c7f029f81b607
   specs:
@@ -13,11 +34,66 @@ GIT
       mail (~> 2.2)
 
 GIT
+  remote: git://github.com/brentd/xray-rails.git
+  revision: 1a5641c57a285590880324ae085a64e56dcdca1a
+  specs:
+    xray-rails (0.1.15)
+      coffee-rails
+      rails (>= 3.1.0)
+
+GIT
+  remote: git://github.com/charliesome/better_errors.git
+  revision: 3247eae5ccb7f33f0e84df779d70b053ace81edf
+  specs:
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+
+GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: 038b13c04e575cc0f0c89c702c994166c7dc9955
+  specs:
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
+
+GIT
+  remote: git://github.com/deivid-rodriguez/pry-byebug.git
+  revision: a2d6a039be30aa856efc867e0e8a0c7fd720fadf
+  specs:
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+
+GIT
+  remote: git://github.com/evrone/quiet_assets.git
+  revision: f3f349b53e7cbc141febf29633071518cc94ebb8
+  specs:
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
+
+GIT
+  remote: git://github.com/flyerhzm/bullet.git
+  revision: a9f8f5eadfc11c032e54474cd6a3aa668dd28621
+  specs:
+    bullet (4.14.3)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
+
+GIT
   remote: git://github.com/jenseng/immigrant.git
   revision: 05fc081479cfc46d50e4c0bb8569f0ee31415ccc
   specs:
     immigrant (0.2.0)
       activerecord (>= 3.0)
+
+GIT
+  remote: git://github.com/josevalim/rails-footnotes.git
+  revision: 3c431443deab37f38748c7e8abc96c05f08d918b
+  specs:
+    rails-footnotes (4.1.4)
+      rails (>= 3.2)
 
 GIT
   remote: git://github.com/lsgpimentel/gritter.git
@@ -45,6 +121,15 @@ GIT
   specs:
     omniauth-facebook (2.0.0)
       omniauth-oauth2 (~> 1.2)
+
+GIT
+  remote: git://github.com/plentz/lol_dba.git
+  revision: d665c16671f84671486824f67799e22cae8e628e
+  specs:
+    lol_dba (1.6.3)
+      actionpack (>= 3.0, < 5.0)
+      activerecord (>= 3.0, < 5.0)
+      railties (>= 3.0, < 5.0)
 
 GIT
   remote: git://github.com/preston/railroady.git
@@ -80,11 +165,26 @@ GIT
       railties (>= 3.1.0)
 
 GIT
+  remote: git://github.com/troessner/reek.git
+  revision: 00b77d4810e3e9d8b96caa953c561d21059183c4
+  specs:
+    reek (1.6.3)
+      parser (~> 2.2)
+      rainbow (~> 2.0)
+      unparser (~> 0.2.2)
+
+GIT
   remote: git://github.com/tute/merit.git
   revision: 14a9fe1ae6e85020a99d8bd9546d0d706daf31e3
   specs:
     merit (2.3.1)
       ambry (~> 0.3.0)
+
+GIT
+  remote: git://github.com/wvanbergen/request-log-analyzer.git
+  revision: b83865d440278583ac8e4901bb33878244fd7c75
+  specs:
+    request-log-analyzer (1.13.4)
 
 GIT
   remote: git://github.com/zquestz/omniauth-google-oauth2.git
@@ -97,7 +197,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    Ascii85 (1.0.2)
+    abstract_type (0.0.7)
     actionmailer (4.0.13)
       actionpack (= 4.0.13)
       mail (~> 2.5, >= 2.5.4)
@@ -122,24 +222,19 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    adamantium (0.2.0)
+      ice_nine (~> 0.11.0)
+      memoizable (~> 0.4.0)
     addressable (2.3.6)
-    afm (0.2.2)
     ambry (0.3.1)
-    annotate (2.5.0)
-      rake
     arel (4.0.2)
+    ast (2.0.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    awesome_print (1.6.1)
     bcrypt (3.1.10)
     bcrypt-ruby (3.0.1)
-    better_errors (1.0.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
@@ -157,8 +252,6 @@ GEM
       terminal-table (~> 1.4)
     breadcrumbs_on_rails (2.3.0)
     builder (3.1.4)
-    bullet (4.6.0)
-      uniform_notifier
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -174,12 +267,9 @@ GEM
       timers (~> 4.0.0)
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
-    choice (0.1.7)
     clockwork (0.6.2)
       activesupport
       tzinfo (~> 0.3.35)
-    code_analyzer (0.4.5)
-      sexp_processor
     coderay (1.1.0)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -188,8 +278,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.0)
-    colored (1.2)
     columnize (0.9.0)
+    concord (0.1.5)
+      adamantium (~> 0.2.0)
+      equalizer (~> 0.0.9)
     css_parser (1.3.6)
       addressable
     daemons (1.1.9)
@@ -210,6 +302,7 @@ GEM
     diff-lcs (1.2.5)
     enumerize (0.7.0)
       activesupport (>= 3.2)
+    equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.4)
     execjs (2.2.2)
@@ -261,7 +354,6 @@ GEM
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
-    hashery (2.1.1)
     hashie (3.3.2)
     highline (1.6.21)
     hike (1.2.3)
@@ -272,6 +364,7 @@ GEM
       i18n
     icalendar (1.4.5)
     ice_cube (0.11.3)
+    ice_nine (0.11.1)
     jbuilder (1.5.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -292,13 +385,11 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lol_dba (1.6.4)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      railties (>= 3.0)
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
@@ -327,34 +418,21 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    pdf-reader (1.3.3)
-      Ascii85 (~> 1.0.0)
-      afm (~> 0.2.0)
-      hashery (~> 2.0)
-      ruby-rc4
-      ttfunk
+    parser (2.2.0.2)
+      ast (>= 1.1, < 3.0)
     pg (0.18.1)
-    prawn (0.12.0)
-      pdf-reader (>= 0.9.0)
-      ttfunk (~> 1.0.2)
     premailer (1.8.3)
       css_parser (>= 1.3.6)
       htmlentities (>= 4.0.0, <= 4.3.1)
     premailer-rails (1.8.0)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
+    procto (0.0.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (2.0.0)
-      byebug (~> 3.4)
-      pry (~> 0.10)
-    quiet_assets (1.0.3)
-      railties (>= 3.1, < 5.0)
     rack (1.5.2)
-    rack-mini-profiler (0.1.31)
-      rack (>= 1.1.3)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.0.13)
@@ -365,25 +443,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.13)
       sprockets-rails (~> 2.0)
-    rails-erd (1.1.0)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
-      choice (~> 0.1.6)
-      ruby-graphviz (~> 1.0.4)
-    rails-footnotes (3.7.9)
-      rails (>= 3.0.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_best_practices (1.14.4)
-      activesupport
-      awesome_print
-      code_analyzer (>= 0.4.3)
-      colored
-      erubis
-      i18n
-      require_all
-      ruby-progressbar
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
     railties (4.0.13)
@@ -391,6 +453,7 @@ GEM
       activesupport (= 4.0.13)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (2.0.0)
     rake (10.4.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
@@ -399,13 +462,7 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     recaptcha (0.3.6)
-    reek (1.3.6)
-      ruby2ruby (~> 2.0.7)
-      ruby_parser (~> 3.2)
-      sexp_processor
     ref (1.0.5)
-    request-log-analyzer (1.12.11)
-    require_all (1.3.2)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec (2.14.1)
@@ -423,9 +480,6 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    ruby-graphviz (1.0.9)
-    ruby-progressbar (1.7.1)
-    ruby-rc4 (0.1.5)
     ruby2ruby (2.0.8)
       ruby_parser (~> 3.1)
       sexp_processor (~> 4.0)
@@ -471,7 +525,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    state_machine (1.2.0)
     table_print (1.5.3)
     temple (0.6.10)
     terminal-table (1.4.5)
@@ -488,9 +541,6 @@ GEM
     timeliness (0.3.7)
     timers (4.0.1)
       hitimes
-    traceroute (0.3.0)
-      rails (>= 3.0.0)
-    ttfunk (1.0.3)
     turbolinks (1.3.1)
       coffee-rails
     tzinfo (0.3.43)
@@ -498,34 +548,37 @@ GEM
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     uniform_notifier (1.6.2)
+    unparser (0.2.2)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2.0)
+      concord (~> 0.1.5)
+      diff-lcs (~> 1.2.5)
+      equalizer (~> 0.0.9)
+      parser (~> 2.2.0.2)
+      procto (~> 0.0.2)
     uuidtools (2.1.5)
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.6)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
-    wicked (1.0.3)
-      rails (>= 3.0.7)
     will_paginate (3.0.4)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    xray-rails (0.1.15)
-      coffee-rails
-      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate (~> 2.5.0)
+  annotate!
   bcrypt-ruby (= 3.0.1)
-  better_errors (~> 1.0.1)
-  binding_of_caller (~> 0.7.2)
+  better_errors!
+  binding_of_caller!
   bootstrap-sass (= 2.3.2.0)
   bootstrap-will_paginate (= 0.0.9)
   brakeman (~> 2.1.2)
   breadcrumbs_on_rails (~> 2.3.0)
-  bullet (~> 4.6.0)
+  bullet!
   cancan (~> 1.6.10)
   capybara (= 2.1.0)
   childprocess
@@ -555,7 +608,7 @@ DEPENDENCIES
   jquery-rails (= 2.2.1)
   jquery-simplecolorpicker-rails!
   jquery-turbolinks (~> 2.0.1)
-  lol_dba (~> 1.6.0)
+  lol_dba!
   merit!
   nested_form!
   nokogiri
@@ -563,21 +616,18 @@ DEPENDENCIES
   omniauth-facebook!
   omniauth-google-oauth2!
   pg
-  prawn (~> 0.12.0)
   premailer-rails (~> 1.8.0)
-  pry-byebug
-  quiet_assets (~> 1.0.2)
-  rack-mini-profiler (~> 0.1.31)
+  pry-byebug!
+  quiet_assets!
+  rack-mini-profiler!
   railroady!
   rails (~> 4.0.0)
-  rails-erd (~> 1.1.0)
-  rails-footnotes (~> 3.7.9)
+  rails-footnotes!
   rails_12factor (= 0.0.2)
-  rails_best_practices (~> 1.14.0)
   rb-readline
   recaptcha (~> 0.3.5)
-  reek (~> 1.3.2)
-  request-log-analyzer (~> 1.12.9)
+  reek!
+  request-log-analyzer!
   rspec-rails (= 2.14.0)
   sass-rails (= 4.0.0)
   sdoc
@@ -586,14 +636,12 @@ DEPENDENCIES
   simple_form (~> 3.0.0.rc)
   spork-rails!
   sprockets-urlrewriter!
-  state_machine (~> 1.2.0)
   table_print (~> 1.5.1)
   therubyracer
   thin
-  traceroute (~> 0.3.0)
+  traceroute!
   turbolinks (~> 1.3.1)
   uglifier (= 2.1.1)
   validates_timeliness (~> 3.0.14)
-  wicked (~> 1.0.0)
   will_paginate (= 3.0.4)
-  xray-rails (~> 0.1.6)
+  xray-rails!

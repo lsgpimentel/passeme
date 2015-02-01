@@ -4,37 +4,40 @@ ruby '2.1.2'
 gem 'rails', '~> 4.0.0'
 
 group :development, :test do
-  gem 'rspec-rails', '2.14.0'
-  gem 'guard-rspec', '~> 4.0.0'
-  gem 'spork-rails', github: 'sporkrb/spork-rails'
-  gem 'guard-spork', '~> 1.5.1'
   gem 'childprocess'
-  gem "bullet", "~> 4.6.0"
-  gem 'annotate', "~> 2.5.0"
-  gem "better_errors", "~> 1.0.1"
-  gem "lol_dba", "~> 1.6.0"
-  gem "quiet_assets", "~> 1.0.2"
-  gem "rails-footnotes", "~> 3.7.9"
-  gem "rails_best_practices", "~> 1.14.0"
-  gem "request-log-analyzer", "~> 1.12.9"
-  gem "xray-rails", "~> 0.1.6"
-  gem "traceroute", "~> 0.3.0"
-  gem "reek", "~> 1.3.2"
-  gem "rails-erd", "~> 1.1.0"
-  gem "binding_of_caller", "~> 0.7.2"
-  gem "rack-mini-profiler", "~> 0.1.31"
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+end
+
+group :development do
+  gem "bullet", github: 'flyerhzm/bullet'
+  gem 'annotate', github: 'ctran/annotate_models'
+  gem "better_errors", github: 'charliesome/better_errors'
+  gem "lol_dba", github: 'plentz/lol_dba'
+  gem "quiet_assets", github: 'evrone/quiet_assets'
+  gem "rails-footnotes", github: 'josevalim/rails-footnotes'
+  #gem "rails_best_practices", github: 'railsbp/rails_best_practices'
+  gem "request-log-analyzer", github: 'wvanbergen/request-log-analyzer'
+  gem "xray-rails", github: 'brentd/xray-rails'
+  gem "traceroute", github: 'amatsuda/traceroute'
+  gem "reek", github: 'troessner/reek'
+  #gem "rails-erd", "~> 1.1.0"
+  gem "binding_of_caller", github: 'banister/binding_of_caller'
+  gem "rack-mini-profiler", github: 'MiniProfiler/rack-mini-profiler', require: false
   #TODO review and generate foreign keys later
   gem 'immigrant',github: 'jenseng/immigrant' 
   gem "brakeman", "~> 2.1.2", :require => false
   gem 'railroady', github: 'preston/railroady'
-  gem 'pry-byebug'
+  gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
 end
 
 group :test do
+  gem 'rspec-rails', '2.14.0'
+  gem 'guard-rspec', '~> 4.0.0'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'guard-spork', '~> 1.5.1'
   gem 'selenium-webdriver', '~> 2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails'
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'email_spec', github: 'bmabey/email-spec'
 end
 
@@ -57,12 +60,12 @@ gem 'omniauth'
 gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook'
 gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
 gem "cancan", "~> 1.6.10"
-gem "prawn", "~> 0.12.0"
+#gem "prawn", "~> 0.12.0"
 gem "breadcrumbs_on_rails", "~> 2.3.0"
-gem "wicked", "~> 1.0.0"
+#gem "wicked", "~> 1.0.0"
 gem "recaptcha", "~> 0.3.5"
 #gem 'mailboxer', github: 'ging/mailboxer'
-gem "state_machine", "~> 1.2.0"
+#gem "state_machine", "~> 1.2.0"
 #gem 'friendly_id', '5.0.0.beta1'
 gem "icalendar", "~> 1.4.1"
 gem "i18n-js", "~> 2.1.2"
