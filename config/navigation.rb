@@ -64,7 +64,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :settings, t('navigation.items.settings'), settings_path, icon: 'icon-cogs'
     primary.item :feedback, t('navigation.items.feedback.title'),  icon: 'icon-thumbs-up' do |sub_nav|
       sub_nav.item :evaluation_form, t('navigation.items.feedback.evaluation_form'), 'https://docs.google.com/forms/d/11CZZugqzOc3CYY_cATA2_MuBQJN62J6n1PIh41iOYbo/viewform', icon: 'icon-check', link: { target: '_blank' }
-      sub_nav.item :speak_with_author, t('navigation.items.feedback.speak_with_author'), 'mailto:lsgpimentel@gmail.com', icon: 'icon-comments', link: { target: '_blank' }
+      sub_nav.item :speak_with_author, t('navigation.items.feedback.speak_with_author'), 'mailto:passemeapp@gmail.com', icon: 'icon-comments', link: { target: '_blank' }
     end
 
     # you can also specify a css id or class to attach to this particular level
