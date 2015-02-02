@@ -56,8 +56,8 @@ var Tours = function(){
           path: "/",
           element: "#menu-planning",
           placement: "right",
-          title: "Menu",
-          content: "<p>Este é o menu principal da aplicação. Alguns itens não lhe serão úteis até que você tenha ao menos uma Grade de Tempo criada.</p>",
+          title: "Planejamento",
+          content: "<p>Planejamento...</p>",
           onShow: function(){
 
           }
@@ -78,11 +78,11 @@ var Tours = function(){
           element: "#header-user-bar",
           placement: "bottom",
           title: "2º Menu",
-          content: "<p>Mais menu para facilitar o acesso a alguns itens.</p>"
+          content: "<p>Outro menu para facilitar o acesso a alguns itens.</p>"
         }, {
           path: "/",
           element: "#dashboard",
-          placement: "bottom",
+          placement: "top",
           title: "Dashboard",
           content: "<p>Este é o seu Dashboard (Painel). Além do utilitário de Tarefas que já lhe mostramos, aqui também aparecerá sua Grade de Tempo ativa no nomento, caso você já possua uma.</p>"
         }
