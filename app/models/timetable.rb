@@ -48,7 +48,7 @@ class Timetable < ActiveRecord::Base
   attr_reader :start_date, :end_date
   attr_reader :subjects
 
-  validates :name, :goal, :creator, :block_size, :block_interval, :start_date, :end_date, :spaced_repetition_percent_block_size, presence: true
+  validates :name, :goal, :creator, :block_size, :block_interval, :start_date, :end_date, presence: true
 
   #validates_date :start_date, after: Date.current
   #validates_date :end_date, after: :start_date

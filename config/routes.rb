@@ -5,6 +5,13 @@ Passeme::Application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
+  constraints subdomain: "demo" do
+    get "/" => 'demo#login'
+  end
+
+
+  match '/demo', to: 'demo#login', via: 'get', as: 'demo'
+
   resources :users
   resources :tasks do
     member do
