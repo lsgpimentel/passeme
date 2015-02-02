@@ -10,6 +10,7 @@ var init = function() {
   FollowUp.init();
   EventSources.init();
   Reports.init();
+  Tours.dashboard();
 };
 
 

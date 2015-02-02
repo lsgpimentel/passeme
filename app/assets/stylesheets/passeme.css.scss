@@ -137,3 +137,12 @@ table.table {
   bottom: 45px;
   z-index: 100;
 }
+
+
+/*
+ * Bootstrap Tour
+ */
+.popover.tour-tour {
+  max-width: 650px;
+  min-width: 320px;
+}

@@ -20,6 +20,8 @@
  *= require bootstrap-daterangepicker/daterangepicker-bs2
  *= require jquery.simplecolorpicker
  *= require jquery.simplecolorpicker-fontawesome
+ *= require bootstrap-tour-master/build/css/bootstrap-tour.min
+
 
 
  *= require style-metro

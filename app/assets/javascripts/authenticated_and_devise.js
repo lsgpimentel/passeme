@@ -52,6 +52,8 @@
 //= require flot/jquery.flot.pie
 //= require flot/jquery.flot.crosshair
 //= require jquery-inputmask/jquery.inputmask.bundle.min
+//= require bootstrap-tour-master/build/js/bootstrap-tour.min
+//
 //
 //= require turbolinks
 //= require app
@@ -66,4 +68,5 @@
 //= require follow_up
 //= require event_sources
 //= require reports
+//= require tours
 //= require passeme

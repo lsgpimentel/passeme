@@ -254,7 +254,7 @@ var Calendars = function () {
       new_event();
       remove_event();
       timetables();
-    },
+    }
 
 
   };

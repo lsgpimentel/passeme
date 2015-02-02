@@ -51,7 +51,7 @@ SimpleNavigation::Configuration.run do |navigation|
     #
     primary.item :home, t('navigation.items.dashboard'), root_path, icon: 'icon-home', class: 'start'
 
-    primary.item :planning, t('navigation.items.planning.title'), icon: 'icon-edit' do |sub_nav|
+    primary.item :planning, t('navigation.items.planning.title'), icon: 'icon-edit', id: "menu-planning" do |sub_nav|
       sub_nav.item :subjects, t('navigation.items.planning.subjects'), subjects_path
       sub_nav.item :subject_groups, t('navigation.items.planning.subject_groups'), subject_groups_path
       sub_nav.item :study_sources, t('navigation.items.planning.study_sources'), study_sources_path

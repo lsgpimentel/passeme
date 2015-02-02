@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331010927) do
+ActiveRecord::Schema.define(version: 20150201230246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,7 +136,8 @@ ActiveRecord::Schema.define(version: 20140331010927) do
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "settings", force: true do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id",                           null: false
+    t.boolean "make_tour_on_login", default: true, null: false
   end
 
   add_index "settings", ["user_id"], name: "index_settings_on_user_id", using: :btree
