@@ -7,7 +7,7 @@ class DemoController < ApplicationController
     demo_user = User.find_by_email 'demo@passeme.com'
     sign_in demo_user
 
-    redirect_to subdomain: ''
+    redirect_to root_url
   end
 
 end
