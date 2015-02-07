@@ -56,6 +56,7 @@ gem "ffaker", "~> 1.18.0"
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem "devise", "~> 3.4.1"
+gem "devise-async", github: 'mhfs/devise-async'
 gem 'omniauth'
 gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook'
 gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'

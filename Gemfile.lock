@@ -116,6 +116,13 @@ GIT
       activerecord (>= 3.0.0)
 
 GIT
+  remote: git://github.com/mhfs/devise-async.git
+  revision: e9d96eaa00ac98634ba9d425beb0a26650125588
+  specs:
+    devise-async (0.9.0)
+      devise (~> 3.2)
+
+GIT
   remote: git://github.com/mkdynamic/omniauth-facebook.git
   revision: 9f729037e5c27d102462ebbb205b5da17f9aaf86
   specs:
@@ -588,6 +595,7 @@ DEPENDENCIES
   delayed_job_active_record (~> 4.0.0)
   descriptive_statistics!
   devise (~> 3.4.1)
+  devise-async!
   email_spec!
   enumerize (~> 0.7.0)
   factory_girl_rails

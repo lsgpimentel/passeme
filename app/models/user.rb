@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable,
+    :recoverable, :rememberable, :trackable, :async,
     :validatable, :confirmable,# :lockable,
     :omniauthable, omniauth_providers: [:google_oauth2]
   #, omniauthable_providers: [:facebook] -> tomando erro
