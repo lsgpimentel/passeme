@@ -7,6 +7,8 @@ Passeme::Application.routes.draw do
 
   match '/demo', to: 'demo#login', via: 'get', as: 'demo'
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   resources :users
   resources :tasks do
     member do

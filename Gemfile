@@ -82,6 +82,7 @@ gem "simple-navigation", "~> 3.11.0"
 gem 'foreigner',github: 'matthuhiggins/foreigner' 
 gem "clockwork", "~> 0.6.2"
 gem "delayed_job_active_record", "~> 4.0.0"
+gem "delayed_job_web"
 gem 'merit',github: 'tute/merit' 
 gem "ice_cube", "~> 0.11.1"
 gem 'nested_form', github: 'ryanb/nested_form'
