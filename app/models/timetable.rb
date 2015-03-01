@@ -21,6 +21,7 @@ class Timetable < ActiveRecord::Base
   #validates_with TimetableValidator
 
   scope :active_first, -> { order("active DESC") }
+
   before_create :make_active_on_create
 
   belongs_to :creator, class_name: "User"

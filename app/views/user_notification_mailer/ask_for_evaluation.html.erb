@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- If you delete this tag, the sky will fall on your head -->
+    <meta name="viewport" content="width=device-width" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <%= stylesheet_link_tag "emails/zurb_template", media: "all" %>
+
+  </head>
+
+  <body bgcolor="#FFFFFF">
+
+
+    <!-- BODY -->
+    <table class="body-wrap">
+      <tr>
+        <td></td>
+        <td class="container" bgcolor="#FFFFFF">
+
+          <div class="content">
+            <table>
+              <tr>
+                <td>
+                  <h3>Olá, <%= @user.name %>!</h3>
+                  <p>Já faz duas semanas que você criou sua primeira grade no sistema PasseMe. Conforme lhe informamos antes, lhe solicitaríamos a avaliação do sistema em dois momentos distintos.</p>
+                  <p>Chegou a hora de realizar a segunda avaliação. Faça-a a partir do link abaixo:</p>
+                  <p><a class="btn" href="https://docs.google.com/forms/d/1slxjG7MjeEiMfyhMVUFPSttQ_BfXr0V4FJZ27nQYOQc/viewform">Realizar a segunda avaliação!</a></p>
+                  <br/>							
+                  <p>Se você ainda não fez a primeira avaliação que lhe foi solicitada após a criação da sua primeira grade, pedimos também que a efetue agora, de preferência antes de realizar a nova (acima mencionada), a partir do link abaixo:</p>
+                  <p><a class="btn" href="https://docs.google.com/forms/d/11CZZugqzOc3CYY_cATA2_MuBQJN62J6n1PIh41iOYbo/viewform">Realizar a primeira avaliação!</a></p>
+                  <br/>							
+                  <br/>							
+                  <br/>							
+                  <br/>							
+                  <br/>
+                  <p>Agradecemos novamente sua importante participação.</p>
+                  <p>Se quiser discutir qualquer assunto relacionado ao sistema, não hesite em nos contatar respondendo este e-mail. ;)</p>
+
+                </td>
+              </tr>
+            </table>
+          </div>
+
+        </td>
+        <td></td>
+      </tr>
+    </table><!-- /BODY -->
+
+
+  </body>
+</html>

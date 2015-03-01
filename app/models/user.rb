@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   #, omniauthable_providers: [:facebook] -> tomando erro
 
 
+  scope :to_ask_for_evaluation, -> { joins(:timetables).where('timetables.created_at BETWEEN ? AND ?', DateTime.current-2.weeks-1.day, DateTime.current-2.weeks ).distinct }
+
   before_create { email.downcase! }
   after_create :build_default_notification_settings
 

@@ -25,4 +25,9 @@ class UserNotificationMailer < ActionMailer::Base
     mail(to: @user.email, subject: "Estudado no mês passado (#{@month_formatted})")
   end
 
+  def ask_for_evaluation(user)
+    @user = user
+    mail(to: @user.email, subject: "Precisamos da sua avaliação! =]")
+  end
+
 end
