@@ -7,7 +7,7 @@ class TaskBeforeOverdueNotifier
 
     tasks.each do |t|
       if t.user.can_receive_email_for(NOTIFICATION_TYPE)
-        UserNotificationMailer.task_before_overdue(t)
+        UserNotificationMailer.task_before_overdue(t).deliver
       end
     end
   end

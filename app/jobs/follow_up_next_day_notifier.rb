@@ -9,7 +9,7 @@ class FollowUpNextDayNotifier
       event_instances = EventInstance.calendar_occurrences_between(c, Date.tomorrow, Date.tomorrow)
 
       if event_instances.present? && c.timetable.creator.can_receive_email_for(NOTIFICATION_TYPE)
-        UserNotificationMailer.follow_up_next_day(event_instances, c.timetable.creator)
+        UserNotificationMailer.follow_up_next_day(event_instances, c.timetable.creator).deliver
       end
     end
 
