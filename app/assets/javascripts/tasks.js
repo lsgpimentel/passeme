@@ -60,7 +60,7 @@ var Tasks = function () {
       e.preventDefault();
 
       App.ajax("GET", this.href, {}, {
-    	reloadUniform: true,
+        reloadUniform: true,
         elementToBlock: elementToBlockInAjax($(this)),
         ajaxComplete: function(xhr, status) {
           editable_due_data();
@@ -91,7 +91,6 @@ var Tasks = function () {
     $("#create-task").on('click', function(e){
       e.preventDefault();
       App.ajax("GET", this.href, {}, {
-    	reloadUniform: true,
         elementToBlock: elementToBlockInAjax($(this)),
         reloadDatepicker: true
       });
@@ -110,6 +109,7 @@ var Tasks = function () {
       list_tasks();
       delete_task();
       create_task();
+      App.initUniform();
     }
 
   };
