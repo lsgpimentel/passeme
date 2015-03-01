@@ -24,7 +24,11 @@ Passeme::Application.routes.draw do
 
   resources :notifications
   resources :groups
-  resources :settings
+  resources :settings do
+    member do
+      put 'toggle_make_tour_on_login'
+    end
+  end
   resources :subjects do
     get 'study_sources'
     patch 'study_sources', to: 'subjects#update_study_sources'

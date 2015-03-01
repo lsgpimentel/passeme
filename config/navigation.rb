@@ -52,19 +52,19 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :home, t('navigation.items.dashboard'), root_path, icon: 'icon-home', class: 'start'
 
     primary.item :planning, t('navigation.items.planning.title'), icon: 'icon-edit', id: "menu-planning" do |sub_nav|
-      sub_nav.item :subjects, t('navigation.items.planning.subjects'), subjects_path
-      sub_nav.item :subject_groups, t('navigation.items.planning.subject_groups'), subject_groups_path
-      sub_nav.item :study_sources, t('navigation.items.planning.study_sources'), study_sources_path
+      sub_nav.item :subjects, t('navigation.items.planning.subjects'), subjects_path, id: "menu-planning-subjects"
+      sub_nav.item :subject_groups, t('navigation.items.planning.subject_groups'), subject_groups_path, id: "menu-planning-subject-groups"
+      sub_nav.item :study_sources, t('navigation.items.planning.study_sources'), study_sources_path, id: "menu-planning-study-sources"
     end
 
-    primary.item :timetables, t('navigation.items.timetables'), timetables_path, icon: 'icon-calendar'
-    primary.item :follow_up, t('navigation.items.follow_up'), follow_up_path, icon: 'icon-check'
-    primary.item :reports, t('navigation.items.reports'), reports_path, icon: 'icon-bar-chart'
+    primary.item :timetables, t('navigation.items.timetables'), timetables_path, icon: 'icon-calendar', id: "menu-timetables"
+    primary.item :follow_up, t('navigation.items.follow_up'), follow_up_path, icon: 'icon-check', id: "menu-follow-up"
+    primary.item :reports, t('navigation.items.reports'), reports_path, icon: 'icon-bar-chart', id: "menu-reports"
     #primary.item :groups, t('navigation.items.groups'), groups_path, icon: 'icon-group'
-    primary.item :settings, t('navigation.items.settings'), settings_path, icon: 'icon-cogs'
-    primary.item :feedback, t('navigation.items.feedback.title'),  icon: 'icon-thumbs-up' do |sub_nav|
+    primary.item :settings, t('navigation.items.settings'), settings_path, icon: 'icon-cogs', id: "menu-settings"
+    primary.item :feedback, t('navigation.items.feedback.title'),  icon: 'icon-thumbs-up', id: 'menu-feedback' do |sub_nav|
       sub_nav.item :evaluation_form, t('navigation.items.feedback.evaluation_form'), 'https://docs.google.com/forms/d/11CZZugqzOc3CYY_cATA2_MuBQJN62J6n1PIh41iOYbo/viewform', icon: 'icon-check', link: { target: '_blank' }
-      sub_nav.item :speak_with_author, t('navigation.items.feedback.speak_with_author'), 'mailto:passemeapp@gmail.com', icon: 'icon-comments', link: { target: '_blank' }
+      sub_nav.item :speak_with_author, t('navigation.items.feedback.speak_with_author'), 'mailto:passemeapp@gmail.com', icon: 'icon-comments', link: { target: '_blank' }, id: "menu-speak-with-author"
     end
 
     # you can also specify a css id or class to attach to this particular level

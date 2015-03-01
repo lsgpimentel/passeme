@@ -13,7 +13,10 @@
   <%= yield :stylesheets %>
 	<!-- END GLOBAL MANDATORY STYLES -->
   <%= yield :javascripts %>
-	<link rel="shortcut icon" href="favicon.ico" />
+  <script type="text/javascript">
+    window.I18n = <%= current_translations.to_json.html_safe %>
+  </script>
+  <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
 <%= content_for?(:content) ? yield(:content) : yield %>

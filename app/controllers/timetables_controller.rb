@@ -25,6 +25,7 @@ class TimetablesController < AuthenticatedController
   end
 
   def create
+    @is_first_timetable = false
     @timetable = current_user.timetables.build(timetable_params)
     @timetable.build_calendar
 
@@ -40,6 +41,7 @@ class TimetablesController < AuthenticatedController
     end
 
     if @timetable.save
+      @is_first_timetable = true if current_user.timetables.count == 1
     else
       p @timetable.errors
       render :new

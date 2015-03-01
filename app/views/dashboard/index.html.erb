@@ -1,6 +1,11 @@
 <% provide(:title, t(".title")) %>
 <% have_tt = @active_timetable.present? %>
 
+<% if @show_dashboard_tour  %>
+  <div id="dashboard-settings" data-show-tour="<%= @show_dashboard_tour %>" data-toggle-tour-url="<%= toggle_make_tour_on_login_setting_path(current_user.setting) %>">
+  </div>
+<% end %>
+
 <div id="dashboard">
   <% if have_tt %>
     <div class="row-fluid">

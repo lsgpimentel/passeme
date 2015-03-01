@@ -296,7 +296,7 @@ pt-BR:
         start_date: Data de Início
         end_date: Date de Término
       setting:
-        make_tour_on_login: Realizar Tour após efetuar Login na aplicação
+        make_tour_on_login: Realizar passo-a-passo ao acessar o meu Painel
 
 
 ######### Languages ##########
@@ -383,7 +383,7 @@ pt-BR:
 
 ####### Authenticated ########
   authenticated:
-    breadcrumb: Home
+    breadcrumb: Início
     header:
       new_notifications_count: Você tem %{count} novas notificações
       see_all_notifications: Ver todas notificações
@@ -707,3 +707,86 @@ pt-BR:
       - Último
 
 
+###### Javascripts ######
+  js:
+    tour_buttons:
+      previous: Anterior
+      next: Próximo
+      end: Terminar
+      pause: Pausar
+      continue: Continuar
+    dashboard:
+      tours:
+        welcome:
+          title: Seja bem-vindo!
+          content: |
+            <p>Olá, </p>
+            <p>Este é um sistema ainda experimental, porém totalmente funcional. Diante disso, é muito importante para nós que você, em certas etapas, nos forneça um feedback. Assim poderemos prover mais valor ao sistema e, consequentemente, a você, usuário.</p>
+            <p>Mas você não precisa se preocupar com isso agora! Este feedback lhe será solicitado - em dois momentos distintos - na hora apropriada, conforme você for utilizando o sistema.</p>
+            <p>É muito importante que você siga este passo-a-passo até o final caso seja seu primeiro acesso. Vocẽ sempre poderá visualizá-lo novamente, conforme lhe mostraremos em breve.</p>
+            <p>Obs.: Após algum tempo, temos certeza que ficará muito irritante ter de ver este passo-a-passo sempre que você acessar o seu painel. Você poderá desabilitá-lo ao final dele ou a partir do menu de Configurações.</p>
+        menu:
+          title: Menu
+          content: |
+            <p>Este é o menu principal da aplicação. Alguns itens não lhe serão úteis até que você tenha ao menos uma Grade de Tempo criada.</p>
+        menu_planning:
+          title: Planejamento
+          content: |
+            <p>Aqui começa o seu planejamento. Antes de tentar elaborar sua grade de tempo é necessário que você preencha estes dados.</p>
+            <p>Não se preocupe com os outros itens do menu até que você tenha passado satisfatoriamente por toda a parte de planejamento. Eles não lhe serão muito úteis até que você tenha uma grade de tempo criada.</p>
+        subjects:
+          title: Matérias
+          content: |
+            <p>Comece pelas matérias que você deseja inserir na sua grade.</p>
+            <p>Proceda com a divisão de suas matérias de acordo sua necessidade individual.</p>
+        subject_groups:
+          title: Grupos de Matéria
+          content: >
+            <p>Os grupos sao divisões lógicas das suas matérias. Somente após tê-las adicionadas, comece a associá-las a grupos de matérias.
+            Ex.: Você pode criar as matérias Ortografia, Interpretação de texto, Gramática e associá-las ao grupo Português.</p>
+            <p>Novamente proceda como achar melhor de acordo com sua necessidade individual. Você pode, apesar de nao ser muito recomendado para a maioria dos casos, ser mais genérico e criar somente dois grupos chamados Humanas e Exatas e dividir suas matérias de acordo.</p>
+            <p>Na criação automática da sua grade somente aparecerão as matérias que estejam associadas a algum grupo de matéria.</p>
+        study_sources:
+          title: Fontes de Estudo
+          content: |
+            <p>Suas fontes de estudo também são essenciais.</p>
+            <p>Após ter criado suas fontes, volte em matérias e as associe às matérias. Você pode associar quantas fontes desejar a cada matéria. O ideal é que haja ao menos uma fonte de estudo associada a cada matéria.</p>
+            <p>Na criação automática da sua grade somente aparecerão as matérias que possuam ao menos uma fonte de estudo.</p>
+        follow_up:
+          title: Acompanhamento
+          content: >
+            <p>É nesta funcionalidade que você poderá concluir os horários cadastrados na sua grade e visualizar seus horários já encerrados para um determinado período.</p>
+            <p>Só é possível concluir horários anteriores ao horário atual. Você pode concluir todos os seus horários do dia de uma só vez ao fim do dia, ou conclui-los conforme for estudando cada matéria. Cabe a você definir a estratégia mais conveniente ao seu caso.</p>
+            <p>Ao concluir os horários é necessário especificar quanto tempo você de fato estudou. Portanto, é essencial que você mantenha este tipo de controle.</p>
+            <p>É importante salientar que o acompanhamento será realizado para a sua grade ativa, que será devidamente sinalizada, no momento.</p>
+        reports:
+          title: Relatórios
+          content: >
+            <p>É a partir dos relatórios que você poderá ter uma visualização de mais alto nível do andamento do seu planejamento.<p>
+            <p>Os relatórios lhe serão apresentados de acordo com a seleção de uma de suas grades de tempo.</p>
+        settings:
+          title: Configurações
+          content: <p>Funcionalidade para lhe permitir alterar algumas configurações de uso do sistema.</p>
+        feedback:
+          title: Feedback
+          content: >
+            <p>Teve alguma dúvida que não foi explicada satisfatoriamente?</p>
+            <p>Não hesite em nos contatar por e-mail. Assim poderemos aprimorar o sistema para melhor lhe atender.</p>
+        tasks:
+          title: Utilitário de Lista de Tarefas
+          content: <p>Utilitário caso você queira montar uma lista de tarefas.</p>
+        pending_tasks:
+          title: Lista de tarefas pendentes
+          content: <p>Lista para fácil acesso contendo somente suas tarefas pendentes, cadastradas a partir do utilitário mostrado no passo anterior.</p>
+        second_menu:
+          title: 2º Menu
+          content: <p>Outro menu para facilitar o acesso a alguns itens.</p>
+        dashboard:
+          title: Dashboard
+          content: <p>Este é o seu Dashboard (Painel). Além do utilitário de Tarefas que já lhe mostramos, aqui também aparecerá sua Grade de Tempo ativa no nomento, caso você já possua uma.</p>
+        end:
+          title: Fim! (por enquanto)
+          content: >
+            <p>Chegamos ao fim deste passo-a-passo. Esperamos ter sido informativo.</p>
+            <p>Após você ter suas matérias, grupos e fontes de estudos criados, proceda para a criação da sua grade e voltaremos a nos falar. ;)</p>
+        checkbox_end_tour: Ok, ok! Já entendi. Não precisa mais me apresentar este passo-a-passo ao acessar o meu Painel.

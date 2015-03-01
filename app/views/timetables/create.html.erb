@@ -2,4 +2,15 @@
 <p>Abaixo você pode visualizar seu calendário e, se necessário, adicionar ou alterar eventos de estudo.</p>
 <p>Antes de adicionar eventos de estudo ao calendário, lembre-se que é necessário associar as matérias já cadastradas a ele.</p>
 
+<%= if @is_first_timetable %>
+  <p>
+    Me parece que esta é a sua primeira grade criada! Conforme conversamos anteriormente, após dar uma olhada na sua grade é <b>muito</b> importante que você preencha o primeiro formulário de avaliação:
+    <a class="btn green big" href="" do %>
+      <i class="m-icon-big-swapright m-icon-white"></i>
+      Me leve até o formulário de avaliação!
+    </a>
+  </p>
+<% end %>
+
+
 <%= render partial: 'calendars/calendar_portlet', locals: { calendar: @timetable.calendar } %>

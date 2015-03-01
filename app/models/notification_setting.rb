@@ -18,7 +18,7 @@ class NotificationSetting < ActiveRecord::Base
 
   cattr_reader :types_and_where_they_can_be_sent
   @@types_and_where_they_can_be_sent = {
-    task_before_overdue: [:site, :email],
+    task_before_overdue: [:email],
     follow_up_next_day: [:email],
     follow_up_next_month: [:email],
     follow_up_past_month:[:email],
@@ -27,7 +27,7 @@ class NotificationSetting < ActiveRecord::Base
 
   cattr_reader :new_user_default_notification_settings
   @@new_user_default_notification_settings = {
-    task_before_overdue: [:site],
+    task_before_overdue: [],
     follow_up_next_day: [:email],
     follow_up_next_month: [:email],
     follow_up_past_month:[:email],

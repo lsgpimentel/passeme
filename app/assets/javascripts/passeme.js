@@ -10,7 +10,10 @@ var init = function() {
   FollowUp.init();
   EventSources.init();
   Reports.init();
-  Tours.dashboard();
+  if($('#dashboard-settings').data('show-tour')){
+    Tours.dashboard();
+  }
+  Tours.timetableCreation();
 };
 
 
