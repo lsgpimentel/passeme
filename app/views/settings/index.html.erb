@@ -10,7 +10,7 @@
     <div class="tab-pane active" id="general">
       <h4><%= t('.tabs.general.text') %></h4>
       <div class="form-horizontal">
-        <%= f.input :make_tour_on_login  %>
+        <%= f.input :make_tour_on_login, as: :boolean  %>
       </div>
     </div>
     <div class="tab-pane" id="notifications">
