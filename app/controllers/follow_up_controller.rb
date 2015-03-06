@@ -22,6 +22,10 @@ class FollowUpController < AuthenticatedController
 
   end
 
+  def refresh_content
+    fill_items
+  end
+
   private
 
   def fill_items

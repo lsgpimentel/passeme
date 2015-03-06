@@ -39,6 +39,7 @@ Passeme::Application.routes.draw do
   resources :timetables do
     put 'make_active'
     get 'follow_up', to: 'follow_up#index'
+    get 'follow_up/refresh_content', to: 'follow_up#refresh_content'
     get 'reports', to: 'reports#index'
   end
   #Get the active timetable

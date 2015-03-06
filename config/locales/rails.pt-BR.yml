@@ -297,6 +297,9 @@ pt-BR:
         end_date: Date de Término
       setting:
         make_tour_on_login: Realizar passo-a-passo ao acessar o meu Painel
+      task:
+        name: Nome
+        due_in: Expira em
 
 
 ######### Languages ##########
@@ -376,6 +379,19 @@ pt-BR:
         follow_up_next_month: De acompanhamento do que tenho de estudar no próximo mês
         follow_up_past_month: De acompanhamento do que estudei no mês passado
         group_create: Quando alǵuem criar algum grupo que me envolva
+    subject:
+      difficulty:
+        one: 1
+        two: 2
+        three: 3
+        four: 4
+        five: 5
+      importance:
+        one: 1
+        two: 2
+        three: 3
+        four: 4
+        five: 5
 
 
 ###### Static Pages ######
@@ -481,12 +497,13 @@ pt-BR:
         subject: Matéria
         meta: Meta
         complete: Completar
-    index:
+    content:
       title: Acompanhamento
       tabs:
         studied_with_debt: Estudado com débito
         studied: Estudado
         to_study: À estudar
+    index:
       filter:
         change_range: Mudar período
           
@@ -605,8 +622,7 @@ pt-BR:
     task:
       delete_task: Excluir
       more_options: Mais
-      #name_placeholder: Nome
-      #due_in_placeholder: Data de Expiração
+    no_due_in: Sem Expiração
 
 ###### Groups ######
   groups:
