@@ -9,13 +9,13 @@ Login page
 }
 
 .login .logo {
-  /*width: 247px;*/
-  font-size: 15px;
-  margin: 0 auto;   
-  margin-top:60px;
-  padding: 15px;
-  text-align: center;
   color: #fff;
+  font-size: 15px;
+  height: 150px;
+  margin: 0 auto;
+  padding: 15px;
+  width: 500px;
+  text-align: center;
 }
 
 .login .content {
