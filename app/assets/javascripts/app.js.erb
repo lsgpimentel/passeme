@@ -1144,6 +1144,8 @@ var App = function() {
         handleEditables();
 
         handleBackButton();
+
+        moment.locale('pt-br'); //setting brazilian locale
       },
 
 
@@ -1310,10 +1312,26 @@ var App = function() {
           "sPaginationType" : "bootstrap",
           "iDisplayLength": 20,
           "oLanguage": {
-            "sLengthMenu": "_MENU_ records per page",
+            "sEmptyTable": "Nenhum registro encontrado",
+            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "_MENU_ resultados por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "sSearch": "Pesquisar",
             "oPaginate": {
-              "sPrevious": "Prev",
-              "sNext": "Next"
+              "sNext": "Próximo",
+              "sPrevious": "Anterior",
+              "sFirst": "Primeiro",
+              "sLast": "Último"
+            },
+            "oAria": {
+              "sSortAscending": ": Ordenar colunas de forma ascendente",
+              "sSortDescending": ": Ordenar colunas de forma descendente"
             }
           }
         });
@@ -1326,7 +1344,7 @@ var App = function() {
             "sSwfPath": "<%= asset_path("dataTables/extras/swf/copy_csv_xls_pdf.swf") %>",
             "aButtons": [{
               "sExtends":    "collection",
-              "sButtonText": 'Export <span class="caret" />',
+              "sButtonText": 'Exportar <span class="caret" />',
               "aButtons":    [ "csv", "xls", "pdf" ]
             }],
             "oTags": {
