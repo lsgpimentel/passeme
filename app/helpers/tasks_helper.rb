@@ -6,4 +6,12 @@ module TasksHelper
     @overdue_tasks_count = current_user.overdue_tasks.count
   end
 
+  def formatted(due_in)
+    if due_in.nil?
+      I18n.t ('tasks.no_due_in')
+    else
+      I18n.l due_in
+    end
+  end
+
 end

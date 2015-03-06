@@ -8,8 +8,8 @@
     <%= task.name %>
   </a>
 
-  <span class="task-bell tooltips" data-original-title="<%= task.due_in %>" data-placement="right">
-    <a href="#" class="due-date" data-container="body" data-type="date" data-pk="1" data-viewformat="dd/mm/yyyy" data-placement="right" data-original-title="Due in Date" >
+  <span class="task-bell tooltips" data-original-title="<%= formatted task.due_in %>" data-placement="right">
+    <a href="#" class="due-date" data-container="body" data-type="date" data-pk="1" data-viewformat="dd/mm/yyyy" data-placement="right" data-original-title="<%= t 'activerecord.attributes.task.due_in' %>" >
       <i class="icon-bell"></i>
     </a>
   </span>

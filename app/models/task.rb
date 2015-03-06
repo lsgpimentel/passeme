@@ -15,7 +15,7 @@ class Task < ActiveRecord::Base
 
   belongs_to :user
   validates :name, :user, presence: true
-  validates :due_in, allow_nil: true, timeliness: { after: Date.current }
+  validates :due_in, allow_nil: true, allow_blank: true, timeliness: { after: Date.current }
 
   has_many :notifications, as: :object, dependent: :destroy
 
