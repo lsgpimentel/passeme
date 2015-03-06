@@ -49,11 +49,13 @@
 - [ ] Reformular a fórmula para o cálculo do tamanho da população e da quantidade de gerações no algoritmo genético.
 - [ ] Alterar o menu lateral para carregar a página usando ajax, bloqueando a página atual com um loading (verificar classe "ajaxify").
 - [ ] Internacionalizar o texto da etapa atual ("Etapa X de Y") durante a criação da Timetable.
-- [ ] Internacionalizar textos de validação colocados diretamente no Javascript (principalmente a parte de Timetables)
+- [ ] Internacionalizar textos de validação colocados diretamente no Javascript (principalmente a parte de Timetables), textos do datatable, etc.
 - [ ] Adicionar algumas validações que estão no Javascript também nos models (principalmente na criação da Timetable)
 - [ ] Criar views internacionalizadas dos e-mails enviados (devise e dos outros e-mails). pt_BR e padrão (sem locale)
 - [ ] Configuração para o usuário poder especificar os dias e horários que ele quer receber os e-mails de notificação.
 - [ ] Quando for internacionalizar, voltar a usar o escopo do Locale nas rotas. Foi retirado pois estava dando problema com o omniauth devido a dinamicidade do escopo.
+- [ ] Deixar a validação dos forms usando jquery validate mais genérica. A validação feita hoje na criação da grade, matérias, fontes de estudo, follow up é praticamente igual. Pode ficar dentro do namespace de App.
+
 
 # Obs.
 - Usando MailCatcher em DSV: http://mailcatcher.me/
