@@ -209,9 +209,6 @@ var Timetables = function () {
       errorClass: 'validate-inline', // default input error message class
       focusInvalid: false, // do not focus the last invalid input
       rules: {
-        "timetable[name]": {
-          required: true
-        }
       },
 
       messages: { // custom messages for radio buttons and checkboxes

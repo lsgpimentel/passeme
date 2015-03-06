@@ -3,9 +3,14 @@
   html: { class: "form-vertical subject-form", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-    <h3><New Subject><%= t('.title') %></h3>
+    <h3><%= t('.title') %></h3>
   </div>
   <div class="modal-body">
+    <div class="alert alert-error hide">
+      <button class="close" data-dismiss="alert"></button>
+      <%= t('simple_form.error_notification.default_message') %>
+    </div>
+
     <%= f.input :name %>
     <%= f.input :difficulty %>
     <%= f.input :importance %>
