@@ -1,4 +1,5 @@
 var FollowUp = function () {
+  var startDate, endDate;
 
   var initTables = function(){
     App.initDatatablesBootstrapIntegration();
@@ -103,15 +104,7 @@ var FollowUp = function () {
     },
 
     function (start, end) {
-      var url = this.element.data('url-callback');
-      var data = {start: start.format('X'), end: end.format('X')};
-      //window.location.replace(url + '?' + $.param(data));
-      App.ajax("GET", url, data, {
-        ajaxSuccess: function(evt, data, status, xhr){
-          console.log(this);
-        }
-      });
-
+      FollowUp.refreshContent(start, end);
     });
 
     $('#follow-up-date-range span').html(moment().format('D [de] MMMM [de] YYYY') + ' - ' + moment().add('months', 1).format('D [de] MMMM [de] YYYY'));
@@ -186,15 +179,15 @@ var FollowUp = function () {
         submitHandler: function (form) {
           error.hide();
 
-          //var url = $(form).attr('action');
+          var url = $(form).attr('action');
 
-          //App.ajax("POST", url, $(form).serialize(), {
-          //  elementToBlock : form,
-          //  ajaxSuccess: function(evt, data, status, xhr){
-          //    console.log(this);
-          //  }
-          //});
-          form.submit();
+          App.ajax("POST", url, $(form).serialize(), {
+            elementToBlock : form,
+            ajaxSuccess: function(evt, data, status, xhr){
+              console.log(this);
+            }
+          });
+          //form.submit();
         }
 
       });
@@ -209,9 +202,21 @@ var FollowUp = function () {
       initTables();
       completeEvent();
     },
-    refreshContent: function() {
-      initTables();
-      completeEvent();
+    refreshContent: function(start, end) {
+      var url = $('#follow-up-date-range').data('url-callback');
+      if(start !== undefined && end !== undefined) {
+        startDate = start.format('X');
+        endDate = end.format('X');
+      }
+      data = {start: startDate, end: endDate};
+
+      App.ajax("GET", url, data, {
+        ajaxSuccess: function(evt, data, status, xhr){
+          initTables();
+          completeEvent();
+        }
+      });
+
     }
 
   };

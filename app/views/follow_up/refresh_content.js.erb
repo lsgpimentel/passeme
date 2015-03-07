@@ -1,4 +1,3 @@
 $("#row-content-follow-up").html("<%= j render 'content' %>");
 $('#follow-up-date-range span').html(moment('<%= params[:start] %>', 'X').format('D [de] MMMM [de] YYYY') + ' - ' + moment('<%= params[:end] %>', 'X').format('D [de] MMMM [de] YYYY'));
 
-FollowUp.refreshContent();
