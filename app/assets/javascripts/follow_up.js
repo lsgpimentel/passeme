@@ -77,7 +77,7 @@ var FollowUp = function () {
         //'This Month': [moment().startOf('month'), moment().endOf('month')],
         //'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
       },
-      opens: (App.isRTL() ? 'right' : 'left'),
+      opens: 'right',
       format: 'DD/MM/YYYY',
       separator: ' até ',
       //separator: ' to ',
@@ -85,6 +85,7 @@ var FollowUp = function () {
       endDate: moment().add('months', 1),
       locale: {
         applyLabel: 'Alterar',
+        cancelLabel: 'Cancelar',
         fromLabel: 'De',
         toLabel: 'Até',
         customRangeLabel: 'Intervalo Customizado',
@@ -111,14 +112,19 @@ var FollowUp = function () {
   };
 
   var completeEvent = function(){
-    var el = $("#table-events-to-study .btn.complete").closest("form");
-    App.ajaxRailsUJS(el, {
-      reloadUniform : true,
-      reloadTimepicker : true,
-      ajaxSuccess : function(data, status, xhr) {
-        init();
-      },
+    $("#table-events-to-study").on('click', '.btn.complete', function(e){
+      e.preventDefault();
+
+      url = $(this).closest('form').attr('action');
+      App.ajax('GET', url, {}, {
+        reloadUniform : true,
+        reloadTimepicker : true,
+        ajaxSuccess : function(data, status, xhr) {
+          init();
+        },
+      });
     });
+
 
     var init = function(){
       $("input[name=studied-all]").on('click', function(evt){

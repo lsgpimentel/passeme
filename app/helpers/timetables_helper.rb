@@ -9,7 +9,7 @@ module TimetablesHelper
   def show_complete_button(event_instance)
     date = event_instance.start.to_date
     if date < Date.current
-      button_to calendar_calendar_event_edit_complete_path(event_instance.event.calendar_event_source.calendar, event_instance.event, start: event_instance.start, end: event_instance.end), method: :get, remote: true, class: 'btn green complete' do
+      button_to calendar_calendar_event_edit_complete_path(event_instance.event.calendar_event_source.calendar, event_instance.event, start: event_instance.start, end: event_instance.end), class: 'btn green complete' do
         content_tag :i, '', class: "icon-check"
       end
     end

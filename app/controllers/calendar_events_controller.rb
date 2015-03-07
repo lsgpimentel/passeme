@@ -4,6 +4,8 @@ class CalendarEventsController < AuthenticatedController
   before_filter :check_user_is_owner_of_calendar_event, only: [:edit_complete, :complete, :info_net_hours, :edit, :update, :destroy]
 
   def new
+    is_there_inputs_to_create_timetable?
+
     #This param can be nil when the action is called without selecting in the calendar
     if params[:date].blank?
       params[:date] = Date.today
@@ -35,9 +37,6 @@ class CalendarEventsController < AuthenticatedController
 
   def edit_complete
     @follow_up_item = @calendar_event.follow_up_items.build(date: params[:start], from_time: params[:start], to_time: params[:end])
-    respond_to do |format|
-      format.js
-    end
   end
 
   def complete
@@ -133,6 +132,12 @@ class CalendarEventsController < AuthenticatedController
     @calendar_event = @calendar.calendar_events.find_by_id(params[:id] || params[:calendar_event_id])
     if @calendar_event.nil?
       redirect_to calendar_calendar_events_path
+    end
+  end
+
+  def is_there_inputs_to_create_timetable?
+    if @calendar.calendar_event_sources.blank?
+      ###
     end
   end
 
