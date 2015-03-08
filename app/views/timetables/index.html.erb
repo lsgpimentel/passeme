@@ -1,3 +1,19 @@
+<div class="btn-group pull-left timetables-group">
+  <a class="btn purple dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+    <i class="icon-calendar"></i> <%= t('.title') %>
+  <i class="icon-angle-down"></i>
+  </a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    <li>
+      <%= link_to new_timetable_path do %>
+        <i class="icon-plus"></i> <%= t('buttons.add') %>
+      <% end %>
+    </li>
+    <li class="divider"></li>
+    <%= render(@timetables.active_first) %>
+  </ul>
+</div>
+
 <div class="portlet box blue calendar">
   <div class="portlet-title">
     <div class="caption"><i class="icon-reorder"></i><%= @active_timetable.name %></div>
@@ -7,21 +23,6 @@
   <div class="portlet-body">
     <div class="row-fluid">
       <div class="span12">
-        <div class="btn-group pull-left timetables-group">
-          <a class="btn purple dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-            <i class="icon-calendar"></i> <%= t('.title') %>
-          <i class="icon-angle-down"></i>
-          </a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            <li>
-            <%= link_to new_timetable_path do %>
-              <i class="icon-plus"></i> <%= t('buttons.add') %>
-            <% end %>
-            </li>
-            <li class="divider"></li>
-            <%= render(@timetables.active_first) %>
-          </ul>
-        </div>
         <%= render partial: 'calendars/calendar_portlet', locals: { calendar: @active_timetable.calendar } %>
       </div>
     </div>
