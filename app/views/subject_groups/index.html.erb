@@ -33,7 +33,7 @@
                           html: { method: :post, id: "new-subject-group", class: "form-inline subject-group-form" },
                           defaults: { input_html: { class: "m-wrap placeholder-no-fix span8", autocomplete: "off" } }) do |f| %>
 
-        <%= f.input_field :name, label: false, placeholder: "Name" %>
+        <%= f.input_field :name, label: false %>
         <%= submit_button t("buttons.submit")  %>
 
       
