@@ -144,10 +144,10 @@ var FollowUp = function () {
       var form = $('#form-complete-event');
       var error = $('.alert-error', form);
 
-      form.validate({
+      validator = form.validate({
         doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
           errorElement: 'span', //default input error message container
-        errorClass: 'validate-inline', // default input error message class
+        errorClass: 'help-inline', // default input error message class
         focusInvalid: false, // do not focus the last invalid input
         rules: {
           "studied-all": {
@@ -158,8 +158,12 @@ var FollowUp = function () {
         messages: { // custom messages for radio buttons and checkboxes
         },
 
-        errorPlacement: function (error, element) { // render error placement for each input type
-          error.insertAfter(element); // for other inputs, just perform default behavior
+        errorPlacement: function (error, element) {
+          if (element.attr("name") == "studied-all" || element.attr("name") == 'follow_up_item[studied_time]') {
+            $(element).closest('.controls').append(error.addClass("no-left-padding"));
+          } else {
+            error.insertAfter(element);
+          }
         },
 
         invalidHandler: function (event, validator) { //display error alert on form submit   
@@ -190,10 +194,8 @@ var FollowUp = function () {
           App.ajax("POST", url, $(form).serialize(), {
             elementToBlock : form,
             ajaxSuccess: function(evt, data, status, xhr){
-              console.log(this);
             }
           });
-          //form.submit();
         }
 
       });

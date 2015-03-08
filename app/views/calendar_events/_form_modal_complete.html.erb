@@ -13,17 +13,17 @@
     <div class="control-group">
       <label class="control-label"><%= t('.question') %></label>
       <div class="controls">
-        <label class="radio">
+        <label class="radio line">
           <input type="radio" name="studied-all" value="1" />
           <%= t('.answer_yes') %>
         </label>
-        <label class="radio">
+        <label class="radio line">
           <input type="radio" name="studied-all" value="0" />
           <%= t('.answer_no') %>
         </label>
       </div>
     </div>
-    <%= f.input :studied_time, required: true, as: :time_picker, label: t('.studied_time_label'), hint: t('.studied_time_hint', meta: @calendar_event.meta), wrapper_html: { class: "hide debt-item" } %>
+    <%= f.input :studied_time, required: true, as: :time_picker, label: t('.studied_time_label'), hint: t('.studied_time_hint', meta: l(@calendar_event.meta, format: :only_time)), wrapper_html: { class: "hide debt-item" } %>
     <%= f.input :debt_reason, required: true, wrapper_html: { class: "hide debt-item" } %>
     <%= f.hidden_field :date %>
     <%= f.hidden_field :from_time %>
