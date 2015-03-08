@@ -109,7 +109,7 @@ var StudySources = function () {
     $('#table-study-sources .delete').on('click', function (e) {
       e.preventDefault();
 
-      if(!confirm("Are you sure?")) {
+      if(!confirm(I18n.delete_confirm_message)) {
         return false;
       }
 

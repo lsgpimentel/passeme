@@ -75,7 +75,7 @@ var Tasks = function () {
     $(".task-list").on('click', '.delete-task', function(e){
       e.preventDefault();
 
-      if(!confirm("Are you sure?")) {
+      if(!confirm(I18n.delete_confirm_message)) {
         return false;
       }
 

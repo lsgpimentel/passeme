@@ -725,6 +725,7 @@ pt-BR:
 
 ###### Javascripts ######
   js:
+    delete_confirm_message: Você tem certeza que deseja excluir este registro?
     tour_buttons:
       previous: Anterior
       next: Próximo
