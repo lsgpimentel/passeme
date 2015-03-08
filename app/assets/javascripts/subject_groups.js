@@ -48,7 +48,6 @@ var SubjectGroups = function () {
       }
 
       App.ajax("PATCH", url, {
-    	reloadUniform: true,
         "subject_group_id": idGroup
       });
 
@@ -82,11 +81,32 @@ var SubjectGroups = function () {
    * Override the default behavior of the remove button of the portlet, so it removes it only after the ajax is done.
    */ 
   var remove_subject_group = function(){
-    var selector = '.portlet > .portlet-title > .tools > a.remove';
+    selector = '.portlet > .portlet-title > .tools > a.remove';
     $('body').off('click', selector);
 
-    App.ajaxRailsUJS(selector, {
+    $('#subject-groups').on('click', selector, function(e){
+      e.preventDefault();
+      if(!confirm(I18n.delete_confirm_message)) {
+        return false;
+      }
+
+      $target = $(this);
+      url = $target.attr('href');
+      data = { _method: "DELETE" };
+
+      App.ajax('POST', url, data, {
+        ajaxSuccess: function(data, status, xhr){
+          $box = $target.closest('.subject-group-box');
+
+          $box.find('.sortable-itens > li').each(function(index, ele){
+            $('#available-subjects').append($(ele));
+          });
+          $box.hide();
+          $('#available-subjects').removeClass('sortable-box-placeholder empty');
+        }
+      });
     });
+
   };
 
   // var updateOutput = function (e) {

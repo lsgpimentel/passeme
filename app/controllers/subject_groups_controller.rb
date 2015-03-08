@@ -20,11 +20,6 @@ class SubjectGroupsController < AuthenticatedController
     #TODO error
     #render :index
     end
-
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-      format.js
-    end
   end
 
   def update
@@ -34,10 +29,7 @@ class SubjectGroupsController < AuthenticatedController
 
   def destroy
     @subject_group.destroy!
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-      format.js
-    end
+    render nothing: true
   end
   
   private
