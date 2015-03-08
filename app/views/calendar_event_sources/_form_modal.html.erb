@@ -1,15 +1,19 @@
 <%= simple_form_for [@calendar, @event_source],
-  url: @event_source.persisted? ? calendar_event_source_path : calendar_event_sources_path,  remote: true,
+  url: @event_source.persisted? ? calendar_event_source_path : calendar_event_sources_path,
   defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
-  html: { class: "form-vertical study-source-form", novalidate: "novalidate" } do |f| %>
+  html: { id: 'event-source-form', class: "form-vertical", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h3><%= t('.title') %></h3>
   </div>
   <div class="modal-body">
+    <div class="alert alert-error hide">
+      <button class="close" data-dismiss="alert"></button>
+      <%= t('simple_form.error_notification.default_message') %>
+    </div>
     <div class="row-fluid">
       <div class="span8">
-        <%= f.input :subject_id, collection: @subjects %>
+        <%= f.association :subject, collection: @subjects %>
       </div>
       <div class="span4">
         <%= f.input :color, as: :simple_color_picker %>

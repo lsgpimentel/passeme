@@ -267,7 +267,7 @@ pt-BR:
         interval: Intervalo
       calendar_event_source:
         color: Cor
-        subject_id: Matéria
+        subject: Matéria
       subject:
         name: Nome
         difficulty: Dificuldade
