@@ -22,6 +22,7 @@
 //= require jquery.cookie.min
 //= require uniform/jquery.uniform.min
 //= require select2/select2.min
+//= require select2/select2_locale_pt-BR
 //= require bootstrap-wysihtml5/wysihtml5-0.3.0
 //= require bootstrap-wysihtml5/bootstrap-wysihtml5
 //= require bootstrap-datepicker/js/bootstrap-datepicker
