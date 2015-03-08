@@ -16,37 +16,24 @@ class StudySourcesController < AuthenticatedController
       #render :index
     end
 
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-    end
+    redirect_to action: :index
   end
 
   def new
     @study_source = StudySource.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   def edit
-    #just return the study_source
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
     flash[:notice] = t('.update_successful') if @study_source.update_attributes(study_source_params)
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-    end
+    redirect_to action: :index
   end
 
   def destroy
     @study_source.destroy!
-    respond_to do |format|
-      format.js
-    end
+    render nothing: true
   end
 
   private

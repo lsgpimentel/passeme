@@ -424,6 +424,11 @@ pt-BR:
         delete: Excluir
     form_modal:
       title: Nova Matéria Associada
+    #From controllers
+    create:
+      create_successful: A matéria associada foi criada com sucesso.
+    update:
+      update_successful: A matéria associada foi atualizada com sucesso.
 ####### Calendar Events #######
   calendar_events:
     form_modal:
@@ -602,10 +607,12 @@ pt-BR:
       title: Fontes de Estudo para %{subject}
 
     #From Controllers
-    update_study_sources:
-      update_successful: Suas fontes de estudo foram atualizados com sucesso.
+    create:
+      create_successful: A matéria foi criada com sucesso.
     update:
       update_successful: A matéria foi atualizada com sucesso.
+    update_study_sources:
+      update_successful: Suas fontes de estudo foram atualizados com sucesso.
 ###### Tasks ######
   tasks:
     form_modal:

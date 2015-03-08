@@ -11,6 +11,7 @@ class CalendarEventSourcesController < AuthenticatedController
   def create
     @event_source = @calendar.calendar_event_sources.build(event_source_params)
     if @event_source.save!
+      flash[:notice] = t('.create_successful')
     else
       #TODO error
       #render :index
@@ -24,29 +25,21 @@ class CalendarEventSourcesController < AuthenticatedController
 
   def new
     @event_source = CalendarEventSource.new
-    @subjects = current_user.subjects
-    respond_to do |format|
-      format.js
-    end
+    @subjects = current_user.subjects.not_in_calendar(@calendar)
   end
 
   def edit
     @subjects = current_user.subjects
-    #just return the event_source
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
-    @event_source.update_attributes(event_source_params)
+    flash[:notice] = t('.update_successful') if @event_source.update_attributes(event_source_params)
+    redirect_to action: :index
   end
 
   def destroy
     @event_source.destroy!
-    respond_to do |format|
-      format.js
-    end
+    render nothing: true
   end
 
   def get_study_sources

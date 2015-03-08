@@ -11,49 +11,32 @@ class SubjectsController < AuthenticatedController
   def create
     @subject = current_user.subjects.build(subject_params)
     if @subject.save
-      #TODO error
+      flash[:notice] = t('.create_successful')
     else
       #render :index
     end
 
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-    end
+    redirect_to action: :index
   end
 
   def study_sources
-    #just return the subject
-    respond_to do |format|
-      format.js
-    end
   end
 
   def new
     @subject = Subject.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   def edit
-    #just return the subject
-    respond_to do |format|
-      format.js
-    end
   end
 
   def update
     flash[:notice] = t('.update_successful') if @subject.update_attributes(subject_params)
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-    end
+    redirect_to action: :index
   end
 
   def update_study_sources
     flash[:notice] = t('.update_successful') if @subject.update_attributes(subject_params)
-    respond_to do |format|
-      format.html { redirect_to action: :index }
-    end
+    redirect_to action: :index
   end
 
   #Update subject group
@@ -64,13 +47,14 @@ class SubjectsController < AuthenticatedController
     else
       @subject.update_attribute(:subject_group, nil)
     end
+
+    render nothing: true
   end
 
   def destroy
     @subject.destroy!
-    respond_to do |format|
-      format.js
-    end
+
+    render nothing: true
   end
 
   private
