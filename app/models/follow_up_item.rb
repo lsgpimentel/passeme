@@ -16,7 +16,7 @@
 class FollowUpItem < ActiveRecord::Base
   extend Enumerize
 
-  default_scope -> { order(date: :asc) }
+  default_scope -> { includes(:calendar_event).order(date: :asc) }
 
   scope :studied, -> { where('studied_time IS NOT NULL') }
   scope :studied_debt, -> { studied.where('debt_reason IS NOT NULL') }

@@ -34,8 +34,10 @@
 class CalendarEvent < ActiveRecord::Base
   include IceCubeMethods
 
+  default_scope { includes(:subject) }
 
   belongs_to :calendar_event_source
+  has_one :subject, through: :calendar_event_source
 
   belongs_to :study_source
 
@@ -53,10 +55,6 @@ class CalendarEvent < ActiveRecord::Base
 
   def meta
     Time.zone.at(to_time - from_time).utc
-  end
-
-  def subject
-    calendar_event_source.subject
   end
 
 end
