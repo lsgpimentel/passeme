@@ -3,7 +3,7 @@
 <%= f.input :name %>
 <%= f.input :goal, input_html: { class: 'm-wrap span6' } %>
 <%= f.input :public, label: false, inline_label: t('simple_form.labels.timetable.public') %>
-<%= f.input :specific, label: false, inline_label: t('simple_form.labels.timetable.specific') %>
+<%#= f.input :specific, label: false, inline_label: t('simple_form.labels.timetable.specific') %>
 <% if @active_timetable.present? %>
   <%= f.input :active, label: false, inline_label: t('simple_form.labels.timetable.active') %>
 <% end %>
