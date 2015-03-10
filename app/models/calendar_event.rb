@@ -47,7 +47,7 @@ class CalendarEvent < ActiveRecord::Base
   has_many :revision_events, class_name: "CalendarEvent", foreign_key: "father_id"
   accepts_nested_attributes_for :revision_events, allow_destroy: true
 
-  #validates :calendar_event_source, :date, :from_time, :to_time, :study_source, presence: true
+  validates :calendar_event_source, :date, :from_time, :to_time, :study_source, presence: true
 
   def delta_time
     from_time.to_s(:time) + " - " + to_time.to_s(:time)

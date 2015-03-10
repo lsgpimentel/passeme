@@ -100,6 +100,7 @@ var Calendars = function () {
       var url = $(this).data("url-callback");
       var id = e.val;
       App.ajax("GET", url, { id: id }, {
+        elementToBlock: '#form-calendar-event',
         ajaxSuccess : function(data, status, xhr) {
           data = JSON.parse(data);
           $('#calendar_event_study_source_id').empty();
@@ -117,12 +118,20 @@ var Calendars = function () {
 
 
   var initSchedule = function() {
+
+    function updateRequiredFields(){
+      $('input, select', '.event_option').removeClass('required');
+      $('input, select', '.event_option').not(':hidden').addClass('required');
+    }
+
     var toggle_repeats_yearly_on = function(){
       if($('#calendar_event_repeats_yearly_on').is(':checked')){
         $('#event_repeats_yearly_on_options').show();
       } else {
         $('#event_repeats_yearly_on_options').hide();
       }
+
+      updateRequiredFields();
     };
     toggle_repeats_yearly_on();
     $('#calendar_event_repeats_yearly_on').on('change',function(){
@@ -156,6 +165,8 @@ var Calendars = function () {
         $('#repeats_yearly_options').show();
         break;
       };
+
+      updateRequiredFields();
     };
     toggle_event_options($('input[name="calendar_event[repeats]"]:checked').val());
     $('input[name="calendar_event[repeats]"]').on('change',function(){
@@ -177,6 +188,7 @@ var Calendars = function () {
         $('#event_repeat_ends_on').hide();
         break;
       }
+      updateRequiredFields();
     };
     toggle_repeat_ends($('select[name="calendar_event[repeat_ends]"]').val());
     $('select[name="calendar_event[repeat_ends]"]').on('change',function(){
@@ -194,6 +206,7 @@ var Calendars = function () {
         $('#event_repeats_monthly_on').show();
         break;
       }
+      updateRequiredFields();
     };
     toggle_repeats_monthly($('select[name="calendar_event[repeats_monthly]"]').val());
     $('select[name="calendar_event[repeats_monthly]"]').on('change',function(){
@@ -201,7 +214,14 @@ var Calendars = function () {
     });
 
     $("#use-spaced-revision").on('click', function(e){
-      $("#spaced-revision-block").toggle();
+      if($(this).is(':checked')) {
+        $("#spaced-revision-block").show();
+        $('#spaced-revision-block input').not(':hidden').addClass('required');
+      } else {
+        $('#spaced-revision-block input').not(':hidden').removeClass('required');
+        $("#spaced-revision-block").hide();
+      }
+
     });
 
     $(document).on('nested:fieldAdded:revision_events', function(event){
@@ -210,9 +230,72 @@ var Calendars = function () {
     })
   };
 
+  var handleFormValidation = function(){
+
+    var form = $('#form-calendar-event');
+    var error = $('.alert-error', form);
+
+    validator = form.validate({
+      doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
+        errorElement: 'span', //default input error message container
+      errorClass: 'help-block', // default input error message class
+      focusInvalid: false, // do not focus the last invalid input
+      ignore: [],
+      rules: {
+        'calendar_event[calendar_event_source_id]': {
+          required: true
+        },
+        'calendar_event[study_source_id]': {
+          required: true
+        },
+      },
+
+      messages: { // custom messages for radio buttons and checkboxes
+      },
+
+      errorPlacement: function (error, element) {
+        $(element).closest('.controls').append(error);
+      },
+
+      invalidHandler: function (event, validator) { //display error alert on form submit   
+        error.show();
+        App.scrollTo(error, -200);
+      },
+
+      highlight: function (element) { // hightlight error inputs
+        $(element)
+        .closest('.help-inline').removeClass('ok'); // display OK icon
+        $(element)
+        .closest('.control-group').removeClass('success').addClass('error'); // set error class to the control group
+      },
+
+      unhighlight: function (element) { // revert the change done by hightlight
+        $(element)
+        .closest('.control-group').removeClass('error'); // set error class to the control group
+      },
+
+      success: function (label) {
+      },
+
+      submitHandler: function (form) {
+        error.hide();
+
+        var url = $(form).attr('action');
+
+        App.ajax("POST", url, $(form).serialize(), {
+          elementToBlock : form,
+          ajaxSuccess: function(evt, data, status, xhr){
+          }
+        });
+      }
+
+    });
+  };
+
   var initModalEvent = function() {
     eventSourceSelection();
     initSchedule();
+    handleFormValidation();
   };
 
   var new_event = function() {
