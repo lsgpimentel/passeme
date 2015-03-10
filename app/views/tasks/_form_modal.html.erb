@@ -1,11 +1,16 @@
-<%= simple_form_for @task, remote: true,
+<%= simple_form_for @task,
   defaults: { input_html: { class: "m-wrap placeholder-no-fix", autocomplete: "off" } },
-  html: { class: "form-vertical register-form", novalidate: "novalidate" } do |f| %>
+  html: { id: 'task-form', class: "form-vertical", novalidate: "novalidate" } do |f| %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
     <h3><%= t('.title') %></h3>
   </div>
   <div class="modal-body">
+    <div class="alert alert-error hide">
+      <button class="close" data-dismiss="alert"></button>
+      <%= t('simple_form.error_notification.default_message') %>
+    </div>
+
     <%= f.input :name %>
     <%= f.input :due_in, as: :date_picker %>
 

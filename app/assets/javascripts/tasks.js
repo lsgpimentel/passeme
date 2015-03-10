@@ -87,12 +87,68 @@ var Tasks = function () {
     });
   };
 
+  var handleFormValidation = function(){
+
+    var form = $('#task-form');
+    var error = $('.alert-error', form);
+
+    form.validate({
+      doNotHideMessage: true, //this option enables to show the error/success messages on tab switch.
+        errorElement: 'span', //default input error message container
+      errorClass: 'help-inline', // default input error message class
+      focusInvalid: false, // do not focus the last invalid input
+      rules: {
+      },
+
+      messages: { // custom messages for radio buttons and checkboxes
+      },
+
+      errorPlacement: function (error, element) { // render error placement for each input type
+        $(element).closest('.controls').append(error);
+      },
+
+      invalidHandler: function (event, validator) { //display error alert on form submit   
+        error.show();
+        App.scrollTo(error, -200);
+      },
+
+      highlight: function (element) { // hightlight error inputs
+        $(element)
+        .closest('.help-inline').removeClass('ok'); // display OK icon
+        $(element)
+        .closest('.control-group').removeClass('success').addClass('error'); // set error class to the control group
+      },
+
+      unhighlight: function (element) { // revert the change done by hightlight
+        $(element)
+        .closest('.control-group').removeClass('error'); // set error class to the control group
+      },
+
+      success: function (label) {
+      },
+
+      submitHandler: function (form) {
+        error.hide();
+        url = $(form).attr('action');
+        App.ajax("POST", url, $(form).serialize(), {
+          ajaxSuccess: function(data, status, xhr){
+          }
+        });
+      }
+
+    });
+  }
+
+
   var create_task = function() {
     $("#create-task").on('click', function(e){
       e.preventDefault();
       App.ajax("GET", this.href, {}, {
         elementToBlock: elementToBlockInAjax($(this)),
-        reloadDatepicker: true
+        reloadDatepicker: true,
+        ajaxSuccess : function(data, status, xhr) {
+          handleFormValidation();
+        }
       });
 
     });
@@ -109,6 +165,10 @@ var Tasks = function () {
       list_tasks();
       delete_task();
       create_task();
+      App.initUniform();
+    }, updateDashboardWidget: function() {
+      editable_due_data();
+      editable_name();
       App.initUniform();
     }
 
