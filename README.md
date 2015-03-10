@@ -55,6 +55,10 @@
 - [ ] Configuração para o usuário poder especificar os dias e horários que ele quer receber os e-mails de notificação.
 - [ ] Quando for internacionalizar, voltar a usar o escopo do Locale nas rotas. Foi retirado pois estava dando problema com o omniauth devido a dinamicidade do escopo.
 - [ ] Deixar a validação dos forms usando jquery validate mais genérica. A validação feita hoje na criação da grade, matérias, fontes de estudo, follow up é praticamente igual. Pode ficar dentro do namespace de App.
+- [ ] Utilizar um dashboard com maior  granularidade de "detalhes".
+- [ ] Na tela de Fontes, poderia-se aplicar publicidade ao divulgar possíveis tópicos sobre as matérias.
+- [ ] Oferecer um timer, para que o usuário possa mensurar o tempo de estudo enquanto está com a página aberta.
+- [ ] Possibilitar interação com outras mídias sociais.
 
 
 # Obs.
