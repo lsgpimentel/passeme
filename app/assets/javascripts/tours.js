@@ -168,9 +168,9 @@ var Tours = function(){
       }
       tour = getTimetableCreationTour();
 
-      tour.init();
-      tour.start();
-      tour.restart();
+      //tour.init();
+      //tour.start();
+      //tour.restart();
     }
 
   };
