@@ -108,6 +108,40 @@ var Timetables = function () {
 
     };
 
+    function hoursValidFor(studyTime){
+      fromAdded = moment(studyTime.from, 'HH:mm');
+      toAdded = moment(studyTime.to, 'HH:mm');
+      duration = moment.duration();
+      dayText = $('#days option[value="' + studyTime.day + '"]').text();
+      duration.add(toAdded).subtract(fromAdded);
+
+      overlapped = false;
+      $("#study-times > .study-time").filter(function(){
+        return $(this).children('[class=day]').val() == studyTime.day;
+      }).each(function(i, n){
+        var from = moment($('input[class=from]', n).val(), 'HH:mm');
+        var to = moment($('input[class=to]', n).val(), 'HH:mm');
+
+        //Checking for overlapping
+        if((fromAdded <= to) && (toAdded >= from)){
+          alert('O intervalo que você está tentando inserir no(a) ' + dayText + ' se sobrepõe ao intervalo ' + from.format('HH:mm') + ' - ' + to.format('HH:mm') + ' que já está cadastrado neste dia. Favor corrigir.');
+          overlapped = true;
+          return false; //end loop
+        }
+        duration.add(to).subtract(from);
+
+      });
+
+      if(overlapped){
+        return false;
+      }
+      if(duration.asHours() > 18){
+        alert('Opss! Nos parece bem improvável que você consiga estudar mais que 18 horas no(a) ' + dayText + '. A fim de manter sua sanidade mental, solicitamos rever isso!');
+        return false;
+      }
+
+      return true;
+    }
 
     var addTimeClickEvent = function(){
 
@@ -130,7 +164,9 @@ var Timetables = function () {
               to: to,
               productivity: productivity
             };
-            addTimeToList(studyTime);
+            if(hoursValidFor(studyTime)){
+              addTimeToList(studyTime);
+            } 
           });
 
           $('.timepicker-24').timepicker('clear');
@@ -209,9 +245,15 @@ var Timetables = function () {
       errorClass: 'help-inline', // default input error message class
       focusInvalid: false, // do not focus the last invalid input
       rules: {
+        "timetable[end_date]": {
+          greaterThan: 'timetable[start_date]'
+        }
       },
 
       messages: { // custom messages for radio buttons and checkboxes
+        "timetable[end_date]": {
+          greaterThan: "Deve ser maior que a Data de Início."
+        }
       },
 
       errorPlacement: function (error, element) { // render error placement for each input type

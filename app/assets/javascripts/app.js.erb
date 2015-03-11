@@ -1086,6 +1086,19 @@ var App = function() {
     });
   };
 
+  var handleCustomFormValidationMethods = function(){
+    jQuery.validator.addMethod("greaterThan",
+                               function(value, element, otherElementName) {
+                                 first = moment(value, 'DD/MM/YYYY');
+                                 second = moment($('[name="' + otherElementName + '"]').val(), 'DD/MM/YYYY');
+                                 if(!first.isValid() || !second.isValid()){
+                                   return true; //Valid since we don't have valid dates to compare
+                                 }
+
+                                 return first > second;
+                               });
+  };
+
   // * END:CORE HANDLERS *//
 
     return {
@@ -1145,6 +1158,7 @@ var App = function() {
 
         handleBackButton();
 
+        handleCustomFormValidationMethods();
         moment.locale('pt-br'); //setting brazilian locale
       },
 
