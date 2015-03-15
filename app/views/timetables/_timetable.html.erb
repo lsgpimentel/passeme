@@ -6,7 +6,7 @@
     </li>
     <% unless timetable.active? %>
       <li>
-        <%= link_to t('.make_active'), timetable_make_active_path(timetable), class: "activate-timetable", remote: true, method: :put %>
+        <%= link_to t('.make_active'), timetable_make_active_path(timetable), class: "activate-timetable", method: :put %>
       </li>
     <% end %>
   </ul>

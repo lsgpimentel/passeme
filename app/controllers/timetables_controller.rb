@@ -63,7 +63,7 @@ class TimetablesController < AuthenticatedController
 
   def make_active
     @timetable.make_active
-    render nothing: true
+    redirect_to action: :index
   end
 
   private
