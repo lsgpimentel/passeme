@@ -1097,6 +1097,16 @@ var App = function() {
 
                                  return first > second;
                                });
+    jQuery.validator.addMethod("greaterThanToday",
+                               function(value, element) {
+                                 elementDate = moment(value, 'DD/MM/YYYY');
+                                 todayDate = moment().startOf('day');
+                                 if(!elementDate.isValid()){
+                                   return true; //Valid since we don't have valid dates to compare
+                                 }
+
+                                 return elementDate >= todayDate;
+                               });
   };
 
   // * END:CORE HANDLERS *//

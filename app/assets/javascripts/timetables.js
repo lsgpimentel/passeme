@@ -247,12 +247,18 @@ var Timetables = function () {
       rules: {
         "timetable[end_date]": {
           greaterThan: 'timetable[start_date]'
+        },
+        "timetable[start_date]": {
+          greaterThanToday: true
         }
       },
 
       messages: { // custom messages for radio buttons and checkboxes
         "timetable[end_date]": {
           greaterThan: "Deve ser maior que a Data de Início."
+        },
+        "timetable[start_date]": {
+          greaterThanToday: "Deve ser maior que a data de hoje."
         }
       },
 

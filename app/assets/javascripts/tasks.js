@@ -98,9 +98,15 @@ var Tasks = function () {
       errorClass: 'help-inline', // default input error message class
       focusInvalid: false, // do not focus the last invalid input
       rules: {
+        "task[due_in]": {
+          greaterThanToday: true
+        }
       },
 
       messages: { // custom messages for radio buttons and checkboxes
+        "task[due_in]": {
+          greaterThanToday: "Deve ser maior que a data de hoje."
+        }
       },
 
       errorPlacement: function (error, element) { // render error placement for each input type
