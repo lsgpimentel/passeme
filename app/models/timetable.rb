@@ -50,6 +50,7 @@ class Timetable < ActiveRecord::Base
   attr_reader :subjects
 
   validates :name, :goal, :creator, :block_size, :block_interval, :start_date, :end_date, presence: true
+  validates_associated :calendar
 
   #validates_date :start_date, after: Date.current
   #validates_date :end_date, after: :start_date
@@ -90,7 +91,9 @@ class Timetable < ActiveRecord::Base
   end
 
   def spaced_repetition_percent_block_size=(percent)
-    @spaced_repetition_percent_block_size = 1/Integer(percent)
+    if percent.present?
+      @spaced_repetition_percent_block_size = 1/Integer(percent)
+    end
   end
 
   def spaced_repetition_block_size_in_seconds
