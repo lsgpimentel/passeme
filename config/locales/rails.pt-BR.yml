@@ -291,7 +291,7 @@ pt-BR:
         name: Nome
         goal: Objetivo
         block_size: Tamanho do bloco
-        block_interval: Intervalo do bloco
+        block_interval: Intervalo entre blocos
         spaced_repetition_percent_block_size: Tamanho do bloco de revisão
         start_date: Data de Início
         end_date: Date de Término
@@ -503,7 +503,7 @@ pt-BR:
         meta: Meta
         complete: Completar
     content:
-      title: Acompanhamento
+      title: Acompanhamento para %{timetable_name}
       tabs:
         studied_with_debt: Estudado com débito
         studied: Estudado
@@ -647,10 +647,10 @@ pt-BR:
       study_times: Tempos de Estudo
       options: Opções
       use_pomodoro: Usar a técnica de Pomodoro
-      use_repetition: Usar repetição espaçada
+      use_repetition: Usar revisões espaçadas
       add_time_button: Adicionar
     subjects_study_sources:
-      title: Matérias e Fontes de Estudo
+      title: Matérias
     timetable:
       active: " (ativa)"
       event_sources: Matérias associadas
@@ -775,7 +775,7 @@ pt-BR:
           content: |
             <p>Suas fontes de estudo também são essenciais.</p>
             <p>Após ter criado suas fontes, volte em matérias e as associe às matérias. Você pode associar quantas fontes desejar a cada matéria. O ideal é que haja ao menos uma fonte de estudo associada a cada matéria.</p>
-            <p>Na criação automática da sua grade somente aparecerão as matérias que possuam ao menos uma fonte de estudo.</p>
+            <p>Na criação automática da sua grade não é obrigatório que as matérias selecionadas estejam associadas a alguma fonte de estudo.</p>
         follow_up:
           title: Acompanhamento
           content: >
