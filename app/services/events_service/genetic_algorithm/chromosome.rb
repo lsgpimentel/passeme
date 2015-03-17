@@ -109,7 +109,10 @@ class EventsService::GeneticAlgorithm::Chromosome
     allocated_times = []
     study_times.each do |st|
       subject = subjects[rand(subjects.length)]
-      study_source = subject.study_sources[rand(subject.study_sources.length)]
+      study_source = nil
+      if(subject.study_sources.length > 0)
+        study_source = subject.study_sources[rand(subject.study_sources.length)]
+      end
       allocated_times << EventsService::GeneticAlgorithm::AllocatedTime.new(st, subject, study_source)
     end
     return EventsService::GeneticAlgorithm::Chromosome.new(allocated_times)
