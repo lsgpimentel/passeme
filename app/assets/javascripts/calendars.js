@@ -244,10 +244,7 @@ var Calendars = function () {
       rules: {
         'calendar_event[calendar_event_source_id]': {
           required: true
-        },
-        'calendar_event[study_source_id]': {
-          required: true
-        },
+        }
       },
 
       messages: { // custom messages for radio buttons and checkboxes

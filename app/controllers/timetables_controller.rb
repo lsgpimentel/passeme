@@ -19,7 +19,7 @@ class TimetablesController < AuthenticatedController
   def new
     @timetable = Timetable.new
     @study_sources = current_user.study_sources
-    @subject_groups = current_user.subject_groups.joins(subjects: :study_sources).distinct
+    @subject_groups = current_user.subject_groups.includes(:subjects)
 
     @active_timetable = current_user.timetables.where(active: true)[0]
   end
