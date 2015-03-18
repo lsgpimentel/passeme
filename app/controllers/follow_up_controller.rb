@@ -1,7 +1,7 @@
 class FollowUpController < AuthenticatedController
 
-  DEFAULT_START_DATE = Date.current
-  DEFAULT_END_DATE = Date.current + 1.month
+  DEFAULT_START_DATE = Date.current - 1.month
+  DEFAULT_END_DATE = Date.current
 
   before_filter :check_user_is_owner_of_timetable, except: [ :index_active_timetable ]
 

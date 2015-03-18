@@ -81,8 +81,8 @@ var FollowUp = function () {
       format: 'DD/MM/YYYY',
       separator: ' até ',
       //separator: ' to ',
-      startDate: moment(),
-      endDate: moment().add('months', 1),
+      startDate: moment().subtract('months', 1),
+      endDate: moment(),
       locale: {
         applyLabel: 'Alterar',
         cancelLabel: 'Cancelar',
@@ -108,7 +108,7 @@ var FollowUp = function () {
       FollowUp.refreshContent(start, end);
     });
 
-    $('#follow-up-date-range span').html(moment().format('D [de] MMMM [de] YYYY') + ' - ' + moment().add('months', 1).format('D [de] MMMM [de] YYYY'));
+    $('#follow-up-date-range span').html(moment().subtract('months', 1).format('D [de] MMMM [de] YYYY') + ' - ' + moment().format('D [de] MMMM [de] YYYY'));
   };
 
   var completeEvent = function(){
