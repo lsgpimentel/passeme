@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: git://github.com/bmabey/database_cleaner.git
-  revision: dc74c6975326a94a21711fb1f1ded2bf5f71273a
+  revision: bb608dd3ac6b149cbe92a658d3f8abbebfe82f3f
   specs:
-    database_cleaner (1.4.0)
+    database_cleaner (1.4.1)
 
 GIT
   remote: git://github.com/bmabey/email-spec.git
@@ -52,18 +52,18 @@ GIT
 
 GIT
   remote: git://github.com/ctran/annotate_models.git
-  revision: 038b13c04e575cc0f0c89c702c994166c7dc9955
+  revision: 52ffefcbe4e89cb172e2007eda0f74ac40798727
   specs:
-    annotate (2.6.5)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
+    annotate (2.6.8)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
 
 GIT
   remote: git://github.com/deivid-rodriguez/pry-byebug.git
-  revision: 46881d1e165093e028f23af6161934b018ad3709
+  revision: 721046a219d1ed64b9ebbe0c97d317f147ecb54a
   specs:
-    pry-byebug (3.0.1)
-      byebug (~> 3.4)
+    pry-byebug (3.1.0)
+      byebug (~> 4.0)
       pry (~> 0.10)
 
 GIT
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: git://github.com/flyerhzm/bullet.git
-  revision: f762bd61ff597002b3f0cbad3d6cae12a0acaa44
+  revision: 5f68942eaa076fe56cea6487a863c2ebc073b920
   specs:
     bullet (4.14.4)
       activesupport (>= 3.0.0)
@@ -83,9 +83,9 @@ GIT
 
 GIT
   remote: git://github.com/jenseng/immigrant.git
-  revision: fddc8c83988f3c3c40602aa251eaad822f5f7823
+  revision: ab1ce990423be4695a2175e65593fcb150d42f25
   specs:
-    immigrant (0.3.0)
+    immigrant (0.3.1)
       activerecord (>= 3.0)
 
 GIT
@@ -94,12 +94,6 @@ GIT
   specs:
     rails-footnotes (4.1.6)
       rails (>= 3.2)
-
-GIT
-  remote: git://github.com/lsgpimentel/gritter.git
-  revision: 45c88100663e2dc3ef470a831f875f6f4f8f5262
-  specs:
-    gritter (1.0.3)
 
 GIT
   remote: git://github.com/lsgpimentel/sprockets-urlrewriter.git
@@ -131,9 +125,9 @@ GIT
 
 GIT
   remote: git://github.com/plentz/lol_dba.git
-  revision: d665c16671f84671486824f67799e22cae8e628e
+  revision: eb591d550ed33e552e3fbfb87eac8cf78e84a3a2
   specs:
-    lol_dba (1.6.3)
+    lol_dba (1.6.6)
       actionpack (>= 3.0, < 5.0)
       activerecord (>= 3.0, < 5.0)
       railties (>= 3.0, < 5.0)
@@ -173,9 +167,9 @@ GIT
 
 GIT
   remote: git://github.com/troessner/reek.git
-  revision: 4069a1c98315473c49984ddea4b011cc52d7bcc5
+  revision: 93fb7df91f4974c716111950e78238f0d1210b28
   specs:
-    reek (2.0.1)
+    reek (2.0.2)
       parser (~> 2.2)
       rainbow (~> 2.0)
       require_all (~> 1.3)
@@ -196,9 +190,11 @@ GIT
 
 GIT
   remote: git://github.com/zquestz/omniauth-google-oauth2.git
-  revision: 6e90c8bb998e576f32731ce94792621f0e14ce6c
+  revision: 82102b9a2fb94ba4a52c2effc2fc2ce94c88d83e
   specs:
     omniauth-google-oauth2 (0.2.6)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.1.1)
 
@@ -260,10 +256,8 @@ GEM
       terminal-table (~> 1.4)
     breadcrumbs_on_rails (2.3.0)
     builder (3.1.4)
-    byebug (3.5.1)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
-      slop (~> 3.6)
+    byebug (4.0.2)
+      columnize (= 0.9.0)
     cancan (1.6.10)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -292,9 +286,8 @@ GEM
       equalizer (~> 0.0.9)
     css_parser (1.3.6)
       addressable
-    daemons (1.1.9)
+    daemons (1.2.1)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.0.3)
@@ -317,7 +310,7 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.7)
-    execjs (2.3.0)
+    execjs (2.4.0)
     extlib (0.9.16)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -328,7 +321,7 @@ GEM
       multipart-post (~> 1.2.0)
     fastercsv (1.5.5)
     ffaker (1.18.0)
-    ffi (1.9.6)
+    ffi (1.9.8)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -343,7 +336,7 @@ GEM
       multi_json (>= 1.0.0)
       signet (~> 0.4.5)
       uuidtools (>= 2.1.0)
-    guard (2.12.4)
+    guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -389,11 +382,11 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.2)
-    jwt (1.3.0)
+    jwt (1.4.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.7)
-    listen (2.8.5)
+    listen (2.9.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -515,7 +508,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
-    sexp_processor (4.4.5)
+    sexp_processor (4.5.0)
     shellany (0.0.1)
     signet (0.4.5)
       addressable (>= 2.2.3)
@@ -556,7 +549,7 @@ GEM
       eventmachine (~> 1.0)
       rack (~> 1.0)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     timeliness (0.3.7)
     timers (4.0.1)
@@ -617,7 +610,6 @@ DEPENDENCIES
   figaro (~> 0.7.0)
   foreigner!
   google-api-client (~> 0.6.4)
-  gritter!
   guard-rspec (~> 4.0.0)
   guard-spork (~> 1.5.1)
   haml-rails (~> 0.5.2)

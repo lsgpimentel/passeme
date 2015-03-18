@@ -5,13 +5,13 @@
  *= require bootstrap-modal/css/bootstrap-modal
  *= require jquery-ui/jquery-ui-1.10.1.custom.min
  *= require select2/select2_metro
- *= require bootstrap-wysihtml5/bootstrap-wysihtml5
+ require bootstrap-wysihtml5/bootstrap-wysihtml5
  *= require bootstrap-datepicker/css/datepicker
  *= require bootstrap-timepicker/css/bootstrap-timepicker.min
  *= require bootstrap-datetimepicker/css/datetimepicker
  *= require bootstrap-editable/bootstrap-editable/css/bootstrap-editable
  *= require bootstrap-editable/inputs-ext/address/address
- *= require gritter
+ require gritter
  *= require fullcalendar/fullcalendar/fullcalendar
  *= require star-rating/jquery.rating
  *= require dataTables/extras/TableTools

@@ -75,7 +75,7 @@ gem "simple_form", "~> 3.0.0.rc"
 gem "figaro", "~> 0.7.0"
 gem "google-api-client", "~> 0.6.4"
 gem "validates_timeliness", "~> 3.0.14"
-gem 'gritter', github: 'lsgpimentel/gritter'
+#gem 'gritter', github: 'lsgpimentel/gritter'
 gem 'sprockets-urlrewriter',github: 'lsgpimentel/sprockets-urlrewriter' 
 gem "enumerize", "~> 0.7.0"
 gem "simple-navigation", "~> 3.11.0"
