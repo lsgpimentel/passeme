@@ -250,6 +250,9 @@ var Timetables = function () {
         },
         "timetable[start_date]": {
           greaterThanToday: true
+        },
+        "timetable[pomodoro_technique][time_long_break]": {
+          timeGreaterThan: 'timetable[pomodoro_technique][time_short_break]'
         }
       },
 
@@ -259,6 +262,9 @@ var Timetables = function () {
         },
         "timetable[start_date]": {
           greaterThanToday: "Deve ser maior que a data de hoje."
+        },
+        "timetable[pomodoro_technique][time_long_break]": {
+          timeGreaterThan: 'Deve ser maior que o intervalo curto.'
         }
       },
 

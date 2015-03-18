@@ -213,12 +213,29 @@ var Calendars = function () {
       toggle_repeats_monthly($(this).val());
     });
 
+    function addRevisionEventsValidationRules(){
+      $('#spaced-revision-block input').not(':hidden').addClass('required');
+
+      $('#spaced-revision-block input[name$="[to_time]"]').each(function(i, ele){
+        fromTimeElementName = $(ele).attr('name').replace('to_time', 'from_time');
+        $(ele).rules( "add", {
+          timeGreaterThan: fromTimeElementName,
+          messages: {
+            timeGreaterThan: 'Deve ser maior que o horário inicial.'
+          }
+        });
+      });
+    }
+
     $("#use-spaced-revision").on('click', function(e){
       if($(this).is(':checked')) {
         $("#spaced-revision-block").show();
-        $('#spaced-revision-block input').not(':hidden').addClass('required');
+        addRevisionEventsValidationRules();
       } else {
         $('#spaced-revision-block input').not(':hidden').removeClass('required');
+        $('#spaced-revision-block input').each(function(i, ele){
+          $(ele).rules('remove');
+        });
         $("#spaced-revision-block").hide();
       }
 
@@ -227,6 +244,7 @@ var Calendars = function () {
     $(document).on('nested:fieldAdded:revision_events', function(event){
       App.initDatePickers();
       App.initTimePickers();
+      addRevisionEventsValidationRules();
     })
   };
 
@@ -244,10 +262,16 @@ var Calendars = function () {
       rules: {
         'calendar_event[calendar_event_source_id]': {
           required: true
+        },
+        "calendar_event[to_time]": {
+          timeGreaterThan: 'calendar_event[from_time]'
         }
       },
 
-      messages: { // custom messages for radio buttons and checkboxes
+      messages: {
+        "calendar_event[to_time]": {
+          timeGreaterThan: 'Deve ser maior que o horário inicial.'
+        }
       },
 
       errorPlacement: function (error, element) {

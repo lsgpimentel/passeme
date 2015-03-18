@@ -1110,6 +1110,16 @@ var App = function() {
 
                                  return elementDate >= todayDate;
                                });
+    jQuery.validator.addMethod("timeGreaterThan",
+                               function(value, element, otherElementName) {
+                                 first = moment(value, 'HH:mm');
+                                 second = moment($('[name="' + otherElementName + '"]').val(), 'HH:mm');
+                                 if(!first.isValid() || !second.isValid()){
+                                   return true; //Valid since we don't have valid times to compare
+                                 }
+
+                                 return first > second;
+                               });
   };
 
   // * END:CORE HANDLERS *//
