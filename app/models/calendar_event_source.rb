@@ -12,7 +12,7 @@
 
 class CalendarEventSource < ActiveRecord::Base
 
-  default_scope { includes(:subject) }
+  default_scope { includes(:subject, :calendar) }
 
   belongs_to :calendar
   belongs_to :subject
