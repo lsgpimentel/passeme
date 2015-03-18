@@ -473,10 +473,10 @@ pt-BR:
     no_timetable:
       no_active_timetable: Parece que você ainda não tem nenhuma grade de horários ativa no nomento.
       create_click_below: Mas não se preocupe! Você pode criar uma clicando abaixo.
-      tour: Se você quiser realizar um tour pelo sistema, clique no botão abaixo.
+      tour: Se você quiser visualizar o passo-a-passo, clique no botão abaixo.
       buttons:
         create_timetable: Criar minha Grade!
-        make_tour: Fazer Tour!
+        make_tour: Abrir passo-a-passo!
     stats:
       title: Estatísticas Gerais
 ####### Follow Up #######

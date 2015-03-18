@@ -70,4 +70,5 @@
 //= require event_sources
 //= require reports
 //= require tours
+//= require dashboard
 //= require passeme

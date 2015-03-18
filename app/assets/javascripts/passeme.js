@@ -13,7 +13,8 @@ var init = function() {
   if($('#dashboard-settings').data('show-tour')){
     Tours.dashboard();
   }
-  Tours.timetableCreation();
+  //Tours.timetableCreation();
+  Dashboard.init();
 };
 
 
