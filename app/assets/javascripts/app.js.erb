@@ -175,6 +175,9 @@ var App = function() {
 								if ($('.btn-navbar').hasClass('collapsed') == false) {
 									$('.btn-navbar').click();
 								}
+                if(!$(this).hasClass('dont-block-ui')){
+                  App.blockUI('.page-content');
+                }
 								return;
 							}
 
@@ -1210,13 +1213,14 @@ var App = function() {
       blockUI : function(el, centerY) {
         var el = jQuery(el);
         el.block({
-          message : '<img src="/assets/ajax-loading.gif" align="">',
+          message : '<img src="/assets/ajax-loading.gif">',
           centerY : centerY != undefined ? centerY : true,
           css : {
             top : '10%',
             border : 'none',
             padding : '2px',
-            backgroundColor : 'none'
+            backgroundColor : 'none',
+            'z-index': '99999'
           },
           overlayCSS : {
             backgroundColor : '#000',

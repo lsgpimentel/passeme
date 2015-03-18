@@ -287,6 +287,7 @@ var Timetables = function () {
       },
 
       submitHandler: function (form) {
+        App.blockUI(document.body);
         error.hide();
         form.submit();
         //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
