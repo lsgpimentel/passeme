@@ -24,7 +24,7 @@
               <tr>
                 <td>
                   <h3>Seja bem-vindo, <%= @resource.name %>!</h3>
-                  <p>Você precisa confirmar seu e-mail antes de começar o aplicativo.</p>
+                  <p>Você precisa confirmar seu e-mail antes de começar o aplicativo Passe-Me.</p>
                   <p>Você pode confirmar seu e-mail a partir do link abaixo:</p>
                   <%= link_to 'Confirmar minha conta!', confirmation_url(@resource, :confirmation_token => @token), class: 'btn' %>
                   <br/>

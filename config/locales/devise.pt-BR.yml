@@ -16,11 +16,11 @@ pt-BR:
       unconfirmed: "Você deve confirmar sua conta antes de continuar. Verifique o e-mail que lhe foi enviado."
     mailer:
       confirmation_instructions:
-        subject: "Instruções para confirmação de conta"
+        subject: "Instruções para confirmação de conta no Passe-Me"
       reset_password_instructions:
-        subject: "Instruções para reinicialização de senha"
+        subject: "Instruções para reinicialização de senha no Passe-Me"
       unlock_instructions:
-        subject: "Instruções para desbloqueio de conta"
+        subject: "Instruções para desbloqueio de conta no Passe-Me"
     omniauth_callbacks:
       failure: "Não foi possível autorizar você através do %{kind} porque \"%{reason}\"."
       success: "Autorizado com sucesso pela conta %{kind}."
