@@ -30,9 +30,9 @@
 
     <div id="spaced-revision-block" class="hide">
       <%= f.simple_fields_for :revision_events do |r| %>
-        <%= r.input :date, as: :date_picker, label: false %>
-        <%= r.input :from_time, as: :time_picker, label: false %>
-        <%= r.input :to_time, as: :time_picker, label: false %>
+        <%= r.input :date, as: :date_picker, label: false, required: false %>
+        <%= r.input :from_time, as: :time_picker, label: false, required: false %>
+        <%= r.input :to_time, as: :time_picker, label: false , required: false%>
         <%= r.hidden_field :repeats, value: "never" %>
         <%= r.link_to_remove(class: "btn red") do %>
           <i class="icon-remove"></i>
