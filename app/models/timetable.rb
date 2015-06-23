@@ -45,6 +45,7 @@ class Timetable < ActiveRecord::Base
   #
 
   attr_accessor :use_pomodoro_technique, :pomodoro_technique
+  
   attr_accessor :use_spaced_repetition, :spaced_repetition_percent_block_size
   attr_reader :start_date, :end_date
   attr_reader :subjects
@@ -106,6 +107,13 @@ class Timetable < ActiveRecord::Base
 
   def block_interval_in_seconds
     block_interval - block_interval.at_beginning_of_day
+  end
+
+  def pomodoro_technique=(attrs)
+    @pomodoro_technique = PomodoroTechnique.new({
+      time_short_break: attrs[:time_short_break].to_time(:utc),
+      time_long_break: attrs[:time_long_break].to_time(:utc)
+    })
   end
 
 end

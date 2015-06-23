@@ -86,7 +86,8 @@ module EventsService
         #Precisamos considerar que a cada 4 blocos há uma pausa maior (long break)
         if blocks > 4
           long_breaks = (blocks / 5).truncate
-          blocks -= long_breaks * @timetable.pomodoro_technique.long_break_in_seconds
+          blocks_in_seconds = (blocks * @timetable.block_size_in_seconds) - (long_breaks * @timetable.pomodoro_technique.long_break_in_seconds)
+          blocks = blocks_in_seconds / @timetable.block_size_in_seconds
         end
       else
         blocks = grouped_study_time.duration_in_seconds / (@timetable.block_size_in_seconds + @timetable.block_interval_in_seconds)
