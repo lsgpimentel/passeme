@@ -59,6 +59,10 @@
 - [ ] Na tela de Fontes, poderia-se aplicar publicidade ao divulgar possíveis tópicos sobre as matérias.
 - [ ] Oferecer um timer, para que o usuário possa mensurar o tempo de estudo enquanto está com a página aberta.
 - [ ] Possibilitar interação com outras mídias sociais.
+- [ ] Renomear a tabela de notifications para site_notifications. Não vejo mais sentido em usar a tabela como log e no site replicar as notificações. Até porque tem notificações que são enviadas por e-mail que não da pra reproduzir no site (tabelas de estudo, etc). Melhor alterar para site_notifications e manter somente notificações que devem aparecer no site (o que inclui as do tipo "foi enviado o que vc tem de estudar hoje para o seu e-mail, favor verificar."). Além disso, repensar se vale a pena continuar usando as notificações como uma relação polimórfica, pois ficou muito confuso. O problema de só registrar a mensagem inteira é que não da pra internacionalizar.
+- [ ] Repensar a parte de Activities. Não tá sendo usado hoje, tem que pensar em uma forma melhor de guardar as ações do usuário. Anyway, acho que isso pode ficar MUITO mais pra frente, tem coisas mais importantes no momento.
+- [x] ~~Durante a criação da grade, ao tentar adicionar um novo tempo, está sendo apagado as informações avançadas da grade.~~
+- [x] ~~Ao tentar usar a técnica de pomodoro na criaçaão da grade, é retornado erro.~~
 
 
 # Obs.
