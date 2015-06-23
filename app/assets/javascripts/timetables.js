@@ -169,7 +169,7 @@ var Timetables = function () {
             } 
           });
 
-          $('.timepicker-24').timepicker('clear');
+          $('#time-from, #time-to').timepicker('clear');
           $("#days").select2('data', null);
           $("#slider-productivity").slider("value", 3);
           $("#slider-productivity-value").text('3');
